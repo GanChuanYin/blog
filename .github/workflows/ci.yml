@@ -1,0 +1,56 @@
+name: Publish And Deploy Demo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 运行环境，告诉它运行在什么环境
+    steps:
+      # 第一步：下载源码（CI/CD拉取代码到自己的本地）
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2 # 添加nodejs环境
+        with:
+          node-version: '14'
+          
+      # 第二步：打包构建
+      - name: Build
+        run: npm install && npm run build
+
+      - name: ssh deploy
+        uses: easingthemes/ssh-deploy@v2.1.6
+        env:
+          # Private Key
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+          # Remote host
+          REMOTE_HOST: ${{ secrets.HOST }}
+          # Remote user
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          # Remote port
+          REMOTE_PORT: ${{ secrets.PORT }}
+          # Source directory
+          SOURCE: 'webView/'
+          # Target directory
+          TARGET: '/usr/web/html/blog'
+          # Arguments to pass to rsync
+          # ARGS: '-rltgoDzvO --delete'
+
+      # # 第三步：部署到服务器
+      # - name: Deploy
+      #   uses: appleboy/ssh-action@master # 使用ssh链接服务器
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     port: ${{ secrets.PORT }}
+      #     key: ${{ secrets.KEY }}
+      #     script:
+      #       | # 执行命令（运行到服务器）cd：要确保服务器有这个目录； wget：下载上一步的 blog 到服务器； tar：解压
+      #       cd /usr/web/html/blog
+      #       wget https://github.com/coderlyu/au-blog/tree/master/webView/blog.tgz
+      #       rm -rf ./*
+      #       tar xzvf blog.tgz
