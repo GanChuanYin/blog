@@ -1,45 +1,40 @@
 module.exports = [
   { text: '首页', link: '/' },
   {
-    text: '前端总结',
+    text: '前端',
     link: '/web/',
     items: [
       {
         text: 'JavaScript',
         items: [
-          { text: '构造函数和原型', link: '/pages/6abe86/' },
-          { text: 'Cookie和Session', link: '/pages/255011/' },
-          { text: 'Object.create(null)和{}', link: '/pages/6abety/' },
-          { text: 'TypeScript配置', link: '/pages/0bea56/' },
-          { text: 'typescript入门到进阶', link: '/pages/c7b3dd/' }
+          { text: 'Date给定时间获取自然月、周的时间轴', link: '/pages/9d3f73/' },
+          { text: '文字转语音mp3文件', link: '/pages/40b640/' },
         ]
       },
       {
-        text: '框架',
+        text: 'vue',
         items: [
-          { text: 'Vue-Router', link: '/pages/8ec53a/' },
-          { text: 'React基础入门', link: '/pages/eb7fff/' },
+          { text: '分享3个提升Vue性能的写法', link: '/pages/2b12d8/' },
         ]
       },
       {
-        text: '其它',
+        text: 'leaflet',
         items: [
-          { text: 'Http协议', link: '/pages/58f0cb/' },
-          { text: '跨域问题总结', link: '/pages/42e039/' },
+          { text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' },
         ]
       }
     ]
   },
-  {
-    text: '学习笔记',
-    link: '/note/',
-    items: [
-      { text: '分析Promise实现', link: '/pages/82005c/' },
-      { text: 'Axios源码分析', link: '/pages/954714/' },
-      { text: 'Webpack原理', link: '/pages/6aa311/' },
-      { text: 'vueRouter源码分析', link: '/pages/f80ee5/' },
-    ],
-  },
+  // {
+  //   text: '学习笔记',
+  //   link: '/note/',
+  //   items: [
+  //     { text: '分析Promise实现', link: '/pages/82005c/' },
+  //     { text: 'Axios源码分析', link: '/pages/954714/' },
+  //     { text: 'Webpack原理', link: '/pages/6aa311/' },
+  //     { text: 'vueRouter源码分析', link: '/pages/f80ee5/' },
+  //   ],
+  // },
   // {
   //   text: '项目积累',
   //   link: '/project/',
@@ -76,14 +71,14 @@ module.exports = [
   //     }
   //   ],
   // },
-  {
-    text: '后端',
-    link: '/fontend/',
-    items: [
-      { text: 'Mongoose基础', link: '/pages/e84bbd/' },
-      { text: 'Multer文件上传中间件的使用', link: '/pages/71e997/' },
-    ]
-  },
+  // {
+  //   text: '后端',
+  //   link: '/fontend/',
+  //   items: [
+  //     { text: 'Mongoose基础', link: '/pages/e84bbd/' },
+  //     { text: 'Multer文件上传中间件的使用', link: '/pages/71e997/' },
+  //   ]
+  // },
   // {
   //   text: '面经',
   //   link: '/interview/',
@@ -133,17 +128,29 @@ module.exports = [
     ]
   },
   {
-    text: '其它',
-    link: '/other/',
+    text: '工具',
+    link: '/tool/',
     items: [
-      { text: 'Git的使用', link: '/pages/3e6e24/' },
-      { text: 'Nginx的使用', link: '/pages/667146/' },
-      { text: 'CentOS7安装Nginx', link: '/pages/6ddf53/' },
-      { text: '正则表达式', link: '/pages/fc6574/' },
-      { text: 'SEO搜索引擎优化', link: '/pages/859e09/' },
-      { text: 'Serverless介绍', link: '/pages/eb693b/' },
+      {
+        text: 'VSCode',
+        items: [
+          { text: 'VSCode图片预览插件 Image preview', link: '/pages/00f068/' },
+        ]
+      }
     ]
   },
+  // {
+  //   text: '其它',
+  //   link: '/other/',
+  //   items: [
+  //     { text: 'Git的使用', link: '/pages/3e6e24/' },
+  //     { text: 'Nginx的使用', link: '/pages/667146/' },
+  //     { text: 'CentOS7安装Nginx', link: '/pages/6ddf53/' },
+  //     { text: '正则表达式', link: '/pages/fc6574/' },
+  //     { text: 'SEO搜索引擎优化', link: '/pages/859e09/' },
+  //     { text: 'Serverless介绍', link: '/pages/eb693b/' },
+  //   ]
+  // },
   // {
   //   text: '友链',
   //   link: '/pages/8149d9/'

@@ -5,7 +5,7 @@ module.exports = {
   sidebarDepth: 2,
   lastUpdated: '上次更新',
   searchMaxSuggestions: 10,
-  // repo: 'coderlyu/au-blog',
+  // repo: '',
   // docsDir: 'docs',
   // editLinks: true,
   // editLinkText: '编辑',
