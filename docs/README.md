@@ -1,7 +1,7 @@
 ---
 
 home: true
-heroImage: /images/au.png
+heroImage: /images/fontend-1.png
 tagline: 不积跬步无以至千里
 
 features:
@@ -19,4 +19,4 @@ features:
   link: /project/
   imgUrl: /images/project-1.png
 
-footer: MIT Licensed | Copyright © 2021-present coderly
+footer: MIT Licensed | Copyright © 2021-present XingYun

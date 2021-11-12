@@ -1,0 +1,18 @@
+{
+  "search.exclude": {
+    "/node_modules": true,
+    "**/webView": true,
+    "**/bower_components": true,
+    "**/public/js": true,
+    "**/swiper": true,
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "/node_modules": true,
+    "**/webView/**/*.html": true,
+    "**/webView/**/*.css": true,
+    "**/bower_components": true,
+    "**/public/js": true
+  }
+}
