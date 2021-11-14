@@ -121,8 +121,8 @@ module.exports = [
       {
         text: '计算机网络',
         items: [
-          { text: '数据链路层', link: '/pages/3c0ea2/' },
-          { text: '网络层', link: '/pages/20ac91/' },
+          { text: '有了MAC地址 为什么还需要IP地址', link: '/pages/3c0ea2/' },
+          // { text: '网络层', link: '/pages/20ac91/' },
         ]
       }
     ]
