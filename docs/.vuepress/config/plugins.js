@@ -33,9 +33,9 @@ module.exports = [
       options: {
         clientID: 'ee27cddb54c708e69312',
         clientSecret: '78700378974e4e0682b1d8c67b7c86ea6912d243',
-        repo: 'au-blog',
-        owner: 'coderlyu',
-        admin: ['coderlyu'],
+        repo: 'GCY-blog',
+        owner: 'GCY',
+        admin: ['GCY'],
         pagerDirection: 'last',
         id: '<%- (frontmatter.permalink || frontmatter.to.path || "123456789012345").slice(-16) %>',
         title: '「评论」<%- frontmatter.title %>',

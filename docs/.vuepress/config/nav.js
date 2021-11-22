@@ -7,7 +7,7 @@ module.exports = [
       {
         text: 'JavaScript',
         items: [
-          { text: 'Date给定时间获取自然月、周的时间轴', link: '/pages/9d3f73/' },
+          { text: 'moment.js给定时间获取自然月、周的时间轴', link: '/pages/9d3f73/' },
           { text: '文字转语音mp3文件', link: '/pages/40b640/' },
         ]
       },
