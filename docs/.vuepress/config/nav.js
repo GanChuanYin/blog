@@ -14,7 +14,7 @@ module.exports = [
       {
         text: 'vue',
         items: [
-          { text: '分享3个提升Vue性能的写法', link: '/pages/2b12d8/' },
+          { text: 'Vue虚拟dom与Diff算法', link: '/pages/6d38b1/' },
           { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
         ]
       },
