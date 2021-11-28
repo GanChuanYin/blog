@@ -31,17 +31,17 @@ module.exports = [
     {
       choosen: 'gitalk',
       options: {
-        clientID: 'ee27cddb54c708e69312',
-        clientSecret: '78700378974e4e0682b1d8c67b7c86ea6912d243',
+        clientID: '',
+        clientSecret: '',
         repo: 'GCY-blog',
         owner: 'GCY',
         admin: ['GCY'],
         pagerDirection: 'last',
-        id: '<%- (frontmatter.permalink || frontmatter.to.path || "123456789012345").slice(-16) %>',
+        id: '',
         title: '「评论」<%- frontmatter.title %>',
         labels: ['Gitalk', 'Comment'],
         body:
-          '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname || "123456789012345") %>',
+          '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname || "") %>',
       },
     }
   ],
