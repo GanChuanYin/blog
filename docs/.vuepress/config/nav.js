@@ -35,6 +35,12 @@ module.exports = [
         ]
       },
       {
+        text: '前端工程化',
+        items: [
+          { text: 'webpack loader和plugin', link: '/pages/6cf4b4/' },
+        ]
+      },
+      {
         text: 'leaflet',
         items: [{ text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' }]
       }
