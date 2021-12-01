@@ -7,9 +7,13 @@ module.exports = [
       {
         text: 'JavaScript',
         items: [
-          { text: 'moment.js给定时间获取自然月、周的时间轴', link: '/pages/9d3f73/' },
+          {
+            text: 'moment.js给定时间获取自然月、周的时间轴',
+            link: '/pages/9d3f73/'
+          },
           { text: '文字转语音mp3文件', link: '/pages/40b640/' },
           { text: '手写Promise', link: '/pages/bfcf91/' },
+          { text: 'JS Event Loop', link: '/pages/ac62ca/' },
         ]
       },
       {
@@ -17,6 +21,8 @@ module.exports = [
         items: [
           { text: 'css也需要性能优化', link: '/pages/ae3362/' },
           { text: '重排和重绘', link: '/pages/111974/' },
+          { text: 'em、px、rem、vh、vw 区别', link: '/pages/7dffab/' },
+          
         ]
       },
       {
@@ -24,13 +30,13 @@ module.exports = [
         items: [
           { text: 'Vue虚拟dom与Diff算法', link: '/pages/6d38b1/' },
           { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
+          { text: 'vue数组为什么不是响应式', link: '/pages/487708/' },
+          { text: 'v-for为什么不能用index做key', link: '/pages/d8afb9/' },
         ]
       },
       {
         text: 'leaflet',
-        items: [
-          { text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' },
-        ]
+        items: [{ text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' }]
       }
     ]
   },
@@ -44,8 +50,7 @@ module.exports = [
           { text: '有了MAC地址 为什么还需要IP地址', link: '/pages/3c0ea2/' },
           { text: '为什么IP地址老是变', link: '/pages/74c787/' },
           { text: '我们为什么需要IPV6', link: '/pages/a4fd98/' },
-          { text: 'TCP与UDP', link: '/pages/181e93/' },
-          // { text: '网络层', link: '/pages/20ac91/' },
+          { text: 'TCP与UDP', link: '/pages/181e93/' }
         ]
       }
     ]
@@ -57,7 +62,7 @@ module.exports = [
       {
         text: 'VSCode',
         items: [
-          { text: 'VSCode图片预览插件 Image preview', link: '/pages/00f068/' },
+          { text: 'VSCode图片预览插件 Image preview', link: '/pages/00f068/' }
         ]
       }
     ]
