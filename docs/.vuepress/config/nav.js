@@ -58,6 +58,12 @@ module.exports = [
           { text: '我们为什么需要IPV6', link: '/pages/a4fd98/' },
           { text: 'TCP与UDP', link: '/pages/181e93/' }
         ]
+      },
+      {
+        text: '计算机组成原理',
+        items: [
+          { text: 'ASCII、Unicode、UTF-8和UTF-16', link: '/pages/702bd5/' },
+        ]
       }
     ]
   },
