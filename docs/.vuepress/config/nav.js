@@ -35,6 +35,13 @@ module.exports = [
         ]
       },
       {
+        text: 'node',
+        items: [
+          { text: '文件上传功能技术选型和前后端实现', link: '/pages/bb7c65/' },
+        ]
+      },
+      
+      {
         text: '前端工程化',
         items: [
           { text: 'webpack loader和plugin', link: '/pages/6cf4b4/' },
