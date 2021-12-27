@@ -26,25 +26,25 @@ module.exports = [
       showInMobile: false
     }
   ],
-  [
-    'vuepress-plugin-comment', // 评论
-    {
-      choosen: 'gitalk',
-      options: {
-        clientID: '',
-        clientSecret: '',
-        repo: 'GCY-blog',
-        owner: 'GCY',
-        admin: ['GCY'],
-        pagerDirection: 'last',
-        id: '',
-        title: '「评论」<%- frontmatter.title %>',
-        labels: ['Gitalk', 'Comment'],
-        body:
-          '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname || "") %>',
-      },
-    }
-  ],
+  // [
+  //   'vuepress-plugin-comment', // 评论
+  //   {
+  //     choosen: 'gitalk',
+  //     options: {
+  //       clientID: '',
+  //       clientSecret: '',
+  //       repo: 'GCY-blog',
+  //       owner: 'GCY',
+  //       admin: ['GCY'],
+  //       pagerDirection: 'last',
+  //       id: '',
+  //       title: '「评论」<%- frontmatter.title %>',
+  //       labels: ['Gitalk', 'Comment'],
+  //       body:
+  //         '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname || "") %>',
+  //     },
+  //   }
+  // ],
   [
     '@vuepress/last-updated', // 时间显示格式
     {

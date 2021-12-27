@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vuepress dev docs",
-    "build": "cross-env NODE_ENV=production vuepress build docs",
+    "build": "cross-env NODE_ENV=production vuepress build docs && npm run upload",
     "build:sh": "git.sh",
+    "upload": "sh build/upload.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },

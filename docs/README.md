@@ -1,7 +1,7 @@
 ---
 
 home: true
-heroImage: /images/fontend-1.png
+# heroImage: /images/fontend-1.png
 tagline: 不积跬步无以至千里
 
 features:
@@ -19,8 +19,8 @@ features:
   link: /tool/
   imgUrl: /images/project-1.png
 - title: python
-  details: python学习
+  details: python学习与实践
   link: /python/
-  imgUrl: /images/project-1.png
+  imgUrl: /images/python.png
 
 footer: MIT Licensed | Copyright © 2021-present XingYun
