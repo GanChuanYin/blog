@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
-  "author": "刘誉 <974257574@qq.com>",
+  "author": "gcy <9721385651@qq.com>",
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",

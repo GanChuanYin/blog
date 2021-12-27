@@ -18,5 +18,9 @@ features:
   details: 工具软件 插件 脚本等
   link: /tool/
   imgUrl: /images/project-1.png
+- title: python
+  details: python学习
+  link: /python/
+  imgUrl: /images/project-1.png
 
 footer: MIT Licensed | Copyright © 2021-present XingYun
