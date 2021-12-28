@@ -54,6 +54,21 @@ module.exports = [
     ]
   },
   {
+    text: 'python',
+    link: '/python/',
+    items: [
+      {
+        text: '语言特性',
+        items: [
+          {
+            text: 'python与JavaScript的异同',
+            link: '/pages/813992/'
+          }
+        ]
+      }
+    ]
+  },
+  {
     text: '计算机',
     link: '/computer/',
     items: [

@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development vuepress dev docs",
     "build": "cross-env NODE_ENV=production vuepress build docs",
     "build:sh": "git.sh",
-    "upload":"cross-env NODE_ENV=production vuepress build docs && npm run upload",
+    "production":"cross-env NODE_ENV=production vuepress build docs && npm run upload:sh",
     "upload:sh": "sh build/upload.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
