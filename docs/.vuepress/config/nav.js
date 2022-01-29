@@ -37,13 +37,15 @@ module.exports = [
       {
         text: 'node',
         items: [
-          { text: '文件上传功能技术选型和前后端实现', link: '/pages/bb7c65/' },
+          { text: 'JS实现文件上传功能', link: '/pages/bb7c65/' },
         ]
       },
       
       {
         text: '前端工程化',
         items: [
+          { text: '前端打包需要gzip压缩吗', link: '/pages/da8cef/' },
+          { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
           { text: 'webpack loader和plugin', link: '/pages/6cf4b4/' },
         ]
       },
