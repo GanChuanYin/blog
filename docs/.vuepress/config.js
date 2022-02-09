@@ -14,5 +14,6 @@ module.exports = {
   markdown,
   plugins,
   head, 
-  themeConfig
+  themeConfig,
+  port:3000
 }

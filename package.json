@@ -4,7 +4,7 @@
   "description": "blog",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development vuepress dev docs",
+    "serve": "cross-env NODE_ENV=development vuepress dev docs",
     "build": "cross-env NODE_ENV=production vuepress build docs",
     "build:sh": "git.sh",
     "production":"cross-env NODE_ENV=production vuepress build docs && npm run upload:sh",

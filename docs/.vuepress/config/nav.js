@@ -13,7 +13,7 @@ module.exports = [
           },
           { text: '文字转语音mp3文件', link: '/pages/40b640/' },
           { text: '手写Promise', link: '/pages/bfcf91/' },
-          { text: 'JS Event Loop', link: '/pages/ac62ca/' },
+          { text: 'JS Event Loop', link: '/pages/ac62ca/' }
         ]
       },
       {
@@ -21,8 +21,7 @@ module.exports = [
         items: [
           { text: 'css也需要性能优化', link: '/pages/ae3362/' },
           { text: '重排和重绘', link: '/pages/111974/' },
-          { text: 'em、px、rem、vh、vw 区别', link: '/pages/7dffab/' },
-          
+          { text: 'em、px、rem、vh、vw 区别', link: '/pages/7dffab/' }
         ]
       },
       {
@@ -31,26 +30,31 @@ module.exports = [
           { text: 'Vue虚拟dom与Diff算法', link: '/pages/6d38b1/' },
           { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
           { text: 'vue数组为什么不是响应式', link: '/pages/487708/' },
-          { text: 'v-for为什么不能用index做key', link: '/pages/d8afb9/' },
+          { text: 'v-for为什么不能用index做key', link: '/pages/d8afb9/' }
         ]
       },
       {
-        text: 'node',
+        text: '前端工程化',
         items: [
-          { text: 'JS实现文件上传功能', link: '/pages/bb7c65/' },
+          { text: '浏览器是如何渲染页面的', link: ' /pages/d88f70/' },
+          { text: '前端打包需要gzip压缩吗', link: '/pages/da8cef/' },
+          { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
+          { text: 'webpack loader和plugin', link: '/pages/6cf4b4/' }
+        ]
+      },
+      {
+        text: '轮子&&组件库',
+        items: [
+          { text: '实现水波浪进度球', link: '/pages/4cfe74/' }
         ]
       },
       
       {
-        text: '前端工程化',
-        items: [
-          { text: '前端打包需要gzip压缩吗', link: '/pages/da8cef/' },
-          { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
-          { text: 'webpack loader和plugin', link: '/pages/6cf4b4/' },
-        ]
+        text: 'node',
+        items: [{ text: 'JS实现文件上传功能', link: '/pages/bb7c65/' }]
       },
       {
-        text: 'leaflet',
+        text: '地图',
         items: [{ text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' }]
       }
     ]
@@ -86,7 +90,7 @@ module.exports = [
       {
         text: '计算机组成原理',
         items: [
-          { text: 'ASCII、Unicode、UTF-8和UTF-16', link: '/pages/702bd5/' },
+          { text: 'ASCII、Unicode、UTF-8和UTF-16', link: '/pages/702bd5/' }
         ]
       }
     ]
