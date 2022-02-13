@@ -25,14 +25,20 @@ module.exports = [
         ]
       },
       {
-        text: 'vue',
-        items: [
-          { text: 'Vue虚拟dom与Diff算法', link: '/pages/6d38b1/' },
-          { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
-          { text: 'vue数组为什么不是响应式', link: '/pages/487708/' },
-          { text: 'v-for为什么不能用index做key', link: '/pages/d8afb9/' }
-        ]
+        text: 'node',
+        items: [{ text: 'JS实现文件上传功能', link: '/pages/bb7c65/' }]
       },
+      {
+        text: '地图',
+        items: [{ text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' }]
+      }
+    ]
+  },
+
+  {
+    text: 'vue',
+    link: '/vue/',
+    items: [
       {
         text: '前端工程化',
         items: [
@@ -44,32 +50,15 @@ module.exports = [
       },
       {
         text: '轮子&&组件库',
-        items: [
-          { text: '实现水波浪进度球', link: '/pages/4cfe74/' }
-        ]
-      },
-      
-      {
-        text: 'node',
-        items: [{ text: 'JS实现文件上传功能', link: '/pages/bb7c65/' }]
+        items: [{ text: '实现水波浪进度球', link: '/pages/4cfe74/' }]
       },
       {
-        text: '地图',
-        items: [{ text: 'leaflet改变坐标原点', link: '/pages/2b12d8/' }]
-      }
-    ]
-  },
-  {
-    text: 'python',
-    link: '/python/',
-    items: [
-      {
-        text: '语言特性',
+        text: 'vue',
         items: [
-          {
-            text: 'python与JavaScript的异同',
-            link: '/pages/813992/'
-          }
+          { text: 'Vue虚拟dom与Diff算法', link: '/pages/6d38b1/' },
+          { text: '前端打包文件的缓存机制', link: '/pages/5ab8af/' },
+          { text: 'vue数组为什么不是响应式', link: '/pages/487708/' },
+          { text: 'v-for为什么不能用index做key', link: '/pages/d8afb9/' }
         ]
       }
     ]
@@ -91,6 +80,21 @@ module.exports = [
         text: '计算机组成原理',
         items: [
           { text: 'ASCII、Unicode、UTF-8和UTF-16', link: '/pages/702bd5/' }
+        ]
+      }
+    ]
+  },
+  {
+    text: 'python',
+    link: '/python/',
+    items: [
+      {
+        text: '语言特性',
+        items: [
+          {
+            text: 'python与JavaScript的异同',
+            link: '/pages/813992/'
+          }
         ]
       }
     ]
@@ -118,10 +122,6 @@ module.exports = [
   //     { text: 'SEO搜索引擎优化', link: '/pages/859e09/' },
   //     { text: 'Serverless介绍', link: '/pages/eb693b/' },
   //   ]
-  // },
-  // {
-  //   text: '友链',
-  //   link: '/pages/8149d9/'
   // },
   { text: 'GitHub', link: 'https://github.com/GanChuanYin/blog' }
 ]
