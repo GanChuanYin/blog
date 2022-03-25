@@ -9,3 +9,6 @@ npm run dev // 本地运行
 npm run build
 ```
 
+### 上线
+
+npm run production
