@@ -22,7 +22,7 @@ module.exports = {
     copyrightInfo: 'coderly | <a href="https://github.com/GanChuanYin/blog" target="_blank">MIT License</a>'
   },
   blogger: {
-    // avatar: 'https://gitee.com/gan_chuan_yin/blog-image/raw/master/img/20211125145000.png',
+    // avatar: 'https://qiniu.espe.work/blog/20211125145000.png',
     name: 'GCY',
     slogan: '勇敢波吉 不怕困难！',
   },
