@@ -1,6 +1,6 @@
 module.exports = [
   {
-    text: '前端基础',
+    text: '前端',
     link: '/web/',
     items: [
       {
@@ -41,6 +41,21 @@ module.exports = [
     ]
   },
   {
+    text: '算法与数据结构',
+    items: [
+      {
+        text: '数据结构',
+        items: [
+          { text: 'JS实现链表', link: '/pages/fe1799/' },
+          { text: 'JS实现栈与栈应用', link: '/pages/980829/' },
+          { text: 'JS实现常见排序', link: '/pages/be2e32/' },
+          { text: '哈夫曼编码', link: '/pages/12c733/' },
+          { text: 'MD5算法', link: '/pages/ba695a/' },
+      ]
+      }
+    ]
+  },
+  {
     text: 'Vue',
     link: '/vue/',
     items: [
@@ -65,19 +80,6 @@ module.exports = [
       {
         text: '轮子&&组件库',
         items: [{ text: '实现水波浪进度球', link: '/pages/4cfe74/' }]
-      }
-    ]
-  },
-  {
-    text: '算法与数据结构',
-    items: [
-      {
-        text: '数据结构',
-        items: [
-          { text: 'JS实现链表', link: '/pages/fe1799/' },
-          { text: 'JS实现链表', link: '/pages/fe1799/' },
-      
-      ]
       }
     ]
   },

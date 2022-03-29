@@ -19,7 +19,7 @@ module.exports = {
   // bodyBgImgOpacity: 0.8,
   footer: {
     createYear: 2021,
-    copyrightInfo: 'coderly | <a href="https://github.com/GanChuanYin/blog" target="_blank">MIT License</a>'
+    copyrightInfo: 'gcy | <a href="https://github.com/GanChuanYin/blog" target="_blank">MIT License</a>'
   },
   blogger: {
     // avatar: 'https://qiniu.espe.work/blog/20211125145000.png',
