@@ -102,7 +102,88 @@ function insertionSort(array) {
   return array
 }
 
+// 希尔排序 (缩小增量排序)
+function shellSort(arr) {
+  var len = arr.length,
+    temp,
+    gap = 1
+  while (gap < len / 5) {
+    //动态定义间隔序列
+    gap = gap * 5 + 1
+  }
+  for (gap; gap > 0; gap = Math.floor(gap / 5)) {
+    for (var i = gap; i < len; i++) {
+      temp = arr[i]
+      for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+        arr[j + gap] = arr[j]
+      }
+      arr[j + gap] = temp
+    }
+  }
+  return arr
+}
+
+// 快速排序
+function quickSort(array, left = 0, right = array.length - 1) {
+  if (left < right) {
+    let x = array[right],
+      i = left - 1,
+      temp
+    for (let j = left; j <= right; j++) {
+      if (array[j] <= x) {
+        i++
+        temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+      }
+    }
+    quickSort(array, left, i - 1)
+    quickSort(array, i + 1, right)
+  }
+  return array
+}
+
+// console.log(getProcessTime(quickSort)) // 排序耗时 5.805ms
+// console.log(getProcessTime(shellSort)) // 排序耗时:  6.728ms
 // console.log(getProcessTime(mergeSort)) // 排序耗时: 22.491ms
 // console.log(getProcessTime(insertionSort)) // 排序耗时: 43.305ms
 // console.log(getProcessTime(bubbleSort)) // 排序耗时: 144.391ms
 // console.log(getProcessTime(selectionSort)) // 排序耗时: 179.81ms
+
+
+
+// 快速排序
+function quickSort(array, left = 0, right = array.length - 1) {
+  if (left < right) {
+    let x = array[right],
+      i = left - 1,
+      temp
+    for (let j = left; j <= right; j++) {
+      if (array[j] <= x) {
+        i++
+        temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+      }
+    }
+    quickSort(array, left, i - 1)
+    quickSort(array, i + 1, right)
+  }
+  return array
+}
+
+
+function arrayUnique(target) {
+  var result = [target[0]]
+  var temp = {}
+  temp[target[0]] = true
+  for (var i = 1, targetLen = target.length; i < targetLen; i++) {
+    if (typeof temp[target[i]] === 'undefined') {
+      result.push(target[i])
+      temp[target[i]] = true
+    }
+  }
+  return result
+}
+
+console.log(arrayUnique([1,14,2,54,54,3,2,4,25,14]))
