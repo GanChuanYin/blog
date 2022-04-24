@@ -303,11 +303,9 @@ npm owner add <user> <package name>
 npm owner rm <user> <package name>
 ```
 
-
-
 #### 分析包
 
-在使用 NPM 的过程中，或许你不能确认当前目录下能否通过require()顺利引入想要的包，这时可以执行npm ls分析包。这个命令可以为你分析出当前路径下能够通过模块路径找到的所有包，并生成依赖树，如下：
+在使用 NPM 的过程中，或许你不能确认当前目录下能否通过 require()顺利引入想要的包，这时可以执行 npm ls 分析包。这个命令可以为你分析出当前路径下能够通过模块路径找到的所有包，并生成依赖树，如下：
 
 ```shell
 `-- connect@3.7.0
@@ -326,10 +324,680 @@ npm owner rm <user> <package name>
   `-- utils-merge@1.0.1
 ```
 
-
 ### 总结
 
 CommonJS 提出的规范均十分简单，但是现实意义十分强大。Node 通过模块规范，组织了自身的原生模块，弥补了 JavaScript 弱结构性的问题，形成了稳定的结构，并向外提供服务。
 
 NPM 通过对包规范的支持，有效地组织了第三方模块，这使得项目开发中地依赖问题得到很好的解决，并有效提供了分享和传播的平台，借助**第三方开源力量**，使得 Node 第三方模块的发展速度前所未有，这对于其他后端 JavaScript 语言实现而言是从未有过的。
 
+### 异步 IO
+
+**主流程**
+![](https://qiniu.espe.work/blog/20220422094135.png)
+
+**setTimeout()**
+![](https://qiniu.espe.work/blog/20220422000350.png)
+
+**利用 Node 构建 web 服务**
+![](https://qiniu.espe.work/blog/20220424095304.png)
+
+事件循环时异步实现的核心，它与浏览器中的执行模型基本保持了一致。而像古老的 Rhino，尽管时较早能在服务器端运行的 JavaScript 运行时，但是执行模型并不像浏览器采用事件驱动，而是像其他语言一般采用同步 I/O 作为主要模型，这造成了它在性能上务所发挥。Node 正是依靠构建了一套完善的高性能异步 I/O 框架，打破了 JavaScript 在服务器端止步不前的局面。
+
+目前异步编程主要解决方案有如下 3 种：
+
+1. 事件发布/订阅模式
+2. Promise/Deferred 模式
+3. 流程控制库
+
+### 内存
+
+V8 的垃圾回收机制与内存限制
+
+我们在学习 JavaScript 编程时听说过，它与 Java 一样，由垃圾回收机制来进行自动内存管理，这使得开发者不需要像 C/C++程序员那样在编写代码的过程中时刻关注内存的分配和释放问题。但在浏览器中进行开发时，几乎很少有人能遇到垃圾回收对应用程序构成性能影响的情况。Node 极大地拓宽了 JavaScript 的应用场景，当主流应用场景从客户端延伸到服务器端后，我们就能发现，对于性能敏感的服务器端程序，内存管理的好坏、垃圾回收状况是否优良，都会对服务构成影响。
+
+**高效使用内存**
+
+在 V8 面签，开发者所要具备的责任是如何让垃圾回收机制更高效地工作。
+
+**作用域**
+
+提到如何触发垃圾回收，第一个介绍的是作用域（scope）。在 JavaScript 中能形成作用域的有函数调用、with 以及全局作用域。
+
+以如下代码为例：
+
+```javascript
+var foo = function() {
+  var local = {}
+}
+```
+
+foo()函数在每次被调用时会创建对应的作用域，函数执行结束后，该作用域将会销毁。同时作用域中声明的局部变量分配在该作用域上，随作用域的销毁而销毁。只被局部变量引用的对象存货周期较短。在这个示例中，由于对象非常小，将会分配在新生代的 From 空间中。在作用域释放后，局部变量 local 失效，其引用的对象将会在下次垃圾回收时被释放。
+
+以上就是最基本的内存回收过程。
+
+**标识符查找**
+
+与作用域相关的即是标识符查找。所谓标识符，可以理解为变量名。在下面代码中，执行 bar()函数时，将会遇到 local 变量：
+
+var bar = function () {
+console.log(local);
+};
+JavaScript 在执行时回去查找该变量定义在哪里。它最先查找的是当前作用域，如果在当前作用域中无法找到该变量的声明，将会向上级作用域查找，直到查到位置。
+
+**作用域链**
+在下面代码中：
+
+```javascript
+var foo = function() {
+  var local = 'local var'
+  var bar = function() {
+    var local = 'another var'
+    var baz = function() {
+      console.log(local)
+    }
+    baz()
+  }
+  bar()
+}
+foo()
+```
+
+local 变量在 baz()函数形成的作用域里查找不到，继而将在 bar()的作用域里寻找。如果去掉上述代码 bar()中的 local 声明，将会继续向上查找，一直到全局作用域。这样的查找方式使得作用域像一条链条。由于标识符的查找方向是向上，所以变量只能向外访问，而不能向内访问。
+
+当我们在 baz()函数中访问 local 变量时，由于作用域中的变量列表没有 local，所以会向上一个作用域中查找，接着会在 bar()函数执行得到的变量列表中找到一个 local 变量的定义，于是使用它。尽管在再上一层的作用域中也存在 local 的定义，但是不会继续查找了。如果查找一个不存在的变量，将会一直沿着作用域链查找到全局作用域，最后抛出未定义错误。
+
+了解了作用域，有助于我们了解变量的分配和释放。
+
+**变量的主动释放**
+
+如果变量是全局作用域（不通过 var 声明或定义在 global 变量上），由于全局作用域需要直到进程退出才释放，此时将导致引用的对象常驻内存（常驻在老生代）。如果需要释放常驻内存的对象，可以通过 delete 操作来删除引用关系。或者将变量重新赋值，让旧的对象脱离引用关系。在接下来的老生代内存清理和整理过程中，会被回收释放。下面为示例代码：
+
+```javascript
+global.foo = 'I am global object'
+console.log(global.foo) // => I am global object
+delete global.foo
+
+// 或者重新赋值
+global.foo = undefined // or null
+console.log(global.foo) // => undefined
+```
+
+同样，如果在非全局作用域中，想主动释放变量引用的对象，也可以通过这样的方式。虽然 delete 操作和重新赋值具有相同效果，**但是在 V8 中通过 delete 删除对象的属性有可能干扰 V8 的优化，所以通过赋值解除引用更好。**
+
+**闭包**
+
+我们直到作用域链上的对象访问只能向上，这样外部无法向内部访问。如下代码可以正常打印：
+
+```javascript
+var foo = function() {
+  var local = '局部变量'
+  ;(function() {
+    console.log(local)
+  })()
+}
+```
+
+但在下面代码中，却会得到 local 未定义的异常：
+
+```javascript
+var foo = function() {
+  ;(function() {
+    var local = '局部变量'
+  })()
+  console.log(local)
+}
+```
+
+在 JavaScript 中，实现外部作用域访问内部作用域中变量的方法叫做闭包（closure）。这得益于高阶函数的特性：函数可以作为参数或者返回值。示例代码如下：
+
+```javascript
+var foo = function() {
+  var bar = function() {
+    var local = '局部变量'
+
+    return function() {
+      return local
+    }
+  }
+  var baz = bar()
+  console.log(baz())
+}
+```
+
+一般而言，在 bar()函数执行完成后，局部变量 local 将会随着作用域的销毁而被回收。但是注意这里的特点在于返回值是一个匿名函数，且这个函数中具备了访问 local 的条件。虽然在后续执行中，在外部作用域还是无法直接访问 local，但是若要反问他，只要通过这个中间函数稍作周转即可。
+
+闭包是 JavaScript 的高级特性，利用它可以产生很巧妙的效果。它的问题在于，一旦变量引用了这个中间函数，这个中间函数将不会释放，同时也会使原来的作用域不会得到释放，作用域中产生的内存占用也不会得到释放。除非不再有引用，才会逐步释放。
+
+**内存泄漏**
+Node 对内存泄漏非常敏感，一旦线上应用有成千上万的流量，哪怕是一个字节的内存泄漏也会造成堆积，垃圾回收过程中将会耗费更多时间进行对象扫描，应用响应缓慢，直到进程内存溢出，应用奔溃。
+
+在 V8 的垃圾回收机制下，在通常的代码编写中，很少会出现内存泄漏的情况。但是内存泄漏通常产生于无意间，较难排查。尽管内存泄漏的情况不尽相同，但其实质只有一个，那就是应当回收对象出现意外而没有被回收，变成了常驻老生代中的对象。
+
+通常，造成内存泄漏的原因有如下几个：
+
+- 缓存。
+- 队列消费不及时。
+- 作用域未释放。
+
+如下代码虽然利用 JavaScript 对象十分容易创建一个缓存对象，但是受垃圾回收机制的影响，只能小量使用：
+
+```javascript
+
+var cache = {};
+var get = function (key) {
+  if(cacke[key])
+    return cache[key];
+  else
+    // get from otherwise
+};
+
+var set = function (key, value) {
+  cache[key] = value;
+};
+
+```
+
+**缓存限制策略**
+
+为了缓解缓存中的对象永远无法释放的问题，需要加入一种策略来限制缓存的无限增长。为此我曾写过一个模块 limitablemap，它可以实现对简直数量的限制。下面是其实现：
+
+```javascript
+var LimitableMap = function(limit) {
+  this.limit = limit || 10
+  this.map = {}
+  this.keys = {}
+}
+
+var hasOwnProperty = Object.prototype.hasOwnProperty
+
+LimitableMap.prototype.set = function(key, value) {
+  var map = this.map
+  var keys = this.keys
+  if (!hasOwnProperty.call(map, key)) {
+    if (keys.length === this.limit) {
+      delete map[firstKey]
+    }
+    keys.push(key)
+  }
+  map[keys] = value
+}
+
+LimitableMap.prototype.get = function(key) {
+  return this.map[key]
+}
+
+module.exports = LimitableMap
+```
+
+可以看到，实现过程还是非常简单的。记录在数组中，一旦超过变量，就先进先出的方式进行淘汰。
+
+当然，这种淘汰策略并不十分高效，只能应付小型应用场景。如果需要更高效的缓存，可以参见 Isaac Z. Schlueter 采用 LRU 算法的缓存。
+
+**小结**
+
+Node 将 JavaScript 的主要应用场景扩展到了服务器端，相应要考虑的细节也从浏览器端不同，需要更严谨地为每一份资源做出安排。总的来说，内存在 Node 中不能随心所欲地使用，但也不是完全不擅长。本行介绍了内存地各种限制，希望读者可以在使用中规避禁忌，与生态系统中地各种软件搭配，发挥 Node 的长处。
+
+### 理解 Buffer
+
+由于应用场景不同，在 Node 中，应用需要处理网络协议、操作数据库、处理图片、接受上传文件等，在网络流和文件的操作中，还需要处理大量二进制数据，JavaScript 自有的字符串远远不能满足这些需求，于是 Buffer 对象应运而生。
+
+Buffer 是一个像 Array 的对象，但它主要用于操作字节。下面我们从模块结构和对象结构的层面上认识它。
+
+**模块结构**
+
+Buffer 是一个典型的 JavaScript 与 C++结合的模块，它将性能相关部分用 C++实现，将非性能相关部分用 JavaScript 实现。
+
+Buffer 所占用的内存不是通过 V8 分配的，属于堆外内存。由于 V8 垃圾回收性能的影响，将常用的操作对象用更高效和专有的内存分配回收策略来管理是个不错的思路。
+
+由于 Buffer 太过常见，Node 在进程启动时就加载了它，并将其放在全局对象（global)上，所以在使用 Buffer 时，无需通过 require()即可使用。
+
+**Buffer 对象**
+
+Buffer 对象类似于数组，它的元素为 16 进制的两位数，即 0 到 255 的数之。示例代码如下：
+
+```javascript
+var str = '深入浅出 node.js'
+var buf = new Buffer.from(str, 'utf8')
+console.log(buf)
+// => <Buffer e6 b7 b1 e5 85 a5 e6 b5 85 e5 87 ba 6e 6f 64 65 2e 6a 73>
+```
+
+不同编码的字符串占用的元素个数各不相同，上面代码中的中文字在 utf-8 编码下占用 3 个元素，字母和标点符号占用 1 个元素。
+
+Buffer 受 Array 类型的影响很大，可以访问 length 属性得到长度，也可以通过下标访问元素，在构造对象时也十分相似：
+
+```javascript
+var buf = new Buffer(100)
+console.log(buf.length) // => 100
+```
+
+上述代码分配了一个长 100 字节的 Buffer 对象。可以通过下标访问刚初始化的 Buffer 的元素：
+
+```javascript
+console.log(buf[10])
+```
+
+我们可以通过下表对每个元素进行赋值。值得注意的是，如果如果不是 0 到 255 的整数，会不一样。
+
+给元素的赋值如果小于 0，则将该值逐次加到 256，直到得到一个 0 到 255 之间的整数。如果得到的值大于 255，则逐次减 256，直到得到 0-255 区间的数值。如果是小数则舍弃小数部分，只保留整数。
+
+**Buffer 内存分配**
+
+Buffer 对象的内存分配不是在 V8 的堆内存，而是在 Node 的 C++层面实现的内存的申请。因为处理大量的字节数据不能采用需要一点内存就能向操作系统申请一点内存的方式，这可能造成大量的内存申请的系统调用，对操作系统有一定压力。为此，**Node 在内存的使用上应用的是在 C++层面申请内存、在 JavaScript 中分配内存的策略。**
+
+为了高效地使用申请来地内存，Node 采用了 slab 分配机制。slab 是一种动态内存管理机制，最早诞生在于 SunOS 操作系统中，目前一些\*nix 操作系统中广泛应用。
+
+简单而言，slab 就是一块申请好地固定大小的内存区域。slab 具有如下三种状态：
+
+- full：完全分配状态。
+- partial：部分分配状态。
+- empty：没有被分配状态。
+
+我们需要一个 Buffer 对象，可以通过以下分配方式指定大小的 Buffer 对象：
+
+```javascript
+new Buffer(size)
+```
+
+Node 以 8kb 为界限来区分 Buffer 是大对象还是小对象：
+
+```javascript
+Buffer.poolSize = 8 * 1024
+```
+
+这个 8kb 的值也就是每个 slab 的大小值，在 JavaScript 层面，它作为单位单元进行内存的分配。
+
+1.分配小 Buffer 对象
+
+如果指定 Buffer 的大小小于 8kb，Node 会按照小对象的方式进行分配。Buffer 的分配过程中主要使用一个局部变量 pool 作为中间处理对象，处于分配状态的 slab 单元将指向它。以下是分配一个全新的 slab 单元的操作，它会将申请的 slowBuffer 对象指向它：
+
+```javascript
+var pool
+
+function allocPool() {
+  pool = new SlowBuffer(Buffer.spoolSize)
+  pool.used = 0
+}
+```
+
+构造小 Buffer 对象时的代码如下：
+
+```javascript
+new Buffer(1024)
+
+// 这次构造回去检查 pool 对象，如果 pool 没有被创建，将会创建一个新的 slab 单元指向它：
+if (!pool || pool.length - pool.used < this.length) allocPool()
+
+// 同时当前 Buffer 对象的 parent 属性指向该 slab，并记录下从这个 slab 的哪个位置（offset)开始使用，
+// slab 对象自身也记录被使用了多少字节：
+this.parent = pool
+this.offset = pool.used
+pool.used += this.length
+if (pool.used & 7) pool.used = (pool.used + 8) & ~7
+
+// 当再次创建一个 Buffer 对象时，构造过程中将会判断这个 slab 的剩余空间是否足够。如果足够，使用剩余空间，并更新 slab 的分配状态。
+new Buffer(3000)
+```
+
+如果 slab 剩余的空间不够，将会构造新的 slab，原 slab 中剩余的空间会造成浪费。例如，第一次构造 1 字节的 Buffer 对象，第二次构造 8192 字节的 Buffer 对象，由于第二次分配时 slab 中的空间不够，所以创建并使用新的 slab，第一个 slab 的 8kb 将会被第一个 1 字节的 Buffer 对象独占。
+
+这里要注意的事项时，**由于同一个 slab 可能分配给多个 Buffer 对象使用，只有这些小 Buffer 对象在作用域释放并都可以回收时，slab 的 8kb 空间才会被回收**。尽管创建了 1 个字节的 Buffer 对象，但是如果不释放它，实际可能时 8kb 的内存没有释放。
+
+2. 分配大 Buffer 对象
+   如果需要超过 8kb 的 Buffer 对象，将会直接分配一个 SlowBuffer 对象作为 slab 单元，这个 slab 单元将会被这个 Buffer 对象独占。
+
+```javascript
+// Big buffer, just alloc one
+this.parent = new SlowBuffer(this.length)
+this.offset = 0
+```
+
+这里的 SlowBuffer 类时 C++中定义的，虽然引用 buffer 模块可以访问到它，但是不推荐直接操作它，而是用 Buffer 替代。
+
+上面提到的 Buffer 对象都是 JavaScript 层面的，能够被 V8 的回收标记回收。但是其内部的 parent 属性指向的 SlowBuffer 对象确来自于 Node 自身 C++中的定义，如果是 C++层面的 Buffer 对象，所用内存不在 V8 的堆中。
+
+简单而言，真正的内存是在 Node 的 C++层面提供的，JavaScript 层面只是使用它。当进行小而频繁的 Buffer 操作时，采用 slab 的机制进行预先申请和事后分配，使得 JavaScript 到操作系统之间不必有过多的内存申请方面的系统调用。对于大块的 Buffer 而言，则直接使用 C++层面提供的内存，而无需细腻的分配操作。
+
+#### Buffer 的转换
+
+Buffer 对象可以与字符串之间相互转换。目前支持的字符串编码类型有如下这几种：
+
+- ASCII
+- UTF-8
+- UTF-16LE/UCS-2
+- Base64
+- Binary
+- Hex
+
+**字符串转 Buffer**
+
+字符串转 Buffer 对象主要是通过构造函数来完成的：
+
+```javascript
+new Buffer(str, [encoding])
+```
+
+通过构造函数转换的 Buffer 对象，存储的只能是一种编码类型。encoding 参数不传递时，默认按 UTF-8 编码进行转换和存储。
+
+**Buffer 转字符串**
+
+```javascript
+buf.toString([encoding, start, end])
+```
+
+比较精巧的是，可以设置 encoding（默认为 UTF-8）、start、end 这三个参数实现整体或局部的转换。如果 Buffer 对象由多种编码写入，就需要在局部指定不同的编码，才能转换正常的编码。
+
+**Buffer 的拼接**
+
+Buffer 在使用场景中，通常以一段一段的方式传输。以下是常见的从输入流中读取内容的示例代码：
+
+```javascript
+var fs = require('fs')
+
+var rs = fs.createReadStream('test.md')
+var data = ''
+rs.on('data', function(trunk) {
+  data += trunk
+})
+rs.on('end', function() {
+  console.log(data)
+})
+```
+
+上面这段代码常见于国外，用于流读取的示范，data 事件中获取的 chunk 对象即是 Buffer 对象。对于初学者而言，容易将 Buffer 当作字符串来理解，所以在接受上面的示例时不会觉得有任何异常。
+
+一旦输入流中有宽字节编码时，问题就会暴露出来。如果在通过 Node 开发的网站上看到乱码符号，那么该问题起源多半来自于这里。
+
+```javascript
+// 这里潜藏的问题在于：
+data += trunk
+```
+
+```javascript
+// 这句代码英藏了 toString()操作，它等价于：
+data = data.toString() + trunk.toString()
+```
+
+值得注意的是，外国人的语境通常是指英文环境，在该的场景下，这个 toString()不会造成任何问题。但是对于宽字节的中文，就会形成问题。为了重现这个问题，下面我们模拟近似场景，将文件可读流每次读取的 Buffer 长度限制为 11：
+
+```javascript
+var fs = fs.createReadStream('test.md', { highWaterMark: 11 })
+```
+
+搭配该代码的测试数据为李白的《静夜思》。所以将得到乱码数据。
+
+![](https://qiniu.espe.work/blog/20220424111524.png)
+
+这首诗的原始 Buffer 应存储为
+
+![](https://qiniu.espe.work/blog/20220424111931.png)
+
+上面诗歌中，产生这个输出结果的原因在于文件可读流在读取时会逐个读取 Buffer。由于我们限定了 Buffer 对象长度为 11，因此只读流读取 7 次才完成完整的读取，结果是以下几个 Buffer 对象依次输出：
+
+![](https://qiniu.espe.work/blog/20220424112420.png)
+
+上文提到的 buf.toString()方法默认以 UTF-8 为编码，中文字在 UTF-8 下占用 3 个字节。所以一个 Buffer 对象在输出时，只能显示 3 个字符，Buffer 中剩下的 2 个字节将会以乱码的形式显示。于是形成了一些文字无法正常显示的问题。在这个示例中，我们构造了 11 这个限制，但是对于任意长度的 Buffer 而言，宽字节字符串都有可能被截断的情况，只不过 Buffer 的长度越大出现的概率越低而已，但该问题依然不可忽视。
+
+**setEncoding()与 string_decoder()**
+
+在看过上述的示例后，我们忘记了可读流还有一个设置编码的方法 setEncoding()，示例：
+
+```javascript
+readable.setEncoding(encoding)
+```
+
+该方法的作用是让 data 事件中传递的不再是一个 Buffer 对象，而是编码后的字符串。为此，我们继续改进前面诗歌程序，添加 setEncoding()的步骤如下：
+
+```javascript
+var rs = fs.createReadStream('test.md', { highWaterMark: 11 })
+rs.setEncoding('utf8')
+```
+
+重新执行程序，发现输出不再受 Buffer 大小的影响了。那 Node 是如何实现的呢？要知道，无论如何设置编码，触发 data 事件的次数依旧相同，这意味着设置编码并未改变按段读取的基本方式。
+
+事实上，在调用 setEncoding()时，可读流对象在内部设置了一个 decoder 对象。每次 data 事件都通过该 decoder 对象进行 Buffer 到字符串的解码，然后传递给调用者。是故设置编码后，data 不再收到原始的 Buffer 对象。但是这依旧无法解释为何设置编码后乱码问题就解决掉了，因为前述分析中，无论如何转码，总是存在宽字节字符串被截断的问题。
+
+最终乱码问题得以解决，还是在于 **decoder** 的神奇之处。decoder 对象来自于 string_decoder 模块 StringDecoder 的实例对象。它神奇的原理，我们以代码来说明：
+
+```javascript
+var StringDecoder = require('string_decoder').String.Decoder
+var decoder = new StringDecoder('utf8')
+
+var buf1 = new Buffer([
+  0xe5,
+  0xba,
+  0x8a,
+  0xe5,
+  0x89,
+  0x8d,
+  0xe6,
+  0x98,
+  0x8e,
+  0xe6,
+  0x9c
+])
+console.log(decoder.write(buf1))
+// => 床前明
+
+var buf2 = new Buffer([
+  0x88,
+  0xe5,
+  0x85,
+  0x89,
+  0xef,
+  0xbc,
+  0x8c,
+  0xe7,
+  0x96,
+  0x91,
+  0xe6
+])
+console.log(decoder.write(buf2))
+// => 月光，疑
+```
+
+我们将前文提到的两个 Buffer 对象写入 decoder 中。奇怪的地方在于“月”的转码并没有如平常一样在两个部分分开输出。StringDecoder 在得到编码后，知道宽字节字符串在 UTF-8 编码下是以 3 个字节的方式存储的，所以第一次 write()时，只输出 9 个字节转码形成的字符，“月”字的前两个字节被保留在 StringDecoder 实例内部。第二次 write()时，会将这两个剩余字节和后续 11 个字节组合在一起，再次用 3 的整数倍字节进行转码。于是乱码问题通过这种中间形式被解决了。
+
+虽然 string_decoder 模块很奇妙，但是它也并非万能药，**它目前只能处理 UTF-8、Base64 和 UCS-2/UTF-16LE 这三种编码**。所以通过 setEncoding()的方式不可否认能解决大部分乱码问题，但并不能从根本上解决该问题。
+
+#### 正确拼接 Buffer
+
+淘汰掉 setEncoding()方法后，剩下的解决方案只有将多个小 Buffer 对象拼接为一个 Buffer 对象，然后通过 iconv-lite 一类的模块来转码这种方式。+=的方式显然不行，那么正确的 Buffer 拼接方法应该是：
+
+```javascript
+var chunks = []
+var size = 0
+res.on('data', function(chunk) {
+  chunks.push(chunk)
+  size += chunk.length
+})
+
+res.on('end', function() {
+  var buf = Buffer.concat(chunks, size)
+  var str = iconv.decode(buf, 'utf8')
+  console.log(str)
+})
+```
+
+**正确的拼接方式时用一个数组来存储接收到的所有 Buffer 片段并记录下所有片段的总长度，然后调用 Buffer.concat()方法生成一个合并的 Buffer 对象**。Buffer.concat()方法封装了从小 Buffer 对象向大 Buffer 对象的赋值过程，实现十分细腻，值得围观学习：
+
+```javascript
+Buffer.concat = function(list, length) {
+  if (!Array.isArray(list)) {
+    throw new Error('Usage: Buffer.concat(list, [length])')
+  }
+
+  if (list.length === 0) {
+    return new Buffer(0)
+  } else if (list.length === 1) {
+    return list[0]
+  }
+
+  if (typeof length !== 'number') {
+    length = 0
+    for (var i = 0; i < list.length; i++) {
+      var buf = list[i]
+      length += buf.length
+    }
+  }
+
+  var buffer = new Buffer(length)
+  var pos = 0
+  for (var i = 0; i < list.length; i++) {
+    var buf = list[i]
+    buf.copy(buffer.pos)
+    pos += buf.length
+  }
+  return buffer
+}
+```
+
+#### Buffer 与性能
+
+Buffer 在文件 I/O 和网络 I/O 中运用广泛，尤其在网络传输中，它的性能举足轻重。在应用中，我们通常会操作字符串，但**一旦在网络中传输，都需要转换为 Buffer,以二进制数据传输。在 Web 应用中，字符串转换到 Buffer 是时时刻刻发生的，提高字符串到 Buffer 的转换效率，可以很大程度地提高网络吞吐率。**
+
+在展开 Buffer 与网络传输的关系之前，我们可以先来进行一次性能测试。下面的例子中构造了一个 10kb 大小的字符串。我们通过纯字符串的方式向客户端发送：
+
+```javascript
+var http = require('http')
+var helloworld = ''
+
+for (var i = 0; i < 1024 * 10; i++) {
+  helloworld += 'a'
+}
+
+// helloworld = new Buffer(helloworld);
+
+http
+  .createServer(function(req, res) {
+    res.writeHead(200)
+    res.end(helloworld)
+  })
+  .listen(8001)
+```
+
+我们通过 ab 进行一次性能测试，发起 200 个并发客户端：
+
+```shell
+\$ ab -c 200 -t 100 http://127.0.0.1:8001/
+
+```
+
+得到的测试结果：
+
+```shell
+HTML transferred: 512000000 bytes
+Requests per second: 2527.64 [#/sec](mean)
+Time per request: 79.125 [ms](mean)
+Time per request: 0.396 [ms] (mean, across all concurrent requests)
+Transfer rate: 25370.16 [Kbytes/sec] received
+```
+
+测试的 QPS（每秒查询次数）是 2527.64，传输率为每秒 25370.16kb。
+
+接下来我们打开 helloworld = new Buffer(helloworld);的注释，使向客户端输出的是一个 Buffer 对象，无需再每次响应时进行转换。再次进行性能测试的结果如下：
+
+```shell
+Total transferred: 513900000 bytes
+HTML transferred: 512000000 bytes
+Requests per second: 4843.28 [#/sec](mean)
+Time per request: 41.294 [ms](mean)
+Time per request: 0.205 [ms] (mean, across all concurrent requests)
+Transfer rate: 48612.56 [Kbytes/sec] received
+```
+
+QPS 提升到 4843.28，传输率为每秒 48612.56kb，性能接近提高一倍。
+
+**通过预先转换静态内容为 Buffer 对象，可以有效地减少 CPU 的重复使用,节省服务器资源**。在 Node 构建的 Web 应用中,可以选择页面中的动态内容和静态内容分离，静态内容部分可以通过预先转换为 Buffer 的方式，使性能得到提升。由于文件自身时二进制数据，所以在不需要改变内容的场景下，尽量只读取 Buffer，然后直接传输，不做额外的转换，避免损耗。
+
+**文件读取**
+
+Buffer 的使用除了与字符串的转换有性能损耗外，在文件的读取时，有一个 highWatermark 设置对性能的影响至关重要。在 fs.createReadStream(path, options)时，我们可以传入一些参数，代码如下：
+
+```javascript
+{
+flags: 'r',
+encoding: null,
+fd: null,
+mode: 0666,
+highWaterMark: 64 * 1024
+}
+// 我们还可以传递 start 和 end 来指定读取文件的位置范围
+{start: 90, end: 99}
+```
+
+fs.createReadStream 的工作方式是在内存中准备一段 Buffer,然后在 fs.read()读取时逐步从磁盘将字节复制到 Buffer 中。完成依次读取时，则从这个 Buffer 中通过 slice()方法取出部分数据作为小 Buffer 对象，在通过 data 事件传递给调用方。如果 buffer 用完，则重新分配一个；如果还有剩余，则继续使用。
+
+```javascript
+var pool
+
+function allocNewPool(poolSize) {
+  pool = new Buffer(poolSize)
+  pool.used = 0
+}
+```
+
+在理想状态下，每次读取的长度就是用户指定的 highWaterMark。但是有可能读到了文件结尾，或者文件本身就没有指定的 highWaterMark 这么大，这个预先指定的 Buffer 对象将会有部分甚于，不过好在这里的内存可以分配给下次读取时使用。pool 时常驻内存的，只有当 pool 单元剩余数量小于 128 字节时，才会重新分配一个新的 Buffer 对象。Node 源代码中分配新的 Buffer 对象的判断条件如下所示：
+
+```javascript
+if (!pool || pool.length - pool.used < kMinPoolSpace) {
+  // discard the old pool
+  pool = null
+  allocNewPool(this.\_readabelState.highWaterMark)
+}
+```
+
+这里与 Buffer 的内存分配比较类似，highWaterMark 的大小对性能有两个影响的点：
+
+highWaterMark 设置对 Buffer 内存的分配和使用有一定的影响。
+highWaterMark 设置国小，可能导致系统调用次数过多。
+文件流读取基于 Buffer 分配，Buffer 则给予 SlowBuffer 分配，这可以理解为两个维度的分配策略。如果文件较小（小于 8kb），有可能造成 slab 未能完全使用。
+
+由于 fs.createReadStream()内部采用 fs.read()实现，将会引起对磁盘的系统调用，对于大文件而言，highWaterMark 的大小决定会触发系统调用和 data 事件的次数。
+
+以下为 Node 自带的基准测试，在 benchmark/fs/read-stream-throughput.js 中可以找到：
+
+```javascript
+function runTest() {
+  assert(fs.statSync(filename).size === filesize)
+
+  var rs = fs.createReadStream(filename, {
+    highWaterMark: size,
+    encoding: encoding
+  })
+
+  rs.on('open', function() {
+    bench.start()
+  })
+  var bytes = 0
+
+  rs.on('data', function(chunk) {
+    bytes += chunk.length
+  })
+
+  rs.on('end', function() {
+    try {
+      fs.unlinkSync(filename)
+    } catch (e) {
+      // TODO
+    }
+
+    // MB/sec
+    bench.end(bytes / (1024 * 1024))
+  })
+}
+```
+
+下面为某次执行的结果：
+
+```shell
+fs/read-stream-throughput.js type=buf size=1024: 46.284
+fs/read-stream-throughput.js type=buf size=4096: 139.62
+fs/read-stream-throughput.js type=buf size=65535: 681.88
+fs/read-stream-throughput.js type=buf size=1048576: 857.98
+```
+
+**从上面的执行结果我们可以看到，读取一个相同的大文件时，highWaterMark 值得大小与读取速度的关系： 该值越大，读取速度越快。**
+
+**总结**
+体验过 JavaScript 友好的字符串操作后，有些开发发者可能会形成思维定势，将 Buffer 当作字符串来理解。但字符串与 Buffer 之间有实质上的差异，即 Buffer 是二进制数据，字符串与 Buffer 之间存在编码关系。因此，理解 Buffer 的诸多细节十分必要，对于如何高效处理二进制数据十分有用。
