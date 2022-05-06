@@ -110,7 +110,6 @@ watch(fakeList, (newValue) => {
     &-item {
       position: absolute;
       display: inline-block;
-      min-width: 200px;
       animation: barrage 10s linear;
       animation-fill-mode: forwards;
     }
@@ -118,12 +117,10 @@ watch(fakeList, (newValue) => {
 }
 @keyframes barrage {
   from {
-    left: 100%;
-    transform: translateX(0);
+    transform: translateX(100%); //最右侧开始
   }
   to {
-    left: 0;
-    transform: translateX(-200%);
+    transform: translateX(calc(-100vw - 200%)); // translate到最左侧
   }
 }
 </style>
