@@ -54,7 +54,7 @@ docker inspect --format '{{ .NetworkSettings.IPAddress }}' CONTAINER_ID
 ```shell
 
 查看指定时间后的日志，只显示最后 100 行：
-docker logs -f -t --since="2018-02-08" --tail=100 CONTAINER_ID
+docker logs -f -t --since="2022-02-08" --tail=100 CONTAINER_ID
 
 查看最近 30 分钟的日志:
 docker logs --since 30m CONTAINER_ID
