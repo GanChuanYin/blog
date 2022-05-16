@@ -10,6 +10,10 @@ tags:
 
 记录部署 docker 应用时用到的命令
 
+### 大纲
+
+![](https://qiniu.espe.work/blog/Docker-Commands-Diagram.png)
+
 ### 镜像
 
 删除镜像
