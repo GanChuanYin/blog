@@ -1,3 +1,12 @@
+---
+title: Vue3-tips
+date: 2022-05-11 18:33:35
+permalink: /pages/af410a/
+categories:
+  - Vue
+tags:
+  - 
+---
 ### <font color=#e74c3c>注意 watch 简单类型时要用函数返回</font>
 
 因为直接返回的话是一个数值，就没办法追踪数据变化了

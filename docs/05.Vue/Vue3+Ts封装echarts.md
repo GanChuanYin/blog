@@ -1,3 +1,12 @@
+---
+title: Vue3+Ts封装echarts
+date: 2022-05-13 18:31:41
+permalink: /pages/1e91a5/
+categories:
+  - Vue
+tags:
+  - 
+---
 ### TS Echart
 
 echarts 官方定义了一些 type

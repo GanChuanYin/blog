@@ -8,6 +8,57 @@ tags:
   - TypeScript
 ---
 
+### Typescript 中的 interface 和 type 到底有什么区别
+
+都允许拓展（extends）
+interface 和 type 都可以拓展，并且两者并不是相互独立的，也就是说 interface 可以 extends type, type 也可以 extends interface 。 虽然效果差不多，但是两者语法不同。
+
+interface extends interface
+
+```typescript
+interface Name {
+  name: string
+}
+interface User extends Name {
+  age: number
+}
+```
+
+type extends type
+
+```typescript
+type Name = {
+  name: string
+}
+type User = Name & { age: number }
+```
+
+interface extends type
+
+```typescript
+type Name = {
+  name: string
+}
+interface User extends Name {
+  age: number
+}
+```
+
+type extends interface
+
+```typescript
+interface Name {
+  name: string
+}
+type User = Name & {
+  age: number
+}
+```
+
+> 用 interface 描述**数据结构**，用 type 描述**类型关系**
+
+如果不清楚什么时候用 interface/type，能用 interface 实现，就用 interface , 如果不能就用 type
+
 ### 泛型
 
 <font color=#3498db>为什么需要泛型？</font>

@@ -1,3 +1,12 @@
+---
+title: cpu和gpu有何不同
+date: 2022-05-16 14:32:56
+permalink: /pages/d860d4/
+categories:
+  - 计算机
+tags:
+  - 
+---
 ### 用途不同导致架构设计差异
 
 - CPU 要承担整个计算机的控制工作
