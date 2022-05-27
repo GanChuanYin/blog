@@ -1,3 +1,12 @@
+---
+title: React项目配置
+date: 2022-05-23 16:25:36
+permalink: /pages/e44662/
+categories:
+  - 前端
+tags:
+  - 
+---
 
 
 ## Redux

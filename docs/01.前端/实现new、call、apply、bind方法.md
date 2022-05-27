@@ -1,3 +1,12 @@
+---
+title: 实现new、call、apply、bind方法
+date: 2022-05-20 10:30:53
+permalink: /pages/18b385/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 1. new
 
 ### 1.1 new 的作用
