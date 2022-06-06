@@ -51,10 +51,7 @@ ul li {
 }
 ```
 
-这里关键字段就是 
+这里关键字段就是
+
 - user-select: all; // 文字全选
 - .g-select-all::selection 选中样式调整
-
-
-
-

@@ -694,3 +694,1226 @@ For example, adding a default to our getArea function which tries to assign the 
 Adding a new member to the Shape union, will cause a TypeScript error:
 
 ![](https://qiniu.espe.work/blog/20220602143423.png)
+
+## 4. More on Functions
+
+### 4.1 Function Type Expressions
+
+The simplest way to describe a function is with a function type expression. These types are syntactically similar to arrow functions:
+
+```typescript
+function greeter(fn: (a: string) => void) {
+  fn('Hello, World')
+}
+
+function printToConsole(s: string) {
+  console.log(s)
+}
+
+greeter(printToConsole)
+```
+
+The syntax (a: string) => void means “a function with one parameter, named a, of type string, that doesn’t have a return value”. Just like with function declarations, <font color=#3498db>if a parameter type isn’t specified, it’s implicitly any.</font>
+
+> Note that the parameter name is required. The function type (string) => void means “a function with a parameter named string of type any“!
+
+Of course, we can use a type alias to name a function type:
+
+```typescript
+type GreetFunction = (a: string) => void
+function greeter(fn: GreetFunction) {
+  // ...
+}
+```
+
+### 4.2 Call Signatures
+
+In JavaScript, functions can have properties in addition to being callable. However, the function type expression syntax doesn’t allow for declaring properties. If we want to describe something callable with properties, we can write a call signature in an object type:
+
+```typescript
+type DescribableFunction = {
+  description: string
+  (someArg: number): boolean
+}
+function doSomething(fn: DescribableFunction) {
+  console.log(fn.description + ' returned ' + fn(6))
+}
+```
+
+Note that the syntax is slightly different compared to a function type expression - use : between the parameter list and the return type rather than =>.
+
+### 4.3 Construct Signatures
+
+JavaScript functions can also be invoked with the new operator. TypeScript refers to these as constructors because they usually create a new object. You can write a construct signature by adding the new keyword in front of a call signature:
+
+```typescript
+type SomeConstructor = {
+  new (s: string): SomeObject
+}
+function fn(ctor: SomeConstructor) {
+  return new ctor('hello')
+}
+```
+
+Some objects, like JavaScript’s Date object, can be called with or without new. You can combine call and construct signatures in the same type arbitrarily:
+
+```typescript
+interface CallOrConstruct {
+  new (s: string): Date
+  (n?: number): number
+}
+```
+
+### 4.4 Generic Functions
+
+It’s common to write a function where the types of the input relate to the type of the output, or where the types of two inputs are related in some way. Let’s consider for a moment a function that returns the first element of an array:
+
+```typescript
+function firstElement(arr: any[]) {
+  return arr[0]
+}
+```
+
+This function does its job, but unfortunately has the return type any. It’d be better if the function returned the type of the array element.
+
+```typescript
+function firstElement<Type>(arr: Type[]): Type | undefined {
+  return arr[0]
+}
+```
+
+By adding a type parameter Type to this function and using it in two places, we’ve created a link between the input of the function (the array) and the output (the return value). Now when we call it, a more specific type comes out:
+
+```typescript
+// s is of type 'string'
+const s = firstElement(['a', 'b', 'c'])
+// n is of type 'number'
+const n = firstElement([1, 2, 3])
+// u is of type undefined
+const u = firstElement([])
+```
+
+**Inference**
+
+Note that we didn’t have to specify Type in this sample. The type was inferred - chosen automatically - by TypeScript.
+
+We can use multiple type parameters as well. For example, a standalone version of map would look like this:
+
+```typescript
+function map<Input, Output>(
+  arr: Input[],
+  func: (arg: Input) => Output
+): Output[] {
+  return arr.map(func)
+}
+
+// Parameter 'n' is of type 'string'
+// 'parsed' is of type 'number[]'
+const parsed = map(['1', '2', '3'], (n) => parseInt(n))
+```
+
+Note that in this example, TypeScript could infer both the type of the Input type parameter (from the given string array), as well as the Output type parameter based on the return value of the function expression (number).
+
+**Constraints**
+
+We’ve written some generic functions that can work on any kind of value. Sometimes we want to relate two values, but can only operate on a certain subset of values. In this case, we can use a constraint to limit the kinds of types that a type parameter can accept.
+
+Let’s write a function that returns the longer of two values. To do this, we need a length property that’s a number. We constrain the type parameter to that type by writing an extends clause:
+
+```typescript
+function longest<Type extends { length: number }>(a: Type, b: Type) {
+  if (a.length >= b.length) {
+    return a
+  } else {
+    return b
+  }
+}
+
+// longerArray is of type 'number[]'
+const longerArray = longest([1, 2], [1, 2, 3])
+// longerString is of type 'alice' | 'bob'
+const longerString = longest('alice', 'bob')
+// Error! Numbers don't have a 'length' property
+const notOK = longest(10, 100)
+
+// Argument of type 'number' is not assignable to parameter of type '{ length: number; }'.
+```
+
+There are a few interesting things to note in this example. We allowed TypeScript to infer the return type of longest. Return type inference also works on generic functions.
+
+Because we constrained Type to { length: number }, we were allowed to access the .length property of the a and b parameters. Without the type constraint, we wouldn’t be able to access those properties because the values might have been some other type without a length property.
+
+The types of longerArray and longerString were inferred based on the arguments. Remember, generics are all about relating two or more values with the same type!
+
+Finally, just as we’d like, the call to longest(10, 100) is rejected because the number type doesn’t have a .length property.
+
+**Working with Constrained Values**
+
+Here’s a common error when working with generic constraints:
+
+![](https://qiniu.espe.work/blog/20220603172718.png)
+
+It might look like this function is OK - Type is constrained to { length: number }, and the function either returns Type or a value matching that constraint. The problem is that the function promises to return the same kind of object as was passed in, not just some object matching the constraint. If this code were legal, you could write code that definitely wouldn’t work:
+
+```typescript
+// 'arr' gets value { length: 6 }
+const arr = minimumLength([1, 2, 3], 6)
+// and crashes here because arrays have
+// a 'slice' method, but not the returned object!
+console.log(arr.slice(0))
+```
+
+### 4.5 Specifying Type Arguments
+
+TypeScript can usually infer the intended type arguments in a generic call, but not always. For example, let’s say you wrote a function to combine two arrays:
+
+```typescript
+function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
+  return arr1.concat(arr2)
+}
+```
+
+Normally it would be an error to call this function with mismatched arrays:
+
+```typescript
+const arr = combine([1, 2, 3], ['hello'])
+// Type 'string' is not assignable to type 'number'.
+```
+
+If you intended to do this, however, you could manually specify Type:
+
+```typescript
+const arr = combine<string | number>([1, 2, 3], ['hello']).
+```
+
+**Guidelines for Writing Good Generic Functions**
+
+### 4.6 Push Type Parameters Down
+
+Here are two ways of writing a function that appear similar:
+
+```typescript
+function firstElement1<Type>(arr: Type[]) {
+  return arr[0]
+}
+
+function firstElement2<Type extends any[]>(arr: Type) {
+  return arr[0]
+}
+
+// a: number (good)
+const a = firstElement1([1, 2, 3])
+// b: any (bad)
+const b = firstElement2([1, 2, 3])
+```
+
+These might seem identical at first glance, but firstElement1 is a much better way to write this function. Its inferred return type is Type, but firstElement2’s inferred return type is any because TypeScript has to resolve the arr[0] expression using the constraint type, rather than “waiting” to resolve the element during a call.
+
+> Rule: When possible, use the type parameter itself rather than constraining it
+
+<font color=#3498db>Use Fewer Type Parameters</font>
+
+Here’s another pair of similar functions:
+
+```typescript
+function filter1<Type>(arr: Type[], func: (arg: Type) => boolean): Type[] {
+  return arr.filter(func)
+}
+
+function filter2<Type, Func extends (arg: Type) => boolean>(
+  arr: Type[],
+  func: Func
+): Type[] {
+  return arr.filter(func)
+}
+```
+
+We’ve created a type parameter Func that doesn’t relate two values. That’s always a red flag, because it means callers wanting to specify type arguments have to manually specify an extra type argument for no reason. Func doesn’t do anything but make the function harder to read and reason about!
+
+> Rule: Always use as few type parameters as possible
+
+### 4.7 Type Parameters Should Appear Twice
+
+Sometimes we forget that a function might not need to be generic:
+
+```typescript
+function greet<Str extends string>(s: Str) {
+  console.log('Hello, ' + s)
+}
+
+greet('world')
+```
+
+We could just as easily have written a simpler version:
+
+```typescript
+function greet(s: string) {
+  console.log('Hello, ' + s)
+}
+```
+
+Remember, type parameters are for relating the types of multiple values. <font color=#e74c3c> If a type parameter is only used once in the function signature, it’s not relating anything.</font>
+
+> Rule: If a type parameter only appears in one location, strongly reconsider if you actually need it
+
+### 4.8 Optional Parameters
+
+Functions in JavaScript often take a variable number of arguments. For example, the toFixed method of number takes an optional digit count:
+
+```typescript
+function f(n: number) {
+  console.log(n.toFixed()) // 0 arguments
+  console.log(n.toFixed(3)) // 1 argument
+}
+```
+
+We can model this in TypeScript by marking the parameter as optional with ?:
+
+```typescript
+function f(x?: number) {
+  // ...
+}
+f() // OK
+f(10) // OK
+```
+
+Although the parameter is specified as type number, the x parameter will actually have the type number | undefined because unspecified parameters in JavaScript get the value undefined.
+
+You can also provide a parameter default:
+
+```typescript
+function f(x = 10) {
+  // ...
+}
+```
+
+Now in the body of f, x will have type number because any undefined argument will be replaced with 10. Note that when a parameter is optional, callers can always pass undefined, as this simply simulates a “missing” argument:
+
+```typescript
+declare function f(x?: number): void
+// cut
+// All OK
+f()
+f(10)
+f(undefined)
+```
+
+### 4.9 Optional Parameters in Callbacks
+
+Once you’ve learned about optional parameters and function type expressions, it’s very easy to make the following mistakes when writing functions that invoke callbacks:
+
+```typescript
+function myForEach(arr: any[], callback: (arg: any, index?: number) => void) {
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], i)
+  }
+}
+```
+
+What people usually intend when writing index? as an optional parameter is that they want both of these calls to be legal:
+
+```typescript
+myForEach([1, 2, 3], (a) => console.log(a))
+myForEach([1, 2, 3], (a, i) => console.log(a, i))
+```
+
+What this actually means is that callback might get invoked with one argument. In other words, the function definition says that the implementation might look like this:
+
+```typescript
+function myForEach(arr: any[], callback: (arg: any, index?: number) => void) {
+  for (let i = 0; i < arr.length; i++) {
+    // I don't feel like providing the index today
+    callback(arr[i])
+  }
+}
+```
+
+In turn, TypeScript will enforce this meaning and issue errors that aren’t really possible:
+
+```typescript
+myForEach([1, 2, 3], (a, i) => {
+  console.log(i.toFixed())
+  // Object is possibly 'undefined'.
+})
+```
+
+<font color=#3498db>In JavaScript, if you call a function with more arguments than there are parameters, the extra arguments are simply ignored. TypeScript behaves the same way.</font> Functions with fewer parameters (of the same types) can always take the place of functions with more parameters.
+
+> When writing a function type for a callback, never write an optional parameter unless you intend to call the function without passing that argument
+
+### 4.10 Function Overloads
+
+In TypeScript, we can specify a function that can be called in different ways by writing overload signatures. To do this, write some number of function signatures (usually two or more), followed by the body of the function:
+
+```typescript
+function makeDate(timestamp: number): Date
+function makeDate(m: number, d: number, y: number): Date
+function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
+  if (d !== undefined && y !== undefined) {
+    return new Date(y, mOrTimestamp, d)
+  } else {
+    return new Date(mOrTimestamp)
+  }
+}
+const d1 = makeDate(12345678)
+const d2 = makeDate(5, 5, 5)
+const d3 = makeDate(1, 3)
+// No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments.
+```
+
+In this example, we wrote two overloads: one accepting one argument, and another accepting three arguments. These first two signatures are called the overload signatures.
+
+Then, we wrote a function implementation with a compatible signature. Functions have an implementation signature, but this signature can’t be called directly. Even though we wrote a function with two optional parameters after the required one, it can’t be called with two parameters!
+
+### 4.11 Overload Signatures and the Implementation Signature
+
+This is a common source of confusion. Often people will write code like this and not understand why there is an error:
+
+```typescript
+function fn(x: string): void
+function fn() {
+  // ...
+}
+// Expected to be able to call with zero arguments
+fn()
+// Expected 1 arguments, but got 0.
+```
+
+<font color=#3498db>Again, the signature used to write the function body can’t be “seen” from the outside.</font>
+
+> The signature of the implementation is not visible from the outside. When writing an overloaded function, you should always have two or more signatures above the implementation of the function.
+
+The implementation signature must also be compatible with the overload signatures. For example, these functions have errors because the implementation signature doesn’t match the overloads in a correct way:
+
+```typescript
+function fn(x: boolean): void
+// Argument type isn't right
+function fn(x: string): void
+// This overload signature is not compatible with its implementation signature.
+function fn(x: boolean) {}
+```
+
+```typescript
+function fn(x: string): string
+// Return type isn't right
+function fn(x: number): boolean
+// This overload signature is not compatible with its implementation signature.
+function fn(x: string | number) {
+  return 'oops'
+}
+```
+
+### 4.12 Writing Good Overloads
+
+Like generics, there are a few guidelines you should follow when using function overloads. Following these principles will make your function easier to call, easier to understand, and easier to implement.
+
+Let’s consider a function that returns the length of a string or an array:
+
+```typescript
+function len(s: string): number
+function len(arr: any[]): number
+function len(x: any) {
+  return x.length
+}
+```
+
+This function is fine; we can invoke it with strings or arrays. However, we can’t invoke it with a value that might be a string or an array, because TypeScript can only resolve a function call to a single overload:
+
+```typescript
+len('') // OK
+len([0]) // OK
+len(Math.random() > 0.5 ? 'hello' : [0])
+```
+
+![](https://qiniu.espe.work/blog/20220604163056.png)
+
+Because both overloads have the same argument count and same return type, we can instead write a non-overloaded version of the function:
+
+```typescript
+function len(x: any[] | string) {
+  return x.length
+}
+```
+
+This is much better! Callers can invoke this with either sort of value, and as an added bonus, we don’t have to figure out a correct implementation signature.
+
+> <font color=#e74c3c>Always prefer parameters with union types instead of overloads when possible</font>
+
+### 4.13 Declaring this in a Function
+
+TypeScript will infer what the this should be in a function via code flow analysis, for example in the following:
+
+```typescript
+const user = {
+  id: 123,
+
+  admin: false,
+  becomeAdmin: function() {
+    this.admin = true
+  }
+}
+```
+
+TypeScript understands that the function user.becomeAdmin has a corresponding this which is the outer object user.
+
+this, heh, can be enough for a lot of cases, but there are a lot of cases where you need more control over what object this represents.
+
+The JavaScript specification states that you cannot have a parameter called this, and so TypeScript uses that syntax space to let you declare the type for this in the function body.
+
+```typescript
+interface DB {
+  filterUsers(filter: (this: User) => boolean): User[]
+}
+
+const db = getDB()
+const admins = db.filterUsers(function(this: User) {
+  return this.admin
+})
+```
+
+This pattern is common with callback-style APIs, where another object typically controls when your function is called. <font color=#e74c3c> Note that you need to use function and not arrow functions to get this behavior:
+</font>
+
+![](https://qiniu.espe.work/blog/20220604164544.png)
+
+### 4.14 Other Types to Know About
+
+There are some additional types you’ll want to recognize that appear often when working with function types. Like all types, you can use them everywhere, but these are especially relevant in the context of functions.
+
+**void**
+
+void represents the return value of functions which don’t return a value. It’s the inferred type any time a function doesn’t have any return statements, or doesn’t return any explicit value from those return statements:
+
+```typescript
+// The inferred return type is void
+function noop() {
+  return
+}
+```
+
+In JavaScript, a function that doesn’t return any value will implicitly return the value undefined. However, void and undefined are not the same thing in TypeScript. There are further details at the end of this chapter.
+
+> <font color=#e74c3c>void is not the same as undefined.</font>
+
+**unknown**
+
+The unknown type represents any value. This is similar to the any type, but is safer because it’s not legal to do anything with an unknown value:
+
+```typescript
+function f1(a: any) {
+  a.b() // OK
+}
+function f2(a: unknown) {
+  a.b()
+  // Object is of type 'unknown'.
+}
+```
+
+This is useful when describing function types because you can describe functions that accept any value without having any values in your function body.
+
+Conversely, you can describe a function that returns a value of unknown type:
+
+```typescript
+function safeParse(s: string): unknown {
+  return JSON.parse(s)
+}
+
+// Need to be careful with 'obj'!
+const obj = safeParse(someRandomString)
+```
+
+**never**
+
+Some functions never return a value:
+
+```typescript
+function fail(msg: string): never {
+  throw new Error(msg)
+}
+```
+
+The never type represents values which are never observed. In a return type, this means that the function throws an exception or terminates execution of the program.
+
+never also appears when TypeScript determines there’s nothing left in a union.
+
+```typescript
+function fn(x: string | number) {
+  if (typeof x === 'string') {
+    // do something
+  } else if (typeof x === 'number') {
+    // do something else
+  } else {
+    x // has type 'never'!
+  }
+}
+```
+
+**Function**
+
+The global type Function describes properties like bind, call, apply, and others present on all function values in JavaScript. It also has the special property that values of type Function can always be called; these calls return any:
+
+```typescript
+function doSomething(f: Function) {
+  return f(1, 2, 3)
+}
+```
+
+This is an untyped function call and is generally best avoided because of the unsafe any return type.
+
+If you need to accept an arbitrary function but don’t intend to call it, the type () => void is generally safer.
+
+### 4.15 Rest Parameters and Arguments
+
+**Rest Parameters**
+
+In addition to using optional parameters or overloads to make functions that can accept a variety of fixed argument counts, we can also define functions that take an unbounded number of arguments using rest parameters.
+
+A rest parameter appears after all other parameters, and uses the ... syntax:
+
+```typescript
+function multiply(n: number, ...m: number[]) {
+  return m.map((x) => n * x)
+}
+// 'a' gets value [10, 20, 30, 40]
+const a = multiply(10, 1, 2, 3, 4)
+```
+
+**Rest Arguments**
+
+Conversely, we can provide a variable number of arguments from an array using the spread syntax. For example, the push method of arrays takes any number of arguments:
+
+```typescript
+const arr1 = [1, 2, 3]
+const arr2 = [4, 5, 6]
+arr1.push(...arr2)
+```
+
+Note that in general, TypeScript does not assume that arrays are immutable. This can lead to some surprising behavior:
+
+![](https://qiniu.espe.work/blog/20220604174956.png)
+
+The best fix for this situation depends a bit on your code, but in general a const context is the most straightforward solution:
+
+```typescript
+// Inferred as 2-length tuple
+const args = [8, 5] as const
+// OK
+const angle = Math.atan2(...args)
+```
+
+### 4.16 Parameter Destructuring
+
+You can use parameter destructuring to conveniently unpack objects provided as an argument into one or more local variables in the function body. In JavaScript, it looks like this:
+
+```typescript
+function sum({ a, b, c }) {
+  console.log(a + b + c)
+}
+sum({ a: 10, b: 3, c: 9 })
+```
+
+The type annotation for the object goes after the destructuring syntax:
+
+```typescript
+function sum({ a, b, c }: { a: number; b: number; c: number }) {
+  console.log(a + b + c)
+}
+```
+
+This can look a bit verbose, but you can use a named type here as well:
+
+```typescript
+// Same as prior example
+type ABC = { a: number; b: number; c: number }
+function sum({ a, b, c }: ABC) {
+  console.log(a + b + c)
+}
+```
+
+## 5. Object Types
+
+In JavaScript, the fundamental way that we group and pass around data is through objects. In TypeScript, we represent those through object types.
+
+As we’ve seen, they can be anonymous:
+
+```typescript
+function greet(person: { name: string; age: number }) {
+  return 'Hello ' + person.name
+}
+```
+
+or they can be named by using either an <font color=#3498db>interface</font>
+
+```typescript
+interface Person {
+  name: string
+  age: number
+}
+
+function greet(person: Person) {
+  return 'Hello ' + person.name
+}
+```
+
+or a type alias.
+
+```typescript
+type Person = {
+  name: string
+  age: number
+}
+
+function greet(person: Person) {
+  return 'Hello ' + person.name
+}
+```
+
+### 5.1 Property Modifiers
+
+**readonly Properties**
+
+Properties can also be marked as readonly for TypeScript. While it won’t change any behavior at runtime, a property marked as readonly can’t be written to during type-checking.
+
+```typescript
+interface SomeType {
+  readonly prop: string
+}
+
+function doSomething(obj: SomeType) {
+  // We can read from 'obj.prop'.
+  console.log(`prop has the value '${obj.prop}'.`)
+
+  // But we can't re-assign it.
+  obj.prop = 'hello'
+  // Cannot assign to 'prop' because it is a read-only property.
+}
+```
+
+Using the readonly modifier doesn’t necessarily imply that a value is totally immutable - or in other words, that its internal contents can’t be changed. It just means the property itself can’t be re-written to.
+
+```typescript
+interface Home {
+  readonly resident: { name: string; age: number }
+}
+
+function visitForBirthday(home: Home) {
+  // We can read and update properties from 'home.resident'.
+  console.log(`Happy birthday ${home.resident.name}!`)
+  home.resident.age++
+}
+
+function evict(home: Home) {
+  // But we can't write to the 'resident' property itself on a 'Home'.
+  home.resident = {
+    // Cannot assign to 'resident' because it is a read-only property.
+    name: 'Victor the Evictor',
+    age: 42
+  }
+}
+```
+
+It’s important to manage expectations of what readonly implies. It’s useful to signal intent during development time for TypeScript on how an object should be used.
+
+<font color=#3498db>TypeScript doesn’t factor in whether properties on two types are readonly when checking whether those types are compatible, so readonly properties can also change via aliasing.
+</font>
+
+```typescript
+interface Person {
+  name: string
+  age: number
+}
+
+interface ReadonlyPerson {
+  readonly name: string
+  readonly age: number
+}
+
+let writablePerson: Person = {
+  name: 'Person McPersonface',
+  age: 42
+}
+
+// works
+let readonlyPerson: ReadonlyPerson = writablePerson
+
+console.log(readonlyPerson.age) // prints '42'
+writablePerson.age++
+console.log(readonlyPerson.age) // prints '43'
+```
+
+**Index Signatures**
+
+Sometimes you don’t know all the names of a type’s properties ahead of time, but you do know the shape of the values.
+
+In those cases you can use an index signature to describe the types of possible values, for example:
+
+![](https://qiniu.espe.work/blog/20220605210052.png)
+
+Above, we have a StringArray interface which has an index signature. This index signature states that when a StringArray is indexed with a number, it will return a string.
+
+While string index signatures are a powerful way to describe the “dictionary” pattern, they also enforce that all properties match their return type. This is because a string index declares that obj.property is also available as obj\["property"]. In the following example, name’s type does not match the string index’s type, and the type checker gives an error:
+
+![](https://qiniu.espe.work/blog/20220605210418.png)
+
+However, properties of different types are acceptable if the index signature is a union of the property types:
+
+```typescript
+interface NumberOrStringDictionary {
+  [index: string]: number | string
+  length: number // ok, length is a number
+  name: string // ok, name is a string
+}
+```
+
+Finally, you can make index signatures readonly in order to prevent assignment to their indices:
+
+![](https://qiniu.espe.work/blog/20220605210536.png)
+
+### 5.2 Extending Types
+
+we can extend the original BasicAddress type and just add the new fields that are unique to AddressWithUnit.
+
+```typescript
+interface BasicAddress {
+  name?: string
+  street: string
+  city: string
+  country: string
+  postalCode: string
+}
+
+interface AddressWithUnit extends BasicAddress {
+  unit: string
+}
+```
+
+interfaces can also extend from multiple types.
+
+```typescript
+interface Colorful {
+  color: string
+}
+
+interface Circle {
+  radius: number
+}
+
+interface ColorfulCircle extends Colorful, Circle {}
+
+const cc: ColorfulCircle = {
+  color: 'red',
+  radius: 42
+}
+```
+
+### 5.3 Intersection Types
+
+An intersection type is defined using the & operator.
+
+```typescript
+interface Colorful {
+  color: string
+}
+interface Circle {
+  radius: number
+}
+
+type ColorfulCircle = Colorful & Circle
+```
+
+Here, we’ve intersected Colorful and Circle to produce a new type that has all the members of Colorful and Circle.
+
+```typescript
+function draw(circle: Colorful & Circle) {
+  console.log(`Color was ${circle.color}`)
+  console.log(`Radius was ${circle.radius}`)
+}
+
+// okay
+draw({ color: 'blue', radius: 42 })
+```
+
+### 5.4 Interfaces vs. Intersections
+
+We just looked at two ways to combine types which are similar, but are actually subtly different.
+
+With interfaces, we could use an extends clause to extend from other types, and we were able to do something similar with intersections and name the result with a type alias.
+
+The principle difference between the two is how conflicts are handled, and that difference is typically one of the main reasons why you’d pick one over the other between an interface and a type alias of an intersection type.
+
+### 5.5 Generic Object Types
+
+Let’s imagine a Box type that can contain any value - strings, numbers, Giraffes, whatever.
+
+```typescript
+interface Box {
+  contents: any
+}
+```
+
+Right now, the contents property is typed as any, which works, but can lead to accidents down the line.
+
+We could instead use unknown, but that would mean that in cases where we already know the type of contents, we’d need to do precautionary checks, or use error-prone type assertions.
+
+```typescript
+interface Box {
+  contents: unknown
+}
+
+let x: Box = {
+  contents: 'hello world'
+}
+
+// we could check 'x.contents'
+if (typeof x.contents === 'string') {
+  console.log(x.contents.toLowerCase())
+}
+
+// or we could use a type assertion
+console.log((x.contents as string).toLowerCase())
+```
+
+One type safe approach would be to instead scaffold out different Box types for every type of contents.
+
+we can make a generic Box type which declares a type parameter.
+
+```typescript
+interface Box<Type> {
+  contents: Type
+}
+```
+
+You might read this as “A Box of Type is something whose contents have type Type”. Later on, when we refer to Box, we have to give a type argument in place of Type.
+
+```typescript
+let box: Box<string>
+```
+
+![](https://qiniu.espe.work/blog/20220605212135.png)
+
+Box is reusable in that Type can be substituted with anything. That means that when we need a box for a new type, we don’t need to declare a new Box type at all (though we certainly could if we wanted to).
+
+```typescript
+interface Box<Type> {
+  contents: Type
+}
+
+interface Apple {
+  // ....
+}
+
+// Same as '{ contents: Apple }'.
+type AppleBox = Box<Apple>
+```
+
+This also means that we can avoid overloads entirely by instead using generic functions.
+
+```typescript
+function setContents<Type>(box: Box<Type>, newContents: Type) {
+  box.contents = newContents
+}
+```
+
+It is worth noting that type aliases can also be generic. We could have defined our new Box<Type> interface, which was:
+
+```typescript
+interface Box<Type> {
+  contents: Type
+}
+```
+
+by using a type alias instead:
+
+```typescript
+type Box<Type> = {
+  contents: Type
+}
+```
+
+Since type aliases, unlike interfaces, can describe more than just object types, we can also use them to write other kinds of generic helper types.
+
+![](https://qiniu.espe.work/blog/20220605212453.png)
+
+### 5.6. The Array Type
+
+Generic object types are often some sort of container type that work independently of the type of elements they contain. It’s ideal for data structures to work this way so that they’re re-usable across different data types.
+
+It turns out we’ve been working with a type just like that throughout this handbook: the Array type. Whenever we write out types like number[] or string[], that’s really just a shorthand for Array\<number> and Array\<string>.
+
+```typescript
+function doSomething(value: Array<string>) {
+  // ...
+}
+
+let myArray: string[] = ['hello', 'world']
+
+// either of these work!
+doSomething(myArray)
+doSomething(new Array('hello', 'world'))
+```
+
+#### 5.6.1 The ReadonlyArray Type
+
+The ReadonlyArray is a special type that describes arrays that shouldn’t be changed.
+
+```typescript
+function doStuff(values: ReadonlyArray<string>) {
+  // We can read from 'values'...
+  const copy = values.slice()
+  console.log(`The first value is ${values[0]}`)
+
+  // ...but we can't mutate 'values'.
+  values.push('hello!')
+  // Property 'push' does not exist on type 'readonly string[]'.
+}
+```
+
+Much like the readonly modifier for properties, it’s mainly a tool we can use for intent. When we see a function that returns ReadonlyArrays, it tells us we’re not meant to change the contents at all, and when we see a function that consumes ReadonlyArrays, it tells us that we can pass any array into that function without worrying that it will change its contents.
+
+Unlike Array, there isn’t a ReadonlyArray constructor that we can use.
+
+![](https://qiniu.espe.work/blog/20220605215840.png)
+
+Instead, we can assign regular Arrays to ReadonlyArrays.
+
+```typescript
+const roArray: ReadonlyArray<string> = ['red', 'green', 'blue']
+```
+
+Just as TypeScript provides a shorthand syntax for Array\<Type> with Type[], it also provides a shorthand syntax for ReadonlyArray\<Type> with readonly Type[].
+
+![](https://qiniu.espe.work/blog/20220605220206.png)
+
+One last thing to note is that unlike the readonly property modifier, assignability isn’t bidirectional between regular Arrays and ReadonlyArrays.
+
+![](https://qiniu.espe.work/blog/20220605220348.png)
+
+### 5.7. Tuple Types
+
+A tuple type is another sort of Array type that knows exactly how many elements it contains, and exactly which types it contains at specific positions.
+
+```typescript
+type StringNumberPair = [string, number]
+```
+
+Here, StringNumberPair is a tuple type of string and number. Like ReadonlyArray, it has no representation at runtime, but is significant to TypeScript. To the type system, StringNumberPair describes arrays whose 0 index contains a string and whose 1 index contains a number.
+
+![](https://qiniu.espe.work/blog/20220605220939.png)
+
+if we try to index past the number of elements, we’ll get an error.
+
+```typescript
+function doSomething(pair: [string, number]) {
+  // ...
+
+  const c = pair[2]
+  // Tuple type '[string, number]' of length '2' has no element at index '2'.
+}
+```
+
+We can also destructure tuples using JavaScript’s array destructuring.
+
+![](https://qiniu.espe.work/blog/20220605221332.png)
+
+Other than those length checks, simple tuple types like these are equivalent to types which are versions of Arrays that declare properties for specific indexes, and that declare length with a numeric literal type.
+
+```typescript
+interface StringNumberPair {
+  // specialized properties
+  length: 2
+  0: string
+  1: number
+
+  // Other 'Array<string | number>' members...
+  slice(start?: number, end?: number): Array<string | number>
+}
+```
+
+Another thing you may be interested in is that tuples can have optional properties by writing out a question mark (? after an element’s type). Optional tuple elements can only come at the end, and also affect the type of length.
+
+![](https://qiniu.espe.work/blog/20220605221635.png)
+
+## 6. Type Manipulation
+
+### 6.1 Generics
+
+we need a way of capturing the type of the argument in such a way that we can also use it to denote what is being returned. Here, we will use a type variable, a special kind of variable that works on types rather than values.
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg
+}
+```
+
+Once we’ve written the generic identity function, we can call it in one of two ways. The first way is to pass all of the arguments, including the type argument, to the function:
+
+![](https://qiniu.espe.work/blog/20220606095834.png)
+
+The second way is also perhaps the most common. Here we use <font color=#3498db>type argument inference</font> — that is, we want the compiler to set the value of Type for us automatically based on the type of the argument we pass in:
+
+![](https://qiniu.espe.work/blog/20220606100017.png)
+
+What if we want to also log the length of the argument arg to the console with each call? We might be tempted to write this:
+
+![](https://qiniu.espe.work/blog/20220606100402.png)
+
+Let’s say that we’ve actually intended this function to work on arrays of Type rather than Type directly. Since we’re working with arrays, the .length member should be available. We can describe this just like we would create arrays of other types:
+
+```typescript
+function loggingIdentity<Type>(arg: Type[]): Type[] {
+  console.log(arg.length)
+  return arg
+}
+```
+
+We can alternatively write the sample example this way:
+
+```typescript
+function loggingIdentity<Type>(arg: Array<Type>): Array<Type> {
+  console.log(arg.length) // Array has a .length, so no more error
+  return arg
+}
+```
+
+### 6.1.1 Generic Types
+
+The type of generic functions is just like those of non-generic functions, with the type parameters listed first, similarly to function declarations:
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg
+}
+
+let myIdentity: <Type>(arg: Type) => Type = identity
+```
+
+We could also have used a different name for the generic type parameter in the type, so long as the number of type variables and how the type variables are used line up.
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg
+}
+
+let myIdentity: <Input>(arg: Input) => Input = identity
+```
+
+We can also write the generic type as a call signature of an object literal type:
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg
+}
+
+let myIdentity: { <Type>(arg: Type): Type } = identity
+```
+
+Which leads us to writing our first generic interface. Let’s take the object literal from the previous example and move it to an interface:
+
+```typescript
+interface GenericIdentityFn {
+  <Type>(arg: Type): Type
+}
+
+function identity<Type>(arg: Type): Type {
+  return arg
+}
+
+let myIdentity: GenericIdentityFn = identity
+```
+
+In a similar example, we may want to move the generic parameter to be a parameter of the whole interface. This lets us see what type(s) we’re generic over (e.g. Dictionary\<string> rather than just Dictionary). This makes the type parameter visible to all the other members of the interface.
+
+```typescript
+interface GenericIdentityFn<Type> {
+  (arg: Type): Type
+}
+
+function identity<Type>(arg: Type): Type {
+  return arg
+}
+
+let myIdentity: GenericIdentityFn<number> = identity
+```
+
+### 6.1.2 Generic Classes
+
+A generic class has a similar shape to a generic interface. Generic classes have a generic type parameter list in angle brackets (<>) following the name of the class.
+
+```typescript
+class GenericNumber<NumType> {
+  zeroValue: NumType
+  add: (x: NumType, y: NumType) => NumType
+}
+
+let myGenericNumber = new GenericNumber<number>()
+myGenericNumber.zeroValue = 0
+myGenericNumber.add = function(x, y) {
+  return x + y
+}
+```
+
+This is a pretty literal use of the GenericNumber class, but you may have noticed that nothing is restricting it to only use the number type. We could have instead used string or even more complex objects.
+
+```typescript
+let stringNumeric = new GenericNumber<string>()
+stringNumeric.zeroValue = ''
+stringNumeric.add = function(x, y) {
+  return x + y
+}
+
+console.log(stringNumeric.add(stringNumeric.zeroValue, 'test'))
+```
+
+### 6.1.3 Generic Constraints
+
+the compiler could not prove that every type had a .length property, so it warns us that we can’t make this assumption.
+
+![](https://qiniu.espe.work/blog/20220606102027.png)
+
+Instead of working with any and all types, we’d like to constrain this function to work with any and all types that also have the .length property. As long as the type has this member, we’ll allow it, but it’s required to have at least this member. To do so, <font color=#3498db>we must list our requirement as a constraint on what Type can be.</font>
+
+```typescript
+interface Lengthwise {
+  length: number
+}
+
+function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+  console.log(arg.length) // Now we know it has a .length property, so no more error
+  return arg
+}
+```
+
+Because the generic function is now constrained, it will no longer work over any and all types:
+
+![](https://qiniu.espe.work/blog/20220606102236.png)
+
+Instead, we need to pass in values whose type has all the required properties:
+
+```typescript
+loggingIdentity({ length: 10, value: 3 })
+```
+
+### 6.1.4 Using Type Parameters in Generic Constraints
+
+```typescript
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key]
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 }
+
+getProperty(x, 'a')
+getProperty(x, 'm') // Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
+```
+
+### 6.2 The keyof type operator
+
+The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type as “x” | “y”:
+
+![](https://qiniu.espe.work/blog/20220606103127.png)
+
+If the type has a string or number index signature, keyof will return those types instead:
+
+![](https://qiniu.espe.work/blog/20220606103200.png)
+
+Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj\[0] is always the same as obj\["0"].
