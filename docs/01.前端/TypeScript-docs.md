@@ -1614,7 +1614,7 @@ function setContents<Type>(box: Box<Type>, newContents: Type) {
 }
 ```
 
-It is worth noting that type aliases can also be generic. We could have defined our new Box<Type> interface, which was:
+It is worth noting that type aliases can also be generic. We could have defined our new Box\<Type> interface, which was:
 
 ```typescript
 interface Box<Type> {
@@ -1837,7 +1837,7 @@ let myIdentity: GenericIdentityFn<number> = identity
 
 ### 6.1.2 Generic Classes
 
-A generic class has a similar shape to a generic interface. Generic classes have a generic type parameter list in angle brackets (<>) following the name of the class.
+A generic class has a similar shape to a generic interface. Generic classes have a generic type parameter list in angle brackets (\<>) following the name of the class.
 
 ```typescript
 class GenericNumber<NumType> {
@@ -1917,3 +1917,483 @@ If the type has a string or number index signature, keyof will return those type
 ![](https://qiniu.espe.work/blog/20220606103200.png)
 
 Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj\[0] is always the same as obj\["0"].
+
+### 6.3 Typeof Type Operator
+
+JavaScript already has a typeof operator you can use in an expression context:
+
+```typescript
+// Prints "string"
+console.log(typeof 'Hello world')
+```
+
+TypeScript adds a typeof operator you can use in a type context to refer to the type of a variable or property:
+
+```typescript
+let s = 'hello'
+let n: typeof s
+```
+
+This isn’t very useful for basic types, but combined with other type operators, you can use typeof to conveniently express many patterns. For an example, let’s start by looking at the predefined type ReturnType\<T>. It takes a function type and produces its return type:
+
+```typescript
+type Predicate = (x: unknown) => boolean
+type K = ReturnType<Predicate>
+```
+
+If we try to use ReturnType on a function name, we see an instructive error:
+
+```typescript
+function f() {
+  return { x: 10, y: 3 }
+}
+type P = ReturnType<f>
+//'f' refers to a value, but is being used as a type here. Did you mean 'typeof f'?
+```
+
+Remember that values and types aren’t the same thing. To refer to the type that the value f has, we use typeof:
+
+```typescript
+function f() {
+  return { x: 10, y: 3 }
+}
+type P = ReturnType<typeof f>
+```
+
+### 6.4 Indexed Access Types
+
+We can use an indexed access type to look up a specific property on another type:
+
+![](https://qiniu.espe.work/blog/20220609103225.png)
+
+The indexing type is itself a type, so we can use unions, keyof, or other types entirely:
+
+![](https://qiniu.espe.work/blog/20220609103257.png)
+
+You’ll even see an error if you try to index a property that doesn’t exist:
+
+![](https://qiniu.espe.work/blog/20220609103323.png)
+
+Another example of indexing with an arbitrary type is using number to get the type of an array’s elements. We can combine this with typeof to conveniently capture the element type of an array literal:
+
+![](https://qiniu.espe.work/blog/20220609103624.png)
+
+You can only use types when indexing, meaning you can’t use a const to make a variable reference:
+
+![](https://qiniu.espe.work/blog/20220609103713.png)
+
+However, you can use a type <font color=#3498db>alias</font> for a similar style of refactor:
+
+```typescript
+type key = 'age'
+type Age = Person[key]
+```
+
+### 6.5 Conditional Types
+
+At the heart of most useful programs, we have to make decisions based on input. JavaScript programs are no different, but given the fact that values can be easily introspected, those decisions are also based on the types of the inputs. Conditional types help describe the relation between the types of inputs and outputs.
+
+![](https://qiniu.espe.work/blog/20220610100732.png)
+
+Conditional types take a form that looks a little like conditional expressions (condition ? trueExpression : falseExpression) in JavaScript:
+
+```typescript
+SomeType extends OtherType ? TrueType : FalseType;
+```
+
+Instead, we can encode that logic in a conditional type:
+
+```typescript
+type NameOrId<T extends number | string> = T extends number
+  ? IdLabel
+  : NameLabel
+```
+
+**Conditional Type Constraints**
+
+For example, let’s take the following:
+
+![](https://qiniu.espe.work/blog/20220610103003.png)
+
+In this example, TypeScript errors because T isn’t known to have a property called message. We could constrain T, and TypeScript would no longer complain:
+
+![](https://qiniu.espe.work/blog/20220610103117.png)
+
+However, what if we wanted MessageOf to take any type, and default to something like never if a message property isn’t available? We can do this by moving the constraint out and introducing a conditional type:
+
+![](https://qiniu.espe.work/blog/20220610103201.png)
+
+### 6.5.1 Inferring Within Conditional Types
+
+Conditional types provide us with a way to infer from types we compare against in the true branch using the infer keyword. For example, we could have inferred the element type in Flatten instead of fetching it out “manually” with an indexed access type:
+
+```typescript
+type Flatten<Type> = Type extends Array<infer Item> ? Item : Type
+```
+
+Here, we used the infer keyword to declaratively introduce a new generic type variable named Item instead of specifying how to retrieve the element type of T within the true branch. This frees us from having to think about how to dig through and probing apart the structure of the types we’re interested in.
+
+![](https://qiniu.espe.work/blog/20220610104102.png)
+
+### 6.5.2 Distributive Conditional Types
+
+When conditional types act on a generic type, they become distributive when given a union type. For example, take the following:
+
+```typescript
+type ToArray<Type> = Type extends any ? Type[] : never
+```
+
+If we plug a union type into ToArray, then the conditional type will be applied to each member of that union.
+
+![](https://qiniu.espe.work/blog/20220610104601.png)
+
+What happens here is that StrArrOrNumArr distributes on:
+
+```typescript
+string | number
+```
+
+and maps over each member type of the union, to what is effectively:
+
+```typescript
+  ToArray<string> | ToArray<number>;
+```
+
+which leaves us with:
+
+```typescript
+ string[] | number[];
+```
+
+Typically, distributivity is the desired behavior. To avoid that behavior, you can surround each side of the extends keyword with square brackets.
+
+![](https://qiniu.espe.work/blog/20220610104946.png)
+
+### 6.6 Mapped Types
+
+When you don’t want to repeat yourself, sometimes a type needs to be based on another type.
+
+Mapped types build on the syntax for index signatures, which are used to declare the types of properties which have not been declared ahead of time:
+
+![](https://qiniu.espe.work/blog/20220612193325.png)
+
+A mapped type is a generic type which uses a union of PropertyKeys (frequently created via a keyof) to iterate through keys to create a type:
+
+```typescript
+type OptionsFlags<Type> = {
+  [Property in keyof Type]: boolean
+}
+```
+
+In this example, OptionsFlags will take all the properties from the type Type and change their values to be a boolean.
+
+![](https://qiniu.espe.work/blog/20220612193427.png)
+
+#### 6.6.1 Mapping Modifiers
+
+There are two additional modifiers which can be applied during mapping: readonly and ? which affect mutability and optionality respectively.
+
+You can remove or add these modifiers by prefixing with - or +. If you don’t add a prefix, then + is assumed.
+
+![](https://qiniu.espe.work/blog/20220612193555.png)
+
+![](https://qiniu.espe.work/blog/20220612193620.png)
+
+#### 6.6.2 Key Remapping via
+
+In TypeScript 4.1 and onwards, you can re-map keys in mapped types with an as clause in a mapped type:
+
+```typescript
+type MappedTypeWithNewProperties<Type> = {
+    [Properties in keyof Type as NewKeyType]: Type[Properties]
+}
+```
+
+You can leverage features like template literal types to create new property names from prior ones:
+
+![](https://qiniu.espe.work/blog/20220612193812.png)
+
+You can filter out keys by producing never via a conditional type:
+
+![](https://qiniu.espe.work/blog/20220612193846.png)
+
+You can map over arbitrary unions, not just unions of string | number | symbol, but unions of any type:
+
+![](https://qiniu.espe.work/blog/20220612193939.png)
+
+**Further Exploration**
+
+Mapped types work well with other features in this type manipulation section, for example here is a mapped type using a conditional type which returns either a true or false depending on whether an object has the property pii set to the literal true:
+
+![](https://qiniu.espe.work/blog/20220612194109.png)
+
+### 6.7 Template Literal Types
+
+Template literal types build on string literal types, and have the ability to expand into many strings via unions.
+
+They have the same syntax as template literal strings in JavaScript, but are used in type positions. When used with concrete literal types, a template literal produces a new string literal type by concatenating the contents.
+
+![](https://qiniu.espe.work/blog/20220612221943.png)
+
+When a union is used in the interpolated position, the type is the set of every possible string literal that could be represented by each union member:
+
+![](https://qiniu.espe.work/blog/20220612222059.png)
+
+For each interpolated position in the template literal, the unions are cross multiplied:
+
+![](https://qiniu.espe.work/blog/20220612222146.png)
+
+#### 6.7.1 String Unions in Types
+
+The power in template literals comes when defining a new string based on information inside a type.
+
+Consider the case where a function (makeWatchedObject) adds a new function called on() to a passed object. In JavaScript, its call might look like: makeWatchedObject(baseObject). We can imagine the base object as looking like:
+
+```typescript
+const passedObject = {
+  firstName: 'Saoirse',
+  lastName: 'Ronan',
+  age: 26
+}
+```
+
+#### 6.7.2 Intrinsic String Manipulation Types
+
+To help with string manipulation, TypeScript includes a set of types which can be used in string manipulation. These types come built-in to the compiler for performance and can’t be found in the .d.ts files included with TypeScript.
+
+```typescript
+Uppercase<StringType>
+```
+
+Converts each character in the string to the uppercase version.
+
+Example
+
+![](https://qiniu.espe.work/blog/20220612222955.png)
+
+![](https://qiniu.espe.work/blog/20220612223137.png)
+
+## 7. Classes
+
+As with other JavaScript language features, TypeScript adds type annotations and other syntax to allow you to express relationships between classes and other types.
+
+### 7.1 Class Members
+
+**readonly**
+
+Fields may be prefixed with the readonly modifier. This prevents assignments to the field outside of the constructor.
+![](https://qiniu.espe.work/blog/20220613095557.png)
+
+**Super Calls**
+
+Just as in JavaScript, if you have a base class, you’ll need to call super(); in your constructor body before using any this. members:
+
+![](https://qiniu.espe.work/blog/20220613100838.png)
+
+Forgetting to call super is an easy mistake to make in JavaScript, but <font color=#3498db> TypeScript will tell you when it’s necessary</font> .
+
+### 7.2 Getters / Setters
+
+```typescript
+class C {
+  _length = 0
+  get length() {
+    return this._length
+  }
+  set length(value) {
+    this._length = value
+  }
+}
+```
+
+TypeScript has some special inference rules for accessors:
+
+- If get exists but no set, the property is automatically readonly
+- If the type of the setter parameter is not specified, it is inferred from the return type of the getter
+- Getters and setters must have the same Member Visibility
+
+### 7.3 Index Signatures
+
+```typescript
+class MyClass {
+  [s: string]: boolean | ((s: string) => boolean)
+
+  check(s: string) {
+    return this[s] as boolean
+  }
+}
+```
+
+### 7.4 Class Heritage
+
+**implements Clauses**
+
+You can use an implements clause to check that a class satisfies a particular interface. An error will be issued if a class fails to correctly implement it:
+
+![](https://qiniu.espe.work/blog/20220613231331.png)
+
+Classes may also implement multiple interfaces, e.g. class C implements A, B {.
+
+**Cautions**
+
+It’s important to understand that an implements clause is only a check that the class can be treated as the interface type. It doesn’t change the type of the class or its methods at all. A common source of error is to assume that an implements clause will change the class type - it doesn’t!
+
+![](https://qiniu.espe.work/blog/20220613231549.png)
+
+In this example, we perhaps expected that s’s type would be influenced by the name: string parameter of check. It is not - implements clauses don’t change how the class body is checked or its type inferred.
+
+Similarly, implementing an interface with an optional property doesn’t create that property:
+
+![](https://qiniu.espe.work/blog/20220613231738.png)
+
+Classes may extend from a base class. A derived class has all the properties and methods of its base class, and also define additional members.
+
+```typescript
+class Animal {
+  move() {
+    console.log('Moving along!')
+  }
+}
+
+class Dog extends Animal {
+  woof(times: number) {
+    for (let i = 0; i < times; i++) {
+      console.log('woof!')
+    }
+  }
+}
+
+const d = new Dog()
+// Base class method
+d.move()
+// Derived class method
+d.woof(3)
+```
+
+### 7.5 Member Visibility
+
+You can use TypeScript to control whether certain methods or properties are visible to code outside the class.
+
+**public**
+
+The default visibility of class members is public. A public member can be accessed anywhere:
+
+```typescript
+class Greeter {
+  public greet() {
+    console.log('hi!')
+  }
+}
+const g = new Greeter()
+g.greet()
+```
+
+Because <font color=#3498db> public is already the default visibility modifier</font> , you don’t ever need to write it on a class member, but might choose to do so for style/readability reasons.
+
+**protected**
+
+protected members are only visible to subclasses of the class they’re declared in.
+
+![](https://qiniu.espe.work/blog/20220613234208.png)
+
+Exposure of protected members
+
+Derived classes need to follow their base class contracts, but may choose to expose a subtype of base class with more capabilities. This includes making protected members public:
+
+```typescript
+class Base {
+  protected m = 10
+}
+class Derived extends Base {
+  // No modifier, so default is 'public'
+  m = 15
+}
+const d = new Derived()
+console.log(d.m) // OK
+```
+
+Note that Derived was already able to freely read and write m, so this doesn’t meaningfully alter the “security” of this situation. The main thing to note here is that in the derived class, we need to be careful to repeat the protected modifier if this exposure isn’t intentional.
+
+**private**
+
+private is like protected, but doesn’t allow access to the member even from subclasses:
+
+![](https://qiniu.espe.work/blog/20220614101545.png)
+
+Because private members aren’t visible to derived classes, a derived class can’t increase its visibility:
+
+![](https://qiniu.espe.work/blog/20220614101621.png)
+
+**Cross-instance private access**
+
+TypeScript does allow cross-instance private access:
+
+![](https://qiniu.espe.work/blog/20220614101756.png)
+
+<font color=#e74c3c>Caveats</font>
+
+Like other aspects of TypeScript’s type system, <font color=#3498db>private and protected are only enforced during type checking.</font>
+
+This means that JavaScript runtime constructs like in or simple property lookup can still access a private or protected member:
+
+```typescript
+class MySafe {
+  private secretKey = 12345
+}
+
+// In a JavaScript file...
+const s = new MySafe()
+// Will print 12345
+console.log(s.secretKey)
+```
+
+### 7.6 Static Members
+
+Classes may have static members. These members aren’t associated with a particular instance of the class. They can be accessed through the class constructor object itself:
+
+```typescript
+class MyClass {
+  static x = 0
+  static printX() {
+    console.log(MyClass.x)
+  }
+}
+console.log(MyClass.x)
+MyClass.printX()
+```
+
+Static members can also use the same public, protected, and private visibility modifiers:
+
+![](https://qiniu.espe.work/blog/20220614102333.png)
+
+Static members are also inherited:
+
+```typescript
+class Base {
+  static getGreeting() {
+    return 'Hello world'
+  }
+}
+class Derived extends Base {
+  myGreeting = Derived.getGreeting()
+}
+```
+
+
+### 7.7 Generic Classes
+
+Classes, much like interfaces, can be generic. When a generic class is instantiated with new, its type parameters are inferred the same way as in a function call:
+
+![](https://qiniu.espe.work/blog/20220614103511.png)
+
+### 7.8 Parameter Properties
+
+![](https://qiniu.espe.work/blog/20220615094948.png)
+
+### 7.9 Relationships Between Classes
+
+![](https://qiniu.espe.work/blog/20220615095909.png)
+
+Similarly, subtype relationships between classes exist even if there’s no explicit inheritance:
+
+![](https://qiniu.espe.work/blog/20220615100004.png)
