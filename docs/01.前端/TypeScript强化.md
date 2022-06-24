@@ -56,7 +56,41 @@ type User = Name & {
 }
 ```
 
-### 1.2 小结
+### 1.2 偏好使用 interface 还是 type 来定义类型？
+
+从扩展的角度来说，type 比 interface 更方便拓展一些，假如有以下两个定义：
+
+```typescript
+type Name = { name: string }
+interface IName {
+  name: string
+}
+```
+
+想要做类型的扩展的话，type 只需要一个&，而 interface 要多写不少代码。
+
+```typescript
+type Person = Name & { age: number }
+interface IPerson extends IName {
+  age: number
+}
+```
+
+另外 type 有一些 interface 做不到的事情，比如使用|进行枚举类型的组合，使用 typeof 获取定义的类型等等。
+
+不过 interface 有一个比较强大的地方就是可以 <font color=#3498db>重复定义添加属性</font> ，比如我们需要给 window 对象添加一个自定义的属性或者方法，那么我们直接基于其 Interface 新增属性就可以了。
+
+```typescript
+declare global {
+  interface Window {
+    MyNamespace: any
+  }
+}
+```
+
+总体来说，大家知道 TS 是类型兼容而不是类型名称匹配的，所以一般不需用面向对象的场景或者不需要修改全局类型的场合，我一般都是用 type 来定义类型。
+
+### 1.3 小结
 
 > 用 interface 描述**数据结构**，用 type 描述**类型关系**
 
@@ -367,3 +401,101 @@ TypesScript 中内置了很多工具泛型，前面介绍过 Readonly、Extract 
 Omit 的作用刚好和 Pick 相反，主要用于剔除接口的某几个属性：
 
 ![](https://qiniu.espe.work/blog/20220518111601.png)
+
+## 6. unknown
+
+unknown 指的是不可预先定义的类型，在很多场景下，它可以替代 any 的功能同时保留静态检查的能力。
+
+```typescript
+const num: number = 10
+;((num as unknown) as string).split('') // 注意，这里和any一样完全可以通过静态检查
+```
+
+这个时候 unknown 的作用就跟 any 高度类似了，你可以把它转化成任何类型，不同的地方是，在静态编译的时候，unknown 不能调用任何方法，而 any 可以。
+
+```typescript
+const foo: unknown = 'string'
+foo.substr(1) // Error: 静态检查不通过报错
+
+const bar: any = 10
+bar.substr(1) // Pass: any 类型相当于放弃了静态检查
+```
+
+unknown 的一个使用场景是，避免使用 any 作为函数的参数类型而导致的静态类型检查 bug：
+
+```typescript
+function test(input: unknown): number {
+  if (Array.isArray(input)) {
+    return input.length // Pass: 这个代码块中，类型守卫已经将 input 识别为 array 类型
+  }
+  return input.length // Error: 这里的 input 还是 unknown 类型，静态检查报错。如果入参是 any，则会放弃检查直接成功，带来报错风险
+}
+```
+
+## 7. 可选链运算符 ?.
+
+?.是开发者最需要的运行时(当然编译时也有效)的非空判断。
+
+```typescript
+obj?.prop    obj?.[index]    func?.(args)
+
+```
+
+复制代码
+?.用来判断左侧的表达式是否是 null | undefined，如果是则会停止表达式运行，可以减少我们大量的&&运算。
+
+比如我们写出 a?.b 时，编译器会自动生成如下代码
+
+```typescript
+a === null || a === void 0 ? void 0 : a.b
+```
+
+这里涉及到一个小知识点:undefined 这个值在非严格模式下会被重新赋值，使用 void 0 必定返回真正的 undefined。
+
+## 8. 键值获取 keyof
+
+keyof 可以获取一个类型所有键值，返回一个联合类型，如下：
+
+```typescript
+type Person = {
+  name: string
+  age: number
+}
+
+type PersonKey = keyof Person // PersonKey 得到的类型为 'name' | 'age'
+```
+
+keyof 的一个典型用途是限制访问对象的 key 合法化，因为 any 做索引是不被接受的。
+
+```typescript
+function getValue(p: Person, k: keyof Person) {
+  return p[k] // 如果 k 不如此定义，则无法以 p[k]的代码格式通过编译
+}
+```
+
+## 9. 遍历属性 in
+
+in 只能用在类型的定义中，可以对枚举类型进行遍历，如下：
+
+```typescript
+// 这个类型可以将任何类型的键值转化成number类型
+type TypeToNumber<T> = {
+  [key in keyof T]: number
+}
+```
+
+keyof 返回泛型 T 的所有键枚举类型，key 是自定义的任何变量名，中间用 in 链接，外围用[]包裹起来(这个是固定搭配)，冒号右侧 number 将所有的 key 定义为 number 类型。
+
+于是可以这样使用了：
+
+```typescript
+const obj: TypeToNumber<Person> = { name: 10, age: 10 }
+```
+
+总结起来 in 的语法格式如下：
+
+```shell
+[ 自定义变量名 in 枚举类型 ]: 类型
+```
+
+
