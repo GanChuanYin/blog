@@ -1,3 +1,18 @@
+## 1. 如何画一条 0.5px 的边框
+
+```css
+div {
+  border: 1px solid #000;
+  transform: scaleY(0.5);
+  height: 1px;
+  transform-origin: 50% 100%;
+}
+```
+
+单独用 transform: scaleY(0.5);height: 1px;这样肯定是会变虚，但是你可以指定变换的原点，加上这个 transform-origin: 50% 100%;就不会有虚化
+
+
+
 ## 2. attr 实现 tooltip
 
 ![](https://qiniu.espe.work/blog/attr-tooltip.gif)
