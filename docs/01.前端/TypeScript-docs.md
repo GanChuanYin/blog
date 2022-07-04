@@ -8,6 +8,8 @@ tags:
   - TypeScript
 ---
 
+> The way to learn something well is to read the official documentation
+
 [Typescript Official Website](https://www.typescriptlang.org/)
 
 ## 1. TypeScript for JavaScript Programmers

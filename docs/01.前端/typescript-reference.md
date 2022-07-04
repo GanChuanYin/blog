@@ -1,6 +1,6 @@
-**Typescript official site reference**
+> The way to learn something well is to read the official documentation
 
-> https://www.typescriptlang.org/docs/handbook/utility-types.html
+[Typescript official site reference](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 
 ## 1. Utility Types
 
@@ -1043,7 +1043,6 @@ a = s // OK
 s = a // OK
 ```
 
-
 ## 6. Type Inference
 
 Best common type
@@ -1052,3 +1051,15 @@ When a type inference is made from several expressions, the types of those expre
 
 ![](https://qiniu.espe.work/blog/20220627144235.png)
 
+## 7. DOM Manipulation
+
+The Document Interface
+The first line of the TypeScript code uses a global variable document. Inspecting the variable shows it is defined by the Document interface from the lib.dom.d.ts file. The code snippet contains calls to two methods, getElementById and createElement.
+
+Document.getElementById
+
+The definition for this method is as follows:
+
+```typescript
+getElementById(elementId: string): HTMLElement | null;
+```
