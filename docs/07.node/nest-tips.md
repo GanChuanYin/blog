@@ -1,3 +1,12 @@
+---
+title: nest-tips
+date: 2022-06-29 19:04:59
+permalink: /pages/70166b/
+categories:
+  - node
+tags:
+  - 
+---
 ## 利用 nest 创建模块
 
 ```shell

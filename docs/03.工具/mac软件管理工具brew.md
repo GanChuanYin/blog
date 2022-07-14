@@ -8,6 +8,6 @@ tags:
   -
 ---
 
-<font color=#3498db>解决 brew 慢的问题</font>
+<font color=#00dddd size=4>解决 brew 慢的问题</font>
 
 https://zhuanlan.zhihu.com/p/324691527

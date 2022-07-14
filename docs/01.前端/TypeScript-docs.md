@@ -16,15 +16,15 @@ tags:
 
 TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript’s features, and an additional layer on top of these: TypeScript’s type system.
 
-The main benefit of TypeScript is that it can highlight unexpected behavior in your code, <font color=#3498db>lowering the chance of bugs</font>.
+The main benefit of TypeScript is that it can highlight unexpected behavior in your code, <font color=#00dddd size=4>lowering the chance of bugs</font>.
 
 There is already a small set of primitive types available in JavaScript: boolean, bigint, null, number, string, symbol, and undefined, which you can use in an interface.
 
 ### 1.1 Defining Types
 
-TypeScript extends this list with a few more, such as any (allow anything), <font color=#3498db>unknown (ensure someone using this type declares what the type is)</font>, never (it’s not possible that this type could happen), and void (a function which returns undefined or has no return value).
+TypeScript extends this list with a few more, such as any (allow anything), <font color=#00dddd size=4>unknown (ensure someone using this type declares what the type is)</font>, never (it’s not possible that this type could happen), and void (a function which returns undefined or has no return value).
 
-You’ll see that there are two syntaxes for building types: Interfaces and Types. <font color=#e74c3c>You should prefer interface</font> . Use type when you need specific features.
+You’ll see that there are two syntaxes for building types: Interfaces and Types. <font color=#dd0000 size=4>You should prefer interface</font> . Use type when you need specific features.
 
 ### 1.2 Composing Types
 
@@ -78,7 +78,7 @@ backpack.add(23) //Argument of type 'number' is not assignable to parameter of t
 
 One of TypeScript’s core principles is that type checking focuses on the shape that values have. This is sometimes called “duck typing” or “structural typing”.
 
-<font color=#e74c3c>In a structural type system, if two objects have the same shape, they are considered to be of the same type</font>.
+<font color=#dd0000 size=4>In a structural type system, if two objects have the same shape, they are considered to be of the same type</font>.
 
 ```typescript
 interface Point {
@@ -95,9 +95,9 @@ const point = { x: 12, y: 26 }
 logPoint(point)
 ```
 
-The point variable is never declared to be a Point type. However, <font color=#3498db> TypeScript compares the shape of point to the shape of Point in the type-check. They have the same shape, so the code passes</font> .
+The point variable is never declared to be a Point type. However, <font color=#00dddd size=4> TypeScript compares the shape of point to the shape of Point in the type-check. They have the same shape, so the code passes</font> .
 
-The shape-matching <font color=#e74c3c>only requires a subset of the object’s fields to match</font>.
+The shape-matching <font color=#dd0000 size=4>only requires a subset of the object’s fields to match</font>.
 
 ```typescript
 const point3 = { x: 12, y: 26, z: 89 }
@@ -128,7 +128,7 @@ const newVPoint = new VirtualPoint(13, 56)
 logPoint(newVPoint) // logs "13, 56"
 ```
 
-<font color=#3498db>If the object or class has all the required properties, TypeScript will say they match, regardless of the implementation details.</font>
+<font color=#00dddd size=4>If the object or class has all the required properties, TypeScript will say they match, regardless of the implementation details.</font>
 
 ## 2. The TypeScript Handbook
 
@@ -136,13 +136,13 @@ The most common kinds of errors that programmers write can be described as type 
 
 This could be due to simple typos, a failure to understand the API surface of a library, incorrect assumptions about runtime behavior, or other errors.
 
-<font color=#3498db>The goal of TypeScript is to be a static typechecker for JavaScript programs - in other words, a tool that runs before your code runs (static) and ensures that the types of the program are correct (typechecked).</font>
+<font color=#00dddd size=4>The goal of TypeScript is to be a static typechecker for JavaScript programs - in other words, a tool that runs before your code runs (static) and ensures that the types of the program are correct (typechecked).</font>
 
 ### 2.1 The Basics
 
-a type is the concept of describing which values can be passed to fn and which will crash. <font color=#3498db>JavaScript only truly provides dynamic typing - running the code to see what happens.</font>
+a type is the concept of describing which values can be passed to fn and which will crash. <font color=#00dddd size=4>JavaScript only truly provides dynamic typing - running the code to see what happens.</font>
 
-<font color=#3498db>The alternative is to use a static type system to make predictions about what code is expected before it runs.</font>
+<font color=#00dddd size=4>The alternative is to use a static type system to make predictions about what code is expected before it runs.</font>
 
 ### 2.2 Optional Properties
 
@@ -157,7 +157,7 @@ printName({ first: 'Bob' })
 printName({ first: 'Alice', last: 'Alisson' })
 ```
 
-In JavaScript, if you access a property that doesn’t exist, you’ll get the value undefined rather than a runtime error. Because of this, when you read from an optional property, <font color=#3498db>you’ll have to check for undefined before using it</font> .
+In JavaScript, if you access a property that doesn’t exist, you’ll get the value undefined rather than a runtime error. Because of this, when you read from an optional property, <font color=#00dddd size=4>you’ll have to check for undefined before using it</font> .
 
 ```typescript
 function printName(obj: { first: string; last?: string }) {
@@ -200,7 +200,7 @@ Argument of type '{ myID: number; }' is not assignable to parameter of type 'str
 
 It’s easy to provide a value matching a union type - simply provide a type matching any of the union’s members. If you have a value of a union type, how do you work with it?
 
-TypeScript will only allow an operation if it is valid for every member of the union. For example, <font color=#3498db>if you have the union string | number, you can’t use methods that are only available on string:</font>
+TypeScript will only allow an operation if it is valid for every member of the union. For example, <font color=#00dddd size=4>if you have the union string | number, you can’t use methods that are only available on string:</font>
 
 ```typescript
 function printId(id: number | string) {
@@ -258,11 +258,11 @@ function printCoord(pt: Point) {
 printCoord({ x: 100, y: 100 })
 ```
 
-Just like when we used a type alias above, the example works just as if we had used an anonymous object type. TypeScript is only concerned with the structure of the value we passed to printCoord - <font color=#e74c3c>it only cares that it has the expected properties. Being concerned only with the structure and capabilities of types is why we call TypeScript a structurally typed type system.</font>
+Just like when we used a type alias above, the example works just as if we had used an anonymous object type. TypeScript is only concerned with the structure of the value we passed to printCoord - <font color=#dd0000 size=4>it only cares that it has the expected properties. Being concerned only with the structure and capabilities of types is why we call TypeScript a structurally typed type system.</font>
 
 #### 2.4.1 Differences Between Type Aliases and Interfaces
 
-Type aliases and interfaces are very similar, and in many cases you can choose between them freely. <font color=#3498db>Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.</font>
+Type aliases and interfaces are very similar, and in many cases you can choose between them freely. <font color=#00dddd size=4>Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.</font>
 
 ![](https://qiniu.espe.work/blog/20220530105443.png)
 
@@ -367,7 +367,7 @@ handleRequest(req.url, req.method)
 ```
 
 The as const suffix acts like const but for the type system,
-<font color=#3498db>ensuring that all properties are assigned the literal type instead of a more general version like string or number.</font>
+<font color=#00dddd size=4>ensuring that all properties are assigned the literal type instead of a more general version like string or number.</font>
 
 ### 2.7 null and undefined
 
@@ -393,7 +393,7 @@ function doSomething(x: string | null) {
 
 TypeScript also has a special syntax for removing null and undefined from a type without doing any explicit checking.
 
-<font color=#3498db> Writing ! after any expression is effectively a type assertion that the value isn’t null or undefined:</font>
+<font color=#00dddd size=4> Writing ! after any expression is effectively a type assertion that the value isn’t null or undefined:</font>
 
 ```typescript
 function liveDangerously(x?: number | null) {
@@ -404,7 +404,7 @@ function liveDangerously(x?: number | null) {
 
 Just like other type assertions, this doesn’t change the runtime behavior of your code,
 
-<font color=#e74c3c>so it’s important to only use ! when you know that the value can’t be null or undefined.</font>
+<font color=#dd0000 size=4>so it’s important to only use ! when you know that the value can’t be null or undefined.</font>
 
 ### 2.8 Enums
 
@@ -448,7 +448,7 @@ This condition will always return 'false' since the types 'typeof firstName' and
 
 Within our if check, TypeScript sees typeof padding === "number" and understands that as a special form of code called a type guard.
 
-TypeScript follows possible paths of execution that our programs can take to analyze the most specific possible type of a value at a given position. It looks at these special checks (called type guards) and assignments, and <font color=#e74c3c> the process of refining types to more specific types than declared is called narrowing</font>.
+TypeScript follows possible paths of execution that our programs can take to analyze the most specific possible type of a value at a given position. It looks at these special checks (called type guards) and assignments, and <font color=#dd0000 size=4> the process of refining types to more specific types than declared is called narrowing</font>.
 
 In many editors we can observe these types as they change, and we’ll even do so in our examples.
 
@@ -503,7 +503,7 @@ function printAll(strs: string | string[] | null) {
 }
 ```
 
-We wrapped the entire body of the function in a truthy check, but this has a subtle downside: we may no longer be handling the <font color=#3498db>empty string </font> case correctly.
+We wrapped the entire body of the function in a truthy check, but this has a subtle downside: we may no longer be handling the <font color=#00dddd size=4>empty string </font> case correctly.
 
 ### 3.3 Equality narrowing
 
@@ -513,11 +513,11 @@ TypeScript also uses switch statements and equality checks like ===, !==, ==, an
 
 When we checked that x and y are both equal in the above example, TypeScript knew their types also had to be equal. Since string is the only common type that both x and y could take on, TypeScript knows that x and y must be a string in the first branch.
 
-JavaScript’s looser equality checks with == and != also get narrowed correctly. If you’re unfamiliar, <font color=#3498db> checking whether something == null actually not only checks whether it is specifically the value null - it also checks whether it’s potentially undefined.</font> The same applies to == undefined: it checks whether a value is either null or undefined.
+JavaScript’s looser equality checks with == and != also get narrowed correctly. If you’re unfamiliar, <font color=#00dddd size=4> checking whether something == null actually not only checks whether it is specifically the value null - it also checks whether it’s potentially undefined.</font> The same applies to == undefined: it checks whether a value is either null or undefined.
 
 ![](https://qiniu.espe.work/blog/20220601103336.png)
 
-### 3.4 The <font color=#3498db> in </font> operator narrowing
+### 3.4 The <font color=#00dddd size=4> in </font> operator narrowing
 
 JavaScript has an operator for determining if an object has a property with a name: the in operator. TypeScript takes this into account as a way to narrow down potential types.
 
@@ -552,7 +552,7 @@ As we mentioned earlier, when we assign to any variable, TypeScript looks at the
 
 ![](https://qiniu.espe.work/blog/20220602094631.png)
 
-Notice that each of these assignments is valid. Even though the observed type of x changed to number after our first assignment, we were still able to assign a string to x. This is because the declared type of x - the type that x started with - is string | number, and <font color=#3498db>assignability is always checked against the declared type.</font>
+Notice that each of these assignments is valid. Even though the observed type of x changed to number after our first assignment, we were still able to assign a string to x. This is because the declared type of x - the type that x started with - is string | number, and <font color=#00dddd size=4>assignability is always checked against the declared type.</font>
 
 If we’d assigned a boolean to x, we’d have seen an error since that wasn’t part of the declared type.
 
@@ -573,7 +573,7 @@ function padLeft(padding: number | string, input: string) {
 
 padLeft returns from within its first if block. TypeScript was able to analyze this code and see that the rest of the body (return padding + input;) is unreachable in the case where padding is a number. As a result, it was able to remove number from the type of padding (narrowing from string | number to string) for the rest of the function.
 
-This analysis of code based on reachability is called control flow analysis, and <font color=#3498db>TypeScript uses this flow analysis to narrow types as it encounters type guards and assignments</font> . When a variable is analyzed, control flow can split off and re-merge over and over again, and that variable can be observed to have a different type at each point.
+This analysis of code based on reachability is called control flow analysis, and <font color=#00dddd size=4>TypeScript uses this flow analysis to narrow types as it encounters type guards and assignments</font> . When a variable is analyzed, control flow can split off and re-merge over and over again, and that variable can be observed to have a different type at each point.
 
 ![](https://qiniu.espe.work/blog/20220602095713.png)
 
@@ -621,7 +621,7 @@ const underWater3: Fish[] = zoo.filter((pet): pet is Fish => {
 })
 ```
 
-### <font color=#e74c3c>3.8 Discriminated unions</font>
+### <font color=#dd0000 size=4>3.8 Discriminated unions</font>
 
 For some motivation, let’s imagine we’re trying to encode shapes like circles and squares. Circles keep track of their radiuses and squares keep track of their side lengths. We’ll use a field called kind to tell which shape we’re dealing with. Here’s a first attempt at defining Shape.
 
@@ -645,17 +645,17 @@ Under strictNullChecks that gives us an error - which is appropriate since radiu
 
 ![](https://qiniu.espe.work/blog/20220602101900.png)
 
-Hmm, <font color=#3498db>TypeScript still doesn’t know what to do here. We’ve hit a point where we know more about our values than the type checker does</font>. We could try to use a non-null assertion (a ! after shape.radius) to say that radius is definitely present.
+Hmm, <font color=#00dddd size=4>TypeScript still doesn’t know what to do here. We’ve hit a point where we know more about our values than the type checker does</font>. We could try to use a non-null assertion (a ! after shape.radius) to say that radius is definitely present.
 
 ![](https://qiniu.espe.work/blog/20220602101943.png)
 
-But this doesn’t feel ideal. <font color=#e74c3c>We had to shout a bit at the type-checker with those non-null assertions (!) to convince it that shape</font> .radius was defined, <font color=#e74c3c> but those assertions are error-prone if we start to move code around. </font> Additionally, outside of strictNullChecks we’re able to accidentally access any of those fields anyway (since optional properties are just assumed to always be present when reading them). **We can definitely do better.**
+But this doesn’t feel ideal. <font color=#dd0000 size=4>We had to shout a bit at the type-checker with those non-null assertions (!) to convince it that shape</font> .radius was defined, <font color=#dd0000 size=4> but those assertions are error-prone if we start to move code around. </font> Additionally, outside of strictNullChecks we’re able to accidentally access any of those fields anyway (since optional properties are just assumed to always be present when reading them). **We can definitely do better.**
 
-The problem with this encoding of Shape is that the <font color=#e74c3c>type-checker doesn’t have any way to know whether or not radius or sideLength are present based on the kind property. We need to communicate what we know to the type checker.</font> With that in mind, let’s take another swing at defining Shape.
+The problem with this encoding of Shape is that the <font color=#dd0000 size=4>type-checker doesn’t have any way to know whether or not radius or sideLength are present based on the kind property. We need to communicate what we know to the type checker.</font> With that in mind, let’s take another swing at defining Shape.
 
 ![](https://qiniu.espe.work/blog/20220602102253.png)
 
-Here, <font color=#3498db>we’ve properly separated Shape out into two types with different values for the kind property, but radius and sideLength are declared as required properties in their respective types.</font>
+Here, <font color=#00dddd size=4>we’ve properly separated Shape out into two types with different values for the kind property, but radius and sideLength are declared as required properties in their respective types.</font>
 
 Let’s see what happens here when we try to access the radius of a Shape.
 
@@ -687,7 +687,7 @@ When narrowing, you can reduce the options of a union to a point where you have 
 
 ### 3.10 Exhaustiveness checking
 
-<font color=#e74c3c>The never type is assignable to every type; however, no type is assignable to never (except never itself). </font> This means you can use narrowing and rely on never turning up to do exhaustive checking in a switch statement.
+<font color=#dd0000 size=4>The never type is assignable to every type; however, no type is assignable to never (except never itself). </font> This means you can use narrowing and rely on never turning up to do exhaustive checking in a switch statement.
 
 For example, adding a default to our getArea function which tries to assign the shape to never will raise when every possible case has not been handled.
 
@@ -715,7 +715,7 @@ function printToConsole(s: string) {
 greeter(printToConsole)
 ```
 
-The syntax (a: string) => void means “a function with one parameter, named a, of type string, that doesn’t have a return value”. Just like with function declarations, <font color=#3498db>if a parameter type isn’t specified, it’s implicitly any.</font>
+The syntax (a: string) => void means “a function with one parameter, named a, of type string, that doesn’t have a return value”. Just like with function declarations, <font color=#00dddd size=4>if a parameter type isn’t specified, it’s implicitly any.</font>
 
 > Note that the parameter name is required. The function type (string) => void means “a function with a parameter named string of type any“!
 
@@ -913,7 +913,7 @@ These might seem identical at first glance, but firstElement1 is a much better w
 
 > Rule: When possible, use the type parameter itself rather than constraining it
 
-<font color=#3498db>Use Fewer Type Parameters</font>
+<font color=#00dddd size=4>Use Fewer Type Parameters</font>
 
 Here’s another pair of similar functions:
 
@@ -954,7 +954,7 @@ function greet(s: string) {
 }
 ```
 
-Remember, type parameters are for relating the types of multiple values. <font color=#e74c3c> If a type parameter is only used once in the function signature, it’s not relating anything.</font>
+Remember, type parameters are for relating the types of multiple values. <font color=#dd0000 size=4> If a type parameter is only used once in the function signature, it’s not relating anything.</font>
 
 > Rule: If a type parameter only appears in one location, strongly reconsider if you actually need it
 
@@ -1039,7 +1039,7 @@ myForEach([1, 2, 3], (a, i) => {
 })
 ```
 
-<font color=#3498db>In JavaScript, if you call a function with more arguments than there are parameters, the extra arguments are simply ignored. TypeScript behaves the same way.</font> Functions with fewer parameters (of the same types) can always take the place of functions with more parameters.
+<font color=#00dddd size=4>In JavaScript, if you call a function with more arguments than there are parameters, the extra arguments are simply ignored. TypeScript behaves the same way.</font> Functions with fewer parameters (of the same types) can always take the place of functions with more parameters.
 
 > When writing a function type for a callback, never write an optional parameter unless you intend to call the function without passing that argument
 
@@ -1081,7 +1081,7 @@ fn()
 // Expected 1 arguments, but got 0.
 ```
 
-<font color=#3498db>Again, the signature used to write the function body can’t be “seen” from the outside.</font>
+<font color=#00dddd size=4>Again, the signature used to write the function body can’t be “seen” from the outside.</font>
 
 > The signature of the implementation is not visible from the outside. When writing an overloaded function, you should always have two or more signatures above the implementation of the function.
 
@@ -1139,7 +1139,7 @@ function len(x: any[] | string) {
 
 This is much better! Callers can invoke this with either sort of value, and as an added bonus, we don’t have to figure out a correct implementation signature.
 
-> <font color=#e74c3c>Always prefer parameters with union types instead of overloads when possible</font>
+> <font color=#dd0000 size=4>Always prefer parameters with union types instead of overloads when possible</font>
 
 ### 4.13 Declaring this in a Function
 
@@ -1173,7 +1173,7 @@ const admins = db.filterUsers(function(this: User) {
 })
 ```
 
-This pattern is common with callback-style APIs, where another object typically controls when your function is called. <font color=#e74c3c> Note that you need to use function and not arrow functions to get this behavior:
+This pattern is common with callback-style APIs, where another object typically controls when your function is called. <font color=#dd0000 size=4> Note that you need to use function and not arrow functions to get this behavior:
 </font>
 
 ![](https://qiniu.espe.work/blog/20220604164544.png)
@@ -1195,7 +1195,7 @@ function noop() {
 
 In JavaScript, a function that doesn’t return any value will implicitly return the value undefined. However, void and undefined are not the same thing in TypeScript. There are further details at the end of this chapter.
 
-> <font color=#e74c3c>void is not the same as undefined.</font>
+> <font color=#dd0000 size=4>void is not the same as undefined.</font>
 
 **unknown**
 
@@ -1344,7 +1344,7 @@ function greet(person: { name: string; age: number }) {
 }
 ```
 
-or they can be named by using either an <font color=#3498db>interface</font>
+or they can be named by using either an <font color=#00dddd size=4>interface</font>
 
 ```typescript
 interface Person {
@@ -1416,7 +1416,7 @@ function evict(home: Home) {
 
 It’s important to manage expectations of what readonly implies. It’s useful to signal intent during development time for TypeScript on how an object should be used.
 
-<font color=#3498db>TypeScript doesn’t factor in whether properties on two types are readonly when checking whether those types are compatible, so readonly properties can also change via aliasing.
+<font color=#00dddd size=4>TypeScript doesn’t factor in whether properties on two types are readonly when checking whether those types are compatible, so readonly properties can also change via aliasing.
 </font>
 
 ```typescript
@@ -1751,7 +1751,7 @@ Once we’ve written the generic identity function, we can call it in one of two
 
 ![](https://qiniu.espe.work/blog/20220606095834.png)
 
-The second way is also perhaps the most common. Here we use <font color=#3498db>type argument inference</font> — that is, we want the compiler to set the value of Type for us automatically based on the type of the argument we pass in:
+The second way is also perhaps the most common. Here we use <font color=#00dddd size=4>type argument inference</font> — that is, we want the compiler to set the value of Type for us automatically based on the type of the argument we pass in:
 
 ![](https://qiniu.espe.work/blog/20220606100017.png)
 
@@ -1872,7 +1872,7 @@ the compiler could not prove that every type had a .length property, so it warns
 
 ![](https://qiniu.espe.work/blog/20220606102027.png)
 
-Instead of working with any and all types, we’d like to constrain this function to work with any and all types that also have the .length property. As long as the type has this member, we’ll allow it, but it’s required to have at least this member. To do so, <font color=#3498db>we must list our requirement as a constraint on what Type can be.</font>
+Instead of working with any and all types, we’d like to constrain this function to work with any and all types that also have the .length property. As long as the type has this member, we’ll allow it, but it’s required to have at least this member. To do so, <font color=#00dddd size=4>we must list our requirement as a constraint on what Type can be.</font>
 
 ```typescript
 interface Lengthwise {
@@ -1984,7 +1984,7 @@ You can only use types when indexing, meaning you can’t use a const to make a 
 
 ![](https://qiniu.espe.work/blog/20220609103713.png)
 
-However, you can use a type <font color=#3498db>alias</font> for a similar style of refactor:
+However, you can use a type <font color=#00dddd size=4>alias</font> for a similar style of refactor:
 
 ```typescript
 type key = 'age'
@@ -2192,7 +2192,7 @@ Just as in JavaScript, if you have a base class, you’ll need to call super(); 
 
 ![](https://qiniu.espe.work/blog/20220613100838.png)
 
-Forgetting to call super is an easy mistake to make in JavaScript, but <font color=#3498db> TypeScript will tell you when it’s necessary</font> .
+Forgetting to call super is an easy mistake to make in JavaScript, but <font color=#00dddd size=4> TypeScript will tell you when it’s necessary</font> .
 
 ### 7.2 Getters / Setters
 
@@ -2290,7 +2290,7 @@ const g = new Greeter()
 g.greet()
 ```
 
-Because <font color=#3498db> public is already the default visibility modifier</font> , you don’t ever need to write it on a class member, but might choose to do so for style/readability reasons.
+Because <font color=#00dddd size=4> public is already the default visibility modifier</font> , you don’t ever need to write it on a class member, but might choose to do so for style/readability reasons.
 
 **protected**
 
@@ -2332,9 +2332,9 @@ TypeScript does allow cross-instance private access:
 
 ![](https://qiniu.espe.work/blog/20220614101756.png)
 
-<font color=#e74c3c>Caveats</font>
+<font color=#dd0000 size=4>Caveats</font>
 
-Like other aspects of TypeScript’s type system, <font color=#3498db>private and protected are only enforced during type checking.</font>
+Like other aspects of TypeScript’s type system, <font color=#00dddd size=4>private and protected are only enforced during type checking.</font>
 
 This means that JavaScript runtime constructs like in or simple property lookup can still access a private or protected member:
 

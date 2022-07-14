@@ -1,8 +1,17 @@
+---
+title: css强化
+date: 2022-06-27 17:12:58
+permalink: /pages/f585e4/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## position:sticky
 
 单词 sticky 的中文意思是“粘性的”，position:sticky 表现也符合这个粘性的表现。
 
-基本上，可以看出是 <font color=#3498db> position:relative 和 position:fixed 的结合体——当元素在屏幕内，表现为 relative，就要滚出显示器屏幕的时候，表现为 fixed。</font>
+基本上，可以看出是 <font color=#00dddd size=4> position:relative 和 position:fixed 的结合体——当元素在屏幕内，表现为 relative，就要滚出显示器屏幕的时候，表现为 fixed。</font>
 
 ![](https://qiniu.espe.work/blog/Jun-27-2022-17-13-56.gif)
 
@@ -20,7 +29,7 @@ position:sticky 有个非常重要的特性，那就是 sticky 元素效果完�
 
 sticky 元素有以下一些特性表现：
 
-- 父级元素不能有任何 overflow:visible 以外的 overflow 设置，否则没有粘滞效果。因为改变了滚动容器（即使没有出现滚动条）。因此，如果你的 position:sticky 无效，看看是不是 <font color=#e74c3c>某一个</font> 祖先元素设置了 overflow:hidden，移除之即可。
+- 父级元素不能有任何 overflow:visible 以外的 overflow 设置，否则没有粘滞效果。因为改变了滚动容器（即使没有出现滚动条）。因此，如果你的 position:sticky 无效，看看是不是 <font color=#dd0000 size=4>某一个</font> 祖先元素设置了 overflow:hidden，移除之即可。
 
 父级元素设置和粘性定位元素等高的固定的 height 高度值，或者高度计算值和粘性定位元素高度一样，也没有粘滞效果。同一个父容器中的 sticky 元素，如果定位值相等，则会重叠；如果属于不同父元素，且这些父元素正好紧密相连，则会鸠占鹊巢，挤开原来的元素，形成依次占位的效果.
 

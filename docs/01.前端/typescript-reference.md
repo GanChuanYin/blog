@@ -1,3 +1,12 @@
+---
+title: Typescript-reference
+date: 2022-06-18 10:37:50
+permalink: /pages/6839f5/
+categories:
+  - 前端
+tags:
+  - 
+---
 > The way to learn something well is to read the official documentation
 
 [Typescript official site reference](https://www.typescriptlang.org/docs/handbook/utility-types.html)
@@ -8,19 +17,19 @@ TypeScript provides several utility types to facilitate common type transformati
 
 ### 1.1 Partial \<Type>
 
-Constructs a type with all properties of Type <font color=#3498db> set to optional</font> . This utility will return a type that represents all subsets of a given type.
+Constructs a type with all properties of Type <font color=#00dddd size=4> set to optional</font> . This utility will return a type that represents all subsets of a given type.
 
 ![](https://qiniu.espe.work/blog/20220618104037.png)
 
 ### 1.2 Required \<Type>
 
-Constructs a type consisting of all properties of Type <font color=#3498db>set to required</font>. The opposite of Partial.
+Constructs a type consisting of all properties of Type <font color=#00dddd size=4>set to required</font>. The opposite of Partial.
 
 ![](https://qiniu.espe.work/blog/20220618104732.png)
 
 ### 1.3 Readonly \<Type>
 
-Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type <font color=#3498db> cannot be reassigned</font>
+Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type <font color=#00dddd size=4> cannot be reassigned</font>
 
 ![](https://qiniu.espe.work/blog/20220618105528.png)
 
@@ -81,7 +90,7 @@ Uncapitalize<StringType>
 
 ## 2. Decorators
 
-With the introduction of Classes in TypeScript and ES6, there now exist certain scenarios that require additional features to support <font color=#3498db> annotating or modifying classes and class members</font>. Decorators provide a way to add both annotations and a meta-programming syntax for class declarations and members
+With the introduction of Classes in TypeScript and ES6, there now exist certain scenarios that require additional features to support <font color=#00dddd size=4> annotating or modifying classes and class members</font>. Decorators provide a way to add both annotations and a meta-programming syntax for class declarations and members
 
 To enable experimental support for decorators, you must enable the experimentalDecorators compiler option either on the command line or in your tsconfig.json:
 
@@ -501,7 +510,7 @@ export class ParseIntBasedZipCodeValidator {
 export { ZipCodeValidator as RegExpBasedZipCodeValidator } from './ZipCodeValidator'
 ```
 
-Optionally,<font color=#3498db> a module can wrap one or more modules and combine all their exports using export \* from "module" syntax.</font>
+Optionally,<font color=#00dddd size=4> a module can wrap one or more modules and combine all their exports using export \* from "module" syntax.</font>
 
 ### 4.2 Import
 
@@ -521,7 +530,7 @@ import * as validator from './ZipCodeValidator'
 let myValidator = new validator.ZipCodeValidator()
 ```
 
-**Import a module for side-effects <font color=#3498db> only</font>**
+**Import a module for side-effects <font color=#00dddd size=4> only</font>**
 
 Though not recommended practice, some modules set up some global state that can be used by other modules. These modules may not have any exports, or the consumer is not interested in any of their exports. To import these modules, use:
 
@@ -569,7 +578,7 @@ import { utilities } from './index'
 
 To describe the shape of libraries not written in TypeScript, we need to declare the API that the library exposes.
 
-We call declarations that don’t define an implementation “ambient”. Typically, these are defined in <font color=#3498db> .d.ts files</font> . If you’re familiar with C/C++, you can think of these as .h files. Let’s look at a few examples.
+We call declarations that don’t define an implementation “ambient”. Typically, these are defined in <font color=#00dddd size=4> .d.ts files</font> . If you’re familiar with C/C++, you can think of these as .h files. Let’s look at a few examples.
 
 #### 4.5.1 Ambient Modules
 
@@ -605,7 +614,7 @@ import * as URL from 'url'
 let myUrl = URL.parse('https://www.typescriptlang.org')
 ```
 
-<font color=#3498db>Shorthand ambient modules</font>
+<font color=#00dddd size=4>Shorthand ambient modules</font>
 
 If you don’t want to take the time to write out declarations before using a new module, you can use a shorthand declaration to get started quickly.
 
@@ -650,7 +659,7 @@ console.log(data, fileContent)
 
 Often you will need to extend functionality on a module. A common JS pattern is to augment the original object with extensions, similar to how JQuery extensions work. As we’ve mentioned before, modules do not merge like global namespace objects would.
 
-The recommended solution is to not mutate the original object, but rather <font color=#3498db> export a new entity that provides the new functionality.</font>
+The recommended solution is to not mutate the original object, but rather <font color=#00dddd size=4> export a new entity that provides the new functionality.</font>
 
 Consider a simple calculator implementation defined in module Calculator.ts. The module also exports a helper function to test the calculator functionality by passing a list of input strings and writing the result at the end.
 
@@ -826,7 +835,7 @@ import * as $ from 'jquery'
 import { Component } from '@angular/core'
 ```
 
-A relative import is resolved relative to the importing file and <font color=#3498db> cannot resolve to an ambient module declaration</font>. You should use relative imports for your own modules that are guaranteed to maintain their relative location at runtime.
+A relative import is resolved relative to the importing file and <font color=#00dddd size=4> cannot resolve to an ambient module declaration</font>. You should use relative imports for your own modules that are guaranteed to maintain their relative location at runtime.
 
 A non-relative import can be resolved relative to baseUrl, or through path mapping, which we’ll cover below. They can also resolve to ambient module declarations. Use non-relative paths when importing any of your external dependencies.
 
@@ -967,7 +976,7 @@ pet = new Dog()
 
 In nominally-typed languages like C# or Java, the equivalent code would be an error because the Dog class does not explicitly describe itself as being an implementer of the Pet interface.
 
-<font color=#3498db>TypeScript’s structural type system was designed based on how JavaScript code is typically written. Because JavaScript widely uses anonymous objects like function expressions and object literals, it’s much more natural to represent the kinds of relationships found in JavaScript libraries with a structural type system instead of a nominal one.</font>
+<font color=#00dddd size=4>TypeScript’s structural type system was designed based on how JavaScript code is typically written. Because JavaScript widely uses anonymous objects like function expressions and object literals, it’s much more natural to represent the kinds of relationships found in JavaScript libraries with a structural type system instead of a nominal one.</font>
 
 The basic rule for TypeScript’s structural type system is that x is compatible with y if y has at least the same members as x. For example consider the following code involving an interface named Pet which has a name property:
 

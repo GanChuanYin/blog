@@ -15,7 +15,7 @@ tags:
 
 ### 1.2 对 Socket.IO 的误解
 
-<font color=#e74c3c>Socket.IO 不是对 WebSocket 的简单实现.</font>
+<font color=#dd0000 size=4>Socket.IO 不是对 WebSocket 的简单实现.</font>
 
 虽然 Socket.IO 在可能的情况下使用 WebSocket 进行传输，但它向每个包添加额外的元数据。这就是 WebSocket 客户端不能成功连接到 Socket 的原因。IO 服务器，以及一个 Socket.IO 客户端也不能连接到普通的 WebSocket 服务器。
 

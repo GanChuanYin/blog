@@ -8,19 +8,19 @@ tags:
   -
 ---
 
-<font color=#3498db>src 与 href 的区别</font>
+<font color=#00dddd size=4>src 与 href 的区别</font>
 
 1. src 外部资源 阻塞其他资源 js 脚本页面底部
 2. href 超文本 网络， 并行， 常用 a、link
 
-<font color=#3498db>script 标签中 defer 和 async 的区别</font>
+<font color=#00dddd size=4>script 标签中 defer 和 async 的区别</font>
 
 1. 都是异步，不阻塞
 2. async 不保证顺序
 3. async 并行下载与执行
-4. defer 并行下载, <font color=#e74c3c>最后执行</font>
+4. defer 并行下载, <font color=#dd0000 size=4>最后执行</font>
 
-<font color=#3498db>HTML5 有哪些更新</font>
+<font color=#00dddd size=4>HTML5 有哪些更新</font>
 
 1. 语义化标签
 2. 媒体标签 audio video source
@@ -29,7 +29,7 @@ tags:
 5. Web 存储 localStorage sessionStorage
 6. canvas svg
 
-<font color=#3498db>SVG 与 Canvas 比较</font>
+<font color=#00dddd size=4>SVG 与 Canvas 比较</font>
 
 基本介绍
 
@@ -57,7 +57,7 @@ svg 绘制的图像是一个对象，如果对象的属性发生改变，浏览�
 - 操作方面
   canvas 绘制的图形，只能给 canvas 整个画布添加事件，而不能给某个图形或文件添加事件处理器，但是 svg 支持事件绑定，如果需要添加带有事件的动画效果时，就需要选择 svg。
 
-<font color=#3498db>iframe 有哪些优点与缺点？</font>
+<font color=#00dddd size=4>iframe 有哪些优点与缺点？</font>
 
 优点
 1. 加载速度较慢的内容

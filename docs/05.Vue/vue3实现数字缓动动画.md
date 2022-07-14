@@ -1,10 +1,19 @@
+---
+title: vue3实现数字缓动动画
+date: 2022-06-23 17:40:33
+permalink: /pages/e0e173/
+categories:
+  - Vue
+tags:
+  - 
+---
 ## 1. 效果
 
 ![](https://qiniu.espe.work/blog/Jun-23-20220017-41-13.gif)
 
 ## 2. 实现数字缓动动画
 
-为了让动画更顺滑，可以借助现代浏览器的 <font color=#3498db>requestAnimationFrame</font> 方法
+为了让动画更顺滑，可以借助现代浏览器的 <font color=#00dddd size=4>requestAnimationFrame</font> 方法
 
 [浏览器是如何渲染页面的](https://xingyun.espe.work/pages/d88f70/#_8-%E6%9B%B4%E6%96%B0%E6%B8%B2%E6%9F%93%E7%AE%A1%E9%81%93%E6%88%90%E6%9C%AC%E9%AB%98%E6%98%82)
 

@@ -41,7 +41,7 @@ nestjs 中有三个基础概念
 
 ### 中间件 middleware
 
-中间件是在路由处理程序 <font color=#e74c3c> 之前 </font> 调用的函数。 中间件函数可以访问请求和响应对象，以及应用程序请求响应周期中的 next() 中间件函数。 next() 中间件函数通常由名为 next 的变量表示。
+中间件是在路由处理程序 <font color=#dd0000 size=4> 之前 </font> 调用的函数。 中间件函数可以访问请求和响应对象，以及应用程序请求响应周期中的 next() 中间件函数。 next() 中间件函数通常由名为 next 的变量表示。
 
 ![](https://qiniu.espe.work/blog/20220510102336.png)
 
@@ -160,7 +160,7 @@ await app.listen(3000)
 
 ```
 
-<font color=#3498db>自定义异常过滤器</font>
+<font color=#00dddd size=4>自定义异常过滤器</font>
 
 虽然基本（内置）异常过滤器可以为您自动处理许多情况，但有时您可能希望对异常层拥有完全控制权，例如，您可能希望基于某些动态因素添加日志记录或使用不同的 JSON 模式。 异常过滤器正是为此目的而设计的。 它们使您可以控制精确的控制流以及将响应的内容发送回客户端。
 
@@ -195,7 +195,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
 @Catch() 装饰器绑定所需的元数据到异常过滤器上。它告诉 Nest 这个特定的过滤器正在寻找 HttpException 而不是其他的。在实践中，@Catch() 可以传递多个参数，所以你可以通过逗号分隔来为多个类型的异常设置过滤器。
 
-<font color=#3498db>绑定过滤器</font>
+<font color=#00dddd size=4>绑定过滤器</font>
 
 ```typescript
 // cats.controller.ts
@@ -228,7 +228,7 @@ async create(@Body() createCatDto: CreateCatDto) {
 export class CatsController {}
 ```
 
-要创建一个 <font color=#e74c3c>全局范围</font> 的过滤器，您需要执行以下操作:
+要创建一个 <font color=#dd0000 size=4>全局范围</font> 的过滤器，您需要执行以下操作:
 
 ```typescript
 // main.ts
@@ -306,7 +306,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
 在这两种情况下, 管道 参数(arguments) 会由 控制器(controllers)的路由处理程序 进行处理. Nest 会在调用这个方法之前插入一个管道，管道会先拦截方法的调用参数,进行转换或是验证处理，然后用转换好或是验证好的参数调用原方法。
 
-> 管道在异常区域内运行。这意味着当抛出异常时，它们由核心异常处理程序和应用于当前上下文的 异常过滤器 处理。<font color=#e74c3c>当在 Pipe 中发生异常，controller 不会继续执行任何方法</font>。
+> 管道在异常区域内运行。这意味着当抛出异常时，它们由核心异常处理程序和应用于当前上下文的 异常过滤器 处理。<font color=#dd0000 size=4>当在 Pipe 中发生异常，controller 不会继续执行任何方法</font>。
 
 **内置管道**
 
@@ -337,7 +337,7 @@ export class ValidationPipe implements PipeTransform {
 
 #### 验证管道
 
-<font color=#3498db> 类验证器</font>
+<font color=#00dddd size=4> 类验证器</font>
 
 Nest 与 class-validator 配合得很好。这个优秀的库允许您使用基于装饰器的验证。装饰器的功能非常强大，尤其是与 Nest 的 Pipe 功能相结合使用时，因为我们可以通过访问 metatype 信息做很多事情，在开始之前需要安装一些依赖。
 
@@ -442,7 +442,7 @@ async findOne(@Param('id', new ParseUUIDPipe()) id) {
 
 守卫有一个单独的责任。它们根据运行时出现的某些条件（例如权限，角色，访问控制列表等）来确定给定的请求是否由路由处理程序处理。 这通常称为授权。
 
-> <font color=#e74c3c>守卫在每个中间件之后执行，但在任何拦截器或管道之前执行。</font>
+> <font color=#dd0000 size=4>守卫在每个中间件之后执行，但在任何拦截器或管道之前执行。</font>
 
 #### 授权守卫
 

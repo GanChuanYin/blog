@@ -78,7 +78,7 @@ interface IPerson extends IName {
 
 另外 type 有一些 interface 做不到的事情，比如使用|进行枚举类型的组合，使用 typeof 获取定义的类型等等。
 
-不过 interface 有一个比较强大的地方就是可以 <font color=#3498db>重复定义添加属性</font> ，比如我们需要给 window 对象添加一个自定义的属性或者方法，那么我们直接基于其 Interface 新增属性就可以了。
+不过 interface 有一个比较强大的地方就是可以 <font color=#00dddd size=4>重复定义添加属性</font> ，比如我们需要给 window 对象添加一个自定义的属性或者方法，那么我们直接基于其 Interface 新增属性就可以了。
 
 ```typescript
 declare global {
@@ -148,7 +148,7 @@ function print<T>(arg: T): T {
 
 这样，我们就做到了输入和输出的类型统一，且可以输入输出任何类型。
 
-泛型中的 T 就像一个 <font color=#e74c3c>占位符</font> 、或者说一个变量，在使用的时候可以把定义的类型像参数一样传入，它可以原封不动地输出。
+泛型中的 T 就像一个 <font color=#dd0000 size=4>占位符</font> 、或者说一个变量，在使用的时候可以把定义的类型像参数一样传入，它可以原封不动地输出。
 
 ### 2.2 泛型默认参数
 

@@ -7,7 +7,7 @@ categories:
 tags:
   - 
 ---
-### <font color=#e74c3c>注意 watch 简单类型时要用函数返回</font>
+### <font color=#dd0000 size=4>注意 watch 简单类型时要用函数返回</font>
 
 因为直接返回的话是一个数值，就没办法追踪数据变化了
 
@@ -37,9 +37,9 @@ watch(
 ```
 
 
-### <font color=#e74c3c>vue3下echarts resize()报错</font>
+### <font color=#dd0000 size=4>vue3下echarts resize()报错</font>
 
 ![](https://qiniu.espe.work/blog/20220513165412.png)
 
-有关 <font color=#e74c3c>shallowRef</font>
+有关 <font color=#dd0000 size=4>shallowRef</font>
 ![](https://qiniu.espe.work/blog/20220513165639.png)

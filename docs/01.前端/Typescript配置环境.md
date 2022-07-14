@@ -1,3 +1,12 @@
+---
+title: Typescript配置环境
+date: 2022-06-28 11:04:09
+permalink: /pages/38c16c/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 1. tsconfig.json
 
 TypeScript 使用 tsconfig.json 文件作为其配置文件，当一个目录中存在 tsconfig.json 文件，则认为该目录为 TypeScript 项目的根目录。
@@ -34,7 +43,7 @@ $ tsc --outFile leo.js --target es3 --module amd index.ts
 ```
 
 但如果实际开发的项目，很少是只有单个文件，当我们需要编译整个项目时，就可以使用 tsconfig.json 文件，将需要使用到的配置都写进 tsconfig.json 文件，
-这样就 <font color=#3498db>不用每次编译都手动输入配置，另外也方便团队协作开发。</font>
+这样就 <font color=#00dddd size=4>不用每次编译都手动输入配置，另外也方便团队协作开发。</font>
 
 ### 1.2 compilerOptions
 

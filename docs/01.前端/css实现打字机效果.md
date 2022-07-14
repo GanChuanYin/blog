@@ -1,3 +1,12 @@
+---
+title: css实现打字机效果
+date: 2022-06-05 16:20:41
+permalink: /pages/21ba79/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 1. 打字机效果
 
 实现类似以下效果

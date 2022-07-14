@@ -1,3 +1,12 @@
+---
+title:  Electron跨端原理
+date: 2022-06-24 15:22:34
+permalink: /pages/95f4ae/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 1. 背景
 
 Electron 是使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序的框架，可构建出兼容 Mac、Windows 和 Linux 三个平台的应用程序。
@@ -18,7 +27,7 @@ Chromium 并不具备原生 GUI 的操作能力，因此 Electron 内部集成 N
 
 Native API 为 Electron 提供原生系统的 GUI 支持，借此 Electron 可以调用原生应用程序接口。
 
-总结起来，<font color=#3498db>Chromium 负责页面 UI 渲染，Node.js 负责业务逻辑，Native API 则提供原生能力和跨平台。</font>
+总结起来，<font color=#00dddd size=4>Chromium 负责页面 UI 渲染，Node.js 负责业务逻辑，Native API 则提供原生能力和跨平台。</font>
 
 ## 2. Chromium
 

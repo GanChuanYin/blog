@@ -21,7 +21,7 @@ redux 涉及的内容较多，把各个依赖组件的官方文档都阅读一�
 
 上述 Redux 相关内容较多，跟着操作一遍好像大概知道了，但又说不清为什么使用这些依赖包。这里做一下小结，便于消化理解。
 
-<font color=#3498db>其实 react-redux、redux-thunk、immutable 都是围绕如何简化 redux 开发的。</font>
+<font color=#00dddd size=4>其实 react-redux、redux-thunk、immutable 都是围绕如何简化 redux 开发的。</font>
 
 react-redux 是为了简化 redux 通过订阅方式修改 state 的繁琐过程。
 
