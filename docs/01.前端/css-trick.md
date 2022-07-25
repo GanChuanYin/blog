@@ -5,8 +5,9 @@ permalink: /pages/8e90f7/
 categories:
   - 前端
 tags:
-  - 
+  -
 ---
+
 ## 1. 如何画一条 0.5px 的边框
 
 ```css
@@ -19,8 +20,6 @@ div {
 ```
 
 单独用 transform: scaleY(0.5);height: 1px;这样肯定是会变虚，但是你可以指定变换的原点，加上这个 transform-origin: 50% 100%;就不会有虚化
-
-
 
 ## 2. attr 实现 tooltip
 
@@ -181,5 +180,48 @@ div {
 }
 .checklist input[type="checkbox"]:checked ~ span {
     color: #154e6b;
+}
+```
+
+### 给金牌 🏅️ 镀金
+
+![](https://qiniu.espe.work/blog/Jul-18-2022-17-35-57.gif)
+
+```html
+<div class="gold-metal">
+  <img src="metal.svg" />
+</div>
+```
+
+```css
+.gold-metal {
+  position: relative;
+}
+.gold-metal::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 100%;
+  top: 0;
+  transform: skewX(-40deg);
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 215, 0, 0.2) 20%,
+    rgba(255, 215, 0, 0.6) 50%,
+    rgba(255, 215, 0, 0.2) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: gold-flash 3s ease-in-out infinite;
+}
+
+@keyframes gold-flash {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 ```
