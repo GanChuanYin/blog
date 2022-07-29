@@ -159,3 +159,85 @@ const double =
     // type error if this doesn't return a number
   })
 ```
+
+### 1.5 Typing Event Handlers
+
+When dealing with native DOM events, it might be useful to type the argument we pass to the handler correctly. Let's take a look at this example:
+
+```html
+<script setup lang="ts">
+  function handleChange(event) {
+    // `event` implicitly has `any` type
+    console.log(event.target.value)
+  }
+</script>
+
+<template>
+  <input type="text" @change="handleChange" />
+</template>
+```
+
+Without type annotation, the event argument will implicitly have a type of any. This will also result in a TS error if `"strict": true` or `"noImplicitAny": true` are used in `tsconfig.json`. It is therefore recommended to explicitly annotate the argument of event handlers. In addition, you may need to explicitly cast properties on `event`:
+
+```javascript
+function handleChange(event: Event) {
+console.log((event.target as HTMLInputElement).value)
+}
+```
+
+### 1.6 Typing Template Refs
+
+Template refs should be created with an explicit generic type argument and an initial value of null:
+
+```html
+<script setup lang="ts">
+  import { ref, onMounted } from 'vue'
+
+  const el = ref<HTMLInputElement | null>(null)
+
+  onMounted(() => {
+    el.value?.focus()
+  })
+</script>
+
+<template>
+  <input ref="el" />
+</template>
+```
+
+Note that for strict type safety, it is necessary to use optional chaining or type guards when accessing `el.value`. This is because the initial ref value is `null` until the component is mounted, and it can also be set to `null` if the referenced element is unmounted by `v-if`.
+
+### 1.7 Typing Component Template Refs
+
+Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a MyModal child component with a method that opens the modal:
+
+```html
+<!-- MyModal.vue -->
+<script setup lang="ts">
+  import { ref } from 'vue'
+
+  const isContentShown = ref(false)
+  const open = () => (isContentShown.value = true)
+
+  defineExpose({
+    open
+  })
+</script>
+```
+
+In order to get the instance type of MyModal, we need to first get its type via typeof, then use TypeScript's built-in InstanceType utility to extract its instance type:
+
+```html
+<!-- App.vue -->
+<script setup lang="ts">
+  import MyModal from './MyModal.vue'
+
+  const modal = ref<InstanceType<typeof MyModal> | null>(null)
+
+  const openModal = () => {
+    modal.value?.open()
+  }
+</script>
+```
+
+Note if you want to use this technique in TypeScript files instead of Vue SFCs, you need to enable Volar's Takeover Mode.
