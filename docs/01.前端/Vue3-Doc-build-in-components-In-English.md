@@ -1,3 +1,12 @@
+---
+title: Vue3-Doc-build-in-components-In-English
+date: 2022-07-16 10:34:47
+permalink: /pages/5cbea2/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 1. Transition
 
 ### 1.1 CSS Animations

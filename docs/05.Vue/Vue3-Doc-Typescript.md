@@ -1,3 +1,12 @@
+---
+title: Vue3-Doc-Typescript
+date: 2022-07-25 09:51:12
+permalink: /pages/a5a23c/
+categories:
+  - Vue
+tags:
+  - 
+---
 ## 1. TypeScript with Composition API
 
 ### 1.1 Typing Component Props

@@ -1,3 +1,12 @@
+---
+title: vue3常用自定义指令封装
+date: 2022-07-15 22:17:36
+permalink: /pages/126fae/
+categories:
+  - Vue
+tags:
+  - 
+---
 ## 1. tooltip
 
 基于 Element plus 的 tooltip 封装的 tooltip 指令。

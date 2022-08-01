@@ -1,3 +1,12 @@
+---
+title: Vue3-Doc-Reusability-In-English
+date: 2022-07-14 10:12:54
+permalink: /pages/c2200e/
+categories:
+  - 前端
+tags:
+  - 
+---
 > The way to learn something well is to read the official documentation
 
 ## 1. Composables

@@ -1,3 +1,12 @@
+---
+title: Vue3-Doc-Scaling-Up
+date: 2022-07-19 09:49:10
+permalink: /pages/d7bbab/
+categories:
+  - Vue
+tags:
+  - 
+---
 ## 1. Single-File Components
 
 Vue Single-File Components (a.k.a. `*.vue` files, abbreviated as SFC) is a special file format that allows us to encapsulate the template, logic, and styling of a Vue component in a single file.

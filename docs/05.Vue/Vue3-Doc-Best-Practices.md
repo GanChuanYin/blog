@@ -1,3 +1,12 @@
+---
+title: Vue3-Doc-Best-Practices
+date: 2022-07-21 10:05:34
+permalink: /pages/a0f7af/
+categories:
+  - Vue
+tags:
+  - 
+---
 ## 1. Production Deployment
 
 During development, Vue provides a number of features to improve the development experience:

@@ -1,3 +1,12 @@
+---
+title: Vue3-Doc-Advanced
+date: 2022-07-08 10:05:31
+permalink: /pages/5fe2ed/
+categories:
+  - Vue
+tags:
+  - 
+---
 > The way to learn something well is to read the official documentation
 
 ## 1.Components In-Depth

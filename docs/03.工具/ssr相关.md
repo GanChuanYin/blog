@@ -1,3 +1,12 @@
+---
+title: ssr相关
+date: 2022-07-14 10:23:55
+permalink: /pages/818d26/
+categories:
+  - 工具
+tags:
+  - 
+---
 ## PAC 模式 (Proxy Auto Config)
 
 Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能分流代理，其通过一个包含代理规则列表的 pac 文件，来控制哪些 IP、域名的流量走代理，哪些直连，以达到智能分流代理上网的目的。

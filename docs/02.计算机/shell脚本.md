@@ -1,3 +1,12 @@
+---
+title: shell脚本
+date: 2022-07-26 21:31:17
+permalink: /pages/08ca03/
+categories:
+  - 计算机
+tags:
+  - 
+---
 ## 根据端口获得进程号 并 kill 掉进程
 
 ```shell
