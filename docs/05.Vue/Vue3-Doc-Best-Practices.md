@@ -30,7 +30,7 @@ If using a custom setup, make sure that:
 
 ### 1.2 Tracking Runtime Errors
 
-The <font color=gree size=4>`app-level`</font> error handler can be used to report errors to tracking services:
+The <font color=#3498db size=4>`app-level`</font> error handler can be used to report errors to tracking services:
 
 ```javascript
 import { createApp } from 'vue'
@@ -46,9 +46,9 @@ app.config.errorHandler = (err, instance, info) => {
 
 First, let's discuss the two major aspects of web performance:
 
-- Page Load Performance: how fast the application <font color=gree size=4>`shows content and becomes interactive`</font> on the initial visit. This is usually measured using web vital metrics like Largest Contentful Paint (LCP) and First Input Delay.
+- Page Load Performance: how fast the application <font color=#3498db size=4>`shows content and becomes interactive`</font> on the initial visit. This is usually measured using web vital metrics like Largest Contentful Paint (LCP) and First Input Delay.
 
-- Update Performance: <font color=gree size=4>`how fast the application updates in response to user input`</font>. For example, how fast a list updates when the user types in a search box, or how fast the page switches when the user clicks a navigation link in a Single-Page Application (SPA).
+- Update Performance: <font color=#3498db size=4>`how fast the application updates in response to user input`</font>. For example, how fast a list updates when the user types in a search box, or how fast the page switches when the user clicks a navigation link in a Single-Page Application (SPA).
 
 ### 2.1 Page Load Optimizations
 
@@ -60,11 +60,11 @@ One of the most effective ways to improve page load performance is shipping smal
 
 1. Use a build step if possible.
 
-- Many of Vue's APIs are "tree-shakable" if bundled via a modern build tool. For example, if you don't use the built-in `<Transition>`component, it won't be included in the final production bundle. <font color=gree size=4>`Tree-shaking`</font> can also remove other unused modules in your source code.
+- Many of Vue's APIs are "tree-shakable" if bundled via a modern build tool. For example, if you don't use the built-in `<Transition>`component, it won't be included in the final production bundle. <font color=#3498db size=4>`Tree-shaking`</font> can also remove other unused modules in your source code.
 
-- When <font color=gree size=4>`using a build step, templates are pre-compiled so we don't need to ship the Vue compiler to the browser`</font>. This saves 14kb min+gzipped JavaScript and avoids the runtime compilation cost.
+- When <font color=#3498db size=4>`using a build step, templates are pre-compiled so we don't need to ship the Vue compiler to the browser`</font>. This saves 14kb min+gzipped JavaScript and avoids the runtime compilation cost.
 
-2. Be cautious of size when introducing new <font color=gree size=4>`dependencies`</font>! In real world applications, bloated bundles are most often a result of introducing heavy dependencies without realizing it.
+2. Be cautious of size when introducing new <font color=#3498db size=4>`dependencies`</font>! In real world applications, bloated bundles are most often a result of introducing heavy dependencies without realizing it.
 
 - If using a build step, prefer dependencies that offer `ES module` formats and are tree-shaking friendly. For example, prefer lodash-es over lodash.
 
@@ -144,7 +144,7 @@ Implementing list virtualization isn't easy, luckily there are existing communit
 
 Vue's reactivity system is deep by default. While this makes state management intuitive, it does create a certain level of overhead when the data size is large, because every property access triggers proxy traps that perform dependency tracking. This typically becomes noticeable when dealing with large arrays of deeply nested objects, where a single render needs to access 100,000+ properties, so it should only affect very specific use cases.
 
-Vue does provide an escape hatch to opt-out of deep reactivity by using`shallowRef()` and `shallowReactive()`. Shallow APIs create state that is reactive only at the <font color=gree size=4>`root level`</font>, and exposes all nested objects untouched. This keeps nested property access fast, with the trade-off being that we must now treat all nested objects as immutable, and updates can only be triggered by replacing the root state:
+Vue does provide an escape hatch to opt-out of deep reactivity by using`shallowRef()` and `shallowReactive()`. Shallow APIs create state that is reactive only at the <font color=#3498db size=4>`root level`</font>, and exposes all nested objects untouched. This keeps nested property access fast, with the trade-off being that we must now treat all nested objects as immutable, and updates can only be triggered by replacing the root state:
 
 ```typescript
 const shallowArray = shallowRef([
@@ -178,7 +178,7 @@ Note that reducing only a few instances won't have noticeable effect, so don't s
 
 ### 3.1 Rule No.1: Never Use Non-trusted Templates
 
-The most fundamental security rule when using Vue is never use <font color=gree size=4>`non-trusted`</font> content as your component template. Doing so is equivalent to allowing arbitrary JavaScript execution in your application - and worse, could lead to server breaches if the code is executed during server-side rendering. An example of such usage:
+The most fundamental security rule when using Vue is never use <font color=#3498db size=4>`non-trusted`</font> content as your component template. Doing so is equivalent to allowing arbitrary JavaScript execution in your application - and worse, could lead to server breaches if the code is executed during server-side rendering. An example of such usage:
 
 ```typescript
 Vue.createApp({
@@ -186,11 +186,11 @@ Vue.createApp({
 }).mount('#app')
 ```
 
-Vue templates are compiled into JavaScript, and <font color=gree size=4>`expressions inside templates will be executed as part of the rendering process`</font>. Although the expressions are evaluated against a specific rendering context
+Vue templates are compiled into JavaScript, and <font color=#3498db size=4>`expressions inside templates will be executed as part of the rendering process`</font>. Although the expressions are evaluated against a specific rendering context
 
 due to the complexity of potential global execution environments, it is impractical for a framework like Vue to completely shield you from potential malicious code execution without incurring unrealistic performance overhead.
 
-The most straightforward way to avoid this category of problems altogether is to <font color=gree size=4>`make sure the contents of your Vue templates are always trusted and entirely controlled by you.`</font>
+The most straightforward way to avoid this category of problems altogether is to <font color=#3498db size=4>`make sure the contents of your Vue templates are always trusted and entirely controlled by you.`</font>
 
 ### 3.2 What Vue Does to Protect You
 
@@ -310,7 +310,7 @@ You may be able to imagine how allowing user-provided content for a `<style>` el
 </style>
 ```
 
-To keep your users fully safe from click jacking, we recommend <font color=gree size=4>`only allowing full control over CSS inside a sandboxed iframe`</font>. Alternatively, when providing user control through a style binding, we recommend using its object syntax and <font color=gree size=4>`only allowing users to provide values for specific properties it's safe for them to control`</font>, like this:
+To keep your users fully safe from click jacking, we recommend <font color=#3498db size=4>`only allowing full control over CSS inside a sandboxed iframe`</font>. Alternatively, when providing user control through a style binding, we recommend using its object syntax and <font color=#3498db size=4>`only allowing users to provide values for specific properties it's safe for them to control`</font>, like this:
 
 ```html
 <a

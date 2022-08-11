@@ -30,7 +30,7 @@ SFC is a defining feature of Vue as a framework, and is the recommended approach
 - Static Site Generation (SSG)
 - Any non-trivial frontend where a build step can be justified for better development experience (DX).
 
-Vue SFC is a framework-specific file format and must be pre-compiled by <font color=gree size=4>`@vue/compiler-sfc`</font> into standard JavaScript and CSS. A compiled SFC is a standard JavaScript (ES) module - which means with proper build setup you can import an SFC like a module:
+Vue SFC is a framework-specific file format and must be pre-compiled by <font color=#3498db size=4>`@vue/compiler-sfc`</font> into standard JavaScript and CSS. A compiled SFC is a standard JavaScript (ES) module - which means with proper build setup you can import an SFC like a module:
 
 ```javascript
 import MyComponent from './MyComponent.vue'
@@ -42,13 +42,13 @@ export default {
 }
 ```
 
-<font color=gree size=4>`<style>tags inside SFCs are typically injected as native <style> tags during development to support hot updates. For production they can be extracted and merged into a single CSS file.`</font>
+<font color=#3498db size=4>`<style>tags inside SFCs are typically injected as native <style> tags during development to support hot updates. For production they can be extracted and merged into a single CSS file.`</font>
 
 ### 1.3 What About Separation of Concerns?
 
 Some users coming from a traditional web development background may have the concern that SFCs are mixing different concerns in the same place - which HTML/CSS/JS were supposed to separate!
 
-To answer this question, it is important for us to agree that <font color=gree size=4>`separation of concerns is not equal to the separation of file types`</font> . The ultimate goal of engineering principles is to improve the `maintainability` of codebases. Separation of concerns, when applied dogmatically as separation of file types, does not help us reach that goal in the context of increasingly complex frontend applications.
+To answer this question, it is important for us to agree that <font color=#3498db size=4>`separation of concerns is not equal to the separation of file types`</font> . The ultimate goal of engineering principles is to improve the `maintainability` of codebases. Separation of concerns, when applied dogmatically as separation of file types, does not help us reach that goal in the context of increasingly complex frontend applications.
 
 In modern UI development, we have found that instead of dividing the codebase into three huge layers that interweave with one another, it makes much more sense to divide them into loosely-coupled components and compose them. Inside a component, its template, logic, and styles are inherently coupled, and colocating them actually makes the component more cohesive and maintainable.
 
@@ -84,7 +84,7 @@ Users previously using Vue CLI may be used to having linters configured via webp
 
 Simple Routing from Scratch
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so with Dynamic Components and update the current component state by listening to browser <font color=gree size=4>`hashchange`</font> events or using the History API.
+If you only need very simple routing and do not wish to involve a full-featured router library, you can do so with Dynamic Components and update the current component state by listening to browser <font color=#3498db size=4>`hashchange`</font> events or using the History API.
 
 Here's a bare-bone example:
 
@@ -151,7 +151,7 @@ This is a simple representation of the concept of "one-way data flow":
 
 ![](https://qiniu.espe.work/blog/20220720101029.png)
 
-However, the simplicity starts to break down when we have <font color=gree size=4>`multiple components that share a common state:`</font>
+However, the simplicity starts to break down when we have <font color=#3498db size=4>`multiple components that share a common state:`</font>
 
 1. Multiple views may depend on the same piece of state.
 2. Actions from different views may need to mutate the same piece of state.
@@ -164,7 +164,7 @@ A simpler and more straightforward solution is to extract the shared state out o
 
 ### 4.2 Simple State Management with Reactivity API
 
-If you have a piece of state that should be shared by multiple instances, you can use <font color=gree size=4>`reactive()`</font> to create a reactive object, and then import it from multiple components:
+If you have a piece of state that should be shared by multiple instances, you can use <font color=#3498db size=4>`reactive()`</font> to create a reactive object, and then import it from multiple components:
 
 ```javascript
 // store.js
@@ -202,7 +202,7 @@ However, this also means any component importing store can mutate it however the
 </template>
 ```
 
-While this works in simple cases, global state that can be arbitrarily mutated by any component is not going to be very maintainable in the long run. To ensure <font color=gree size=4>`the state-mutating logic is centralized`</font> like the state itself, it is recommended <font color=gree size=4>`to define methods on the store with names that express the intention of the actions:`</font>
+While this works in simple cases, global state that can be arbitrarily mutated by any component is not going to be very maintainable in the long run. To ensure <font color=#3498db size=4>`the state-mutating logic is centralized`</font> like the state itself, it is recommended <font color=#3498db size=4>`to define methods on the store with names that express the intention of the actions:`</font>
 
 > Note the click handler uses store.increment() with the parenthesis - this is necessary to call the method with the proper this context since it's not a component method.
 

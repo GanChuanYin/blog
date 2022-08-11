@@ -39,7 +39,7 @@ However, it is usually more straightforward to define props with pure types via 
 </script>
 ```
 
-This is called "<font color=gree size=4>`type-based declaration`</font>". The compiler will try to do its best to `infer` the equivalent runtime options based on the type argument. In this case, our second example compiles into the exact same runtime options as the first example.
+This is called "<font color=#3498db size=4>`type-based declaration`</font>". The compiler will try to do its best to `infer` the equivalent runtime options based on the type argument. In this case, our second example compiles into the exact same runtime options as the first example.
 
 You can use either type-based declaration OR runtime declaration, but you cannot use both at the same time.
 

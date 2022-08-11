@@ -84,7 +84,7 @@ And this is how it can be used in components:
 
 As we can see, the core logic remains exactly the same - all we had to do was move it into an external function and return the state that should be exposed. Same as inside a component, you can use the full range of Composition API functions in composables. The same useMouse() functionality can now be used in any component.
 
-<font color=gree size=4>`The cooler part about composables though, is that you can also nest them: one composable function can call one or more other composable functions`</font>. This enables us to compose complex logic using small, isolated units, similar to how we compose an entire application using components. In fact, this is why we decided to call the collection of APIs that make this pattern possible Composition API.
+<font color=#3498db size=4>`The cooler part about composables though, is that you can also nest them: one composable function can call one or more other composable functions`</font>. This enables us to compose complex logic using small, isolated units, similar to how we compose an entire application using components. In fact, this is why we decided to call the collection of APIs that make this pattern possible Composition API.
 
 As an example, we can extract the logic of adding and cleaning up a DOM event listener into its own composable:
 
@@ -283,7 +283,7 @@ TIP
 
 ### 1.5 Extracting Composables for Code Organization
 
-Composables can be extracted not only for reuse, but also for <font color=gree size=4>`code organization`</font>. As the complexity of your components grow, you may end up with components that are too large to navigate and reason about. Composition API gives you the full flexibility to organize your component code into smaller functions based on logical concerns:
+Composables can be extracted not only for reuse, but also for <font color=#3498db size=4>`code organization`</font>. As the complexity of your components grow, you may end up with components that are too large to navigate and reason about. Composition API gives you the full flexibility to organize your component code into smaller functions based on logical concerns:
 
 ```html
 <script setup>
@@ -325,7 +325,7 @@ The main advantage of composables over renderless components is that composables
 
 In addition to the default set of directives shipped in core (like v-model or v-show), Vue also allows you to register your own custom directives.
 
-We have introduced two forms of code reuse in Vue: components and composables. Components are the main building blocks, while <font color=gree size=4>`composables are focused on reusing stateful logic`</font> . Custom directives, on the other hand, are <font color=gree size=4>`mainly intended for reusing logic that involves low-level DOM access on plain elements.`</font>
+We have introduced two forms of code reuse in Vue: components and composables. Components are the main building blocks, while <font color=#3498db size=4>`composables are focused on reusing stateful logic`</font> . Custom directives, on the other hand, are <font color=#3498db size=4>`mainly intended for reusing logic that involves low-level DOM access on plain elements.`</font>
 
 A custom directive is defined as an object containing lifecycle hooks similar to those of a component. The hooks receive the element the directive is bound to. Here is an example of a directive that focuses an input when the element is inserted into the DOM by Vue:
 
@@ -488,7 +488,7 @@ Note that components can potentially have more than one root node. `When applied
 
 ### 3.1 Introduction
 
-Plugins are self-contained code that usually add <font color=gree size=4>`app-level`</font> functionality to Vue. This is how we install a plugin:
+Plugins are self-contained code that usually add <font color=#3498db size=4>`app-level`</font> functionality to Vue. This is how we install a plugin:
 
 ```typescript
 import { createApp } from 'vue'

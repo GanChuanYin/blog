@@ -17,7 +17,7 @@ Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能
 
 ### 常用规则说明
 
-<font color=gree size=4>`* 标记`</font>
+<font color=#3498db size=4>`* 标记`</font>
 
 通配符。\*可以表示任何字符串，任何满足条件的都会走代理。 如：
 
@@ -34,7 +34,7 @@ Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能
 
 等，都会走代理。
 
-<font color=gree size=4>`@@ 标记`</font>
+<font color=#3498db size=4>`@@ 标记`</font>
 
 例外规则，任何满足 @@后面规则的地址，都不会走代理。 如：
 
@@ -46,7 +46,7 @@ Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能
 - https://image.example.com/abcd
   等，都不会走代理。
 
-<font color=gree size=4>`|| 标记`</font>
+<font color=#3498db size=4>`|| 标记`</font>
 
 只匹配域名的结尾。 如：
 
@@ -61,7 +61,7 @@ Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能
 
 等，都会走代理。
 
-<font color=gree size=4>`| 标记`</font>
+<font color=#3498db size=4>`| 标记`</font>
 
 匹配地址的开头和结尾。 如：
 
@@ -72,7 +72,7 @@ Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能
 example.com|
 表示以 example.com 结尾的地址会走代理。
 
-<font color=gree size=4>`! 标记`</font>
+<font color=#3498db size=4>`! 标记`</font>
 
 注释。 如：
 

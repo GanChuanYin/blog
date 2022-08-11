@@ -117,7 +117,7 @@ We can even add a transition delay to the nested element on enter, which creates
 }
 ```
 
-However, this creates a small issue. By default, the `<Transition>` component attempts to automatically figure out when the transition has finished by listening to the first transitionend or animationend event on the root transition element. <font color=gree size=4>`With a nested transition, the desired behavior should be waiting until the transitions of all inner elements have finished.`</font>
+However, this creates a small issue. By default, the `<Transition>` component attempts to automatically figure out when the transition has finished by listening to the first transitionend or animationend event on the root transition element. <font color=#3498db size=4>`With a nested transition, the desired behavior should be waiting until the transitions of all inner elements have finished.`</font>
 
 In such cases you can specify an `explicit` transition duration (in milliseconds) using the duration prop on the`<transition>`component. The total duration should match the delay plus transition duration of the inner element:
 
@@ -135,11 +135,11 @@ If necessary, you can also specify separate values for enter and leave durations
 
 ### 1.5 Performance Considerations
 
-You may notice that the animations shown above are mostly using properties like `transform` and `opacity`. These properties are <font color=gree size=4>`efficient`</font> to animate because:
+You may notice that the animations shown above are mostly using properties like `transform` and `opacity`. These properties are <font color=#3498db size=4>`efficient`</font> to animate because:
 
 They do not affect the document layout during the animation, so they do not trigger expensive CSS layout calculation on every animation frame.
 
-Most modern browsers can leverage GPU hardware acceleration when animating <font color=gree size=4>`transform`</font>.
+Most modern browsers can leverage GPU hardware acceleration when animating <font color=#3498db size=4>`transform`</font>.
 
 In comparison, properties like `height` or `margin` will trigger CSS layout, so they are much more expensive to animate, and should be used with caution. We can check resources like CSS-Triggers to see which properties will trigger layout if we animate them.
 
@@ -310,7 +310,7 @@ Here's the previous demo with mode="out-in":
 
 This can be useful when you've defined CSS transitions / animations using Vue's transition class conventions and want to switch between them.
 
-You can also apply different behavior in JavaScript transition hooks based on the current state of your component. Finally, <font color=gree size=4>`the ultimate way of creating dynamic transitions is through reusable transition components that accept props to change the nature of the transition(s) to be used`</font>. It may sound cheesy, but the only limit really is your imagination.
+You can also apply different behavior in JavaScript transition hooks based on the current state of your component. Finally, <font color=#3498db size=4>`the ultimate way of creating dynamic transitions is through reusable transition components that accept props to change the nature of the transition(s) to be used`</font>. It may sound cheesy, but the only limit really is your imagination.
 
 ## 2.TransitionGroup
 
@@ -438,7 +438,7 @@ The match is checked against the component's `name` option, so components that n
 
 ### 3.2 Max Cached Instances
 
-We can limit the maximum number of component instances that can be cached via the max prop. When max is specified, `<KeepAlive>` behaves like an <font color=gree size=4>`LRU cache`</font> : if the number of cached instances is about to exceed the specified max count, the least recently accessed cached instance will be destroyed to make room for the new one.
+We can limit the maximum number of component instances that can be cached via the max prop. When max is specified, `<KeepAlive>` behaves like an <font color=#3498db size=4>`LRU cache`</font> : if the number of cached instances is about to exceed the specified max count, the least recently accessed cached instance will be destroyed to make room for the new one.
 
 ```html
 <KeepAlive :max="10">
@@ -450,7 +450,7 @@ We can limit the maximum number of component instances that can be cached via th
 
 When a component instance is removed from the DOM but is part of a component tree cached by `<KeepAlive>`, it goes into a deactivated state instead of being unmounted. When a component instance is inserted into the DOM as part of a cached tree, it is activated.
 
-A kept-alive component can register lifecycle hooks for these two states using <font color=gree size=4>`onActivated()`</font> and <font color=gree size=4>`onDeactivated()`</font>:
+A kept-alive component can register lifecycle hooks for these two states using <font color=#3498db size=4>`onActivated()`</font> and <font color=#3498db size=4>`onDeactivated()`</font>:
 
 ```html
 <script setup>
@@ -476,7 +476,7 @@ Note that:
 
 ## 4. Teleport
 
-`<Teleport>` is a built-in component that allows us to "teleport" a part of a component's template into a DOM node that exists <font color=gree size=4>`outside`</font> the DOM hierarchy of that component.
+`<Teleport>` is a built-in component that allows us to "teleport" a part of a component's template into a DOM node that exists <font color=#3498db size=4>`outside`</font> the DOM hierarchy of that component.
 
 ```html
 <button @click="open = true">Open Modal</button>
@@ -499,7 +499,7 @@ You can click the button below and inspect the`<body>` tag via your browser's de
 
 `<Teleport>`only alters the rendered DOM structure - it does not affect the logical hierarchy of the components. That is to say, if `<Teleport>` contains a component, that component will remain a logical child of the parent component containing the `<Teleport>`. Props passing and event emitting will continue to work the same way.
 
-This also means that injections from a parent component work as expected, and that <font color=gree size=4>`the child component will be nested below the parent component in the Vue Devtools`</font> , instead of being placed where the actual content moved to.
+This also means that injections from a parent component work as expected, and that <font color=#3498db size=4>`the child component will be nested below the parent component in the Vue Devtools`</font> , instead of being placed where the actual content moved to.
 
 ### 4.2 Disabling Teleport
 
@@ -537,7 +537,7 @@ The rendered result would be:
 
 ## 5. Suspense
 
-`<Suspense>` is a built-in component for orchestrating async dependencies in a component tree. It can render a loading state while waiting for <font color=gree size=4>`multiple nested async dependencies down the component tree to be resolved`</font> .
+`<Suspense>` is a built-in component for orchestrating async dependencies in a component tree. It can render a loading state while waiting for <font color=#3498db size=4>`multiple nested async dependencies down the component tree to be resolved`</font> .
 
 ### 5.1 Async Dependencies
 
@@ -555,7 +555,7 @@ To explain the problem `<Suspense>` is trying to solve and how it interacts with
 
 In the component tree there are multiple nested components whose rendering depends on some async resource to be resolved first. Without `<Suspense>`, each of them will need to handle its own loading / error and loaded states. In the worst case scenario, we may see three loading spinners on the page, with content displayed at different times.
 
-The `<Suspense>` component gives us the ability to display top-level loading / error states while we <font color=gree size=4>`wait on these nested async dependencies to be resolved`</font> .
+The `<Suspense>` component gives us the ability to display top-level loading / error states while we <font color=#3498db size=4>`wait on these nested async dependencies to be resolved`</font> .
 
 There are two types of async dependencies that `<Suspense>` can wait on:
 

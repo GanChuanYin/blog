@@ -5,8 +5,9 @@ permalink: /pages/49b886/
 categories:
   - Vue
 tags:
-  - 
+  -
 ---
+
 ## 1. Composition API FAQ
 
 ### 1.1 Why Composition API?
@@ -34,7 +35,7 @@ The original version of the component was written in Options API. If we give eac
 
 ![](https://qiniu.espe.work/blog/20220729155551.png)
 
-Notice how code dealing with the same logical concern is forced to be <font color=gree size=4>`split`</font> under different options, located in different parts of the file. In a component that is several hundred lines long, <font color=gree size=4>`understanding and navigating a single logical concern requires constantly scrolling up and down the file`</font>, making it much more difficult than it should be. In addition, if we ever intend to extract a logical concern into a reusable utility, it takes quite a bit of work to find and extract the right pieces of code from different parts of the file.
+Notice how code dealing with the same logical concern is forced to be <font color=#3498db size=4>`split`</font> under different options, located in different parts of the file. In a component that is several hundred lines long, <font color=#3498db size=4>`understanding and navigating a single logical concern requires constantly scrolling up and down the file`</font>, making it much more difficult than it should be. In addition, if we ever intend to extract a logical concern into a reusable utility, it takes quite a bit of work to find and extract the right pieces of code from different parts of the file.
 
 Here's the same component, before and after the refactor into `Composition API`:
 
@@ -52,7 +53,7 @@ Code written in Composition API and `<script setup>` is also more efficient and 
 
 This is because the template in a`<script setup>` component is compiled as a function inlined in the same scope of the `<script setup>` code.
 
-Unlike property access from this, the compiled template code can directly access variables declared inside `<script setup>`, without an instance proxy in between. This also leads to better minification because <font color=gree size=4>`all the variable names can be safely shortened`</font>.
+Unlike property access from this, the compiled template code can directly access variables declared inside `<script setup>`, without an instance proxy in between. This also leads to better minification because <font color=#3498db size=4>`all the variable names can be safely shortened`</font>.
 
 ### 1.2 Relationship with Options API
 
@@ -60,7 +61,7 @@ Unlike property access from this, the compiled template code can directly access
 
 Some users moving from Options API found their Composition API code less organized, and concluded that Composition API is "worse" in terms of code organization. We recommend users with such opinions to look at that problem from a different perspective.
 
-It is true that Composition API no longer provides the "guard rails" that guide you to put your code into respective buckets. In return, you get to author component code like how you would write normal JavaScript. This means you can and should apply any code organization best practices to your Composition API code as you would when writing normal JavaScript. <font color=gree size=4>`If you can write well-organized JavaScript, you should also be able to write well-organized Composition API code.`</font>
+It is true that Composition API no longer provides the "guard rails" that guide you to put your code into respective buckets. In return, you get to author component code like how you would write normal JavaScript. This means you can and should apply any code organization best practices to your Composition API code as you would when writing normal JavaScript. <font color=#3498db size=4>`If you can write well-organized JavaScript, you should also be able to write well-organized Composition API code.`</font>
 
 Options API does allow you to `"think less"` when writing component code, which is why many users love it. However, in reducing the mental overhead, it also locks you into the prescribed code organization pattern with no escape hatch, which can make it difficult to `refactor` or improve code quality in larger scale projects. In this regard, Composition API provides better long term scalability.
 
@@ -78,7 +79,7 @@ However, we only recommend doing so if you have an existing Options API codebase
 
 ### 2.1 How Reactivity Works in Vue
 
-There are two ways of intercepting property access in JavaScript: <font color=gree size=4>`getter/setters and Proxies.`</font> Vue 2 used `getter/setters` exclusively due to browser support limitations. <font color=gree size=4>`In Vue 3, Proxies are used for reactive objects and getter/setters are used for refs`</font>. Here's some pseudo-code that illustrates how they work:
+There are two ways of intercepting property access in JavaScript: <font color=#3498db size=4>`getter/setters and Proxies.`</font> Vue 2 used `getter/setters` exclusively due to browser support limitations. <font color=#3498db size=4>`In Vue 3, Proxies are used for reactive objects and getter/setters are used for refs`</font>. Here's some pseudo-code that illustrates how they work:
 
 ```javascript
 function reactive(obj) {
@@ -156,7 +157,7 @@ function whenDepsChange(update) {
 
 It wraps the raw `update` function in an effect that sets itself as the current active effect before running the actual update. This enables `track()` calls during the update to locate the current active effect.
 
-At this point, we have created an effect that automatically tracks its dependencies, and re-runs whenever a dependency changes. We call this a <font color=gree size=4>`Reactive Effect`</font>.
+At this point, we have created an effect that automatically tracks its dependencies, and re-runs whenever a dependency changes. We call this a <font color=#3498db size=4>`Reactive Effect`</font>.
 
 Vue provides an API that allows you to create reactive effects: `watchEffect()`. In fact, you may have noticed that it works pretty similarly to the magical whenDepsChange() in the example. We can now rework the original example using actual Vue APIs:
 
@@ -211,7 +212,7 @@ In fact, this is pretty close to how a Vue component keeps the state and the DOM
 
 Vue's reactivity system is primarily runtime-based: the tracking and triggering are all performed while the code is running directly in the browser. The pros of runtime reactivity is that it can work without a build step, and there are fewer edge cases. On the other hand, this makes it constrained by `the syntax limitations of JavaScript`.
 
-We have already encountered a limitation in the previous example: <font color=gree size=4>`JavaScript does not provide a way for us to intercept the reading and writing of local variables, so we have to always access reactive state as object properties, using either reactive objects or refs.`</font>
+We have already encountered a limitation in the previous example: <font color=#3498db size=4>`JavaScript does not provide a way for us to intercept the reading and writing of local variables, so we have to always access reactive state as object properties, using either reactive objects or refs.`</font>
 
 We have been experimenting with the Reactivity Transform feature to reduce the code verbosity:
 
@@ -230,7 +231,7 @@ This snippet compiles into exactly what we'd have written without the transform,
 
 ### 2.3 Reactivity Debugging
 
-It's great that Vue's reactivity system automatically tracks dependencies, but in some cases we may want to figure out exactly <font color=gree size=4>`what is being tracked, or what is causing a component to re-render`</font>.
+It's great that Vue's reactivity system automatically tracks dependencies, but in some cases we may want to figure out exactly <font color=#3498db size=4>`what is being tracked, or what is causing a component to re-render`</font>.
 
 #### 2.3.1 Component Debugging Hooks
 
@@ -322,7 +323,7 @@ watchEffect(callback, {
 
 Vue's reactivity system works by deeply converting plain JavaScript objects into reactive proxies. The deep conversion can be unnecessary or sometimes unwanted when integrating with external state management systems (e.g. if an external solution also uses Proxies).
 
-The general idea of integrating Vue's reactivity system with an external state management solution is to hold the external state in a `shallowRef`. <font color=gree size=4>`A shallow ref is only reactive when its`.value`property is accessed`</font> - the inner value is left intact. When the external state changes, replace the ref value to trigger updates.
+The general idea of integrating Vue's reactivity system with an external state management solution is to hold the external state in a `shallowRef`. <font color=#3498db size=4>`A shallow ref is only reactive when its`.value`property is accessed`</font> - the inner value is left intact. When the external state changes, replace the ref value to trigger updates.
 
 #### 2.4.1 Immutable Data
 
@@ -406,7 +407,7 @@ At the high level, this is what happens when a Vue component is mounted:
 
 ### 3.2 Templates vs. Render Functions
 
-Vue templates are compiled into virtual DOM render functions. Vue also provides APIs that allow us to skip the template compilation step and directly author render functions. <font color=gree size=4>`Render functions are more flexible than templates when dealing with highly dynamic logic,`</font> because you can work with vnodes using the full power of JavaScript.
+Vue templates are compiled into virtual DOM render functions. Vue also provides APIs that allow us to skip the template compilation step and directly author render functions. <font color=#3498db size=4>`Render functions are more flexible than templates when dealing with highly dynamic logic,`</font> because you can work with vnodes using the full power of JavaScript.
 
 So why does Vue recommend templates by default? There are a number of reasons:
 
@@ -575,7 +576,7 @@ A child block is tracked inside the parent block's array of dynamic descendants.
 
 ## 4. Render Functions & JSX
 
-Vue recommends using templates to build applications in the vast majority of cases. However, <font color=gree size=4>`there are situations where we need the full programmatic power of JavaScript`</font>. That's where we can use the render function.
+Vue recommends using templates to build applications in the vast majority of cases. However, <font color=#3498db size=4>`there are situations where we need the full programmatic power of JavaScript`</font>. That's where we can use the render function.
 
 ### 4.1 Basic Usage
 
@@ -1129,7 +1130,7 @@ However, there could be rare cases where the data must be passed as a DOM proper
 
 #### 5.1.3 Building Custom Elements with Vue
 
-The primary benefit of custom elements is that <font color=gree size=4>`they can be used with any framework, or even without a framework. This makes them ideal for distributing components where the end consumer may not be using the same frontend stack, or when you want to insulate the end application from the implementation details of the components it uses.`</font>
+The primary benefit of custom elements is that <font color=#3498db size=4>`they can be used with any framework, or even without a framework. This makes them ideal for distributing components where the end consumer may not be using the same frontend stack, or when you want to insulate the end application from the implementation details of the components it uses.`</font>
 
 defineCustomElement
 
@@ -1286,3 +1287,7 @@ Type a number: <input v-model.number="number" />
 ```
 
 ![](https://qiniu.espe.work/blog/Aug-01-2022-10-43-32.gif)
+
+## 7. Reactivity Transform
+
+todo.....
