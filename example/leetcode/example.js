@@ -1,70 +1,31 @@
 /**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
+ * @param {string[]} strs
+ * @return {string}
  */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-var addTwoNumbers = function(l1, l2) {
-  if (!l1 && !l2) return null
-  const arr1 = []
-  const arr2 = []
-  while (l1) {
-    arr1.push(l1.val)
-    l1 = l1.next
-  }
-  while (l2) {
-    arr2.push(l2.val)
-    l2 = l2.next
-  }
+var longestCommonPrefix = function(strs) {
+  if (strs.length === 1) return strs[0]
 
-  const res = []
-  let = carryBit = 0
-
-  while (arr1.length && arr2.length) {
-    let num = arr1.shift() + arr2.shift() + carryBit
-    carryBit = 0
-    if (num > 9) {
-      carryBit = 1
-      num -= 10
+  const compare = (arr1, arr2) => {
+    let res = []
+    while (arr1.length && arr2.length) {
+      let str1 = arr1.shift()
+      let str2 = arr2.shift()
+      if (str1 === str2) {
+        res.push(str1)
+      } else {
+        return res
+      }
     }
-    res.push(num)
+    return res
   }
 
-  while (arr1.length) {
-    let num = arr1.shift() + carryBit
-    carryBit = 0
-    if (num > 9) {
-      carryBit = 1
-      num -= 10
-    }
-    res.push(num)
+  let res = strs[0].split('')
+  for (let index = 1; index < strs.length; index++) {
+    let itemArr = strs[index].split('')
+    res = compare(res, itemArr)
   }
 
-  while (arr2.length) {
-    let num = arr2.shift() + carryBit
-    carryBit = 0
-    if (num > 9) {
-      carryBit = 1
-      num -= 10
-    }
-    res.push(num)
-  }
-
-  if(carryBit) {
-    res.push(1)
-  }
-
-  const root = new ListNode(res[0])
-  let current = root
-  for (let index = 1; index < res.length; index++) {
-    current.next = new ListNode(res[index])
-    current = current.next
-  }
-  return root
+  return res.length ? res.join('') : ''
 }
+
+console.log(longestCommonPrefix(['flower']))

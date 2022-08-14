@@ -548,4 +548,105 @@ var mergeTrees = function(root1, root2) {
 }
 ```
 
+## 回文数
 
+![](https://qiniu.espe.work/blog/20220813222006.png)
+
+数字转字符串数组
+然 pop 尾 shift 头 比较 如果不相同就 return false
+如果直到数组长度小于 2 证明符合 return true
+
+```javascript
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+  if (x < 0) return false
+  if (x < 10) return true
+  let arr = x.toString().split('')
+  let flag = true
+  while (arr.length > 1 && flag) {
+    flag = arr.pop() === arr.shift()
+  }
+  return flag
+}
+```
+
+## 罗马数字转整数
+
+![](https://qiniu.espe.work/blog/20220814105906.png)
+![](https://qiniu.espe.work/blog/20220814105946.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+  const getStand = (sign, lastSign) => {
+    switch (sign) {
+      case 'I':
+        return lastSign === 'V' || lastSign === 'X' ? -1 : 1
+      case 'V':
+        return 5
+      case 'X':
+        return lastSign === 'L' || lastSign === 'C' ? -10 : 10
+      case 'L':
+        return 50
+      case 'C':
+        return lastSign === 'D' || lastSign === 'M' ? -100 : 100
+      case 'D':
+        return 500
+      case 'M':
+        return 1000
+    }
+  }
+
+  let arr = s.split('')
+  let sign = ''
+  let num = 0
+  while (arr.length > 0) {
+    let l = arr.pop()
+    num += getStand(l, sign)
+    sign = l
+  }
+  return num
+}
+```
+
+## 最长公共前缀
+
+![](https://qiniu.espe.work/blog/20220814114034.png)
+
+```javascript
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+  if (strs.length === 1) return strs[0]
+
+  const compare = (arr1, arr2) => {
+    let res = []
+    while (arr1.length && arr2.length) {
+      let str1 = arr1.shift()
+      let str2 = arr2.shift()
+      if (str1 === str2) {
+        res.push(str1)
+      } else {
+        return res
+      }
+    }
+    return res
+  }
+
+  let res = strs[0].split('')
+  for (let index = 1; index < strs.length; index++) {
+    let itemArr = strs[index].split('')
+    res = compare(res, itemArr)
+  }
+
+  return res.length ? res.join('') : ''
+}
+```
