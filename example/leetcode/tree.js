@@ -64,28 +64,69 @@ var createTree = function(nums) {
   return root
 }
 
-let root = createTree([1, 2, 3, 4, 5])
+let root = createTree([3, 1, 4, null, 2])
 
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
  * }
  */
+
 /**
+ * Encodes a tree to a single string.
+ *
  * @param {TreeNode} root
- * @return {number}
+ * @return {string}
  */
-var sumOfLeftLeaves = function(root) {
-  let count = 0
-  if (root.left) {
-    if (!root.left.left && !root.left.right) count += root.left.val
-    count += sumOfLeftLeaves(root.left)
-  }
-  if (root.right) count += sumOfLeftLeaves(root.right)
-  return count
+var serialize = function(root) {
+  let ans = handleSerialize(root)
+  return JSON.stringify(ans)
 }
 
-console.log(sumOfLeftLeaves(root))
+var handleSerialize = function(root) {
+  if (!root) return [null]
+  if (!root.left && !root.right) {
+    return [root.val]
+  }
+  return [
+    ...handleSerialize(root.left),
+    root.val,
+    ...handleSerialize(root.right)
+  ]
+}
+
+/**
+ * Decodes your encoded data to tree.
+ *
+ * @param {string} data
+ * @return {TreeNode}
+ */
+var deserialize = function(data) {
+  let list = JSON.parse(data)
+  console.log(list)
+  let ans = handleDeserialize(list)
+  console.log(ans)
+  return ans
+}
+
+var handleDeserialize = function(list) {
+  if (list.length === 0) return null
+  if (list.length === 1) {
+    if (list[0] === null) return null
+    return new TreeNode(list[0])
+  }
+  let middle = list.length >> 1
+  let root = new TreeNode(list[middle])
+  root.left = handleDeserialize(list.slice(0, middle))
+  root.right = handleDeserialize(list.slice(middle + 1))
+  return root
+}
+
+deserialize(serialize(root))
+
+/**
+ * Your functions will be called as such:
+ * deserialize(serialize(root));
+ */

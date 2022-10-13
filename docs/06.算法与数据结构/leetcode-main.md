@@ -1046,6 +1046,8 @@ var combinationSum4 = function(nums, target) {
 
 ![](https://qiniu.espe.work/blog/20221005212826.png)
 
+![](https://qiniu.espe.work/blog/20221005214808.png)
+
 ```javascript
 /**
  * @param {string[]} words
@@ -1110,5 +1112,443 @@ function isPalindrom(str) {
     j--
   }
   return true
+}
+```
+
+## 386. 字典序排数
+
+![](https://qiniu.espe.work/blog/20221006190553.png)
+
+```javascript
+var lexicalOrder = function(n) {
+  const ret = []
+  let number = 1
+  for (let i = 0; i < n; i++) {
+    ret.push(number)
+    if (number * 10 <= n) {
+      number *= 10
+    } else {
+      while (number % 10 === 9 || number + 1 > n) {
+        number = Math.floor(number / 10)
+      }
+      number++
+    }
+  }
+  return ret
+}
+```
+
+## 390. 消除游戏
+
+![](https://qiniu.espe.work/blog/20221008174547.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var lastRemaining = function(n) {
+  let a1 = 1
+  let k = 0,
+    cnt = n,
+    step = 1
+  while (cnt > 1) {
+    if (k % 2 === 0) {
+      // 正向
+      a1 = a1 + step
+    } else {
+      // 反向
+      a1 = cnt % 2 === 0 ? a1 : a1 + step
+    }
+    k++
+    cnt = cnt >> 1
+    step = step << 1
+  }
+  return a1
+}
+```
+
+## 400. 第 N 位数字
+
+![](https://qiniu.espe.work/blog/20221008182623.png)
+
+```javascript
+var findNthDigit = function(n) {
+  let d = 1
+  let count = 9
+  while (n > d * count) {
+    n -= d * count
+    d++
+    count *= 10
+  }
+  const index = n - 1
+  const start = Math.floor(Math.pow(10, d - 1))
+  const num = start + Math.floor(index / d)
+  const digitIndex = index % d
+  const digit =
+    Math.floor(num / Math.floor(Math.pow(10, d - digitIndex - 1))) % 10
+  return digit
+}
+```
+
+## 410. 分割数组的最大值
+
+![](https://qiniu.espe.work/blog/20221009215125.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} m
+ * @return {number}
+ */
+var splitArray = function(nums, m) {
+  let len = nums.length,
+    sumList = Array(len + 1).fill(0),
+    dp = Array.from({ length: len + 1 }, () =>
+      Array(m + 1).fill(Number.MAX_VALUE)
+    )
+
+  // 逐位增加，反面后面根据区间求区间和
+  for (let i = 0; i < len; i++) {
+    sumList[i + 1] = sumList[i] + nums[i]
+  }
+
+  // 默认值
+  dp[0][0] = 0
+
+  for (let i = 1; i <= len; i++) {
+    for (let j = 1; j <= Math.min(m, i); j++) {
+      // 前i个数分成j段
+      for (let x = j - 1; x < i; x++) {
+        // x最后一段的起点
+        // perv本轮分割完成 分段中最大的和
+        let prev = Math.max(dp[x][j - 1], sumList[i] - sumList[x])
+        // 该分割情况下最大分段和的最小值
+        dp[i][j] = Math.min(prev, dp[i][j])
+      }
+    }
+  }
+
+  return dp[len][m]
+}
+```
+
+## 407. 接雨水 II
+
+![](https://qiniu.espe.work/blog/20221010170859.png)
+
+![](https://qiniu.espe.work/blog/20221010170905.png)
+
+```javascript
+/**
+ * @param {number[][]} heightMap
+ * @return {number}
+ */
+var trapRainWater = function(heightMap) {
+  let m = heightMap.length,
+    n = heightMap[0].length
+
+  if (m <= 2 || n <= 2) return 0
+
+  // mask表示已经遍历过的位置， smallHeap表示遍历到的但还未扩展探索其周围的元素
+  // smallHeap是一个小堆，其中每个元素都是一个数组，即[元素值, i, j]， rainSum表示统计出的雨水。
+  // 这里还是广度优先遍历(BFS)，smallHeap相当于传统BFS算法中的队列。
+  let mask = Array(m),
+    smallHeap = [],
+    rainSum = 0,
+    direct = [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1]
+    ]
+  for (let i = 0; i < m; i++) {
+    mask[i] = Array(n).fill(0)
+  }
+
+  // 由于能积累雨水的地势肯定比周围的低，因此需要将heightMap的四条边push进小堆smallHeap中。
+  for (let i = 0; i < n; i++) {
+    pushSmallHeap(smallHeap, [heightMap[0][i], 0, i])
+    pushSmallHeap(smallHeap, [heightMap[m - 1][i], m - 1, i])
+    mask[0][i] = 1
+    mask[m - 1][i] = 1
+  }
+  for (let j = 1; j < m - 1; j++) {
+    pushSmallHeap(smallHeap, [heightMap[j][0], j, 0])
+    pushSmallHeap(smallHeap, [heightMap[j][n - 1], j, n - 1])
+    mask[j][0] = 1
+    mask[j][n - 1] = 1
+  }
+
+  // 广度优先搜索。由于smallHeap是小堆，它是当前已探索但周围未开始探索的位置中最低的地方，
+  // 因此能够接住雨水的地方一定在它的周围
+  while (smallHeap.length > 0) {
+    let node = popSmallHeap(smallHeap)
+
+    for (let i = 0; i < direct.length; i++) {
+      let nx = node[1] + direct[i][0]
+      let ny = node[2] + direct[i][1]
+
+      if (nx >= 0 && nx < m && ny >= 0 && ny < n && mask[nx][ny] == 0) {
+        if (heightMap[nx][ny] < node[0]) {
+          rainSum += node[0] - heightMap[nx][ny]
+          pushSmallHeap(smallHeap, [node[0], nx, ny])
+        } else {
+          pushSmallHeap(smallHeap, [heightMap[nx][ny], nx, ny])
+        }
+        mask[nx][ny] = 1
+      }
+    }
+  }
+
+  return rainSum
+
+  // 向小堆中插入元素, heap中的每个元素都是一个数组，即[元素值, i, j]。
+  function pushSmallHeap(heap, item) {
+    heap.push(item)
+    // t表示当前元素下标，p表示t元素的父元素下标
+    let t = heap.length - 1,
+      p,
+      tempt
+    while (t > 0) {
+      p = (t - 1 - ((t - 1) % 2)) / 2
+      if (heap[p][0] > heap[t][0]) {
+        tempt = heap[p]
+        heap[p] = heap[t]
+        heap[t] = tempt
+        t = p
+      } else {
+        break
+      }
+    }
+  }
+  // 从小堆中取出堆顶元素
+  function popSmallHeap(heap) {
+    if (heap.length === 0) return null
+
+    let rn = heap[0]
+
+    heap[0] = heap[heap.length - 1]
+    heap.length--
+
+    // t表示当前元素下标，lc表示当前元素左子元素下标，c表示当前元素值最小的子元素的下标
+    let t = 0,
+      lc = 1,
+      c,
+      tempt
+    while (lc < heap.length) {
+      c = lc
+      // 寻找当前元素值最小的子元素的下标
+      if (lc + 1 < heap.length && heap[lc][0] > heap[lc + 1][0]) {
+        c = lc + 1
+      }
+
+      if (heap[t][0] > heap[c][0]) {
+        tempt = heap[t]
+        heap[t] = heap[c]
+        heap[c] = tempt
+        t = c
+        lc = 2 * t + 1
+      } else {
+        break
+      }
+    }
+
+    return rn
+  }
+}
+```
+
+## 417. 太平洋大西洋水流问题
+
+![](https://qiniu.espe.work/blog/20221011180918.png)
+
+![](https://qiniu.espe.work/blog/20221011180925.png)
+
+```javascript
+const dirs = [
+  [-1, 0],
+  [1, 0],
+  [0, -1],
+  [0, 1]
+]
+var pacificAtlantic = function(heights) {
+  m = heights.length
+  n = heights[0].length
+  const pacific = new Array(m).fill(0).map(() => new Array(n).fill(0))
+  const atlantic = new Array(m).fill(0).map(() => new Array(n).fill(0))
+
+  const dfs = (row, col, ocean) => {
+    if (ocean[row][col]) {
+      return
+    }
+    ocean[row][col] = true
+    for (const dir of dirs) {
+      const newRow = row + dir[0],
+        newCol = col + dir[1]
+      if (
+        newRow >= 0 &&
+        newRow < m &&
+        newCol >= 0 &&
+        newCol < n &&
+        heights[newRow][newCol] >= heights[row][col]
+      ) {
+        dfs(newRow, newCol, ocean)
+      }
+    }
+  }
+
+  for (let i = 0; i < m; i++) {
+    dfs(i, 0, pacific)
+  }
+  for (let j = 1; j < n; j++) {
+    dfs(0, j, pacific)
+  }
+  for (let i = 0; i < m; i++) {
+    dfs(i, n - 1, atlantic)
+  }
+  for (let j = 0; j < n - 1; j++) {
+    dfs(m - 1, j, atlantic)
+  }
+  const result = []
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (pacific[i][j] && atlantic[i][j]) {
+        const cell = []
+        cell.push(i)
+        cell.push(j)
+        result.push(cell)
+      }
+    }
+  }
+  return result
+}
+```
+
+## 424. 替换后的最长重复字符
+
+![](https://qiniu.espe.work/blog/20221011201002.png)
+
+```javascript
+var characterReplacement = function(s, k) {
+  // 用来记录滑动窗口内字母出现的次数
+  let map = new Array(26).fill(0)
+  let left = 0,
+    right = 0,
+    max = 0
+  while (right < s.length) {
+    // 一个字母进入窗口，在map中将次数加一，并且更新最大字母重复次数
+    let char = s[right]
+    let index = char.charCodeAt() - 'A'.charCodeAt()
+    map[index]++
+    max = Math.max(max, map[index])
+    // 判断当前窗口的字符串是否符合规则，
+    // 如果当前窗口长度减去最大字母出现次数 的值 大于最大替换次数 K
+    // 则不符合规则 所以整个窗口往左移动，left++ 且要将 map中记录的值减去
+    if (right - left + 1 - max > k) {
+      map[s[left].charCodeAt() - 'A'.charCodeAt()]--
+      left++
+    }
+    right++
+  }
+  return right - left
+}
+```
+
+## 450. 删除二叉搜索树中的节点
+
+![](https://qiniu.espe.work/blog/20221013144649.png)
+
+![](https://qiniu.espe.work/blog/20221013144725.png)
+
+![](https://qiniu.espe.work/blog/20221013144740.png)
+
+```javascript
+var deleteNode = function(root, key) {
+  if (!root) {
+    return null
+  }
+  if (root.val > key) {
+    root.left = deleteNode(root.left, key)
+    return root
+  }
+  if (root.val < key) {
+    root.right = deleteNode(root.right, key)
+    return root
+  }
+  if (root.val === key) {
+    if (!root.left && !root.right) {
+      return null
+    }
+    if (!root.right) {
+      return root.left
+    }
+    if (!root.left) {
+      return root.right
+    }
+    let successor = root.right
+    while (successor.left) {
+      successor = successor.left
+    }
+    root.right = deleteNode(root.right, successor.val)
+    successor.right = root.right
+    successor.left = root.left
+    return successor
+  }
+  return root
+}
+```
+
+## 449. 序列化和反序列化二叉搜索树
+
+![](https://qiniu.espe.work/blog/20221013154118.png)
+
+![](https://qiniu.espe.work/blog/20221013154132.png)
+
+```javascript
+var serialize = function(root) {
+  const list = []
+
+  const postOrder = (root, list) => {
+    if (!root) {
+      return
+    }
+    postOrder(root.left, list)
+    postOrder(root.right, list)
+    list.push(root.val)
+  }
+
+  postOrder(root, list)
+  const str = list.join(',')
+  return str
+}
+
+var deserialize = function(data) {
+  if (data.length === 0) {
+    return null
+  }
+  let arr = data.split(',')
+  const length = arr.length
+  const stack = []
+  for (let i = 0; i < length; i++) {
+    stack.push(parseInt(arr[i]))
+  }
+
+  const construct = (lower, upper, stack) => {
+    if (
+      stack.length === 0 ||
+      stack[stack.length - 1] < lower ||
+      stack[stack.length - 1] > upper
+    ) {
+      return null
+    }
+    const val = stack.pop()
+    const root = new TreeNode(val)
+    root.right = construct(val, upper, stack)
+    root.left = construct(lower, val, stack)
+    return root
+  }
+
+  return construct(-Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, stack)
 }
 ```

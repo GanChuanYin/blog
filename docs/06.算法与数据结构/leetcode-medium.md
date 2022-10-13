@@ -4693,3 +4693,269 @@ var maxProduct = function(words) {
   return ans
 }
 ```
+
+## 398. 随机数索引
+
+![](https://qiniu.espe.work/blog/20221008180956.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ */
+var Solution = function(nums) {
+  this.map = {}
+  for (let i = 0; i < nums.length; i++) {
+    this.map[nums[i]] = this.map[nums[i]] ? [...this.map[nums[i]], i] : [i]
+  }
+}
+
+/**
+ * @param {number} target
+ * @return {number}
+ */
+Solution.prototype.pick = function(target) {
+  let list = this.map[target]
+  return list[Math.floor(list.length * Math.random())]
+}
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(nums)
+ * var param_1 = obj.pick(target)
+ */
+```
+
+## 402. 移掉 K 位数字
+
+![](https://qiniu.espe.work/blog/20221009153333.png)
+
+```javascript
+/**
+ * @param {string} num
+ * @param {number} k
+ * @return {string}
+ */
+var removeKdigits = function(num, k) {
+  // 数字越小的排前面总的就越小, 题意可以理解为去掉波峰
+  // 例:  12534 中, 5比3大证明5为波峰 去掉后 1234 为最小
+  // 如果没有波峰 例: 12345  直接裁掉最后的数字即可 1234
+  // 遍历num 把波峰一个个去掉
+  let i = 0
+  while (k > 0) {
+    while (i < num.length) {
+      if (i + 1 < num.length && num[i] > num[i + 1]) break
+      i++
+    }
+    // 如果是最后一个, 证明整个数组升序排列 没有波峰 直接从掉尾部裁切k个
+    if (i === num.length) {
+      num = num.slice(0, num.length - k)
+      break
+    } else {
+      num = num.slice(0, i) + num.slice(i + 1)
+    }
+    // 去掉先导 ‘0’
+    while (num[0] === '0') {
+      num = num.slice(1)
+    }
+    k--
+    i--
+  }
+  // 如果为 ‘’ 返回 0
+  return num === '' ? '0' : num
+}
+```
+
+## 413. 等差数列划分
+
+![](https://qiniu.espe.work/blog/20221010113226.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var numberOfArithmeticSlices = function(nums) {
+  let len = nums.length
+  if (len < 3) return 0
+  // 表示前i个数字能组成多少个等差数组 默认都为0
+  let dp = new Array(len).fill(0)
+  for (let i = 2; i < len; i++) {
+    dp[i] = dp[i - 1]
+    let j = i
+    // 新增的数字如果和前面的数字组成等差数列 dp[i] 加一
+    while (j > 0 && nums[j] - nums[j - 1] === nums[j - 1] - nums[j - 2]) {
+      dp[i] += 1
+      j--
+    }
+  }
+  return dp[len - 1]
+}
+```
+
+## 429. N 叉树的层序遍历
+
+![](https://qiniu.espe.work/blog/20221012113355.png)
+
+```javascript
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+
+/**
+ * @param {Node|null} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+  if (!root) return []
+  let ans = []
+  search([root], ans)
+  return ans
+}
+
+var search = function(nodes, list) {
+  if (nodes.length === 0) return
+  let level = []
+  let nextLevel = []
+  for (let i = 0; i < nodes.length; i++) {
+    level.push(nodes[i].val)
+    nextLevel = nextLevel.concat(nodes[i].children)
+  }
+  list.push(level)
+  search(nextLevel, list)
+}
+```
+
+## 433. 最小基因变化
+
+![](https://qiniu.espe.work/blog/20221012151853.png)
+
+```javascript
+/**
+ * @param {string} start
+ * @param {string} end
+ * @param {string[]} bank
+ * @return {number}
+ */
+var minMutation = function(start, end, bank) {
+  let ans = Infinity
+  // 深度优先搜索 为了防止重复搜索 用visited记录搜索过的DNA
+  const dfs = (current, count, visited = []) => {
+    if (current === end) {
+      ans = Math.min(ans, count)
+      return
+    }
+    if (count >= ans) return
+    count++
+    for (let i = 0; i < bank.length; i++) {
+      if (!visited.includes(bank[i]) && handle(current, bank[i])) {
+        dfs(bank[i], count, [...visited, bank[i]])
+      }
+    }
+  }
+  dfs(start, 0)
+  // 如果为 Infinity 证明没找到 直接返回-1
+  return ans === Infinity ? -1 : ans
+}
+
+// 判断两个序列是否正好差1
+var handle = function(str1, str2) {
+  let i = 0
+  let diff = 0
+  while (i < str1.length) {
+    if (str1[i] !== str2[i]) diff++
+    if (diff > 1) return false
+    i++
+  }
+  return diff === 1
+}
+```
+
+## 435. 无重叠区间
+
+![](https://qiniu.espe.work/blog/20221012162258.png)
+
+```javascript
+var eraseOverlapIntervals = function(intervals) {
+  if (!intervals.length) {
+    return 0
+  }
+
+  intervals.sort((a, b) => a[1] - b[1])
+
+  const n = intervals.length
+  let right = intervals[0][1]
+  let ans = 1
+  for (let i = 1; i < n; ++i) {
+    if (intervals[i][0] >= right) {
+      ++ans
+      right = intervals[i][1]
+    }
+  }
+  return n - ans
+}
+```
+
+## 442. 数组中重复的数据
+
+![](https://qiniu.espe.work/blog/20221012165344.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findDuplicates = function(nums) {
+  let ans = []
+  for (let i = 0; i < nums.length; i++) {
+    let num = Math.abs(nums[i])
+    // 如果当前数作为下标位置的数字为负数 证明被标记过一次了 这是第二次出现
+    // 所以这是重复的数字
+    if (nums[num - 1] < 0) {
+      ans.push(num)
+    } else {
+      // 第一次出现 将数字的位置标记为负数
+      nums[num - 1] = -nums[num - 1]
+    }
+  }
+  return ans
+}
+```
+
+
+## 451. 根据字符出现频率排序
+
+![](https://qiniu.espe.work/blog/20221013143240.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var frequencySort = function(s) {
+  // 记录单词频率
+  let map = {}
+  for (let i = 0; i < s.length; i++) {
+    map[s[i]] = map[s[i]] ? map[s[i]] + 1 : 1
+  }
+
+  // 按照出现频率排序
+  let list = []
+  for (const key in map) {
+    list.push([key, map[key]])
+  }
+  list.sort((a, b) => b[1] - a[1])
+
+  // 组装
+  let ans = ''
+  for (let i = 0; i < list.length; i++) {
+    for (let j = 0; j < list[i][1]; j++) {
+      ans += list[i][0]
+    }
+  }
+  return ans
+}
+```

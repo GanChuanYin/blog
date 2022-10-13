@@ -1848,3 +1848,107 @@ var guessNumber = function(n) {
   return left
 }
 ```
+
+## 383. 赎金信
+
+![](https://qiniu.espe.work/blog/20221006190444.png)
+
+```javascript
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function(ransomNote, magazine) {
+  for (let i = 0; i < ransomNote.length; i++) {
+    let letter = ransomNote[i]
+    let idx = magazine.indexOf(letter)
+    if (idx > -1) {
+      magazine = magazine.slice(0, idx) + magazine.slice(idx + 1)
+    } else {
+      return false
+    }
+  }
+  return true
+}
+```
+
+## 392. 判断子序列
+
+![](https://qiniu.espe.work/blog/20221008175455.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+  if (s === '') return true // s为空表示全都匹配到 返回true
+  if (t === '') return false // s不为空而t为空表示备选用完还没匹配到返回false
+  let i = 0
+  let letter = s[0]
+  while (i < t.length) {
+    if (t[i] === letter) {
+      // 递归 每次匹配一个字母
+      return isSubsequence(s.slice(1), t.slice(i + 1))
+    }
+    i++
+  }
+  return false
+}
+```
+
+## 415. 字符串相加
+
+![](https://qiniu.espe.work/blog/20221010161429.png)
+
+```javascript
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var addStrings = function(num1, num2) {
+  let l1 = num1.length - 1
+  let l2 = num2.length - 1
+  let carry = 0
+  let ans = ''
+  // 取出每一位相加 注意两个数字遍历完, 但是进位为1的情况
+  while (l1 >= 0 || l2 >= 0 || carry) {
+    let n1 = parseInt(num1[l1] || 0)
+    let n2 = parseInt(num2[l2] || 0)
+    // 和为 两个数字加上进位
+    let sum = n1 + n2 + carry
+    carry = sum > 9 ? 1 : 0
+    ans = (sum % 10) + ans
+    l1--
+    l2--
+  }
+  return ans
+}
+```
+
+## 414. 第三大的数
+
+![](https://qiniu.espe.work/blog/20221010163050.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var thirdMax = function(nums) {
+  // 去重
+  let arr = [...new Set(nums)]
+  // 倒序排序
+  arr.sort((a, b) => b - a)
+  // 如果大于三个 返回第三大的数
+  // 如果小于三个 返回最大的数 也就是第一个数
+  if (arr.length < 3) {
+    return arr[0]
+  } else {
+    return arr[2]
+  }
+}
+```
