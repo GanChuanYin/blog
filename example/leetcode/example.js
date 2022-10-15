@@ -1,47 +1,31 @@
-var serialize = function(root) {
-  const list = []
-
-  const postOrder = (root, list) => {
-    if (!root) {
-      return
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+  let keyboards = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']
+  let ans = []
+  for (let i = 0; i < words.length; i++) {
+    // 全部转化为小写
+    let word = words[i].toLocaleLowerCase()
+    // 去除单词中的重复字符
+    let temp = [...new Set(word.split(''))].join('')
+    // 检测每行能否满足当前单词
+    for (let j = 0; j < keyboards.length; j++) {
+      let flag = true
+      for (let k = 0; k < temp.length; k++) {
+        if (!keyboards[j].includes(temp[k])) {
+          flag = false
+          break
+        }
+      }
+      if (flag) {
+        ans.push(words[i])
+        break
+      }
     }
-    postOrder(root.left, list)
-    postOrder(root.right, list)
-    list.push(root.val)
   }
-
-  postOrder(root, list)
-  const str = list.join(',')
-  return str
+  return ans
 }
 
-var deserialize = function(data) {
-  if (data.length === 0) {
-    return null
-  }
-  let arr = data.split(',')
-  const length = arr.length
-  const stack = []
-  for (let i = 0; i < length; i++) {
-    stack.push(parseInt(arr[i]))
-  }
-
-  const construct = (lower, upper, stack) => {
-    if (
-      stack.length === 0 ||
-      stack[stack.length - 1] < lower ||
-      stack[stack.length - 1] > upper
-    ) {
-      return null
-    }
-    const val = stack.pop()
-    const root = new TreeNode(val)
-    root.right = construct(val, upper, stack)
-    root.left = construct(lower, val, stack)
-    return root
-  }
-
-  return construct(-Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, stack)
-}
-
-console.log(frequencySort('ab'))
+console.log(findWords(['Hello', 'Alaska', 'Dad', 'Peace']))

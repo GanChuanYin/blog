@@ -1952,3 +1952,122 @@ var thirdMax = function(nums) {
   }
 }
 ```
+
+## 441. 排列硬币
+
+![](https://qiniu.espe.work/blog/20221014144537.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var arrangeCoins = function(n) {
+  let ans = 1
+  n = n - 1
+  // 减去每层数量
+  for (let i = 2; i <= n; i++) {
+    ans++
+    n -= i
+  }
+  return ans
+}
+```
+
+## 459. 重复的子字符串
+
+![](https://qiniu.espe.work/blog/20221014151435.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var repeatedSubstringPattern = function(s) {
+  let len = s.length
+  let middle = len >> 1
+  // 从 0 到中点 检测是否可以满足条件
+  // 满足则直接返回true
+  for (let i = 0; i < middle; i++) {
+    let subStr = s.slice(0, i + 1)
+    let subLen = subStr.length
+    let j = i + 1
+    while (true) {
+      if (subStr === s.slice(j, subLen + j)) {
+        j += subLen
+        if (j === len) return true
+      } else {
+        break
+      }
+    }
+  }
+  return false
+}
+```
+
+## 463. 岛屿的周长
+
+![](https://qiniu.espe.work/blog/20221015165647.png)
+
+```javascript
+var islandPerimeter = function(grid) {
+  const dx = [0, 1, 0, -1]
+  const dy = [1, 0, -1, 0]
+  const n = grid.length,
+    m = grid[0].length
+  let ans = 0
+  for (let i = 0; i < n; ++i) {
+    for (let j = 0; j < m; ++j) {
+      if (grid[i][j]) {
+        let cnt = 0
+        for (let k = 0; k < 4; ++k) {
+          let tx = i + dx[k]
+          let ty = j + dy[k]
+          if (tx < 0 || tx >= n || ty < 0 || ty >= m || !grid[tx][ty]) {
+            cnt += 1
+          }
+        }
+        ans += cnt
+      }
+    }
+  }
+  return ans
+}
+```
+
+## 500. 键盘行
+
+![](https://qiniu.espe.work/blog/20221015173256.png)
+
+```javascript
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+  let keyboards = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']
+  let ans = []
+  for (let i = 0; i < words.length; i++) {
+    // 全部转化为小写
+    let word = words[i].toLocaleLowerCase()
+    // 去除单词中的重复字符
+    let temp = [...new Set(word.split(''))].join('')
+    // 检测每行能否满足当前单词
+    for (let j = 0; j < keyboards.length; j++) {
+      let flag = true
+      for (let k = 0; k < temp.length; k++) {
+        if (!keyboards[j].includes(temp[k])) {
+          flag = false
+          break
+        }
+      }
+      //   如果某行满足了 计入结果后break
+      if (flag) {
+        ans.push(words[i])
+        break
+      }
+    }
+  }
+  return ans
+}
+```

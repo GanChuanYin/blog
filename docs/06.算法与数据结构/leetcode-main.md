@@ -1,3 +1,13 @@
+---
+title: leetcode-main
+date: 2022-09-13 14:36:50
+permalink: /pages/7d495b/
+categories:
+  - 算法与数据结构
+tags:
+  -
+---
+
 > 记录我的 leetcode 薄弱题目
 
 ## 39. 组合总和
@@ -1550,5 +1560,55 @@ var deserialize = function(data) {
   }
 
   return construct(-Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, stack)
+}
+```
+
+## 453. 最小操作次数使数组元素相等
+
+![](https://qiniu.espe.work/blog/20221014141740.png)
+
+![](https://qiniu.espe.work/blog/20221014141732.png)
+
+```javascript
+var minMoves = function(nums) {
+  const minNum = Math.min(...nums)
+  let res = 0
+  for (const num of nums) {
+    res += num - minNum
+  }
+  return res
+}
+```
+
+## 516. 最长回文子序列
+
+![](https://qiniu.espe.work/blog/20221014155258.png)
+
+![](https://qiniu.espe.work/blog/20221014155311.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestPalindromeSubseq = function(s) {
+  const n = s.length
+  // 用 dp[i][j] 表示字符串 s 的下标范围 [i,j] 内的最长回文子序列的长度
+  const dp = new Array(n).fill(0).map(() => new Array(n).fill(0))
+  for (let i = n - 1; i >= 0; i--) {
+    dp[i][i] = 1
+    const c1 = s[i]
+    for (let j = i + 1; j < n; j++) {
+      const c2 = s[j]
+      // 如果头尾字符相同
+      if (c1 === c2) {
+        dp[i][j] = dp[i + 1][j - 1] + 2
+      } else {
+        // 不同则取最长
+        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1])
+      }
+    }
+  }
+  return dp[0][n - 1]
 }
 ```

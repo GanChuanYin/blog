@@ -4925,7 +4925,6 @@ var findDuplicates = function(nums) {
 }
 ```
 
-
 ## 451. 根据字符出现频率排序
 
 ![](https://qiniu.espe.work/blog/20221013143240.png)
@@ -4957,5 +4956,90 @@ var frequencySort = function(s) {
     }
   }
   return ans
+}
+```
+
+## 540. 有序数组中的单一元素
+
+![](https://qiniu.espe.work/blog/20221014172405.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNonDuplicate = function(nums) {
+  let ans = 0
+  for (let i = 0; i < nums.length; i++) {
+    ans ^= nums[i]
+  }
+  return ans
+}
+```
+
+## 498. 对角线遍历
+
+![](https://qiniu.espe.work/blog/20221015171638.png)
+
+![](https://qiniu.espe.work/blog/20221015171612.png)
+
+```javascript
+var findDiagonalOrder = function(mat) {
+  const m = mat.length
+  const n = mat[0].length
+  const res = new Array(m * n).fill(0)
+  let pos = 0
+  for (let i = 0; i < m + n - 1; i++) {
+    if (i % 2 === 1) {
+      let x = i < n ? 0 : i - n + 1
+      let y = i < n ? i : n - 1
+      while (x < m && y >= 0) {
+        res[pos] = mat[x][y]
+        pos++
+        x++
+        y--
+      }
+    } else {
+      let x = i < m ? i : m - 1
+      let y = i < m ? 0 : i - m + 1
+      while (x >= 0 && y < n) {
+        res[pos] = mat[x][y]
+        pos++
+        x--
+        y++
+      }
+    }
+  }
+  return res
+}
+```
+
+## 513. 找树左下角的值
+
+![](https://qiniu.espe.work/blog/20221015183056.png)
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var findBottomLeftValue = function(root) {
+  return handle([root])
+}
+
+// 层次遍历
+var handle = function(nodes) {
+  let nextLevel = []
+  for (let i = 0; i < nodes.length; i++) {
+    // 记录左右节点 下一层遍历用
+    if (nodes[i].left) nextLevel.push(nodes[i].left)
+    if (nodes[i].right) nextLevel.push(nodes[i].right)
+  }
+  if (nextLevel.length === 0) {
+    return nodes[0].val
+  } else {
+    return handle(nextLevel)
+  }
+  // 递归遍历下一层
 }
 ```

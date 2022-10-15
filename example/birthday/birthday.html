@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>123</title>
+    <title>YUE</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
@@ -13,7 +13,7 @@
       }
       body {
         margin: 0;
-        background: #79a8ae;
+        background: #f6e58d;
         color: #cfebe4;
         letter-spacing: 1.2px;
         font-size: 18px;
@@ -25,31 +25,11 @@
         color: #ebf7f4;
       }
       .body--ready {
-        background: -webkit-linear-gradient(
-          top,
-          rgb(203, 235, 219) 0%,
-          rgb(55, 148, 192) 120%
-        );
-        background: -moz-linear-gradient(
-          top,
-          rgb(203, 235, 219) 0%,
-          rgb(55, 148, 192) 120%
-        );
-        background: -o-linear-gradient(
-          top,
-          rgb(203, 235, 219) 0%,
-          rgb(55, 148, 192) 120%
-        );
-        background: -ms-linear-gradient(
-          top,
-          rgb(203, 235, 219) 0%,
-          rgb(55, 148, 192) 120%
-        );
-        background: linear-gradient(
-          top,
-          rgb(203, 235, 219) 0%,
-          rgb(55, 148, 192) 120%
-        );
+        background: -webkit-linear-gradient(top, #f1c40f 0%, #f39c12);
+        background: -moz-linear-gradient(top, #f1c40f 0%, #f39c12);
+        background: -o-linear-gradient(top, #f1c40f 0%, #f39c12);
+        background: -ms-linear-gradient(top, #f1c40f 0%, #f39c12);
+        background: linear-gradient(top, #f1c40f 0%, #f39c12);
       }
       .text {
         position: fixed;
@@ -66,7 +46,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
         width: 128px;
-        border: 3px solid #00a0ff;
+        /* border: 3px solid #00a0ff; */
         border-radius: 200px;
         background-size: cover;
         box-shadow: 0px 0px 40px rgba(63, 81, 181, 0.72);
@@ -108,17 +88,17 @@
   </head>
 
   <body>
-    <!--&lt;!&ndash;更改为你女朋友的头像&ndash;&gt;-->
+    <!-- &lt;!&ndash;头像&ndash;&gt; -->
     <div class="cs">
       <!-- <img
         src="http://wx1.sinaimg.cn/large/006gFOhdly1fr0hdrzlolj30b40b4dg7.jpg"
         id="logo"
       /> -->
-      <!-- <img src="https://qiniu.espe.work/blog/IMG_9438.JPG" id="logo"> -->
+      <img src="./girfriend.jpg" id="logo">
     </div>
     <canvas class="canvas" width="1820" height="905"></canvas>
     <p class="text" style="color: #ed3073;">
-      <!-- 世界已经有你 -->
+      世界有你
       <br />
       <span id="span_dt_dt"></span>
     </p>
@@ -151,8 +131,11 @@
           //想说的话
           S.UI.simulate(
             `
-            [00:02:01]小彭阅生日快乐
-            [00:03:06]永远年轻
+            [00:01:00]小彭阅过生啦
+            [00:03:00]GCY祝你
+            [00:05:00]生日快乐
+            [00:08:00]永远年轻漂亮
+            [00:10:00]每天开开心心
             [00:12:58]祝你生日快乐
             [00:15:72]祝你生日快乐
             [00:18:71]祝你幸福祝你健康
@@ -240,7 +223,8 @@
           time,
           maxShapeSize = 30,
           wordList = [],
-          cmd = '#'
+          cmd = '#',
+          wordsTimer
         function formatTime(date) {
           var h = date.getHours(),
             m = date.getMinutes(),
@@ -258,25 +242,22 @@
         }
         function playWords() {
           let lastTime = new Date(['2022-10-22', '00:00:01']).valueOf()
-          console.log(lastTime)
-          let timer
-          playWordWidthDelay(wordList, lastTime, timer)
+          playWordWidthDelay(wordList, lastTime)
         }
-        function playWordWidthDelay(wordList, lastTime, timer) {
+        function playWordWidthDelay(wordList, lastTime) {
           if (wordList.length === 0) {
-            clearTimeout(timer)
+            clearTimeout(wordsTimer)
           }
           let str = wordList.shift()
           let time = getTime(str)
-          console.log(time)
           let milliseconds = new Date(['2022-10-22', time]).valueOf()
           let words = getWords(str)
           let gap = milliseconds - lastTime
           console.log(milliseconds, lastTime)
-          if (timer) clearTimeout(timer)
-          timer = setTimeout(() => {
+          if (wordsTimer) clearTimeout(wordsTimer)
+          wordsTimer = setTimeout(() => {
             console.log(words)
-            // S.Shape.switchShape(S.ShapeBuilder.letter(words))
+            S.Shape.switchShape(S.ShapeBuilder.letter(words))
             playWordWidthDelay(wordList, milliseconds)
           }, gap)
         }
@@ -474,8 +455,10 @@
           window.addEventListener('resize', fit)
           window.addEventListener('click', () => {
             let myAudio = document.querySelector('audio')
-            // myAudio.play()
-            S.init()
+            myAudio.play()
+            setTimeout(() => {
+              S.init()
+            }, 2000)
           })
         }
         // Init
@@ -648,9 +631,9 @@
       })()
       // S.init()
     </script>
-    <!--//音乐可改-->
-    <!-- <audio autoplay="autoplay" id="music">
+    <!--//音乐-->
+    <audio autoplay="autoplay" id="music">
       <source src="./birthday.mp3" type="audio/mpeg" />
-    </audio> -->
+    </audio>
   </body>
 </html>

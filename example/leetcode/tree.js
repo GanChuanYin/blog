@@ -64,69 +64,38 @@ var createTree = function(nums) {
   return root
 }
 
-let root = createTree([3, 1, 4, null, 2])
+let root = createTree([1, 2, 3, 4, null, 5, 6, null, null, 7])
 
 /**
  * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
  * }
  */
-
 /**
- * Encodes a tree to a single string.
- *
  * @param {TreeNode} root
- * @return {string}
+ * @return {number}
  */
-var serialize = function(root) {
-  let ans = handleSerialize(root)
-  return JSON.stringify(ans)
+var findBottomLeftValue = function(root) {
+  return handle([root])
 }
 
-var handleSerialize = function(root) {
-  if (!root) return [null]
-  if (!root.left && !root.right) {
-    return [root.val]
+// 层次遍历
+var handle = function(nodes) {
+  let nextLevel = []
+  for (let i = 0; i < nodes.length; i++) {
+    // 记录左右节点 下一层遍历用
+    if (nodes[i].left) nextLevel.push(nodes[i].left)
+    if (nodes[i].right) nextLevel.push(nodes[i].right)
   }
-  return [
-    ...handleSerialize(root.left),
-    root.val,
-    ...handleSerialize(root.right)
-  ]
-}
-
-/**
- * Decodes your encoded data to tree.
- *
- * @param {string} data
- * @return {TreeNode}
- */
-var deserialize = function(data) {
-  let list = JSON.parse(data)
-  console.log(list)
-  let ans = handleDeserialize(list)
-  console.log(ans)
-  return ans
-}
-
-var handleDeserialize = function(list) {
-  if (list.length === 0) return null
-  if (list.length === 1) {
-    if (list[0] === null) return null
-    return new TreeNode(list[0])
+  if (nextLevel.length === 0) {
+    return nodes[0].val
+  } else {
+    return handle(nextLevel)
   }
-  let middle = list.length >> 1
-  let root = new TreeNode(list[middle])
-  root.left = handleDeserialize(list.slice(0, middle))
-  root.right = handleDeserialize(list.slice(middle + 1))
-  return root
+  // 递归遍历下一层
 }
 
-deserialize(serialize(root))
-
-/**
- * Your functions will be called as such:
- * deserialize(serialize(root));
- */
+console.log(findBottomLeftValue(root))
