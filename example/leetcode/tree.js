@@ -64,38 +64,29 @@ var createTree = function(nums) {
   return root
 }
 
-let root = createTree([1, 2, 3, 4, null, 5, 6, null, null, 7])
+let root = createTree([4, 2, 6, 1, 3])
 
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
 /**
  * @param {TreeNode} root
  * @return {number}
  */
-var findBottomLeftValue = function(root) {
-  return handle([root])
+var getMinimumDifference = function(root) {
+  let list = []
+  search(root, list)
+  // 找出最小间距
+  let ans = Infinity
+  for (let i = 1; i < list.length; i++) {
+    ans = Math.min(list[i] - list[i - 1], ans)
+  }
+  return ans
 }
 
-// 层次遍历
-var handle = function(nodes) {
-  let nextLevel = []
-  for (let i = 0; i < nodes.length; i++) {
-    // 记录左右节点 下一层遍历用
-    if (nodes[i].left) nextLevel.push(nodes[i].left)
-    if (nodes[i].right) nextLevel.push(nodes[i].right)
-  }
-  if (nextLevel.length === 0) {
-    return nodes[0].val
-  } else {
-    return handle(nextLevel)
-  }
-  // 递归遍历下一层
+// 中序遍历 从小到大 找出所有数字 
+var search = function(node, list) {
+  if (!node) return
+  search(node.left, list)
+  list.push(node.val)
+  search(node.right, list)
 }
 
-console.log(findBottomLeftValue(root))
+console.log(getMinimumDifference(root))

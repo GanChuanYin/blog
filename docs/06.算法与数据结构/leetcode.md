@@ -2071,3 +2071,37 @@ var findWords = function(words) {
   return ans
 }
 ```
+
+## 501. 二叉搜索树中的众数
+
+![](https://qiniu.espe.work/blog/20221015185135.png)
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var findMode = function(root) {
+  let map = {}
+  search(root, map)
+  let max = 0
+  let ans = []
+  // 找出众数出现的次数
+  for (const key in map) {
+    max = Math.max(map[key], max)
+  }
+  // 找出众数 (可能有多个)
+  for (const key in map) {
+    if (map[key] === max) ans.push(parseInt(key))
+  }
+  return ans
+}
+
+// 遍历每个节点
+var search = function(node, map) {
+  if (!node) return
+  map[node.val] = map[node.val] ? map[node.val] + 1 : 1
+  search(node.left, map)
+  search(node.right, map)
+}
+```

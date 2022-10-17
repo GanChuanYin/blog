@@ -5043,3 +5043,86 @@ var handle = function(nodes) {
   // 递归遍历下一层
 }
 ```
+
+## 491. 递增子序列
+
+![](https://qiniu.espe.work/blog/20221016131558.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var findSubsequences = function(nums) {
+  const ans = []
+  const set = new Set()
+  const dfs = (idx, temp) => {
+    if (temp.length > 1) {
+      let str = temp.join(',')
+      if (!set.has(str)) {
+        ans.push(temp)
+        set.add(str)
+      }
+    }
+    if (idx > nums.length) {
+      return
+    }
+
+    // 取当前数字
+    if (temp.length === 0 || nums[idx] >= temp[temp.length - 1]) {
+      dfs(idx + 1, [...temp, nums[idx]])
+    }
+
+    // 不取当前数字
+    dfs(idx + 1, [...temp])
+  }
+  dfs(0, [])
+  return ans
+}
+```
+
+## 524. 通过删除字母匹配到字典里最长单词
+
+![](https://qiniu.espe.work/blog/20221016223544.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @param {string[]} dictionary
+ * @return {string}
+ */
+var findLongestWord = function(s, dictionary) {
+  let ans = '' // 初始状态 没匹配到直接返回 ''
+  for (let i = 0; i < dictionary.length; i++) {
+    let word = dictionary[i]
+    // 如果比当前结果的字符数大 或者相同且字母序较小 就进行匹配
+    if (
+      word.length > ans.length ||
+      (word.length === ans.length && word < ans)
+    ) {
+      if (isMatch(s, word)) ans = word
+    }
+  }
+  return ans
+}
+
+// 该字符串是否可以通过删除 s 中的某些字符得到。
+var isMatch = function(s, target) {
+  let i = 0
+  let j = 0
+  while (i < s.length) {
+    // 从头到尾 匹配target中的字符
+    let idx = s.indexOf(target[j], i)
+    // 匹配到了就移动双指针
+    if (idx > -1) {
+      i = idx + 1
+      j++
+      // j 到尾部了证明匹配成功
+      if (j === target.length) return true
+    } else {
+      return false
+    }
+  }
+  return false
+}
+```
