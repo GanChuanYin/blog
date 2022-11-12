@@ -28,7 +28,7 @@ function traverseList(root) {
   return res
 }
 
-let root = array2List([6, 6, 6])
+let root = array2List([1, 2, 0, 4, 3])
 
 /**
  * Definition for singly-linked list.
@@ -39,23 +39,29 @@ let root = array2List([6, 6, 6])
  */
 /**
  * @param {ListNode} head
- * @param {number} val
- * @return {ListNode}
+ * @param {number[]} nums
+ * @return {number}
  */
-var removeElements = function(head, val) {
-  if (!head) return null
-  let ans = head
+var numComponents = function(head, nums) {
+  // 可以理解为搜索 nums 在链表上有几段
   let current = head
+  let ans = 0
   while (current) {
-    if (current.val === val) {
-      ans = current.next
-    } else if (current.next) {
-      if (current.next.val === val) {
-        current.next = current.next.next
+    // 如果nums包含当前值
+    if (nums.includes(current.val)) {
+      let temp = current
+      // 搜索连续段
+      while (temp.next && nums.includes(temp.next.val)) {
+        temp = temp.next
       }
+      ans++
+      current = temp.next
+    } else {
+      // nums不包含当前值 直接跳过
+      current = current.next
     }
-    current = current.next
   }
   return ans
 }
-console.log(removeElements(root, 6))
+
+numComponents(root, [3, 4, 0, 2, 1])

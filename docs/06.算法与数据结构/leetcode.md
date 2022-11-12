@@ -2105,3 +2105,607 @@ var search = function(node, map) {
   search(node.right, map)
 }
 ```
+
+## 561. 数组拆分
+
+![](https://qiniu.espe.work/blog/20221019141520.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var arrayPairSum = function(nums) {
+  // 从小到大排序
+  nums.sort((a, b) => a - b)
+  let ans = 0
+  // 取出每对最小值
+  for (let i = 0; i < nums.length; i += 2) {
+    ans += nums[i]
+  }
+  return ans
+}
+```
+
+## 572. 另一棵树的子树
+
+![](https://qiniu.espe.work/blog/20221019142946.png)
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} subRoot
+ * @return {boolean}
+ */
+var isSubtree = function(root, subRoot) {
+  // 递归搜索root树中的每个节点
+  if (isMatch(root, subRoot)) return true
+  let left = root.left ? isSubtree(root.left, subRoot) : false
+  let right = root.right ? isSubtree(root.right, subRoot) : false
+  return left || right
+}
+
+// 递归比较树是否相同
+var isMatch = function(root1, root2) {
+  if (!root1 && !root2) return true
+  if (!root1 || !root2) return false
+  if (root1.val !== root2.val) return false
+  return isMatch(root1.left, root2.left) && isMatch(root1.right, root2.right)
+}
+```
+
+## 637. 二叉树的层平均值
+
+![](https://qiniu.espe.work/blog/20221022233138.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var averageOfLevels = function(root) {
+  let ans = []
+  handle([root], ans)
+  return ans
+}
+
+// 层次遍历 求每层平均值
+var handle = function(nodes, ans) {
+  if (nodes.length === 0) return
+  let sum = 0
+  let nextLevel = []
+  for (let i = 0; i < nodes.length; i++) {
+    sum += nodes[i].val
+    if (nodes[i].left) nextLevel.push(nodes[i].left)
+    if (nodes[i].right) nextLevel.push(nodes[i].right)
+  }
+  ans.push(sum / nodes.length)
+  handle(nextLevel, ans)
+}
+```
+
+## 643. 子数组最大平均数 I
+
+![](https://qiniu.espe.work/blog/20221023144248.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findMaxAverage = function(nums, k) {
+  let i = 0
+  let ans = -Infinity
+  while (i <= nums.length - k) {
+    let temp = 0
+    for (let j = i; j < i + k; j++) {
+      temp += nums[j]
+    }
+    ans = Math.max(ans, temp / k)
+    i++
+  }
+  return ans
+}
+```
+
+## 606. 根据二叉树创建字符串
+
+![](https://qiniu.espe.work/blog/20221023151555.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {string}
+ */
+var tree2str = function(root) {
+  if (!root) return '()'
+  let ans = root.val + ''
+  // 如果左孩没有 右孩有 需要一个括号占位
+  if (!root.left && root.right) {
+    ans += '()'
+  }
+  // 递归处理左右孩
+  if (root.left) {
+    ans = ans + '(' + tree2str(root.left) + ')'
+  }
+  if (root.right) {
+    ans = ans + '(' + tree2str(root.right) + ')'
+  }
+  return ans
+}
+```
+
+## 680. 验证回文串 II
+
+![](https://qiniu.espe.work/blog/20221026153400.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var validPalindrome = function(s) {
+  // 初始删除标志为false
+  return handle(s, false)
+}
+
+var handle = function(s, isDeleted) {
+  if (s.length <= 1) return true
+  let left = 0
+  let right = s.length - 1
+  // 左右两端一一比较
+  while (left < right) {
+    // 如果出现左右字符不同
+    if (s[left] !== s[right]) {
+      // 已经删除过了
+      if (isDeleted) return false
+      // 没删除过 删除左边或者右边字符 再比较
+      return (
+        handle(s.slice(0, left) + s.slice(left + 1), true) ||
+        handle(s.slice(0, right) + s.slice(right + 1), true)
+      )
+    } else {
+      left++
+      right--
+    }
+  }
+  return true
+}
+```
+
+## 704. 二分查找
+
+![](https://qiniu.espe.work/blog/20221027173443.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(nums, target) {
+  let left = 0
+  let right = nums.length - 1
+  while (left < right) {
+    let middle = (left + right) >> 1
+    if (nums[middle] < target) {
+      left = middle + 1
+    } else if (nums[middle] > target) {
+      right = middle - 1
+    } else {
+      // 恰好是target 直接返回
+      return middle
+    }
+  }
+  // 循环结束 left 等于 right 检测一下nums[left]是否为目标值
+  return nums[left] === target ? left : -1
+}
+```
+
+## 697. 数组的度
+
+![](https://qiniu.espe.work/blog/20221028161842.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findShortestSubArray = function(nums) {
+  // 找出数组的众数 注意可能有多个
+  // 找出众数在数组中第一次出现和最后一次出现的位置，两个位置组成区间长度就是答案,
+  // 如果众数不止一个，那么要取区间长度最短那个
+  let map = {}
+  for (let i = 0; i < nums.length; i++) {
+    map[nums[i]] = map[nums[i]] ? map[nums[i]] + 1 : 1
+  }
+  let frequency = 0
+  let list = [] // 存放所有众数
+  for (const key in map) {
+    if (map[key] > frequency) {
+      frequency = map[key]
+      list = [parseInt(key)]
+    } else if (map[key] === frequency) {
+      list.push(parseInt(key))
+    }
+  }
+  // 最大值为数组长
+  let ans = nums.length
+  // 双指针从两边往中间靠拢 直到找到目标数
+  for (let i = 0; i < list.length; i++) {
+    let target = list[i]
+    let left = 0
+    let right = nums.length - 1
+    while (nums[left] !== target) {
+      left++
+    }
+    while (nums[right] !== target) {
+      right--
+    }
+    // 取最短长度
+    ans = Math.min(right - left + 1, ans)
+  }
+  return ans
+}
+```
+
+## 746. 使用最小花费爬楼梯
+
+![](https://qiniu.espe.work/blog/20221029171434.png)
+
+```javascript
+/**
+ * @param {number[]} cost
+ * @return {number}
+ */
+var minCostClimbingStairs = function(cost) {
+  let len = cost.length
+  // dp[i] 表示前 i 步楼梯的最小花费
+  const dp = new Array(len + 1).fill(0)
+  for (let i = 2; i <= len; i++) {
+    // 有两种情况可以走到当前步 取两种情况的较小花费
+    // 1. 从前一步走过来的 那花费是 dp[i - 1] + cost[i - 1]
+    // 2. 从前二步走过来的 那花费是 dp[i - 2] + cost[i - 2]
+    dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
+  }
+  return dp[len]
+}
+```
+
+## 783. 二叉搜索树节点最小距离
+
+![](https://qiniu.espe.work/blog/20221031171856.png)
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var minDiffInBST = function(root) {
+  let nodes = []
+  search(root, nodes)
+  // 找出最小间距
+  let ans = Infinity
+  for (let i = 1; i < nodes.length; i++) {
+    ans = Math.min(nodes[i] - nodes[i - 1], ans)
+  }
+  return ans
+}
+
+// 中序遍历 按照从小到大搜索出所有节点值
+var search = function(root, list) {
+  if (!root) return
+  search(root.left, list)
+  list.push(root.val)
+  search(root.right, list)
+}
+```
+
+## 796. 旋转字符串
+
+![](https://qiniu.espe.work/blog/20221031173155.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @param {string} goal
+ * @return {boolean}
+ */
+var rotateString = function(s, goal) {
+  // 每次旋转一步 直到旋转一个圈
+  for (let i = 0; i < s.length; i++) {
+    if (s.slice(i) + s.slice(0, i) === goal) {
+      return true
+    }
+  }
+  // 旋转一圈都不能满足条件 返回false
+  return false
+}
+```
+
+## 821. 字符的最短距离
+
+![](https://qiniu.espe.work/blog/20221101154257.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @param {character} c
+ * @return {number[]}
+ */
+var shortestToChar = function(s, c) {
+  let ans = new Array(s.length)
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === c) {
+      // 刚好是目标字符
+      ans[i] = 0
+    } else {
+      // 往左右找最近的目标字母
+      let left = i - 1
+      let right = i + 1
+      while (s[left] !== c && left > -1) {
+        left--
+      }
+      while (s[right] !== c && right < s.length) {
+        right++
+      }
+      if (left < 0) left = -Infinity // 处理左边界
+      if (right >= s.length) right = Infinity // 处理右边界
+      ans[i] = Math.min(i - left, right - i)
+    }
+  }
+  return ans
+}
+```
+
+## 844. 比较含退格的字符串
+
+![](https://qiniu.espe.work/blog/20221102213728.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var backspaceCompare = function(s, t) {
+  let arr1 = [] // s 去掉退格后的数组
+  let arr2 = [] // t 去掉退格后的数组
+  for (let i = 0; i < s.length; i++) {
+    // 如果是 ‘#’ 删除一个字符
+    if (s[i] === '#') {
+      arr1.pop()
+    } else {
+      // 是非 ‘#’
+      arr1.push(s[i])
+    }
+  }
+  for (let i = 0; i < t.length; i++) {
+    if (t[i] === '#') {
+      arr2.pop()
+    } else {
+      arr2.push(t[i])
+    }
+  }
+  return arr1.join() === arr2.join()
+}
+
+backspaceCompare('ab#c', 'ad#c')
+```
+
+## 860. 柠檬水找零
+
+![](https://qiniu.espe.work/blog/20221102215825.png)
+
+```javascript
+/**
+ * @param {number[]} bills
+ * @return {boolean}
+ */
+var lemonadeChange = function(bills) {
+  let count5 = 0 // 表示5的张数
+  let count10 = 0 // 表示5的张数
+  for (let i = 0; i < bills.length; i++) {
+    if (bills[i] === 5) {
+      count5++
+    } else if (bills[i] === 10) {
+      count5--
+      count10++
+    } else {
+      // 如果是20 优先找给顾客10块 再找5块
+      let temp = 15
+      if (count10 > 0) {
+        count10--
+        temp -= 10
+      }
+      count5 -= Math.round(temp / 5)
+    }
+    if (count5 < 0) return false
+  }
+  return true
+}
+```
+
+## 872. 叶子相似的树
+
+![](https://qiniu.espe.work/blog/20221103222030.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {boolean}
+ */
+var leafSimilar = function(root1, root2) {
+  let list1 = []
+  let list2 = []
+  search(root1, list1)
+  search(root2, list2)
+  return list1.toString() === list2.toString()
+}
+
+var search = function(root, list) {
+  if (!root) return
+  if (root && !root.left && !root.right) {
+    list.push(root.val)
+    return
+  }
+  search(root.left, list)
+  search(root.right, list)
+}
+```
+
+## 868. 二进制间距
+
+![](https://qiniu.espe.work/blog/20221103222630.png)
+
+```javascript
+var binaryGap = function(n) {
+  let last = -1,
+    ans = 0
+  for (let i = 0; n != 0; ++i) {
+    // 获取n的最后一位
+    if ((n & 1) === 1) {
+      if (last !== -1) {
+        ans = Math.max(ans, i - last)
+      }
+      last = i
+    }
+    // 移位运算 丢弃最后一位
+    n >>= 1
+  }
+  return ans
+}
+```
+
+## 897. 递增顺序搜索树
+
+![](https://qiniu.espe.work/blog/20221104214123.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var increasingBST = function(root) {
+  let list = []
+  search(root, list)
+  for (let i = 0; i < list.length; i++) {
+    list[i].left = null
+    list[i].right = list[i + 1] || null
+  }
+  return list[0]
+}
+
+var search = function(root, list) {
+  if (!root) return
+  search(root.left, list)
+  list.push(root)
+  search(root.right, list)
+}
+```
+
+## 884. 两句话中的不常见单词
+
+![](https://qiniu.espe.work/blog/20221105161544.png)
+
+```javascript
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {string[]}
+ */
+var uncommonFromSentences = function(s1, s2) {
+  // 根据题意 可以先把s1和s2的单词全部找出来连起来 然后找出出现一次的单词即可
+  // words 存放所有的单词
+  let words = s1.split(' ').concat(s2.split(' '))
+  let map = {} //记录单词频率
+  for (let i = 0; i < words.length; i++) {
+    map[words[i]] = map[words[i]] ? map[words[i]] + 1 : 1
+  }
+  let ans = []
+  for (const key in map) {
+    // 如果是出现一次
+    if (map[key] === 1) ans.push(key)
+  }
+  return ans
+}
+```
+
+## 896. 单调数列
+
+![](https://qiniu.espe.work/blog/20221105165710.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var isMonotonic = function(nums) {
+  if (nums.length < 3) return true
+  let isIncrease = true // 是否递增
+  let isDecrease = true // 是否递减
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > nums[i - 1]) isDecrease = false
+    if (nums[i] < nums[i - 1]) isIncrease = false
+    // 如果非递增也非递减 返回false
+    if (!isDecrease && !isIncrease) return false
+  }
+  return true
+}
+```
+
+## 867. 转置矩阵
+
+![](https://qiniu.espe.work/blog/20221112221440.png)
+
+```javascript
+/**
+ * @param {number[][]} matrix
+ * @return {number[][]}
+ */
+var transpose = function(matrix) {
+  const m = matrix.length,
+    n = matrix[0].length
+  const transposed = new Array(n).fill(0).map(() => new Array(m).fill(0))
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      transposed[j][i] = matrix[i][j]
+    }
+  }
+  return transposed
+}
+```

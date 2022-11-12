@@ -64,29 +64,55 @@ var createTree = function(nums) {
   return root
 }
 
-let root = createTree([4, 2, 6, 1, 3])
+let root = createTree([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4])
 
 /**
- * @param {TreeNode} root
- * @return {number}
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
  */
-var getMinimumDifference = function(root) {
-  let list = []
-  search(root, list)
-  // 找出最小间距
-  let ans = Infinity
-  for (let i = 1; i < list.length; i++) {
-    ans = Math.min(list[i] - list[i - 1], ans)
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var subtreeWithAllDeepest = function(root) {
+  // 找出 最深 深度
+  let deep = getDeepest(root)
+  if (deep === 1) return root
+  let paths = []
+  // 搜索出所有最长路径
+  searchPath(root, paths, [], deep)
+  // 如果只有一条路径 直接返回最后一个节点
+  if (paths.length === 1) return paths[0][paths[0].length - 1]
+
+  // 寻找最长公共前缀
+  for (let i = 0; i < paths[0].length; i++) {
+    let current = paths[0][i]
+    for (let j = 1; j < paths.length; j++) {
+      if (paths[j][i] !== current) {
+        return paths[j][i - 1]
+      }
+    }
   }
-  return ans
 }
 
-// 中序遍历 从小到大 找出所有数字 
-var search = function(node, list) {
-  if (!node) return
-  search(node.left, list)
-  list.push(node.val)
-  search(node.right, list)
+var searchPath = function(root, paths, temp, deep) {
+  if (!root) return
+  if (!root.left && !root.right) {
+    if (temp.length + 1 >= deep) {
+      paths.push([...temp, root])
+    }
+  }
+  if (root.left) searchPath(root.left, paths, [...temp, root], deep)
+  if (root.right) searchPath(root.right, paths, [...temp, root], deep)
 }
 
-console.log(getMinimumDifference(root))
+var getDeepest = function(root) {
+  if (!root) return 0
+  return Math.max(getDeepest(root.left), getDeepest(root.right)) + 1
+}
+
+subtreeWithAllDeepest(root)

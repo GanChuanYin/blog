@@ -5126,3 +5126,535 @@ var isMatch = function(s, target) {
   return false
 }
 ```
+
+## 539. 最小时间差
+
+![](https://qiniu.espe.work/blog/20221017232813.png)
+
+```javascript
+/**
+ * @param {string[]} timePoints
+ * @return {number}
+ */
+var findMinDifference = function(timePoints) {
+  timePoints.sort((a, b) => {
+    let m1 = a.slice(0, 2)
+    let m2 = b.slice(0, 2)
+    if (m1 !== m2) return m1 - m2
+    let s1 = a.slice(3)
+    let s2 = b.slice(3)
+    return s1 - s2
+  })
+  let ans = Infinity
+  for (let i = 0; i < timePoints.length; i++) {
+    let time1 = new Date('1996-10-22T' + timePoints[i] + ':00')
+    let time2 = new Date('1996-10-22T' + timePoints[i - 1] + ':00')
+    if (i === 0) {
+      time1.setDate(23)
+      time2 = new Date(
+        '1996-10-22T' + timePoints[timePoints.length - 1] + ':00'
+      )
+    }
+    let diff = Math.round((time1.getTime() - time2.getTime()) / 1000 / 60)
+    if (diff === 0) return 0
+    ans = Math.min(diff, ans)
+  }
+  return ans
+}
+```
+
+## 567. 字符串的排列
+
+![](https://qiniu.espe.work/blog/20221020181629.png)
+
+```javascript
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {boolean}
+ */
+var checkInclusion = function(s1, s2) {
+  let len1 = s1.length
+  let len2 = s2.length
+  if (len1 > len2) return false
+  let i = 0
+  while (i <= len2 - len1) {
+    let diff = isMatch(s1, s2.slice(i, i + len1))
+    // 完全相同 返回true
+    if (diff === 0) return true
+    // 根据两个字符串有多少个字母不同 每次移动一步或者多步
+    i += diff >> 1 || 1
+  }
+  return false
+}
+
+// 检测s1和s2包含的字母个数有多少个不同
+var isMatch = function(s1, s2) {
+  let list = Array.from(s2)
+  for (let i = 0; i < s1.length; i++) {
+    let idx = list.indexOf(s1[i])
+    if (idx > -1) {
+      list.splice(idx, 1)
+    }
+  }
+  return list.length
+}
+```
+
+## 622. 设计循环队列
+
+![](https://qiniu.espe.work/blog/20221022160921.png)
+
+```javascript
+/**
+ * @param {number} k
+ */
+var MyCircularQueue = function(k) {
+  this.list = []
+  this.capacity = k
+}
+
+/**
+ * @param {number} value
+ * @return {boolean}
+ */
+MyCircularQueue.prototype.enQueue = function(value) {
+  if (this.isFull()) return false
+  this.list.push(value)
+  return true
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularQueue.prototype.deQueue = function() {
+  if (this.isEmpty()) return false
+  this.list.shift()
+  return true
+}
+
+/**
+ * @return {number}
+ */
+MyCircularQueue.prototype.Front = function() {
+  if (this.isEmpty()) return -1
+  return this.list[0]
+}
+
+/**
+ * @return {number}
+ */
+MyCircularQueue.prototype.Rear = function() {
+  if (this.isEmpty()) return -1
+  return this.list[this.list.length - 1]
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularQueue.prototype.isEmpty = function() {
+  return this.list.length === 0
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularQueue.prototype.isFull = function() {
+  return this.list.length === this.capacity
+}
+
+/**
+ * Your MyCircularQueue object will be instantiated and called as such:
+ * var obj = new MyCircularQueue(k)
+ * var param_1 = obj.enQueue(value)
+ * var param_2 = obj.deQueue()
+ * var param_3 = obj.Front()
+ * var param_4 = obj.Rear()
+ * var param_5 = obj.isEmpty()
+ * var param_6 = obj.isFull()
+ */
+```
+
+## 623. 在二叉树中增加一行
+
+![](https://qiniu.espe.work/blog/20221023143415.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @param {number} depth
+ * @return {TreeNode}
+ */
+var addOneRow = function(root, val, depth) {
+  // 如果是第一层 直接新建根节点
+  if (depth === 1) {
+    let ans = new TreeNode(val)
+    ans.left = root
+    return ans
+  }
+  handle([root], 1, val, depth)
+  return root
+}
+
+// 层次遍历
+var handle = function(nodes, level, val, depth) {
+  let nextLevel = []
+  for (let i = 0; i < nodes.length; i++) {
+    // 如果是目标层次 插入左右节点
+    if (level + 1 === depth) {
+      let leftNode = new TreeNode(val)
+      leftNode.left = nodes[i].left
+      nodes[i].left = leftNode
+      let rightNode = new TreeNode(val)
+      rightNode.right = nodes[i].right
+      nodes[i].right = rightNode
+    } else {
+      // 不是目标层次 记录左右孩 递归遍历下一层
+      if (nodes[i].left) nextLevel.push(nodes[i].left)
+      if (nodes[i].right) nextLevel.push(nodes[i].right)
+    }
+  }
+  if (nextLevel.length) handle(nextLevel, level + 1, val, depth)
+}
+```
+
+## 641. 设计循环双端队列
+
+![](https://qiniu.espe.work/blog/20221024141507.png)
+
+```javascript
+/**
+ * @param {number} k
+ */
+var MyCircularDeque = function(k) {
+  this.list = []
+  this.capacity = k
+}
+
+/**
+ * @param {number} value
+ * @return {boolean}
+ */
+MyCircularDeque.prototype.insertFront = function(value) {
+  if (this.isFull()) return false
+  this.list.unshift(value)
+  return true
+}
+
+/**
+ * @param {number} value
+ * @return {boolean}
+ */
+MyCircularDeque.prototype.insertLast = function(value) {
+  if (this.isFull()) return false
+  this.list.push(value)
+  return true
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularDeque.prototype.deleteFront = function() {
+  if (this.isEmpty()) return false
+  this.list.shift()
+  return true
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularDeque.prototype.deleteLast = function() {
+  if (this.isEmpty()) return false
+  this.list.pop()
+  return true
+}
+
+/**
+ * @return {number}
+ */
+MyCircularDeque.prototype.getFront = function() {
+  if (this.isEmpty()) return -1
+  return this.list[0]
+}
+
+/**
+ * @return {number}
+ */
+MyCircularDeque.prototype.getRear = function() {
+  if (this.isEmpty()) return -1
+  return this.list[this.list.length - 1]
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularDeque.prototype.isEmpty = function() {
+  return this.list.length === 0
+}
+
+/**
+ * @return {boolean}
+ */
+MyCircularDeque.prototype.isFull = function() {
+  return this.list.length >= this.capacity
+}
+
+/**
+ * Your MyCircularDeque object will be instantiated and called as such:
+ * var obj = new MyCircularDeque(k)
+ * var param_1 = obj.insertFront(value)
+ * var param_2 = obj.insertLast(value)
+ * var param_3 = obj.deleteFront()
+ * var param_4 = obj.deleteLast()
+ * var param_5 = obj.getFront()
+ * var param_6 = obj.getRear()
+ * var param_7 = obj.isEmpty()
+ * var param_8 = obj.isFull()
+ */
+```
+
+## 650. 只有两个键的键盘
+
+![](https://qiniu.espe.work/blog/20221024144357.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var minSteps = function(n) {
+  const dp = new Array(n + 1).fill(0)
+  for (let i = 2; i <= n; i++) {
+    dp[i] = i
+  }
+
+  for (let i = 4; i <= n; i++) {
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        dp[i] = Math.min(dp[j] + i / j, dp[i])
+      }
+    }
+  }
+  // console.log(dp)
+  return dp[n]
+}
+```
+
+## 654. 最大二叉树
+
+![](https://qiniu.espe.work/blog/20221025144714.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var constructMaximumBinaryTree = function(nums) {
+  if (nums.length === 0) return null
+  if (nums.length === 1) {
+    return new TreeNode(nums[0])
+  }
+  // 寻找最大值
+  let maxIdx = 0
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > nums[maxIdx]) maxIdx = i
+  }
+  let root = new TreeNode(nums[maxIdx])
+  // 根据最大值左右构建子树
+  root.left = constructMaximumBinaryTree(nums.slice(0, maxIdx))
+  root.right = constructMaximumBinaryTree(nums.slice(maxIdx + 1))
+  return root
+}
+```
+
+## 692. 前 K 个高频单词
+
+![](https://qiniu.espe.work/blog/20221026160559.png)
+
+```javascript
+/**
+ * @param {string[]} words
+ * @param {number} k
+ * @return {string[]}
+ */
+var topKFrequent = function(words, k) {
+  let map = {}
+  for (let i = 0; i < words.length; i++) {
+    map[words[i]] = map[words[i]] ? map[words[i]] + 1 : 1
+  }
+  // 获取频率列表
+  // 例: [ [ 'the', 4 ], [ 'is', 3 ], [ 'sunny', 2 ], [ 'day', 1 ] ]
+  const list = []
+  for (const key in map) {
+    list.push([key, map[key]])
+  }
+  list.sort((a, b) => {
+    // 按照出现频率排序
+    if (b[1] !== a[1]) return b[1] - a[1]
+    // 频率相同 按照字典序排序
+    return a[0] > b[0] ? 1 : -1
+  })
+  // 返回按照出现频率排序前K个单词
+  return list.slice(0, k).map((item) => item[0])
+}
+```
+
+## 718. 最长重复子数组
+
+![](https://qiniu.espe.work/blog/20221027222232.png)
+
+```javascript
+const findLength = (A, B) => {
+  // A、B数组的长度
+  const [m, n] = [A.length, B.length]
+  // dp数组初始化，都初始化为0
+  const dp = new Array(m + 1).fill(0).map((x) => new Array(n + 1).fill(0))
+  // 初始化最大长度为0
+  let res = 0
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      // 遇到A[i - 1] === B[j - 1]，则更新dp数组
+      if (A[i - 1] === B[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1
+      }
+      // 更新res
+      res = dp[i][j] > res ? dp[i][j] : res
+    }
+  }
+  // 遍历完成，返回res
+  return res
+}
+```
+
+## 662. 二叉树最大宽度
+
+![](https://qiniu.espe.work/blog/20221028155210.png)
+
+```javascript
+var widthOfBinaryTree = function(root) {
+  /** JS 存在计数溢出的问题，使用 BigInt，BigInt 不能调用 Math 中的方法。 */
+  let maxWidth = 1n
+  const leftIds = []
+  const dfs = (root, level, currIdx) => {
+    if (leftIds[level] === undefined) {
+      leftIds[level] = currIdx
+    } else {
+      const width = currIdx - leftIds[level] + 1n
+      maxWidth = maxWidth > width ? maxWidth : width
+    }
+    if (root.left !== null) {
+      dfs(root.left, level + 1, currIdx * 2n - 1n)
+    }
+    if (root.right !== null) {
+      dfs(root.right, level + 1, currIdx * 2n)
+    }
+  }
+  dfs(root, 0, 1n)
+  return maxWidth
+}
+```
+
+## 817. 链表组件
+
+![](https://qiniu.espe.work/blog/20221101162935.png)
+
+```javascript
+/**
+ * @param {ListNode} head
+ * @param {number[]} nums
+ * @return {number}
+ */
+var numComponents = function(head, nums) {
+  // 可以理解为搜索 nums 在链表上有几段
+  let current = head
+  let ans = 0
+  while (current) {
+    // 如果nums包含当前值
+    if (nums.includes(current.val)) {
+      let temp = current
+      // 搜索连续段
+      while (temp.next && nums.includes(temp.next.val)) {
+        temp = temp.next
+      }
+      ans++
+      current = temp.next
+    } else {
+      // nums不包含当前值 直接跳过
+      current = current.next
+    }
+  }
+  return ans
+}
+```
+
+## 865. 具有所有最深节点的最小子树
+
+![](https://qiniu.espe.work/blog/20221107160046.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var subtreeWithAllDeepest = function(root) {
+  // 找出 最深 深度
+  let deep = getDeepest(root)
+  if (deep === 1) return root
+  let paths = []
+  // 搜索出所有最长路径
+  searchPath(root, paths, [], deep)
+  // 如果只有一条路径 直接返回最后一个节点
+  if (paths.length === 1) return paths[0][paths[0].length - 1]
+
+  // 寻找最长公共前缀
+  for (let i = 0; i < paths[0].length; i++) {
+    let current = paths[0][i]
+    for (let j = 1; j < paths.length; j++) {
+      if (paths[j][i] !== current) {
+        return paths[j][i - 1]
+      }
+    }
+  }
+}
+
+var searchPath = function(root, paths, temp, deep) {
+  if (!root) return
+  if (!root.left && !root.right) {
+    if (temp.length + 1 >= deep) {
+      paths.push([...temp, root])
+    }
+  }
+  if (root.left) searchPath(root.left, paths, [...temp, root], deep)
+  if (root.right) searchPath(root.right, paths, [...temp, root], deep)
+}
+
+var getDeepest = function(root) {
+  if (!root) return 0
+  return Math.max(getDeepest(root.left), getDeepest(root.right)) + 1
+}
+```

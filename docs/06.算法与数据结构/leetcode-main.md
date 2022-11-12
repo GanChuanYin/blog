@@ -1612,3 +1612,250 @@ var longestPalindromeSubseq = function(s) {
   return dp[0][n - 1]
 }
 ```
+
+## 542. 01 矩阵
+
+![](https://qiniu.espe.work/blog/20221018112112.png)
+
+```javascript
+/**
+ * @param {number[][]} mat
+ * @return {number[][]}
+ */
+var updateMatrix = function(mat) {
+  let m = mat.length,
+    n = mat[0].length
+  // 目标结果
+  let dp = new Array(m)
+    .fill(0)
+    .map(() => new Array(n).fill(Number.MAX_SAFE_INTEGER))
+  // 如果 (i, j) 的元素为 0，那么距离为 0
+  for (let i = 0; i < m; i++)
+    for (let j = 0; j < n; j++) if (mat[i][j] == 0) dp[i][j] = 0
+
+  // 只有 水平向右移动 和 竖直向下移动，递归的顺序是从左到右，从上到下
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      // 水平向左 是由同行左侧的元素递推算出来的
+      if (i - 1 >= 0) dp[i][j] = Math.min(dp[i][j], dp[i - 1][j] + 1)
+      // 垂直向下，是由同列上行的元素递推算出来的
+      if (j - 1 >= 0) dp[i][j] = Math.min(dp[i][j], dp[i][j - 1] + 1)
+    }
+  }
+  // 只有 水平向左移动 和 竖直向上移动，递归的顺序是从右到左，从下到上
+  for (let i = m - 1; i >= 0; i--) {
+    for (let j = n - 1; j >= 0; j--) {
+      // 水平向右 是由同行右侧的元素递推算出来的
+      if (i + 1 < m) dp[i][j] = Math.min(dp[i][j], dp[i + 1][j] + 1)
+      // 垂直向下，是由同列下行的元素递推算出来的
+      if (j + 1 < n) dp[i][j] = Math.min(dp[i][j], dp[i][j + 1] + 1)
+    }
+  }
+  return dp
+}
+```
+
+## 696. 计数二进制子串
+
+![](https://qiniu.espe.work/blog/20221026170657.png)
+
+![](https://qiniu.espe.work/blog/20221026170802.png)
+
+```javascript
+var countBinarySubstrings = function(s) {
+  const counts = []
+  let ptr = 0,
+    n = s.length
+  while (ptr < n) {
+    const c = s.charAt(ptr)
+    let count = 0
+    while (ptr < n && s.charAt(ptr) === c) {
+      ++ptr
+      ++count
+    }
+    counts.push(count)
+  }
+  let ans = 0
+  for (let i = 1; i < counts.length; ++i) {
+    ans += Math.min(counts[i], counts[i - 1])
+  }
+  return ans
+}
+```
+
+## 698. 划分为 k 个相等的子集
+
+![](https://qiniu.espe.work/blog/20221028170814.png)
+
+```javascript
+var canPartitionKSubsets = function(nums, k) {
+  var sum = 0
+  for (var i = nums.length - 1; i >= 0; i--) {
+    sum += nums[i]
+  }
+  nums.sort((a, b) => b - a)
+  let sums = new Array(k).fill(0)
+  return backtrace(nums, sums, 0, k, sum / k)
+}
+function backtrace(nums, sums, i, k, average) {
+  if (i === nums.length) return true
+  for (let j = 0; j < k; j++) {
+    if (sums[j] < average && nums[i] + sums[j] <= average) {
+      // 尝试求解
+      sums[j] += nums[i]
+      // 求解成功 返回true
+      if (backtrace(nums, sums, i + 1, k, average)) {
+        return true
+      }
+      // 求解失败 回溯
+      sums[j] -= nums[i]
+    }
+  }
+  return false
+}
+```
+
+![](https://qiniu.espe.work/blog/20221028170904.png)
+
+## 763. 划分字母区间
+
+![](https://qiniu.espe.work/blog/20221030200231.png)
+
+```javascript
+var partitionLabels = function(s) {
+  const last = new Array(26)
+  const length = s.length
+  const codePointA = 'a'.codePointAt(0)
+  for (let i = 0; i < length; i++) {
+    last[s.codePointAt(i) - codePointA] = i
+  }
+  const partition = []
+  let start = 0,
+    end = 0
+  for (let i = 0; i < length; i++) {
+    end = Math.max(end, last[s.codePointAt(i) - codePointA])
+    if (i == end) {
+      partition.push(end - start + 1)
+      start = end + 1
+    }
+  }
+  return partition
+}
+```
+
+## 797. 所有可能的路径
+
+![](https://qiniu.espe.work/blog/20221031170840.png)
+
+```javascript
+/**
+ * @param {number[][]} graph
+ * @return {number[][]}
+ */
+var allPathsSourceTarget = function(graph) {
+  let len = graph.length
+  let ans = []
+  // 深度优先搜索
+  const dfs = (idx, temp) => {
+    // 如果搜索到最后一个节点 记录结果后return
+    if (idx === len - 1) {
+      ans.push(temp)
+      return
+    }
+    for (let i = 0; i < graph[idx].length; i++) {
+      // 将当前值加入路径
+      dfs(graph[idx][i], [...temp, graph[idx][i]])
+    }
+  }
+  // 从0开始 初始值为[0]
+  dfs(0, [0])
+  return ans
+}
+```
+
+## 877. 石子游戏
+
+![](https://qiniu.espe.work/blog/20221105160525.png)
+
+![](https://qiniu.espe.work/blog/20221105160541.png)
+
+```javascript
+/**
+ * @param {number[]} piles
+ * @return {boolean}
+ */
+var stoneGame = function(piles) {
+  const length = piles.length
+  const dp = new Array(length).fill(0).map(() => new Array(length).fill(0))
+  for (let i = 0; i < length; i++) {
+    dp[i][i] = piles[i]
+  }
+  for (let i = length - 2; i >= 0; i--) {
+    for (let j = i + 1; j < length; j++) {
+      dp[i][j] = Math.max(piles[i] - dp[i + 1][j], piles[j] - dp[i][j - 1])
+    }
+  }
+  return dp[0][length - 1] > 0
+}
+```
+
+## 890. 查找和替换模式
+
+![](https://qiniu.espe.work/blog/20221106213144.png)
+
+```javascript
+var findAndReplacePattern = function(words, pattern) {
+  const ans = []
+  for (const word of words) {
+    if (match(word, pattern) && match(pattern, word)) {
+      ans.push(word)
+    }
+  }
+  return ans
+}
+
+const match = (word, pattern) => {
+  const map = new Map()
+  for (let i = 0; i < word.length; ++i) {
+    const x = word[i],
+      y = pattern[i]
+    if (!map.has(x)) {
+      map.set(x, y)
+    } else if (map.get(x) !== y) {
+      // word 中的同一字母必须映射到 pattern 中的同一字母上
+      return false
+    }
+  }
+  return true
+}
+```
+
+## 904. 水果成篮
+
+![](https://qiniu.espe.work/blog/20221106215712.png)
+
+```javascript
+var totalFruit = function(fruits) {
+  let left = 0
+  // 记录出现的水果的频次
+  let map = new Map()
+  let ans = 0
+  for (let right = 0; right < fruits.length; right++) {
+    // 频次+1
+    map.set(
+      fruits[right],
+      map.get(fruits[right]) ? map.get(fruits[right]) + 1 : 1
+    )
+    while (map.size > 2) {
+      map.set(fruits[left], map.get(fruits[left]) - 1)
+      // 如果频次为0 就删除
+      if (map.get(fruits[left]) === 0) {
+        map.delete(fruits[left])
+      }
+      left++
+    }
+    ans = Math.max(ans, right - left + 1)
+  }
+  return ans
+}
+```
