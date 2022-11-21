@@ -64,7 +64,7 @@ var createTree = function(nums) {
   return root
 }
 
-let root = createTree([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4])
+let root = createTree([1, 0, 1, 0, 1, 0, 1])
 
 /**
  * Definition for a binary tree node.
@@ -76,43 +76,27 @@ let root = createTree([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4])
  */
 /**
  * @param {TreeNode} root
- * @return {TreeNode}
+ * @return {number}
  */
-var subtreeWithAllDeepest = function(root) {
-  // 找出 最深 深度
-  let deep = getDeepest(root)
-  if (deep === 1) return root
-  let paths = []
-  // 搜索出所有最长路径
-  searchPath(root, paths, [], deep)
-  // 如果只有一条路径 直接返回最后一个节点
-  if (paths.length === 1) return paths[0][paths[0].length - 1]
-
-  // 寻找最长公共前缀
-  for (let i = 0; i < paths[0].length; i++) {
-    let current = paths[0][i]
-    for (let j = 1; j < paths.length; j++) {
-      if (paths[j][i] !== current) {
-        return paths[j][i - 1]
-      }
-    }
+var sumRootToLeaf = function(root) {
+  const paths = []
+  // 搜索所有路径
+  handle(root, '', paths)
+  let ans = 0
+  // 计算所有路径和
+  for (let i = 0; i < paths.length; i++) {
+    ans += parseInt(paths[i], 2) // 二进制转十进制
   }
+  return ans
 }
 
-var searchPath = function(root, paths, temp, deep) {
-  if (!root) return
-  if (!root.left && !root.right) {
-    if (temp.length + 1 >= deep) {
-      paths.push([...temp, root])
-    }
+var handle = function(node, current, paths) {
+  if (!node.left && !node.right) {
+    paths.push(current + node.val)
+    return
   }
-  if (root.left) searchPath(root.left, paths, [...temp, root], deep)
-  if (root.right) searchPath(root.right, paths, [...temp, root], deep)
+  if (node.left) handle(node.left, current + node.val, paths)
+  if (node.right) handle(node.right, current + node.val, paths)
 }
 
-var getDeepest = function(root) {
-  if (!root) return 0
-  return Math.max(getDeepest(root.left), getDeepest(root.right)) + 1
-}
-
-subtreeWithAllDeepest(root)
+sumRootToLeaf(root)

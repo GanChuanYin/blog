@@ -5658,3 +5658,76 @@ var getDeepest = function(root) {
   return Math.max(getDeepest(root.left), getDeepest(root.right)) + 1
 }
 ```
+
+## 946. 验证栈序列
+
+![](https://qiniu.espe.work/blog/20221113161131.png)
+
+```javascript
+/**
+ * @param {number[]} pushed
+ * @param {number[]} popped
+ * @return {boolean}
+ */
+var validateStackSequences = function(pushed, popped) {
+  let stack = [pushed.shift()]
+  while (stack.length > 0 || pushed.length > 0 || popped.length > 0) {
+    // 如果栈顶元素和 popped 相同 表示两者位置匹配 都消除
+    if (popped[0] === stack[0]) {
+      stack.shift()
+      popped.shift()
+    } else {
+      // 如果栈顶元素和 popped 不相同 继续入栈
+      if (pushed.length > 0) {
+        stack.unshift(pushed.shift())
+      } else {
+        // 入栈完了还不能和popped[0]匹配 返回false
+        return false
+      }
+    }
+    console.log(stack)
+  }
+  return true
+}
+```
+
+
+## 958. 二叉树的完全性检验
+
+![](https://qiniu.espe.work/blog/20221119221924.png)
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isCompleteTree = function(root) {
+  return handle([root], 0)
+}
+
+var handle = function(nodes = [], level) {
+  // 检查是否还有下层子节点
+  const hasChild = nodes.some((node) => {
+    if (!node) return false
+    return node.left || node.right
+  })
+  // 没有下层了直接返回true
+  if (!hasChild) return true
+  // 有下层 那么这一层必须是 ‘满的’ 
+  if (nodes.length !== Math.pow(2, level)) return false
+  // 检测下层是否满足
+  let nextLevel = []
+  for (let i = 0; i < nodes.length; i++) {
+    nextLevel.push(nodes[i].left, nodes[i].right)
+  }
+  // 检测是否所有节点都是尽可能靠左的
+  let flag = false
+  for (let i = 0; i < nextLevel.length; i++) {
+    if (!nextLevel[i]) flag = true
+    if (nextLevel[i] && flag) return false
+  }
+  // 去掉空节点
+  nextLevel = nextLevel.filter((node) => node)
+  return handle(nextLevel, level + 1)
+}
+```

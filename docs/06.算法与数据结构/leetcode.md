@@ -2709,3 +2709,277 @@ var transpose = function(matrix) {
   return transposed
 }
 ```
+
+## 922. 按奇偶排序数组 II
+
+![](https://qiniu.espe.work/blog/20221113155052.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortArrayByParityII = function(nums) {
+  let odd = [] // 奇数
+  let even = [] // 偶数
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 0) {
+      even.push(nums[i])
+    } else {
+      odd.push(nums[i])
+    }
+  }
+
+  let flag = true
+  for (let i = 0; i < nums.length; i++) {
+    // 根据当前位置i填充奇数偶数
+    if (flag) {
+      nums[i] = even.shift()
+    } else {
+      nums[i] = odd.shift()
+    }
+    flag = !flag
+  }
+  return nums
+}
+```
+
+## 925. 长按键入
+
+![](https://qiniu.espe.work/blog/20221113162112.png)
+
+```javascript
+/**
+ * @param {string} name
+ * @param {string} typed
+ * @return {boolean}
+ */
+var isLongPressedName = function(name, typed) {
+  let left = 0
+  for (let i = 0; i < name.length; i++) {
+    // 匹配不上直接返回false
+    if (name[i] !== typed[left]) return false
+    // 如果name下个字母与当前相同
+    if (name[i + 1] === name[i]) {
+      left++
+    } else {
+      // 如果name下个字母与当前不同 删除typed后面的与当前相同的字母
+      let temp = left + 1
+      while (typed[temp] === typed[left]) {
+        temp++
+      }
+      left = temp
+    }
+  }
+  return left === typed.length
+}
+```
+
+## 917. 仅仅反转字母
+
+![](https://qiniu.espe.work/blog/20221116221539.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseOnlyLetters = function(s) {
+  let position = [] //记录所有字母的位置
+  for (let i = 0; i < s.length; i++) {
+    if (/[a-zA-Z]/.test(s[i])) {
+      position.push(i)
+    }
+  }
+  let arr = s.split('')
+  let left = 0
+  let right = position.length - 1
+  // 交换字母的位置
+  while (left < right) {
+    let temp = arr[position[left]]
+    arr[position[left]] = arr[position[right]]
+    arr[position[right]] = temp
+    left++
+    right--
+  }
+  return arr.join('')
+}
+```
+
+## 977. 有序数组的平方
+
+![](https://qiniu.espe.work/blog/20221116222248.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function(nums) {
+  nums.sort((a, b) => {
+    return Math.abs(a) - Math.abs(b)
+  })
+  return nums.map((num) => num * num)
+}
+```
+
+## 965. 单值二叉树
+
+![](https://qiniu.espe.work/blog/20221116222843.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isUnivalTree = function(root) {
+  return search(root, root.val)
+}
+
+var search = function(root, val) {
+  if (!root) return true // 空 不用检测 直接返回true
+  if (root.val !== val) return false // 值不同返回false
+  // 值相同  检测左右子树
+  return search(root.left, val) && search(root.right, val)
+}
+```
+
+## 961. 在长度 2N 的数组中找出重复 N 次的元素
+
+![](https://qiniu.espe.work/blog/20221117105315.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var repeatedNTimes = function(nums) {
+  // 哈希表记录出现的频率 超过一半就 return
+  const map = {}
+  let len = nums.length
+  for (let i = 0; i < len; i++) {
+    map[nums[i]] = map[nums[i]] ? map[nums[i]] + 1 : 1
+    if (map[nums[i]] === len / 2) return nums[i]
+  }
+}
+```
+
+## 989. 数组形式的整数加法
+
+![](https://qiniu.espe.work/blog/20221118112551.png)
+
+```javascript
+/**
+ * @param {number[]} num
+ * @param {number} k
+ * @return {number[]}
+ */
+var addToArrayForm = function(num, k) {
+  let num1 = []
+  while (k > 0) {
+    num1.unshift(k % 10)
+    k = Math.floor(k / 10)
+  }
+  const ans = []
+  let carry = 0
+  while (num.length || num1.length || carry) {
+    let n1 = num.pop() || 0
+    let n2 = num1.pop() || 0
+    // 求当前和
+    let sum = n1 + n2 + carry
+    // 重置进位
+    carry = sum > 9 ? 1 : 0
+    // 推入当前位
+    ans.unshift(sum % 10)
+  }
+  return ans
+}
+```
+
+## 1002. 查找共用字符
+
+![](https://qiniu.espe.work/blog/20221119221824.png)
+
+```javascript
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var commonChars = function(words) {
+  let ans = Array.from(words[0])
+  for (let i = 1; i < words.length; i++) {
+    let j = 0
+    let temp = Array.from(words[i])
+    while (j < ans.length) {
+      let index = temp.indexOf(ans[j])
+      // 当前单词中不包含这个字符 从结果中删除
+      if (index < 0) {
+        ans.splice(j, 1)
+      } else {
+        // 当前单词中包含这个字符 从temp中删除这个字符(避免重复)
+        temp.splice(index, 1)
+        j++
+      }
+    }
+  }
+  return ans
+}
+```
+
+## 1022. 从根到叶的二进制数之和
+
+![](https://qiniu.espe.work/blog/20221120141557.png)
+
+```javascript
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var sumRootToLeaf = function(root) {
+  const paths = []
+  // 搜索所有路径
+  handle(root, '', paths)
+  let ans = 0
+  // 计算所有路径和
+  for (let i = 0; i < paths.length; i++) {
+    ans += parseInt(paths[i], 2) // 二进制转十进制
+  }
+  return ans
+}
+
+var handle = function(node, current, paths) {
+  if (!node.left && !node.right) {
+    paths.push(current + node.val)
+    return
+  }
+  if (node.left) handle(node.left, current + node.val, paths)
+  if (node.right) handle(node.right, current + node.val, paths)
+}
+```
+
+## 1047. 删除字符串中的所有相邻重复项
+
+![](https://qiniu.espe.work/blog/20221121222047.png)
+
+```javascript
+var removeDuplicates = function(s) {
+  const stk = []
+  for (const ch of s) {
+    if (stk.length && stk[stk.length - 1] === ch) {
+      stk.pop()
+    } else {
+      stk.push(ch)
+    }
+  }
+  return stk.join('')
+}
+```
