@@ -244,7 +244,7 @@ Will render:
 <span>This is a child component</span>
 ```
 
-![](https://qiniu.espe.work/blog/20220703171401.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220703171401.png)
 
 ### Maintaining State with key
 
@@ -433,7 +433,7 @@ By default, v-model syncs the input with the data after each input event (with t
 
 ## Lifecycle Hooks
 
-![](https://qiniu.espe.work/blog/lifecycle.16e4c08e.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/lifecycle.16e4c08e.png)
 
 ## Watchers
 

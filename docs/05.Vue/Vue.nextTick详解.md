@@ -21,7 +21,7 @@
 
 - 上一步我们出队的是一个 macro-task，这一步我们处理的是 micro-task。但需要注意的是：当 macro-task 出队时，任务是**一个一个**执行的；而 micro-task 出队时，任务是**一队一队**执行的（如下图所示）。因此，我们处理 micro 队列这一步，会逐个执行队列中的任务并把它出队，直到队列被清空。
 
-![](https://qiniu.espe.work/blog/20221029140041.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221029140041.png)
 
 - <font color=#3498db size=4>`执行渲染操作，更新界面`</font>（重点）。
 
@@ -31,7 +31,7 @@
 
 我们总结一下，每一次循环都是一个这样的过程：
 
-![](https://qiniu.espe.work/blog/20221029140103.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221029140103.png)
 
 ### 渲染的时机
 
@@ -225,7 +225,7 @@ Vue.nextTick(function() {
 
 图解
 
-![](https://qiniu.espe.work/blog/20221029150452.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221029150452.png)
 
 可以看到 通过 Vue.nextTick(cb)  cb中可以获取到改变后的 DOM
 

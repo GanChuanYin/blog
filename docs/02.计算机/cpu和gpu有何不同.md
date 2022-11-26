@@ -14,15 +14,15 @@ tags:
 
 英伟达的 CUDA 文档里给了这样一幅图：
 
-![](https://qiniu.espe.work/blog/20220516143328.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220516143328.png)
 
 其中 ALU 就是“算术逻辑单元（Arithmetic logic unit）”。
 
 CPU架构图
-![](https://qiniu.espe.work/blog/20220516144848.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220516144848.png)
 
 GPU 架构图
-![](https://qiniu.espe.work/blog/20220516145538.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220516145538.png)
 
 CPU 和 GPU 进行计算的部分都是 ALU ，而如图所示，GPU 绝大部分的芯片面积都是 ALU，而且是超大阵列排布的 ALU。<font color=#00dddd size=4>这些 ALU 都是可以并行运行的</font> ，所以浮点计算速度就特别高了。
 

@@ -29,7 +29,7 @@ Bitmap 可以理解为通过一个 bit 数组来存储特定数据的一种数�
 
 比如上边的考勤的例子里，如果想知道哪个员工最近两天都没来，只要将昨天的 Bitmap 和今天的 Bitmap 做一个按位的“OR”计算，然后检查那些位置是 0，就可以得到最近两天都没来的员工的数据了，比如：
 
-![](https://qiniu.espe.work/blog/20220525100510.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525100510.png)
 
 再比如，我们想知道哪些男员工没来？我们可以在此结果上再“And”上一个 Bitmap 就能得到结果。
 
@@ -49,7 +49,7 @@ Bitmap 可以理解为通过一个 bit 数组来存储特定数据的一种数�
 
 RLE 编码很简单，比较适合有很多连续字符的数据，比如以下边的 Bitmap 为例：
 
-![](https://qiniu.espe.work/blog/20220525101013.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525101013.png)
 
 可以编码为 0,8,2,11,1,2,3,11
 
@@ -71,11 +71,11 @@ RLE 编码很简单，比较适合有很多连续字符的数据，比如以下�
 
 我们用一个 TalkingData Analytics 中用户留存的例子来看 Bitmap 如何做到用户回访的统计。比如想知道某个应用，昨天新增的用户中，有多少人今天又开启了应用（ <font color=#00dddd size=4>次日留存</font> ）。使用过 Hive 的工程师，不难理解下面语句的含义：
 
-![](https://qiniu.espe.work/blog/20220525101405.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525101405.png)
 
 同时，我们使用 Bitmap 技术后，同样实现上述的计算，对比测试显示出效率的差异是巨大的：
 
-![](https://qiniu.espe.work/blog/20220525101441.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525101441.png)
 
 ### 2.3 引入 Bitmap 技术后，分析系统可能的处理流程大体是什么样的？
 
@@ -90,7 +90,7 @@ RLE 编码很简单，比较适合有很多连续字符的数据，比如以下�
 
 为了帮助公司精确定位用户群体, 需要开发一个用户画像系统， 实现用户画像标签化， 用户标签包括用户的社会属性、生活习惯、消费行为等信息， 例如下面这个样子
 
-![](https://qiniu.espe.work/blog/20220525102603.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525102603.png)
 
 通过用户标签， 我们可以对多样的用户群体进行统计，例如统计用户的男女比例，统计喜欢旅游的用户数量等
 
@@ -98,7 +98,7 @@ RLE 编码很简单，比较适合有很多连续字符的数据，比如以下�
 
 为了满足用户标签的统计需求， 我利用关系数据库设计了如下的表结构， 每一个维度的标签对应着数据库表中的一列
 
-![](https://qiniu.espe.work/blog/20220525103004.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525103004.png)
 
 加入我需要统计所有的 “90” 后程序员， 一条 sql 语句即可
 
@@ -130,17 +130,17 @@ Select count(distinct Name) as 用户数 from table where age = '90后' and Occu
 
 第一步：建立用户名和用户 ID 映射
 
-![](https://qiniu.espe.work/blog/20220525104510.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525104510.png)
 
 第二步：让每一个标签存储包含此标签的所有用户的 ID， 每个标签都是一个独立的 Bitmap
 
-![](https://qiniu.espe.work/blog/20220525104636.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525104636.png)
 
 这样一来，每个用户特征都变得一目了然
 
 例如程序员和“00 后” 这两个群体， 各自的 Bitmap 分别如下
 
-![](https://qiniu.espe.work/blog/20220525104913.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525104913.png)
 
 ### 3.5 为什么不用哈希表呢
 
@@ -152,11 +152,11 @@ Select count(distinct Name) as 用户数 from table where age = '90后' and Occu
 
 如何查找使用苹果手机的程序员用户
 
-![](https://qiniu.espe.work/blog/20220525105255.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525105255.png)
 
 如何查找男性用户或所有 “00 后” 用户
 
-![](https://qiniu.espe.work/blog/20220525105311.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525105311.png)
 
 这就是 Bitmap 算法的另一个优势 - 高性能位运算
 
@@ -168,11 +168,11 @@ Select count(distinct Name) as 用户数 from table where age = '90后' and Occu
 
 "90 后" 用户的 Bitmap 如下
 
-![](https://qiniu.espe.work/blog/20220525110232.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525110232.png)
 
 如果想得到非 〝90 后〞的用户 ，能够直接进行非运算吗？
 
-![](https://qiniu.espe.work/blog/20220525110247.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525110247.png)
 
 显然，非〝90 后〞 用户实际上只有 1 个，而不是图中所得到的 8 个结果，所以不能直接进行非运算。
 
@@ -180,11 +180,11 @@ Select count(distinct Name) as 用户数 from table where age = '90后' and Occu
 
 同样是刚才的例子，我们给出 “99 后〞 用广的 Bitmap，再给出一个全量用户的 Bitmap。最终要求出的是存在于全量用户，但又不存在于 “90 后〞 用户的部分。
 
-![](https://qiniu.espe.work/blog/20220525110447.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525110447.png)
 
 如何求出这部分用户呢？ 我们可以使用异或运算, 即相同位为 1， 不同位为 0
 
-![](https://qiniu.espe.work/blog/20220525110507.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220525110507.png)
 
 问题完美解决
 

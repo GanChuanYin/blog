@@ -39,10 +39,10 @@ watch(
 
 ### <font color=#dd0000 size=4>vue3 下 echarts resize()报错</font>
 
-![](https://qiniu.espe.work/blog/20220513165412.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220513165412.png)
 
 有关 <font color=#dd0000 size=4>shallowRef</font>
-![](https://qiniu.espe.work/blog/20220513165639.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220513165639.png)
 
 ### async setup()
 

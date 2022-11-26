@@ -183,7 +183,7 @@ main.js 和 a.js 都引用了 b.js 模块，但是 b 模块也只加载了一次
 
 效果如下：
 
-![](https://qiniu.espe.work/blog/20220426162157.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220426162157.png)
 
 由上可以总结ES6 Modules的几个特点
 

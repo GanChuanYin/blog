@@ -17,13 +17,13 @@ img 如果因为网络或者跨域限制等原因无法正常加载，在默认�
 
 例如 Chrome 浏览器下的效果截图如下所示：
 
-![](https://qiniu.espe.work/blog/20220531171345.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531171345.png)
 
 可以看到图片加载异常之后的视觉效果实在是太粗糙了，程序员可忍设计师不可忍，因此，为了更好的视觉效果，实际项目开发中，我们总会对图片加载异常的边界场景进行额外的处理。
 
 传统的图片加载异常会使用一个加载失败的占位符代替，这个占位图通常会是一张裂开的图片。
 
-![](https://qiniu.espe.work/blog/20220531171441.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531171441.png)
 
 触发使用占位图可以通过 onerror 事件，代码示意如下：
 
@@ -33,7 +33,7 @@ img 如果因为网络或者跨域限制等原因无法正常加载，在默认�
 
 效果：
 
-![](https://qiniu.espe.work/blog/20220531175007.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531175007.png)
 
 然而上面这种实现方式有一个比较致命的问题，那就是**用户并不清楚无法显示的图片具体表示的含义是什么**。
 
@@ -88,14 +88,14 @@ img[lazy='error']::after {
 
 效果
 
-![](https://qiniu.espe.work/blog/20220531175629.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531175629.png)
 
 可以看到，内容展示和视觉表现同时兼顾了
 
 以上这段代码可以添加到全局，然后项目中其他地方也可以直接用， 下面是我在
 el-drawer 中使用的效果
 
-![](https://qiniu.espe.work/blog/20220531175747.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531175747.png)
 
 ## 3. 搭配 vue3-lazyload 使用
 
@@ -109,6 +109,6 @@ el-drawer 中使用的效果
 
 图片懒加载有三种状态
 
-![](https://qiniu.espe.work/blog/20220531180254.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531180254.png)
 
 所以我只需要在 attr lazy 为 error 时写上相应的 css 代码即可

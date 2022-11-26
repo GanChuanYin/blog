@@ -12,9 +12,9 @@ tags:
 
 ## 39. 组合总和
 
-![](https://qiniu.espe.work/blog/20220913143726.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913143726.png)
 
-![](https://qiniu.espe.work/blog/20220913143734.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913143734.png)
 
 ```javascript
 var combinationSum = function(candidates, target) {
@@ -41,15 +41,15 @@ var combinationSum = function(candidates, target) {
 }
 ```
 
-![](https://qiniu.espe.work/blog/20220913143801.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913143801.png)
 
 ## 96. 不同的二叉搜索树
 
-![](https://qiniu.espe.work/blog/20220913154258.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913154258.png)
 
-![](https://qiniu.espe.work/blog/20220913154304.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913154304.png)
 
-![](https://qiniu.espe.work/blog/20220913154314.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913154314.png)
 
 ```javascript
 /**
@@ -73,9 +73,9 @@ var numTrees = function(n) {
 
 ## 72. 编辑距离
 
-![](https://qiniu.espe.work/blog/20220913172120.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913172120.png)
 
-![](https://qiniu.espe.work/blog/20220913172129.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913172129.png)
 
 ```javascript
 var minDistance = function(word1, word2) {
@@ -107,11 +107,11 @@ var minDistance = function(word1, word2) {
 
 ## 85. 最大矩形
 
-![](https://qiniu.espe.work/blog/20220914101300.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914101300.png)
 
-![](https://qiniu.espe.work/blog/20220914101309.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914101309.png)
 
-![](https://qiniu.espe.work/blog/20220914101319.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914101319.png)
 
 ```javascript
 /**
@@ -155,9 +155,9 @@ var maximalRectangle = function(matrix) {
 
 ## 338. 比特位计数
 
-![](https://qiniu.espe.work/blog/20220914224017.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914224017.png)
 
-![](https://qiniu.espe.work/blog/20220914224006.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914224006.png)
 
 ```javascript
 var countBits = function(n) {
@@ -175,7 +175,7 @@ var countBits = function(n) {
 
 ## 312. 戳气球
 
-![](https://qiniu.espe.work/blog/20220915170349.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220915170349.png)
 
 ```javascript
 /**
@@ -213,7 +213,7 @@ var maxCoins = function(nums) {
 
 ## 416. 分割等和子集
 
-![](https://qiniu.espe.work/blog/20220915180215.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220915180215.png)
 
 https://leetcode.cn/problems/partition-equal-subset-sum/solution/fen-ge-deng-he-zi-ji-by-leetcode-solution/
 
@@ -253,9 +253,9 @@ var canPartition = function(nums) {
 
 ## 621. 任务调度器
 
-![](https://qiniu.espe.work/blog/20220915184345.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220915184345.png)
 
-![](https://qiniu.espe.work/blog/20220915184339.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220915184339.png)
 
 ```javascript
 var leastInterval = function(tasks, n) {
@@ -279,7 +279,7 @@ var leastInterval = function(tasks, n) {
 
 ## 32. 最长有效括号
 
-![](https://qiniu.espe.work/blog/20220917174211.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220917174211.png)
 
 - 用栈模拟一遍，将所有无法匹配的括号的位置全部置 false
 - 例如: "()(()"的 mark 为[true, true, false, true, true]
@@ -338,9 +338,9 @@ var isValid = function(s) {
 
 ## 89. 格雷编码
 
-![](https://qiniu.espe.work/blog/20220918163947.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918163947.png)
 
-![](https://qiniu.espe.work/blog/20220918164010.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918164010.png)
 
 ```javascript
 var grayCode = function(n) {
@@ -357,7 +357,7 @@ var grayCode = function(n) {
 
 ## 16. 最接近的三数之和
 
-![](https://qiniu.espe.work/blog/20220918231349.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918231349.png)
 
 ```javascript
 /**
@@ -400,7 +400,7 @@ var threeSumClosest = function(nums, target) {
 
 ## 12. 整数转罗马数字
 
-![](https://qiniu.espe.work/blog/20220919171624.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220919171624.png)
 
 ```javascript
 /**
@@ -439,7 +439,7 @@ var intToRoman = function(num) {
 
 ## 71. 简化路径
 
-![](https://qiniu.espe.work/blog/20220922155335.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220922155335.png)
 
 重点是利用栈和 根据 / 切割
 
@@ -462,7 +462,7 @@ var simplifyPath = function(path) {
 
 ## 95. 不同的二叉搜索树 II
 
-![](https://qiniu.espe.work/blog/20220923182843.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220923182843.png)
 
 ```javascript
 /**
@@ -499,7 +499,7 @@ var handle = function(nums) {
 
 ## 65. 有效数字
 
-![](https://qiniu.espe.work/blog/20220924120436.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220924120436.png)
 
 ```javascript
 var isNumber = function(s) {
@@ -542,7 +542,7 @@ var isNumber = function(s) {
 
 ## 97. 交错字符串
 
-![](https://qiniu.espe.work/blog/20220925153609.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925153609.png)
 
 ```javascript
 var isInterleave = function(s1, s2, s3) {
@@ -574,9 +574,9 @@ var isInterleave = function(s1, s2, s3) {
 
 ## 115. 不同的子序列
 
-![](https://qiniu.espe.work/blog/20220925153702.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925153702.png)
 
-![](https://qiniu.espe.work/blog/20220925153732.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925153732.png)
 
 ```javascript
 var numDistinct = function(s, t) {
@@ -602,7 +602,7 @@ var numDistinct = function(s, t) {
 
 ## 123. 买卖股票的最佳时机 III
 
-![](https://qiniu.espe.work/blog/20220925194911.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925194911.png)
 
 ```javascript
 /**
@@ -633,9 +633,9 @@ var maxProfit = function(prices) {
 
 ## 201. 数字范围按位与
 
-![](https://qiniu.espe.work/blog/20220927182445.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927182445.png)
 
-![](https://qiniu.espe.work/blog/20220927182520.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927182520.png)
 
 ```javascript
 var rangeBitwiseAnd = function(m, n) {
@@ -652,7 +652,7 @@ var rangeBitwiseAnd = function(m, n) {
 
 ## 203. 移除链表元素
 
-![](https://qiniu.espe.work/blog/20220927212056.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927212056.png)
 
 ```javascript
 var removeElements = function(head, val) {
@@ -666,7 +666,7 @@ var removeElements = function(head, val) {
 
 ## 209. 长度最小的子数组
 
-![](https://qiniu.espe.work/blog/20220928130852.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220928130852.png)
 
 ```javascript
 /**
@@ -702,7 +702,7 @@ var minSubArrayLen = function(target, nums) {
 
 ## 222. 完全二叉树的节点个数
 
-![](https://qiniu.espe.work/blog/20220928164051.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220928164051.png)
 
 ```javascript
 /**
@@ -720,7 +720,7 @@ var countNodes = function(root) {
 
 ## 241. 为运算表达式设计优先级
 
-![](https://qiniu.espe.work/blog/20220929152520.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929152520.png)
 
 不断分割直到是数字字符串，然后返回包含该数字的数组，然后对左右两侧的递归结果进行组合
 
@@ -758,13 +758,13 @@ var diffWaysToCompute = function(expression) {
 }
 ```
 
-![](https://qiniu.espe.work/blog/20220929154240.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929154240.png)
 
 ## 260. 只出现一次的数字 III
 
-![](https://qiniu.espe.work/blog/20220929155903.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929155903.png)
 
-![](https://qiniu.espe.work/blog/20220929155920.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929155920.png)
 
 ```javascript
 const singleNumber = (nums) => {
@@ -792,7 +792,7 @@ const singleNumber = (nums) => {
 
 ## 263. 丑数
 
-![](https://qiniu.espe.work/blog/20220930151738.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220930151738.png)
 
 ```javascript
 /**
@@ -815,9 +815,9 @@ var isUgly = function(n) {
 
 ## 264. 丑数 II
 
-![](https://qiniu.espe.work/blog/20220930151801.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220930151801.png)
 
-![](https://qiniu.espe.work/blog/20220930151815.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220930151815.png)
 
 ```javascript
 /**
@@ -850,7 +850,7 @@ var nthUglyNumber = function(n) {
 
 ## 316. 去除重复字母
 
-![](https://qiniu.espe.work/blog/20220930175156.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220930175156.png)
 
 ```javascript
 /**
@@ -888,7 +888,7 @@ var removeDuplicateLetters = function(s) {
 
 ## 306. 累加数
 
-![](https://qiniu.espe.work/blog/20221001175352.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221001175352.png)
 
 ```javascript
 var isAdditiveNumber = function(num) {
@@ -931,7 +931,7 @@ var isAdditiveNumber = function(num) {
 
 ## 368. 最大整除子集
 
-![](https://qiniu.espe.work/blog/20221001193825.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221001193825.png)
 
 ```javascript
 var largestDivisibleSubset = function(nums) {
@@ -976,13 +976,13 @@ var largestDivisibleSubset = function(nums) {
 
 ## 376. 摆动序列
 
-![](https://qiniu.espe.work/blog/20221002191520.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002191520.png)
 
-![](https://qiniu.espe.work/blog/20221002191529.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002191529.png)
 
-![](https://qiniu.espe.work/blog/20221002191539.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002191539.png)
 
-![](https://qiniu.espe.work/blog/20221002191450.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002191450.png)
 
 ```javascript
 var wiggleMaxLength = function(nums) {
@@ -1009,9 +1009,9 @@ var wiggleMaxLength = function(nums) {
 
 ## 319. 灯泡开关
 
-![](https://qiniu.espe.work/blog/20221002195124.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002195124.png)
 
-![](https://qiniu.espe.work/blog/20221002195248.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002195248.png)
 
 ```javascript
 /**
@@ -1033,9 +1033,9 @@ var bulbSwitch = function(n) {
 
 ## 377. 组合总和 Ⅳ
 
-![](https://qiniu.espe.work/blog/20221004222546.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221004222546.png)
 
-![](https://qiniu.espe.work/blog/20221004222554.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221004222554.png)
 
 ```javascript
 var combinationSum4 = function(nums, target) {
@@ -1054,9 +1054,9 @@ var combinationSum4 = function(nums, target) {
 
 ## 336. 回文对
 
-![](https://qiniu.espe.work/blog/20221005212826.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221005212826.png)
 
-![](https://qiniu.espe.work/blog/20221005214808.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221005214808.png)
 
 ```javascript
 /**
@@ -1127,7 +1127,7 @@ function isPalindrom(str) {
 
 ## 386. 字典序排数
 
-![](https://qiniu.espe.work/blog/20221006190553.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221006190553.png)
 
 ```javascript
 var lexicalOrder = function(n) {
@@ -1150,7 +1150,7 @@ var lexicalOrder = function(n) {
 
 ## 390. 消除游戏
 
-![](https://qiniu.espe.work/blog/20221008174547.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221008174547.png)
 
 ```javascript
 /**
@@ -1180,7 +1180,7 @@ var lastRemaining = function(n) {
 
 ## 400. 第 N 位数字
 
-![](https://qiniu.espe.work/blog/20221008182623.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221008182623.png)
 
 ```javascript
 var findNthDigit = function(n) {
@@ -1203,7 +1203,7 @@ var findNthDigit = function(n) {
 
 ## 410. 分割数组的最大值
 
-![](https://qiniu.espe.work/blog/20221009215125.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221009215125.png)
 
 ```javascript
 /**
@@ -1245,9 +1245,9 @@ var splitArray = function(nums, m) {
 
 ## 407. 接雨水 II
 
-![](https://qiniu.espe.work/blog/20221010170859.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221010170859.png)
 
-![](https://qiniu.espe.work/blog/20221010170905.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221010170905.png)
 
 ```javascript
 /**
@@ -1371,9 +1371,9 @@ var trapRainWater = function(heightMap) {
 
 ## 417. 太平洋大西洋水流问题
 
-![](https://qiniu.espe.work/blog/20221011180918.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221011180918.png)
 
-![](https://qiniu.espe.work/blog/20221011180925.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221011180925.png)
 
 ```javascript
 const dirs = [
@@ -1437,7 +1437,7 @@ var pacificAtlantic = function(heights) {
 
 ## 424. 替换后的最长重复字符
 
-![](https://qiniu.espe.work/blog/20221011201002.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221011201002.png)
 
 ```javascript
 var characterReplacement = function(s, k) {
@@ -1467,11 +1467,11 @@ var characterReplacement = function(s, k) {
 
 ## 450. 删除二叉搜索树中的节点
 
-![](https://qiniu.espe.work/blog/20221013144649.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013144649.png)
 
-![](https://qiniu.espe.work/blog/20221013144725.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013144725.png)
 
-![](https://qiniu.espe.work/blog/20221013144740.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013144740.png)
 
 ```javascript
 var deleteNode = function(root, key) {
@@ -1511,9 +1511,9 @@ var deleteNode = function(root, key) {
 
 ## 449. 序列化和反序列化二叉搜索树
 
-![](https://qiniu.espe.work/blog/20221013154118.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013154118.png)
 
-![](https://qiniu.espe.work/blog/20221013154132.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013154132.png)
 
 ```javascript
 var serialize = function(root) {
@@ -1565,9 +1565,9 @@ var deserialize = function(data) {
 
 ## 453. 最小操作次数使数组元素相等
 
-![](https://qiniu.espe.work/blog/20221014141740.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014141740.png)
 
-![](https://qiniu.espe.work/blog/20221014141732.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014141732.png)
 
 ```javascript
 var minMoves = function(nums) {
@@ -1582,9 +1582,9 @@ var minMoves = function(nums) {
 
 ## 516. 最长回文子序列
 
-![](https://qiniu.espe.work/blog/20221014155258.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014155258.png)
 
-![](https://qiniu.espe.work/blog/20221014155311.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014155311.png)
 
 ```javascript
 /**
@@ -1615,7 +1615,7 @@ var longestPalindromeSubseq = function(s) {
 
 ## 542. 01 矩阵
 
-![](https://qiniu.espe.work/blog/20221018112112.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221018112112.png)
 
 ```javascript
 /**
@@ -1657,9 +1657,9 @@ var updateMatrix = function(mat) {
 
 ## 696. 计数二进制子串
 
-![](https://qiniu.espe.work/blog/20221026170657.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221026170657.png)
 
-![](https://qiniu.espe.work/blog/20221026170802.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221026170802.png)
 
 ```javascript
 var countBinarySubstrings = function(s) {
@@ -1685,7 +1685,7 @@ var countBinarySubstrings = function(s) {
 
 ## 698. 划分为 k 个相等的子集
 
-![](https://qiniu.espe.work/blog/20221028170814.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221028170814.png)
 
 ```javascript
 var canPartitionKSubsets = function(nums, k) {
@@ -1715,11 +1715,11 @@ function backtrace(nums, sums, i, k, average) {
 }
 ```
 
-![](https://qiniu.espe.work/blog/20221028170904.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221028170904.png)
 
 ## 763. 划分字母区间
 
-![](https://qiniu.espe.work/blog/20221030200231.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221030200231.png)
 
 ```javascript
 var partitionLabels = function(s) {
@@ -1745,7 +1745,7 @@ var partitionLabels = function(s) {
 
 ## 797. 所有可能的路径
 
-![](https://qiniu.espe.work/blog/20221031170840.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221031170840.png)
 
 ```javascript
 /**
@@ -1775,9 +1775,9 @@ var allPathsSourceTarget = function(graph) {
 
 ## 877. 石子游戏
 
-![](https://qiniu.espe.work/blog/20221105160525.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221105160525.png)
 
-![](https://qiniu.espe.work/blog/20221105160541.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221105160541.png)
 
 ```javascript
 /**
@@ -1801,7 +1801,7 @@ var stoneGame = function(piles) {
 
 ## 890. 查找和替换模式
 
-![](https://qiniu.espe.work/blog/20221106213144.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221106213144.png)
 
 ```javascript
 var findAndReplacePattern = function(words, pattern) {
@@ -1832,7 +1832,7 @@ const match = (word, pattern) => {
 
 ## 904. 水果成篮
 
-![](https://qiniu.espe.work/blog/20221106215712.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221106215712.png)
 
 ```javascript
 var totalFruit = function(fruits) {

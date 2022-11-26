@@ -14,7 +14,7 @@ tags:
 
 `136` `简单`
 
-![](https://qiniu.espe.work/blog/20220804100714.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220804100714.png)
 
 这里限制线性时间且不能申请额外空间，因此最佳方法是 <font color=#3498db size=4>`异或运算`</font> 求解。首先，<font color=#3498db size=4>`两个相同的数异或之后的结果为 0`</font>。对该数组所有元素进行异或运算，结果就是那个只出现一次的数字。
 
@@ -36,7 +36,7 @@ var singleNumber = function(nums) {
 
 `121` `简单`
 
-![](https://qiniu.espe.work/blog/20220803141839.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220803141839.png)
 
 根据题意本质上是 <font color=#3498db size=4>`在数组当中寻找最大值与最小值，但存在一个限制条件，最大值必须在最小值的后面（相对数组中的存储位置）`</font> 。
 
@@ -84,7 +84,7 @@ var maxProfit = function(prices) {
 
 `94` `简单`
 
-![](https://qiniu.espe.work/blog/20220803170126.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220803170126.png)
 
 二叉树的遍历方式主要有：先序遍历、中序遍历、后序遍历、层次遍历。
 
@@ -92,7 +92,7 @@ var maxProfit = function(prices) {
 
 若在遍历过程中，父节点先于它的子节点被访问，就是先序遍历；父节点被访问的次序位于左右孩子节点之间，就是中序遍历；访问完左右孩子节点之后再访问父节点，就是后序遍历。
 
-![](https://qiniu.espe.work/blog/20220803171954.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220803171954.png)
 
 ### 递归遍历实现:
 
@@ -151,7 +151,7 @@ var inorderTraversal = function(root) {
 
 ## 二叉树的最大深度
 
-![](https://qiniu.espe.work/blog/20220804215038.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220804215038.png)
 
 递归遍历左右子树，求左右子树的最大深度 +1 即可。
 
@@ -178,9 +178,9 @@ var maxDepth = function(root) {
 
 ## 环形链表
 
-![](https://qiniu.espe.work/blog/20220804235002.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220804235002.png)
 
-![](https://qiniu.espe.work/blog/20220804235013.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220804235013.png)
 
 定义快慢指针 slow、fast，初始指向 head。
 
@@ -215,7 +215,7 @@ var hasCycle = function(head) {
 
 ## 多数元素
 
-![](https://qiniu.espe.work/blog/20220805221539.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220805221539.png)
 
 ### 用对象记录每个数字出现的次数
 
@@ -239,15 +239,15 @@ var majorityElement = function(nums) {
 
 ### 摩尔投票法
 
-![](https://qiniu.espe.work/blog/20220805222035.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220805222035.png)
 
-![](https://qiniu.espe.work/blog/20220805222035.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220805222035.png)
 
 ## 反转链表
 
-![](https://qiniu.espe.work/blog/20220805224551.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220805224551.png)
 
-![](https://qiniu.espe.work/blog/20220805224618.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220805224618.png)
 
 ### 递归法
 
@@ -307,7 +307,7 @@ var reverseList = function(head) {
 
 ## 翻转二叉树
 
-![](https://qiniu.espe.work/blog/20220806144420.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220806144420.png)
 
 ```javascript
 /**
@@ -335,7 +335,7 @@ var invertTree = function(root) {
 
 ## 回文链表
 
-![](https://qiniu.espe.work/blog/20220806151820.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220806151820.png)
 
 分三步:
 
@@ -387,7 +387,7 @@ var isPalindrome = function(head) {
 
 ## 移动零
 
-![](https://qiniu.espe.work/blog/20220807110201.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220807110201.png)
 
 ### 先去掉所有 0 再在数组尾部 push 进 0
 
@@ -432,7 +432,7 @@ var moveZeroes = function(nums) {
 
 ## 找到所有数组中消失的数字
 
-![](https://qiniu.espe.work/blog/20220807113107.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220807113107.png)
 
 ```javascript
 /**
@@ -482,7 +482,7 @@ function findDisappearedNumbers(nums) {
 
 ## 汉明距离
 
-![](https://qiniu.espe.work/blog/20220808231522.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220808231522.png)
 
 利用异或运算的规律找出不同的位
 
@@ -512,15 +512,15 @@ var hammingDistance = function(x, y) {
 
 ## 二叉树的直径
 
-![](https://qiniu.espe.work/blog/20220809222312.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220809222312.png)
 
 解法
 
-![](https://qiniu.espe.work/blog/20220809222203.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220809222203.png)
 
 ## 合并二叉树
 
-![](https://qiniu.espe.work/blog/20220809222226.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220809222226.png)
 
 ```javascript
 /**
@@ -550,7 +550,7 @@ var mergeTrees = function(root1, root2) {
 
 ## 回文数
 
-![](https://qiniu.espe.work/blog/20220813222006.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220813222006.png)
 
 数字转字符串数组
 然 pop 尾 shift 头 比较 如果不相同就 return false
@@ -575,8 +575,8 @@ var isPalindrome = function(x) {
 
 ## 罗马数字转整数
 
-![](https://qiniu.espe.work/blog/20220814105906.png)
-![](https://qiniu.espe.work/blog/20220814105946.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220814105906.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220814105946.png)
 
 ```javascript
 /**
@@ -617,7 +617,7 @@ var romanToInt = function(s) {
 
 ## 最长公共前缀
 
-![](https://qiniu.espe.work/blog/20220814114034.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220814114034.png)
 
 ```javascript
 /**
@@ -653,7 +653,7 @@ var longestCommonPrefix = function(strs) {
 
 ## 删除有序数组中的重复项
 
-![](https://qiniu.espe.work/blog/20220815150240.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220815150240.png)
 
 1. 标记法
 
@@ -704,7 +704,7 @@ var removeDuplicates = function(nums) {
 
 ## 实现 strStr()
 
-![](https://qiniu.espe.work/blog/20220815221813.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220815221813.png)
 
 ```javascript
 /**
@@ -737,7 +737,7 @@ var strStr = function(haystack, needle) {
 
 ## 搜索插入位置
 
-![](https://qiniu.espe.work/blog/20220816175935.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220816175935.png)
 
 二分查找
 
@@ -783,9 +783,9 @@ var searchInsert = function(nums, target) {
 
 ## 移除元素
 
-![](https://qiniu.espe.work/blog/20220817225311.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220817225311.png)
 
-![](https://qiniu.espe.work/blog/20220817225330.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220817225330.png)
 
 ```javascript
 /**
@@ -827,7 +827,7 @@ var removeElement = function(nums, val) {
 
 ## 平衡二叉树
 
-![](https://qiniu.espe.work/blog/20220818231311.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220818231311.png)
 
 ```javascript
 /**
@@ -860,7 +860,7 @@ var getHeight = function(node) {
 
 ## 加一
 
-![](https://qiniu.espe.work/blog/20220819233715.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220819233715.png)
 
 重点是处理好进位
 
@@ -887,7 +887,7 @@ var plusOne = function(digits) {
 
 ## x 的平方根
 
-![](https://qiniu.espe.work/blog/20220820180147.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220820180147.png)
 
 ```javascript
 /**
@@ -911,7 +911,7 @@ var mySqrt = function(x) {
 
 ## 合并有序数组
 
-![](https://qiniu.espe.work/blog/20220823170624.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220823170624.png)
 
 ```javascript
 /**
@@ -934,9 +934,9 @@ var merge = function(nums1, m, nums2, n) {
 
 ## 108. 将有序数组转换为二叉搜索树
 
-![](https://qiniu.espe.work/blog/20220827212130.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220827212130.png)
 
-![](https://qiniu.espe.work/blog/20220827212136.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220827212136.png)
 
 ```javascript
 /**
@@ -963,7 +963,7 @@ function generateTree(arr, left, right) {
 
 ## 118. 杨辉三角
 
-![](https://qiniu.espe.work/blog/20220830215935.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220830215935.png)
 
 ```javascript
 /**
@@ -989,7 +989,7 @@ var generate = function(numRows) {
 
 ## 125. 验证回文串
 
-![](https://qiniu.espe.work/blog/20220901155213.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220901155213.png)
 
 注意题目中说的是字母+数字
 
@@ -1016,9 +1016,9 @@ var isPalindrome = function(s) {
 
 ## 160. 相交链表
 
-![](https://qiniu.espe.work/blog/20220904222825.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220904222825.png)
 
-![](https://qiniu.espe.work/blog/20220904222846.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220904222846.png)
 
 ```javascript
 /**
@@ -1052,7 +1052,7 @@ var getIntersectionNode = function(headA, headB) {
 
 ## 171. Excel 表列序号
 
-![](https://qiniu.espe.work/blog/20220905141536.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220905141536.png)
 
 ```javascript
 /**
@@ -1102,7 +1102,7 @@ var titleToNumber = function(columnTitle) {
 
 ## 190. 颠倒二进制位
 
-![](https://qiniu.espe.work/blog/20220905222738.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220905222738.png)
 
 ```javascript
 /**
@@ -1136,7 +1136,7 @@ var reverseBits = function(n) {
 
 ## 191. 位 1 的个数
 
-![](https://qiniu.espe.work/blog/20220906114135.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220906114135.png)
 
 ```javascript
 /**
@@ -1156,7 +1156,7 @@ var hammingWeight = function(n) {
 
 ## 217. 存在重复元素
 
-![](https://qiniu.espe.work/blog/20220907172307.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220907172307.png)
 
 ```javascript
 /**
@@ -1170,7 +1170,7 @@ var containsDuplicate = function(nums) {
 
 ## 242. 有效的字母异位词
 
-![](https://qiniu.espe.work/blog/20220909103741.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220909103741.png)
 
 ```javascript
 /**
@@ -1198,7 +1198,7 @@ var isAnagram = function(s, t) {
 
 ## 344. 反转字符串
 
-![](https://qiniu.espe.work/blog/20220910143048.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910143048.png)
 
 ```javascript
 /**
@@ -1222,7 +1222,7 @@ var reverseString = function(s) {
 
 ## 387. 字符串中的第一个唯一字符
 
-![](https://qiniu.espe.work/blog/20220911201943.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220911201943.png)
 
 ```javascript
 /**
@@ -1244,7 +1244,7 @@ var firstUniqChar = function(s) {
 
 ## 412. Fizz Buzz
 
-![](https://qiniu.espe.work/blog/20220912001914.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912001914.png)
 
 ```javascript
 /**
@@ -1275,7 +1275,7 @@ var fizzBuzz = function(n) {
 
 ## 326. 3 的幂
 
-![](https://qiniu.espe.work/blog/20220912144840.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912144840.png)
 
 ```javascript
 /**
@@ -1296,7 +1296,7 @@ var isPowerOfThree = function(n) {
 
 ## 557. 反转字符串中的单词 III
 
-![](https://qiniu.espe.work/blog/20220918011802.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918011802.png)
 
 ```javascript
 /**
@@ -1330,7 +1330,7 @@ var handle = function(str) {
 
 ## 231. 2 的幂
 
-![](https://qiniu.espe.work/blog/20220918161152.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918161152.png)
 
 ```javascript
 /**
@@ -1351,7 +1351,7 @@ var isPowerOfTwo = function(n) {
 
 ## 292. Nim 游戏
 
-![](https://qiniu.espe.work/blog/20220918171656.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918171656.png)
 
 ```javascript
 var canWinNim = function(n) {
@@ -1361,7 +1361,7 @@ var canWinNim = function(n) {
 
 ## 58. 最后一个单词的长度
 
-![](https://qiniu.espe.work/blog/20220921225434.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220921225434.png)
 
 ```javascript
 /**
@@ -1376,7 +1376,7 @@ var lengthOfLastWord = function(s) {
 
 ## 67. 二进制求和
 
-![](https://qiniu.espe.work/blog/20220922141808.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220922141808.png)
 
 ```javascript
 /**
@@ -1409,7 +1409,7 @@ var addBinary = function(a, b) {
 
 ## 83. 删除排序链表中的重复元素
 
-![](https://qiniu.espe.work/blog/20220923143230.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220923143230.png)
 
 ```javascript
 /**
@@ -1435,7 +1435,7 @@ var deleteDuplicates = function(head) {
 
 ## 100. 相同的树
 
-![](https://qiniu.espe.work/blog/20220924114237.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220924114237.png)
 
 ```javascript
 /**
@@ -1454,7 +1454,7 @@ var isSameTree = function(p, q) {
 
 ## 111. 二叉树的最小深度
 
-![](https://qiniu.espe.work/blog/20220924221621.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220924221621.png)
 
 ```javascript
 /**
@@ -1482,7 +1482,7 @@ var minDepth = function(root) {
 
 ## 112. 路径总和
 
-![](https://qiniu.espe.work/blog/20220924233659.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220924233659.png)
 
 ```javascript
 /**
@@ -1512,7 +1512,7 @@ var hasPathSum = function(root, targetSum) {
 
 ## 119. 杨辉三角 II
 
-![](https://qiniu.espe.work/blog/20220925162230.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925162230.png)
 
 ```javascript
 /**
@@ -1537,7 +1537,7 @@ var getRow = function(rowIndex) {
 
 ## 144. 二叉树的前序遍历
 
-![](https://qiniu.espe.work/blog/20220926174445.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220926174445.png)
 
 ```javascript
 /**
@@ -1564,7 +1564,7 @@ var postorderTraversal = function(root) {
 
 ## 145. 二叉树的后序遍历
 
-![](https://qiniu.espe.work/blog/20220926174849.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220926174849.png)
 
 ```javascript
 /**
@@ -1591,7 +1591,7 @@ var postorderTraversal = function(root) {
 
 ## 205. 同构字符串
 
-![](https://qiniu.espe.work/blog/20220927215604.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927215604.png)
 
 ```javascript
 /**
@@ -1632,7 +1632,7 @@ var isIsomorphic = function(s, t) {
 
 ## 219. 存在重复元素 II
 
-![](https://qiniu.espe.work/blog/20220928161648.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220928161648.png)
 
 ```javascript
 /**
@@ -1655,7 +1655,7 @@ var containsNearbyDuplicate = function(nums, k) {
 
 ## 257. 二叉树的所有路径
 
-![](https://qiniu.espe.work/blog/20220929105754.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929105754.png)
 
 ```javascript
 /**
@@ -1682,7 +1682,7 @@ var search = function(root, temp, ans) {
 
 ## 258. 各位相加
 
-![](https://qiniu.espe.work/blog/20220929111111.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929111111.png)
 
 ```javascript
 /**
@@ -1701,7 +1701,7 @@ var addDigits = function(num) {
 }
 ```
 
-![](https://qiniu.espe.work/blog/20220929111128.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220929111128.png)
 
 ```javascript
 var addDigits = function(num) {
@@ -1711,7 +1711,7 @@ var addDigits = function(num) {
 
 ## 290. 单词规律
 
-![](https://qiniu.espe.work/blog/20220930154122.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220930154122.png)
 
 ```javascript
 /**
@@ -1745,7 +1745,7 @@ var wordPattern = function(pattern, s) {
 
 ## 303. 区域和检索 - 数组不可变
 
-![](https://qiniu.espe.work/blog/20220930160607.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220930160607.png)
 
 ```javascript
 /**
@@ -1785,7 +1785,7 @@ NumArray.prototype.sumRange = function(left, right) {
 
 ## 404. 左叶子之和
 
-![](https://qiniu.espe.work/blog/20221003172435.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221003172435.png)
 
 ```javascript
 /**
@@ -1814,7 +1814,7 @@ var sumOfLeftLeaves = function(root) {
 
 ## 374. 猜数字大小
 
-![](https://qiniu.espe.work/blog/20221003175148.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221003175148.png)
 
 ```javascript
 /**
@@ -1851,7 +1851,7 @@ var guessNumber = function(n) {
 
 ## 383. 赎金信
 
-![](https://qiniu.espe.work/blog/20221006190444.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221006190444.png)
 
 ```javascript
 /**
@@ -1875,7 +1875,7 @@ var canConstruct = function(ransomNote, magazine) {
 
 ## 392. 判断子序列
 
-![](https://qiniu.espe.work/blog/20221008175455.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221008175455.png)
 
 ```javascript
 /**
@@ -1901,7 +1901,7 @@ var isSubsequence = function(s, t) {
 
 ## 415. 字符串相加
 
-![](https://qiniu.espe.work/blog/20221010161429.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221010161429.png)
 
 ```javascript
 /**
@@ -1931,7 +1931,7 @@ var addStrings = function(num1, num2) {
 
 ## 414. 第三大的数
 
-![](https://qiniu.espe.work/blog/20221010163050.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221010163050.png)
 
 ```javascript
 /**
@@ -1955,7 +1955,7 @@ var thirdMax = function(nums) {
 
 ## 441. 排列硬币
 
-![](https://qiniu.espe.work/blog/20221014144537.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014144537.png)
 
 ```javascript
 /**
@@ -1976,7 +1976,7 @@ var arrangeCoins = function(n) {
 
 ## 459. 重复的子字符串
 
-![](https://qiniu.espe.work/blog/20221014151435.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014151435.png)
 
 ```javascript
 /**
@@ -2007,7 +2007,7 @@ var repeatedSubstringPattern = function(s) {
 
 ## 463. 岛屿的周长
 
-![](https://qiniu.espe.work/blog/20221015165647.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221015165647.png)
 
 ```javascript
 var islandPerimeter = function(grid) {
@@ -2037,7 +2037,7 @@ var islandPerimeter = function(grid) {
 
 ## 500. 键盘行
 
-![](https://qiniu.espe.work/blog/20221015173256.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221015173256.png)
 
 ```javascript
 /**
@@ -2074,7 +2074,7 @@ var findWords = function(words) {
 
 ## 501. 二叉搜索树中的众数
 
-![](https://qiniu.espe.work/blog/20221015185135.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221015185135.png)
 
 ```javascript
 /**
@@ -2108,7 +2108,7 @@ var search = function(node, map) {
 
 ## 561. 数组拆分
 
-![](https://qiniu.espe.work/blog/20221019141520.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221019141520.png)
 
 ```javascript
 /**
@@ -2129,7 +2129,7 @@ var arrayPairSum = function(nums) {
 
 ## 572. 另一棵树的子树
 
-![](https://qiniu.espe.work/blog/20221019142946.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221019142946.png)
 
 ```javascript
 /**
@@ -2156,7 +2156,7 @@ var isMatch = function(root1, root2) {
 
 ## 637. 二叉树的层平均值
 
-![](https://qiniu.espe.work/blog/20221022233138.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221022233138.png)
 
 ```javascript
 /**
@@ -2194,7 +2194,7 @@ var handle = function(nodes, ans) {
 
 ## 643. 子数组最大平均数 I
 
-![](https://qiniu.espe.work/blog/20221023144248.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221023144248.png)
 
 ```javascript
 /**
@@ -2219,7 +2219,7 @@ var findMaxAverage = function(nums, k) {
 
 ## 606. 根据二叉树创建字符串
 
-![](https://qiniu.espe.work/blog/20221023151555.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221023151555.png)
 
 ```javascript
 /**
@@ -2254,7 +2254,7 @@ var tree2str = function(root) {
 
 ## 680. 验证回文串 II
 
-![](https://qiniu.espe.work/blog/20221026153400.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221026153400.png)
 
 ```javascript
 /**
@@ -2292,7 +2292,7 @@ var handle = function(s, isDeleted) {
 
 ## 704. 二分查找
 
-![](https://qiniu.espe.work/blog/20221027173443.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221027173443.png)
 
 ```javascript
 /**
@@ -2321,7 +2321,7 @@ var search = function(nums, target) {
 
 ## 697. 数组的度
 
-![](https://qiniu.espe.work/blog/20221028161842.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221028161842.png)
 
 ```javascript
 /**
@@ -2368,7 +2368,7 @@ var findShortestSubArray = function(nums) {
 
 ## 746. 使用最小花费爬楼梯
 
-![](https://qiniu.espe.work/blog/20221029171434.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221029171434.png)
 
 ```javascript
 /**
@@ -2391,7 +2391,7 @@ var minCostClimbingStairs = function(cost) {
 
 ## 783. 二叉搜索树节点最小距离
 
-![](https://qiniu.espe.work/blog/20221031171856.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221031171856.png)
 
 ```javascript
 /**
@@ -2420,7 +2420,7 @@ var search = function(root, list) {
 
 ## 796. 旋转字符串
 
-![](https://qiniu.espe.work/blog/20221031173155.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221031173155.png)
 
 ```javascript
 /**
@@ -2442,7 +2442,7 @@ var rotateString = function(s, goal) {
 
 ## 821. 字符的最短距离
 
-![](https://qiniu.espe.work/blog/20221101154257.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221101154257.png)
 
 ```javascript
 /**
@@ -2477,7 +2477,7 @@ var shortestToChar = function(s, c) {
 
 ## 844. 比较含退格的字符串
 
-![](https://qiniu.espe.work/blog/20221102213728.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221102213728.png)
 
 ```javascript
 /**
@@ -2512,7 +2512,7 @@ backspaceCompare('ab#c', 'ad#c')
 
 ## 860. 柠檬水找零
 
-![](https://qiniu.espe.work/blog/20221102215825.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221102215825.png)
 
 ```javascript
 /**
@@ -2545,7 +2545,7 @@ var lemonadeChange = function(bills) {
 
 ## 872. 叶子相似的树
 
-![](https://qiniu.espe.work/blog/20221103222030.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221103222030.png)
 
 ```javascript
 /**
@@ -2582,7 +2582,7 @@ var search = function(root, list) {
 
 ## 868. 二进制间距
 
-![](https://qiniu.espe.work/blog/20221103222630.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221103222630.png)
 
 ```javascript
 var binaryGap = function(n) {
@@ -2605,7 +2605,7 @@ var binaryGap = function(n) {
 
 ## 897. 递增顺序搜索树
 
-![](https://qiniu.espe.work/blog/20221104214123.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221104214123.png)
 
 ```javascript
 /**
@@ -2640,7 +2640,7 @@ var search = function(root, list) {
 
 ## 884. 两句话中的不常见单词
 
-![](https://qiniu.espe.work/blog/20221105161544.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221105161544.png)
 
 ```javascript
 /**
@@ -2667,7 +2667,7 @@ var uncommonFromSentences = function(s1, s2) {
 
 ## 896. 单调数列
 
-![](https://qiniu.espe.work/blog/20221105165710.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221105165710.png)
 
 ```javascript
 /**
@@ -2690,7 +2690,7 @@ var isMonotonic = function(nums) {
 
 ## 867. 转置矩阵
 
-![](https://qiniu.espe.work/blog/20221112221440.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221112221440.png)
 
 ```javascript
 /**
@@ -2712,7 +2712,7 @@ var transpose = function(matrix) {
 
 ## 922. 按奇偶排序数组 II
 
-![](https://qiniu.espe.work/blog/20221113155052.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221113155052.png)
 
 ```javascript
 /**
@@ -2747,7 +2747,7 @@ var sortArrayByParityII = function(nums) {
 
 ## 925. 长按键入
 
-![](https://qiniu.espe.work/blog/20221113162112.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221113162112.png)
 
 ```javascript
 /**
@@ -2778,7 +2778,7 @@ var isLongPressedName = function(name, typed) {
 
 ## 917. 仅仅反转字母
 
-![](https://qiniu.espe.work/blog/20221116221539.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221116221539.png)
 
 ```javascript
 /**
@@ -2809,7 +2809,7 @@ var reverseOnlyLetters = function(s) {
 
 ## 977. 有序数组的平方
 
-![](https://qiniu.espe.work/blog/20221116222248.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221116222248.png)
 
 ```javascript
 /**
@@ -2826,7 +2826,7 @@ var sortedSquares = function(nums) {
 
 ## 965. 单值二叉树
 
-![](https://qiniu.espe.work/blog/20221116222843.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221116222843.png)
 
 ```javascript
 /**
@@ -2855,7 +2855,7 @@ var search = function(root, val) {
 
 ## 961. 在长度 2N 的数组中找出重复 N 次的元素
 
-![](https://qiniu.espe.work/blog/20221117105315.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221117105315.png)
 
 ```javascript
 /**
@@ -2875,7 +2875,7 @@ var repeatedNTimes = function(nums) {
 
 ## 989. 数组形式的整数加法
 
-![](https://qiniu.espe.work/blog/20221118112551.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221118112551.png)
 
 ```javascript
 /**
@@ -2907,7 +2907,7 @@ var addToArrayForm = function(num, k) {
 
 ## 1002. 查找共用字符
 
-![](https://qiniu.espe.work/blog/20221119221824.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221119221824.png)
 
 ```javascript
 /**
@@ -2937,7 +2937,7 @@ var commonChars = function(words) {
 
 ## 1022. 从根到叶的二进制数之和
 
-![](https://qiniu.espe.work/blog/20221120141557.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221120141557.png)
 
 ```javascript
 /**
@@ -2968,7 +2968,7 @@ var handle = function(node, current, paths) {
 
 ## 1047. 删除字符串中的所有相邻重复项
 
-![](https://qiniu.espe.work/blog/20221121222047.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221121222047.png)
 
 ```javascript
 var removeDuplicates = function(s) {
@@ -2981,5 +2981,27 @@ var removeDuplicates = function(s) {
     }
   }
   return stk.join('')
+}
+```
+
+## 1051. 高度检查器
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221122175148.png)
+
+```javascript
+/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+var heightChecker = function(heights) {
+  // 复制数组并排序
+  let temp = [...heights]
+  temp.sort((a, b) => a - b)
+  let ans = 0
+  // 检测排序好的和原来的  如果不同ans+1
+  for (let i = 0; i < temp.length; i++) {
+    if (temp[i] !== heights[i]) ans++
+  }
+  return ans
 }
 ```

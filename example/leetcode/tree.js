@@ -64,7 +64,7 @@ var createTree = function(nums) {
   return root
 }
 
-let root = createTree([1, 0, 1, 0, 1, 0, 1])
+let root = createTree([8, 5, 1, 7, 10, 12])
 
 /**
  * Definition for a binary tree node.
@@ -75,28 +75,24 @@ let root = createTree([1, 0, 1, 0, 1, 0, 1])
  * }
  */
 /**
- * @param {TreeNode} root
- * @return {number}
+ * @param {number[]} preorder
+ * @return {TreeNode}
  */
-var sumRootToLeaf = function(root) {
-  const paths = []
-  // 搜索所有路径
-  handle(root, '', paths)
-  let ans = 0
-  // 计算所有路径和
-  for (let i = 0; i < paths.length; i++) {
-    ans += parseInt(paths[i], 2) // 二进制转十进制
+var bstFromPreorder = function(preorder) {
+  if (preorder.length === 0) return null
+  let left = []
+  let right = []
+  // 找出左右子树节点
+  for (let i = 1; i < preorder.length; i++) {
+    if (preorder[i] < preorder[0]) left.push(preorder[i])
+    if (preorder[i] > preorder[0]) right.push(preorder[i])
   }
-  return ans
+  // 构造根节点
+  const root = new TreeNode(preorder[0])
+  // 递归构建左右子树
+  root.left = bstFromPreorder(left)
+  root.right = bstFromPreorder(right)
+  return root
 }
 
-var handle = function(node, current, paths) {
-  if (!node.left && !node.right) {
-    paths.push(current + node.val)
-    return
-  }
-  if (node.left) handle(node.left, current + node.val, paths)
-  if (node.right) handle(node.right, current + node.val, paths)
-}
-
-sumRootToLeaf(root)
+bstFromPreorder(root)

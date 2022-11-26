@@ -188,7 +188,7 @@ jsonwebtoken 将 内容和过期时间通过加密算法 生成 token
 
 将 token 包裹在 ResponseBody 里返回给前端
 
-![](https://qiniu.espe.work/blog/20220325120834.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220325120834.png)
 
 ### 三、前端接收并缓存 Token
 

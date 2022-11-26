@@ -25,7 +25,7 @@ const xAxis: XAXisComponentOption = {
 ```
 
 VsCode 中写代码就有类型提示了
-![](https://qiniu.espe.work/blog/20220513183622.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220513183622.png)
 
 ### 封装 Echarts 基础组件
 

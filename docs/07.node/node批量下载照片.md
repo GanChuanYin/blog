@@ -23,7 +23,7 @@ tags:
 F12 研究了一下下厨房 web 端发现它是服务端渲染
 
 为了偷懒，我采用了人工大法
-![](https://qiniu.espe.work/blog/2801639387896_.pic.jpg)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/2801639387896_.pic.jpg)
 
 ### 三、解析 dom
 
@@ -196,4 +196,4 @@ const { testList, objList } = require('./parse-dom')
 requestall(objList)
 ```
 下载完成
-![](https://qiniu.espe.work/blog/20211213180840.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20211213180840.png)

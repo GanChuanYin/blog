@@ -13,13 +13,13 @@ Electron 是使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程�
 
 我工作流中使用的 VsCode, 各种通讯工具如微信、飞书等，Mac 图床工具 [PicGo](https://github.com/Molunerfinn/PicGo) 等，都是使用 Electron 构建的。
 
-![](https://qiniu.espe.work/blog/20220624152839.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220624152839.png)
 
 一个跨端框架的设计，有三个问题需要考虑，分别是 UI 渲染、原生 API 以及客户端构建方式。Electron 是如何解决上述问题的呐？
 
 Electron 的跨端原理并不难理解：它通过集成浏览器内核，使用前端的技术来实现不同平台下的渲染，并结合了 Chromium 、Node.js 和用于调用系统本地功能的 API 三大板块。
 
-![](https://qiniu.espe.work/blog/20220624152356.png
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220624152356.png
 
 Chromium 为 Electron 提供强大的 UI 渲染能力，由于 Chromium 本身跨平台，因此无需考虑代码的兼容性。最重要的是，可以使用前端三大件进行 Electron 开发。
 

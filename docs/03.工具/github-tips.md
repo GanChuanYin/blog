@@ -30,5 +30,5 @@ tags:
 
 ## 3. 查看快捷键列表
 
-![](https://qiniu.espe.work/blog/20220610155458.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610155458.png)
 

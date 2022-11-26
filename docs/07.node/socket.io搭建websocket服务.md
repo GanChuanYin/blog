@@ -11,7 +11,7 @@ tags:
 
 ### 1.1 官网描述
 
-![](https://qiniu.espe.work/blog/20220528003701.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220528003701.png)
 
 ### 1.2 对 Socket.IO 的误解
 
@@ -70,7 +70,7 @@ socket.on('hello from server', (...args) => {
 
 连接成功后，在 network 中可以看到信息推送
 
-![](https://qiniu.espe.work/blog/20220528005533.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220528005533.png)
 
 ## 4. 对 TypeScript 的支持
 

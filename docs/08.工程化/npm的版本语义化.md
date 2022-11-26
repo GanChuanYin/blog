@@ -24,7 +24,7 @@
 
 ### npm 依赖包版本的~、>、^符号各代表什么？
 
-![](https://qiniu.espe.work/blog/20221121223118.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221121223118.png)
 
 ### 注意 ⚠️
 
@@ -34,7 +34,7 @@
 
 比如我最近遇到的
 
-![](https://qiniu.espe.work/blog/20221121223419.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221121223419.png)
 
 由于我的 ts 是低版本(大版本为 3), 我的 vue 版本为 `^2.6.10`, 流水线部署时直接给我升级到了 `2.7.*`, 而 2.7 依赖的是高版本的 ts, 导致了报上图错
 

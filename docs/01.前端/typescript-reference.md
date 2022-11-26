@@ -19,19 +19,19 @@ TypeScript provides several utility types to facilitate common type transformati
 
 Constructs a type with all properties of Type <font color=#00dddd size=4> set to optional</font> . This utility will return a type that represents all subsets of a given type.
 
-![](https://qiniu.espe.work/blog/20220618104037.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220618104037.png)
 
 ### 1.2 Required \<Type>
 
 Constructs a type consisting of all properties of Type <font color=#00dddd size=4>set to required</font>. The opposite of Partial.
 
-![](https://qiniu.espe.work/blog/20220618104732.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220618104732.png)
 
 ### 1.3 Readonly \<Type>
 
 Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type <font color=#00dddd size=4> cannot be reassigned</font>
 
-![](https://qiniu.espe.work/blog/20220618105528.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220618105528.png)
 
 **Object.freeze**
 
@@ -43,41 +43,41 @@ function freeze<Type>(obj: Type): Readonly<Type>
 
 Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.
 
-![](https://qiniu.espe.work/blog/20220618110139.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220618110139.png)
 
 ### 1.5 Pick \<Type, Keys>
 
 Constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.
 
-![](https://qiniu.espe.work/blog/20220618110351.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220618110351.png)
 
 ### 1.6 Omit \<Type, Keys>
 
 Constructs a type by picking all properties from Type and then removing Keys (string literal or union of string literals).
 
-![](https://qiniu.espe.work/blog/20220618110725.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220618110725.png)
 
 ### 1.7 Exclude \<UnionType, ExcludedMembers>
 
-![](https://qiniu.espe.work/blog/20220619090657.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220619090657.png)
 
 ### 1.8 Extract\<Type, Union>
 
 Constructs a type by extracting from Type all union members that are assignable to Union
 
-![](https://qiniu.espe.work/blog/20220619095914.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220619095914.png)
 
 ### 1.9 NonNullable \<Type>
 
 Constructs a type by excluding null and undefined from Type.
 
-![](https://qiniu.espe.work/blog/20220619100003.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220619100003.png)
 
 ### 1.10 Parameters<Type>
 
 Constructs a tuple type from the types used in the parameters of a **function type Type**.
 
-![](https://qiniu.espe.work/blog/20220619100522.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220619100522.png)
 
 ### 1.11 Intrinsic String Manipulation Types
 
@@ -858,7 +858,7 @@ For example:
 
 A non-relative import to moduleB such as import { b } from "moduleB", in a source file /root/src/folder/A.ts, would result in attempting the following locations for locating "moduleB":
 
-![](https://qiniu.espe.work/blog/20220623095434.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220623095434.png)
 
 TypeScript will mimic the Node.js run-time resolution strategy in order to locate definition files for modules at compile-time. To accomplish this, TypeScript overlays the TypeScript source file extensions (.ts, .tsx, and .d.ts) over Node’s resolution logic. TypeScript will also use a field in package.json named types to mirror the purpose of "main" - the compiler will use it to find the “main” definition file to consult.
 
@@ -930,7 +930,7 @@ As discussed earlier, the compiler can visit files outside the current folder wh
 
 Let’s say we have a sample application that uses the typescript module. app.ts has an import like import \* as ts from "typescript".
 
-![](https://qiniu.espe.work/blog/20220623101607.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220623101607.png)
 
 Invoking the compiler with traceResolution
 
@@ -1058,7 +1058,7 @@ Best common type
 
 When a type inference is made from several expressions, the types of those expressions are used to calculate a “best common type”. For example,
 
-![](https://qiniu.espe.work/blog/20220627144235.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220627144235.png)
 
 ## 7. DOM Manipulation
 

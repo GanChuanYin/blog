@@ -43,7 +43,7 @@ For most CSS animations, we can simply declare them under the _-enter-active and
 }
 ```
 
-![](https://qiniu.espe.work/blog/Jul-16-2022-12-22-47.gif)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-16-2022-12-22-47.gif)
 
 ### 1.2 Custom Transition Classes
 
@@ -125,7 +125,7 @@ In such cases you can specify an `explicit` transition duration (in milliseconds
 <Transition :duration="550">...</Transition>
 ```
 
-![](https://qiniu.espe.work/blog/Jul-16-2022-12-34-05.gif)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-16-2022-12-34-05.gif)
 
 If necessary, you can also specify separate values for enter and leave durations using an object:
 
@@ -282,7 +282,7 @@ However, in some cases this isn't an option, or simply isn't the desired behavio
 
 Here's the previous demo with mode="out-in":
 
-![](https://qiniu.espe.work/blog/Jul-16-2022-13-10-11.gif)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-16-2022-13-10-11.gif)
 
 `<Transition>`also supports `mode="in-out"`, although it's much less frequently used.
 
@@ -296,7 +296,7 @@ Here's the previous demo with mode="out-in":
 </Transition>
 ```
 
-![](https://qiniu.espe.work/blog/Jul-16-2022-13-12-17.gif)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-16-2022-13-12-17.gif)
 
 ### 1.12 Dynamic Transitions
 
@@ -352,7 +352,7 @@ Here is an example of applying enter / leave transitions to a v-for list using `
 }
 ```
 
-![](https://qiniu.espe.work/blog/Jul-17-2022-11-27-22.gif)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-17-2022-11-27-22.gif)
 
 ### 2.3 Move Transitions
 
@@ -378,7 +378,7 @@ The above demo has some obvious `flaws`: when an item is inserted or removed, it
 }
 ```
 
-![](https://qiniu.espe.work/blog/Jul-17-2022-11-30-56.gif)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-17-2022-11-30-56.gif)
 
 ### 2.4 Staggering List Transitions
 
