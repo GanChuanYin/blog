@@ -19,7 +19,7 @@ tags:
  * @param {ListNode[]} lists
  * @return {ListNode}
  */
-var mergeKLists = function(lists) {
+var mergeKLists = function (lists) {
   if (lists.length === 0) return null
   if (lists.length === 1 && lists[0] === null) return null
   let i = 0
@@ -56,7 +56,7 @@ var mergeKLists = function(lists) {
  * @param {number[]} nums2
  * @return {number}
  */
-var findMedianSortedArrays = function(nums1, nums2) {
+var findMedianSortedArrays = function (nums1, nums2) {
   let numArr = [...nums1, ...nums2]
   numArr.sort((a, b) => a - b)
   let len = numArr.length
@@ -78,7 +78,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
  * @param {number[]} height
  * @return {number}
  */
-var trap = function(height) {
+var trap = function (height) {
   let res = 0
 
   let len = height.length
@@ -93,7 +93,7 @@ var trap = function(height) {
   return res
 }
 
-var getVolume = function(arr, index) {
+var getVolume = function (arr, index) {
   let len = arr.length
   if (index === 0 || index === len - 1) return 0
   let selfHeigh = arr[index]
@@ -130,7 +130,7 @@ var getVolume = function(arr, index) {
  * @param {number[]} nums
  * @return {number}
  */
-var firstMissingPositive = function(nums) {
+var firstMissingPositive = function (nums) {
   let len = nums.length
   for (let i = 0; i < len; i++) {
     if (nums[i] < 1) {
@@ -165,7 +165,7 @@ var firstMissingPositive = function(nums) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   return handleMatch(s, p)
 }
 
@@ -216,7 +216,7 @@ let handleMatch = (s, p) => {
  * @param {number[]} heights
  * @return {number}
  */
-var largestRectangleArea = function(heights) {
+var largestRectangleArea = function (heights) {
   let len = heights.length
   let i = 1
   let resArea = heights[0]
@@ -255,7 +255,7 @@ var largestRectangleArea = function(heights) {
  * @param {string} p
  * @return {boolean}
  */
-var isMatch = function(s, p) {
+var isMatch = function (s, p) {
   s = ' ' + s
   p = ' ' + p
   const sLen = s.length
@@ -296,7 +296,7 @@ var isMatch = function(s, p) {
  * @param {TreeNode} root
  * @return {number}
  */
-var maxPathSum = function(root) {
+var maxPathSum = function (root) {
   if (!root) return []
   let levelNodes = [root]
   let allNodes = [levelNodes]
@@ -354,7 +354,7 @@ var maxPathSum = function(root) {
  * @param {string[]} wordDict
  * @return {string[]}
  */
-var wordBreak = function(s, wordDict) {
+var wordBreak = function (s, wordDict) {
   // dp数组,表示前index为能否被拆分
   let dp = new Array(s.length).fill(false)
   dp[-1] = true
@@ -377,7 +377,7 @@ var wordBreak = function(s, wordDict) {
   return resMap[s] || []
 }
 
-var getStr = function(resMap, s1, s2) {
+var getStr = function (resMap, s1, s2) {
   let arr1 = resMap[s1]
   let arr2 = resMap[s2]
   let res = []
@@ -401,7 +401,7 @@ var getStr = function(resMap, s1, s2) {
  * @param {string[]} wordList
  * @return {number}
  */
-var ladderLength = function(beginWord, endWord, wordList) {
+var ladderLength = function (beginWord, endWord, wordList) {
   // 创建集合数组 -> 后续使用集合数组的方法
   let wordSet = new Set(wordList)
   // 若数组中无最终字符串 -> 返回0
@@ -449,7 +449,7 @@ const strDiff = (str1, str2) => {
  * @param {string[]} words
  * @return {string[]}
  */
-var findWords = function(board, words) {
+var findWords = function (board, words) {
   let res = new Set()
   words.forEach((word) => {
     let flag = false
@@ -471,7 +471,7 @@ var findWords = function(board, words) {
   return [...res]
 }
 
-var check = function(board, m, n, word, index, resArr) {
+var check = function (board, m, n, word, index, resArr) {
   if (index + 1 === word.length) {
     resArr.push(word) // 当index + 1等于 word.length 证明已经匹配到单词
     return
@@ -513,7 +513,7 @@ var check = function(board, m, n, word, index, resArr) {
  * @param {TreeNode} root
  * @return {string}
  */
-var serialize = function(root) {
+var serialize = function (root) {
   if (!root) return []
   let level = [root]
   let res = [root.val]
@@ -547,7 +547,7 @@ var serialize = function(root) {
  * @param {string} data
  * @return {TreeNode}
  */
-var deserialize = function(data) {
+var deserialize = function (data) {
   if (!data.length) return null
   let root = new TreeNode(data[0])
   let queue = []
@@ -594,7 +594,7 @@ var deserialize = function(data) {
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
-var longestIncreasingPath = function(matrix) {
+var longestIncreasingPath = function (matrix) {
   let max = 1
   let mLen = matrix.length
   let nLen = matrix[0].length
@@ -617,7 +617,7 @@ var longestIncreasingPath = function(matrix) {
 }
 
 // 检测路径 并把最长路径记录到 visited 中
-var search = function(matrix, m, n, visited) {
+var search = function (matrix, m, n, visited) {
   if (visited[m][n] > 0) return visited[m][n] // 搜索过的位置直接返回值
   let num = matrix[m][n]
   let left = 1
@@ -647,7 +647,7 @@ var search = function(matrix, m, n, visited) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910213859.png)
 
 ```javascript
-var MedianFinder = function() {
+var MedianFinder = function () {
   this.list = []
 }
 
@@ -655,7 +655,7 @@ var MedianFinder = function() {
  * @param {number} num
  * @return {void}
  */
-MedianFinder.prototype.addNum = function(num) {
+MedianFinder.prototype.addNum = function (num) {
   let index = this.list.findIndex((v) => {
     return num < v
   })
@@ -666,7 +666,7 @@ MedianFinder.prototype.addNum = function(num) {
 /**
  * @return {number}
  */
-MedianFinder.prototype.findMedian = function() {
+MedianFinder.prototype.findMedian = function () {
   let len = this.list.length
   let middle = len >> 1
   if (len % 2 === 0) {
@@ -684,7 +684,7 @@ MedianFinder.prototype.findMedian = function() {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910223618.png)
 
 ```javascript
-var countSmaller = function(nums) {
+var countSmaller = function (nums) {
   // 求i对应二进制最小位开始的连续0个数
   function lowbit(i) {
     return i & -i
@@ -752,7 +752,7 @@ var countSmaller = function(nums) {
  * @param {number[][]} buildings
  * @return {number[][]}
  */
-var getSkyline = function(buildings) {
+var getSkyline = function (buildings) {
   const arr = [],
     ans = [],
     n = buildings.length
@@ -806,7 +806,7 @@ function search(arr, tar) {
  * @param {number} k
  * @return {number[]}
  */
-var maxSlidingWindow = function(nums, k) {
+var maxSlidingWindow = function (nums, k) {
   const queue = []
   for (let i = 0; i < k; i++) {
     while (queue.length && nums[queue[queue.length - 1]] <= nums[i]) {
@@ -840,7 +840,7 @@ var maxSlidingWindow = function(nums, k) {
  * @param {string} s
  * @return {string[]}
  */
-var removeInvalidParentheses = function(s) {
+var removeInvalidParentheses = function (s) {
   let maxLen = 0
   let set = new Set()
 
@@ -898,7 +898,7 @@ var removeInvalidParentheses = function(s) {
   return [...set]
 }
 
-var isValid = function(s) {
+var isValid = function (s) {
   if (s.length === 0) return true
   let left = []
   let right = []
@@ -932,7 +932,7 @@ var isValid = function(s) {
  * @param {number} k
  * @return {ListNode}
  */
-var reverseKGroup = function(head, k) {
+var reverseKGroup = function (head, k) {
   if (k === 1) return head
   let current = head
   let count = 0
@@ -957,7 +957,7 @@ var reverseKGroup = function(head, k) {
   return ans
 }
 
-var handle = function(nodes) {
+var handle = function (nodes) {
   for (let i = nodes.length - 1; i > 0; i--) {
     nodes[i].next = nodes[i - 1]
   }
@@ -975,7 +975,7 @@ var handle = function(nodes) {
  * @param {string[]} words
  * @return {number[]}
  */
-var findSubstring = function(s, words = []) {
+var findSubstring = function (s, words = []) {
   let wordsLen = words[0].length
   let strLen = words[0].length * words.length
   let ans = []
@@ -1009,7 +1009,7 @@ var findSubstring = function(s, words = []) {
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
-var solveSudoku = function(board) {
+var solveSudoku = function (board) {
   // 统计每行
   let rows = board.map((row) => {
     return row.filter((item) => item !== '.')
@@ -1138,7 +1138,7 @@ var solveSudoku = function(board) {
  * @param {number} n
  * @return {string[][]}
  */
-var solveNQueens = function(n) {
+var solveNQueens = function (n) {
   if (n === 1) return [['Q']]
   if (n === 2) return []
 
@@ -1162,7 +1162,7 @@ var solveNQueens = function(n) {
   return ans
 }
 
-var check = function(board) {
+var check = function (board) {
   let len = board.length
   let count = 0
   // 检查行
@@ -1266,7 +1266,7 @@ function fullpermutate(strList) {
  * @param {number} k
  * @return {string}
  */
-var getPermutation = function(n, k) {
+var getPermutation = function (n, k) {
   let str = ''
   for (let i = 1; i < n + 1; i++) {
     str += i
@@ -1316,7 +1316,7 @@ function fullpermutate(str, k) {
  * @param {string} s
  * @return {number}
  */
-var minCut = function(s) {
+var minCut = function (s) {
   let len = s.length
   let dp = new Array(len).fill(0)
   // 最多分割字符串长度减1次
@@ -1337,7 +1337,7 @@ var minCut = function(s) {
   return dp[len - 1]
 }
 
-var isValid = function(str) {
+var isValid = function (str) {
   let left = 0
   let right = str.length - 1
   while (left < right) {
@@ -1360,7 +1360,7 @@ var isValid = function(str) {
  * @param {number[]} ratings
  * @return {number}
  */
-var candy = function(ratings) {
+var candy = function (ratings) {
   let len = ratings.length
   let ans = new Array(len).fill(1) // 初始化每人一颗糖
   const temp = [] // 存放连续子序列 第三个参数表示是否为升序 true升序
@@ -1441,7 +1441,7 @@ var candy = function(ratings) {
  * @param {number[]} nums
  * @return {number}
  */
-var maximumGap = function(nums) {
+var maximumGap = function (nums) {
   nums.sort((a, b) => a - b)
   let ans = 0
   for (let i = 1; i < nums.length; i++) {
@@ -1465,7 +1465,7 @@ aacecaaa 从头往后可以找到的最长子串为 aacecaa
  * @param {string} s
  * @return {string}
  */
-var shortestPalindrome = function(s) {
+var shortestPalindrome = function (s) {
   let len = s.length
   // 寻找从左侧到右侧最长的回文子串
   let idx = 0 // 最长回文串的右下标
@@ -1484,7 +1484,7 @@ var shortestPalindrome = function(s) {
 }
 
 // 判断是否为回文串
-var isValid = function(s) {
+var isValid = function (s) {
   let left = 0
   let right = s.length - 1
   while (left < right) {
@@ -1507,7 +1507,7 @@ var isValid = function(s) {
  * @param {number} valueDiff
  * @return {boolean}
  */
-var containsNearbyAlmostDuplicate = function(nums, indexDiff, valueDiff) {
+var containsNearbyAlmostDuplicate = function (nums, indexDiff, valueDiff) {
   let len = nums.length
   for (let i = 0; i < len; i++) {
     let j = i + 1

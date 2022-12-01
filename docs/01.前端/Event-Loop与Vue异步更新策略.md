@@ -1,3 +1,12 @@
+---
+title: Event-Loop与Vue异步更新策略
+date: 2022-10-29 14:00:01
+permalink: /pages/475ac6/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## Event Loop 与异步更新策略
 
 ### Micro-Task 与 Macro-Task

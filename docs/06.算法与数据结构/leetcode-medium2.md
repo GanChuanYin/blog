@@ -1,3 +1,12 @@
+---
+title: leetcode-medium2
+date: 2022-11-23 11:38:32
+permalink: /pages/7d42bd/
+categories:
+  - 算法与数据结构
+tags:
+  - 
+---
 ## 1008. 前序遍历构造二叉搜索树
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221123113841.png)
@@ -7,7 +16,7 @@
  * @param {number[]} preorder
  * @return {TreeNode}
  */
-var bstFromPreorder = function(preorder) {
+var bstFromPreorder = function (preorder) {
   if (preorder.length === 0) return null
   let left = []
   let right = []
@@ -30,7 +39,7 @@ var bstFromPreorder = function(preorder) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221124110516.png)
 
 ```javascript
-var lastStoneWeightII = function(stones) {
+var lastStoneWeightII = function (stones) {
   let sum = 0
   for (const weight of stones) {
     sum += weight

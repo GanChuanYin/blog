@@ -28,7 +28,7 @@ tags:
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbers = function (l1, l2) {
   if (!l1 && !l2) return null
   const arr1 = []
   const arr2 = []
@@ -99,7 +99,7 @@ var addTwoNumbers = function(l1, l2) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbers = function (l1, l2) {
   const dummy = new ListNode()
   let carry = 0
   let cur = dummy
@@ -139,7 +139,7 @@ var addTwoNumbers = function(l1, l2) {
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
+var maxArea = function (height) {
   let i = 0,
     j = height.length - 1
   let res = 0
@@ -171,7 +171,7 @@ var maxArea = function(height) {
  * @param {number} n
  * @return {string[]}
  */
-var generateParenthesis = function(n) {
+var generateParenthesis = function (n) {
   const generateOne = (list, str, left, right) => {
     if (left == 0 && right == 0) {
       list.push(str)
@@ -206,7 +206,7 @@ var generateParenthesis = function(n) {
  * @param {string} s
  * @return {string}
  */
-var longestPalindrome = function(s) {
+var longestPalindrome = function (s) {
   let maxLength = 0,
     left = 0,
     right = 0
@@ -257,7 +257,7 @@ function getPalLenByCenterChar(s, left, right) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permute = function(nums) {
+var permute = function (nums) {
   let res = [[nums[0]]]
   const arrange = (arr, num) => {
     let res = []
@@ -291,7 +291,7 @@ var permute = function(nums) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
   if (s.length === 0) return 0
   if (s.length === 1) return 1
   const strArr = s.split('')
@@ -330,7 +330,7 @@ var lengthOfLongestSubstring = function(s) {
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var lengthOfLongestSubstring = function (s) {
   const ss = new Set()
   let i = 0
   let ans = 0
@@ -359,7 +359,7 @@ console.log(lengthOfLongestSubstring('aacbddfefs'))
  * @param {number[]} temperatures
  * @return {number[]}
  */
-var dailyTemperatures = function(temperatures) {
+var dailyTemperatures = function (temperatures) {
   const res = []
   for (let index = 0; index < temperatures.length; index++) {
     let current = temperatures[index]
@@ -386,7 +386,7 @@ var dailyTemperatures = function(temperatures) {
  * @param {number} target
  * @return {number[]}
  */
-var searchRange = function(nums, target) {
+var searchRange = function (nums, target) {
   if (nums.length === 0) return [-1, -1]
   let left = 0
   let right = nums.length
@@ -422,7 +422,7 @@ var searchRange = function(nums, target) {
  * @param {number} x
  * @return {number}
  */
-var reverse = function(x) {
+var reverse = function (x) {
   if (Math.abs(x) < 10) return x
   let absX = Math.abs(x)
   let absStr = absX.toString()
@@ -455,7 +455,7 @@ var reverse = function(x) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var subsets = function(nums) {
+var subsets = function (nums) {
   let res = []
   while (nums.length) {
     res = merge(res, nums.shift())
@@ -463,7 +463,7 @@ var subsets = function(nums) {
   return res
 }
 
-var merge = function(nestArr, num) {
+var merge = function (nestArr, num) {
   if (nestArr.length < 2) return [[], [num]]
   let tail = [[num]]
   for (let i = 1; i < nestArr.length; i++) {
@@ -486,7 +486,7 @@ var merge = function(nestArr, num) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
+var threeSum = function (nums) {
   if (nums.length < 3) return []
   let left = 0
   let resArr = []
@@ -502,7 +502,7 @@ var threeSum = function(nums) {
   return resArr
 }
 
-var findNum = function(arr, left, right, resArr, tempStrArr) {
+var findNum = function (arr, left, right, resArr, tempStrArr) {
   const subSum = arr[left] + arr[right]
   let index = arr.findIndex((item) => {
     return item === -subSum
@@ -525,7 +525,7 @@ var findNum = function(arr, left, right, resArr, tempStrArr) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
+var threeSum = function (nums) {
   const n = nums.length
   if (n < 3) return []
   let res = []
@@ -563,7 +563,7 @@ var threeSum = function(nums) {
  * @param {string} digits
  * @return {string[]}
  */
-var letterCombinations = function(digits) {
+var letterCombinations = function (digits) {
   if (digits.length === 0) return []
   let standArr = [
     null,
@@ -613,7 +613,7 @@ var letterCombinations = function(digits) {
  * @param {number} n
  * @return {ListNode}
  */
-var removeNthFromEnd = function(head, n) {
+var removeNthFromEnd = function (head, n) {
   if (!head.next) return null
   let tempArr = []
   let current = head
@@ -645,7 +645,7 @@ var removeNthFromEnd = function(head, n) {
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
+var search = function (nums, target) {
   if (nums.length === 0) return nums[0] === target ? 0 : -1
   let len = nums.length
   let first = nums[0]
@@ -686,7 +686,7 @@ var search = function(nums, target) {
  * @param {character[][]} board
  * @return {boolean}
  */
-var isValidSudoku = function(board) {
+var isValidSudoku = function (board) {
   let flag = true
   let lineIndex = 0
   let len = board.length
@@ -725,7 +725,7 @@ var isValidSudoku = function(board) {
   }
   return flag
 }
-var isMultiple = function(list) {
+var isMultiple = function (list) {
   let temp = list.filter((item) => item !== '.')
   let tempSet = new Set(temp)
   return temp.length === [...tempSet].length
@@ -753,7 +753,7 @@ dp[m - 1][n - 1]
  * @param {number} n
  * @return {number}
  */
-var uniquePaths = function(m, n) {
+var uniquePaths = function (m, n) {
   let arr = new Array(m) //有m行
   for (var i = 0; i < arr.length; i++) {
     arr[i] = new Array(n).fill(0) // 有n列
@@ -804,7 +804,7 @@ var uniquePaths = function(m, n) {
  * @param {number} divisor
  * @return {number}
  */
-var divide = function(dividend, divisor) {
+var divide = function (dividend, divisor) {
   if (dividend == 0) {
     return 0
   }
@@ -846,7 +846,7 @@ var divide = function(dividend, divisor) {
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
-var rotate = function(matrix) {
+var rotate = function (matrix) {
   let n = matrix.length
   if (n === 1) return matrix
   let i = 0
@@ -889,7 +889,7 @@ var rotate = function(matrix) {
  * @param {number} n
  * @return {string}
  */
-var countAndSay = function(n) {
+var countAndSay = function (n) {
   if (n === 1) return '1'
   let i = 1
   str = '1'
@@ -900,7 +900,7 @@ var countAndSay = function(n) {
   return str
 }
 
-var transfer = function(str) {
+var transfer = function (str) {
   let arr = str.split('')
   let resArr = [{ value: arr[0], count: 1 }]
   for (let i = 1; i < arr.length; i++) {
@@ -937,7 +937,7 @@ var transfer = function(str) {
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var nextPermutation = function(nums) {
+var nextPermutation = function (nums) {
   if (nums.length === 1) return
   let len = nums.length
 
@@ -987,7 +987,7 @@ var nextPermutation = function(nums) {
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var merge = function(nums1, m, nums2, n) {
+var merge = function (nums1, m, nums2, n) {
   let len = m + n - 1
   m--
   n--
@@ -1012,17 +1012,14 @@ var merge = function(nums1, m, nums2, n) {
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
+var groupAnagrams = function (strs) {
   if (strs.length === 1) return [strs]
   let i = 0
   let len = strs.length
   let keyMap = {}
   let emptyArr = []
   while (i < len) {
-    let sortedStr = strs[i]
-      .split('')
-      .sort()
-      .join('') // 保证不同顺序的字母组合到同一个key
+    let sortedStr = strs[i].split('').sort().join('') // 保证不同顺序的字母组合到同一个key
     if (sortedStr === '') {
       emptyArr.push(strs[i])
       i++
@@ -1057,7 +1054,7 @@ var groupAnagrams = function(strs) {
  * @param {number[][]} matrix
  * @return {number[]}
  */
-var spiralOrder = function(matrix) {
+var spiralOrder = function (matrix) {
   if (matrix.length === 1) return matrix[0]
   let rowLen = matrix.length
   let colLen = matrix[0].length
@@ -1074,7 +1071,7 @@ var spiralOrder = function(matrix) {
   return res
 }
 
-var traversal = function(matrix, row, rowLen, col, colLen) {
+var traversal = function (matrix, row, rowLen, col, colLen) {
   let res = []
   let i = row
   while (i < rowLen) {
@@ -1117,7 +1114,7 @@ var traversal = function(matrix, row, rowLen, col, colLen) {
  * @param {number[][]} intervals
  * @return {number[][]}
  */
-var merge = function(intervals) {
+var merge = function (intervals) {
   if (intervals.length === 0) return intervals
   intervals.sort((a, b) => a[0] - b[0])
   let i = 1
@@ -1151,7 +1148,7 @@ var merge = function(intervals) {
  * @param {number[]} nums
  * @return {boolean}
  */
-var canJump = function(nums) {
+var canJump = function (nums) {
   let index = nums.indexOf(0, 0)
   if (index < 0) return true
   while (index >= 0 && index < nums.length - 1) {
@@ -1180,7 +1177,7 @@ var canJump = function(nums) {
  * @param {string} s
  * @return {number}
  */
-var myAtoi = function(s) {
+var myAtoi = function (s) {
   let result = s.trim().match(/^[-|+]{0,1}[0-9]+/)
   if (result !== null) {
     if (result[0] > Math.pow(2, 31) - 1) {
@@ -1213,7 +1210,7 @@ var myAtoi = function(s) {
  * @param {number} n
  * @return {number}
  */
-var myPow = function(x, n) {
+var myPow = function (x, n) {
   if (n === 0 || n === 1) {
     return n === 0 ? 1 : x
   } else if (n < 0) {
@@ -1237,7 +1234,7 @@ var myPow = function(x, n) {
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
-var setZeroes = function(matrix) {
+var setZeroes = function (matrix) {
   let zeroArr = []
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
@@ -1269,7 +1266,7 @@ var setZeroes = function(matrix) {
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var sortColors = function(nums) {
+var sortColors = function (nums) {
   let len = nums.length
   let left = 0
   let right = len - 1
@@ -1306,7 +1303,7 @@ var sortColors = function(nums) {
 如果没找到最终值的时候恢复上一个节点的值
 
 ```javascript
-var exist = function(board, word) {
+var exist = function (board, word) {
   //越界处理
   board[-1] = [] // 这里处理比较比较巧妙，利用了js的特性
   board.push([])
@@ -1319,7 +1316,7 @@ var exist = function(board, word) {
   }
   return false
 }
-const dfs = function(word, board, y, x, i) {
+const dfs = function (word, board, y, x, i) {
   if (i + 1 === word.length) return true
   var tmp = board[y][x]
   // 标记该元素已使用
@@ -1355,7 +1352,7 @@ const dfs = function(word, board, y, x, i) {
 确定遍历顺序。本题只需确定 s 可否由字符串列表 wordDict 中的单词组成，所以先遍历背包后遍历物品或者先遍历物品后遍历背包都可以。但是由于本题还要确定字符串是否相等，所以先遍历背包后遍历物品更加方便些，不需要重复确定 s 的子字符串与字符串列表 wordDict 中的单词是否相等。
 
 ```javascript
-var wordBreak = function(s, wordDict) {
+var wordBreak = function (s, wordDict) {
   // dp数组,表示前index为能否被拆分
   let dp = new Array(s.length + 1).fill(false)
   // 空子前缀串默认能被拆分
@@ -1379,7 +1376,7 @@ var wordBreak = function(s, wordDict) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220831225749.png)
 
 ```javascript
-var numDecodings = function(s) {
+var numDecodings = function (s) {
   const n = s.length
   const f = new Array(n + 1).fill(0)
   f[0] = 1
@@ -1423,7 +1420,7 @@ numDecodings('1113312014')
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isValidBST = function(root) {
+var isValidBST = function (root) {
   return helper(root, -Infinity, Infinity)
 }
 
@@ -1449,7 +1446,7 @@ const helper = (root, lower, upper) => {
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrder = function(root) {
+var levelOrder = function (root) {
   if (!root) return []
   let res = []
   let levelNodes = [root]
@@ -1493,7 +1490,7 @@ var levelOrder = function(root) {
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var zigzagLevelOrder = function(root) {
+var zigzagLevelOrder = function (root) {
   if (!root) return []
   let res = []
   let levelNodes = [root]
@@ -1549,7 +1546,7 @@ preorder 第一个元素为 root，在 inorder 里面找到 root，在它之前�
  * @param {number[]} inorder
  * @return {TreeNode}
  */
-var buildTree = function(preorder, inorder) {
+var buildTree = function (preorder, inorder) {
   if (preorder.length === 0) return null
   if (preorder.length === 1) {
     return new TreeNode(preorder[0])
@@ -1579,7 +1576,7 @@ var buildTree = function(preorder, inorder) {
  * @param {Node} root
  * @return {Node}
  */
-var connect = function(root) {
+var connect = function (root) {
   if (!root) return null
   let levelNodes = [root]
   while (true) {
@@ -1616,7 +1613,7 @@ var connect = function(root) {
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
+var maxProfit = function (prices) {
   let res = 0
   for (let i = 1; i < prices.length; i++) {
     if (prices[i] > prices[i - 1]) {
@@ -1634,7 +1631,7 @@ var maxProfit = function(prices) {
 // 如果持有现金，则可能昨天也持有现金dp[i-1][0]或者昨天持有股票并卖出，取得收益dp[i-1][1]+prices[i];
 // 如果持有股票，则可能昨天也持有股票dp[i-1][1]或者昨天花掉现金，买入股票dp[i-1][0]-prices[i];
 
-var maxProfit = function(prices) {
+var maxProfit = function (prices) {
   let len = prices.length
   if (len === 1) return 0
   const dp = new Array(len).fill().map(() => new Array(2))
@@ -1657,7 +1654,7 @@ maxProfit([7, 1, 5, 3, 6, 4])
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220902224721.png)
 
 ```javascript
-var longestConsecutive = function(nums) {
+var longestConsecutive = function (nums) {
   let map = {}
   let res = 0
   nums = new Set(nums)
@@ -1685,7 +1682,7 @@ var longestConsecutive = function(nums) {
  * @param {string} s
  * @return {string[][]}
  */
-var partition = function(s) {
+var partition = function (s) {
   let resArr = [[s[0]]]
   let len = s.length
   let allArr = [[[s[0]]]]
@@ -1712,7 +1709,7 @@ var partition = function(s) {
   return resArr
   // console.log(allArr)
 }
-var isValid = function(s) {
+var isValid = function (s) {
   let left = 0
   let right = s.length - 1
   while (left < right) {
@@ -1736,7 +1733,7 @@ var isValid = function(s) {
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
-var solve = function(board) {
+var solve = function (board) {
   if (board.length < 3) return
   let mlen = board.length
   let nlen = board[0].length
@@ -1767,7 +1764,7 @@ var solve = function(board) {
     }
   }
 }
-var check = function(board, m, n) {
+var check = function (board, m, n) {
   // 检查每个格子的上下左右 如果与边界联通就置为B
   if (isNotEdge(board, m, n)) board[m][n] = 'B'
   if (m - 1 >= 0 && isNotEdge(board, m - 1, n)) {
@@ -1784,7 +1781,7 @@ var check = function(board, m, n) {
   }
 }
 
-var isNotEdge = function(board, m, n) {
+var isNotEdge = function (board, m, n) {
   return (
     board[m][n] === 'O' &&
     m !== 0 &&
@@ -1813,7 +1810,7 @@ var isNotEdge = function(board, m, n) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var sortList = function(head) {
+var sortList = function (head) {
   if (!head) return null
   let current = head
   let nodeArr = [current]
@@ -1847,7 +1844,7 @@ sortList(root)
  * @param {number[]} cost
  * @return {number}
  */
-var canCompleteCircuit = function(gas, cost) {
+var canCompleteCircuit = function (gas, cost) {
   let len = gas.length
   for (let i = 0; i < len; i++) {
     if (gas[i] >= cost[i]) {
@@ -1874,7 +1871,7 @@ var canCompleteCircuit = function(gas, cost) {
  * @param {number[]} cost
  * @return {number}
  */
-var canCompleteCircuit = function(gas, cost) {
+var canCompleteCircuit = function (gas, cost) {
   let len = gas.length
   let temp = []
   for (let i = 0; i < len; i++) {
@@ -1909,7 +1906,7 @@ var canCompleteCircuit = function(gas, cost) {
  * @param {Node} head
  * @return {Node}
  */
-var copyRandomList = function(head) {
+var copyRandomList = function (head) {
   if (!head) return null
   let arr = [head]
   let current = head
@@ -1948,7 +1945,7 @@ var copyRandomList = function(head) {
 /**
  * @param {number} capacity
  */
-var LRUCache = function(capacity) {
+var LRUCache = function (capacity) {
   this.cache = new Array()
   this.len = capacity
 }
@@ -1957,7 +1954,7 @@ var LRUCache = function(capacity) {
  * @param {number} key
  * @return {number}
  */
-LRUCache.prototype.get = function(key) {
+LRUCache.prototype.get = function (key) {
   let index = this.cache.findIndex((item) => {
     return item.key === key
   })
@@ -1976,7 +1973,7 @@ LRUCache.prototype.get = function(key) {
  * @param {number} value
  * @return {void}
  */
-LRUCache.prototype.put = function(key, value) {
+LRUCache.prototype.put = function (key, value) {
   let index = this.cache.findIndex((item) => {
     return item.key === key
   })
@@ -2010,7 +2007,7 @@ LRUCache.prototype.put = function(key, value) {
  * @param {string[]} tokens
  * @return {number}
  */
-var evalRPN = function(tokens) {
+var evalRPN = function (tokens) {
   let operator = ['+', '-', '*', '/']
   let i = 0
   while (tokens.length > 1) {
@@ -2024,7 +2021,7 @@ var evalRPN = function(tokens) {
   return tokens[0]
 }
 
-var calculate = function(tokens, i) {
+var calculate = function (tokens, i) {
   let operator = tokens[i]
   let num1 = tokens[i - 2]
   let num2 = tokens[i - 1]
@@ -2043,7 +2040,7 @@ var calculate = function(tokens, i) {
  * @param {number[]} nums
  * @return {number}
  */
-var maxProduct = function(nums) {
+var maxProduct = function (nums) {
   if (nums.length === 1) return nums[0]
   let len = nums.length
   let i = 0
@@ -2072,7 +2069,7 @@ var maxProduct = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220905134524.png)
 
 ```javascript
-var findPeakElement = function(nums) {
+var findPeakElement = function (nums) {
   const n = nums.length
   let left = 0,
     right = n - 1,
@@ -2127,7 +2124,7 @@ const compare = (nums, idx1, idx2) => {
  * @param {number} n
  * @return {number}
  */
-var trailingZeroes = function(n) {
+var trailingZeroes = function (n) {
   let count = 0
   while (n >= 5) {
     let num = parseInt(n / 5)
@@ -2147,7 +2144,7 @@ var trailingZeroes = function(n) {
  * @param {number[]} nums
  * @return {string}
  */
-var largestNumber = function(nums) {
+var largestNumber = function (nums) {
   let len = nums.length
   for (let i = 0; i < len; i++) {
     nums[i] = String(nums[i])
@@ -2171,7 +2168,7 @@ var largestNumber = function(nums) {
  * @param {number[]} nums
  * @return {string}
  */
-var largestNumber = function(nums) {
+var largestNumber = function (nums) {
   nums.sort((a, b) => {
     return b + '' + a - (a + '' + b) // 谁放前面大 谁就排前面
   })
@@ -2194,7 +2191,7 @@ var largestNumber = function(nums) {
  * @param {number} denominator
  * @return {string}
  */
-var fractionToDecimal = function(numerator, denominator) {
+var fractionToDecimal = function (numerator, denominator) {
   if (!numerator) return '0'
   // 归一整数
   let sign = Math.sign(numerator) * Math.sign(denominator) > 0 ? '' : '-'
@@ -2232,7 +2229,7 @@ var fractionToDecimal = function(numerator, denominator) {
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var rotate = function(nums, k) {
+var rotate = function (nums, k) {
   let len = nums.length
   if (len === 1 || len === k) return
   if (k > len) k = k % len
@@ -2270,7 +2267,7 @@ dp[i] = Math.max(dp[i-2]+ nums[i], dp[i-1])
  * @param {number[]} nums
  * @return {number}
  */
-var rob = function(nums) {
+var rob = function (nums) {
   let len = nums.length
   if (len === 1) return nums[0]
   let dp = new Array(len)
@@ -2292,7 +2289,7 @@ var rob = function(nums) {
  * @param {character[][]} grid
  * @return {number}
  */
-var numIslands = function(grid) {
+var numIslands = function (grid) {
   let mlen = grid.length
   let nlen = grid[0].length
   let count = 0
@@ -2307,7 +2304,7 @@ var numIslands = function(grid) {
   return count
 }
 
-var check = function(grid, m, n) {
+var check = function (grid, m, n) {
   // 检查每个格子的上下左右 将联通的全部置为B
   grid[m][n] = 'B'
   if (m - 1 >= 0 && grid[m - 1][n] === '1') {
@@ -2334,7 +2331,7 @@ var check = function(grid, m, n) {
  * @param {number} n
  * @return {boolean}
  */
-var isHappy = function(n) {
+var isHappy = function (n) {
   let mySet = new Set()
   while (n !== 1 && !mySet.has(n)) {
     mySet.add(n)
@@ -2343,7 +2340,7 @@ var isHappy = function(n) {
   return n === 1
 }
 
-var happy = function(n) {
+var happy = function (n) {
   let str = n + ''
   let res = 0
   for (let i = 0; i < str.length; i++) {
@@ -2364,7 +2361,7 @@ var happy = function(n) {
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-var canFinish = function(numCourses, prerequisites) {
+var canFinish = function (numCourses, prerequisites) {
   // 课程表问题，是一种拓扑排序问题。可参考210题目，但此题只需要返回是否可以修完的布尔值
   //  BFS遍历，关键是构造邻接表和找到初始未依赖的课程编号
   const graph = {}
@@ -2407,7 +2404,7 @@ var canFinish = function(numCourses, prerequisites) {
  * @param {number} k
  * @return {number}
  */
-var findKthLargest = function(nums, k) {
+var findKthLargest = function (nums, k) {
   let resArr = new Array(k).fill(-Infinity)
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] > resArr[k - 1]) {
@@ -2433,7 +2430,7 @@ var findKthLargest = function(nums, k) {
  * @param {number} n
  * @return {number}
  */
-var countPrimes = function(n) {
+var countPrimes = function (n) {
   const isPrime = new Array(n).fill(1)
   let ans = 0
   for (let i = 2; i < n; ++i) {
@@ -2520,13 +2517,13 @@ var findOrder = (numCourses, prerequisites) => {
  * @param {number} k
  * @return {number}
  */
-var kthSmallest = function(root, k) {
+var kthSmallest = function (root, k) {
   let arr = check(root, k)
   return arr[k - 1]
 }
 
 // 中序遍历
-var check = function(node, k) {
+var check = function (node, k) {
   let res = []
   if (node.left) {
     res = [...check(node.left, k)]
@@ -2545,7 +2542,7 @@ var check = function(node, k) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220908164337.png)
 
 ```javascript
-var calculate = function(s) {
+var calculate = function (s) {
   let stack = [],
     n = 0,
     sign = '+'
@@ -2600,7 +2597,7 @@ var calculate = function(s) {
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestor = function (root, p, q) {
   let current = root
   while (current && findNode(current, p) && findNode(current, q)) {
     if (
@@ -2621,7 +2618,7 @@ var lowestCommonAncestor = function(root, p, q) {
   }
 }
 
-var findNode = function(root, node) {
+var findNode = function (root, node) {
   let flag = false
   if (root === node) return true
   if (root.left) flag = findNode(root.left, node)
@@ -2648,7 +2645,7 @@ var findNode = function(root, node) {
  * @param {ListNode} node
  * @return {void} Do not return anything, modify node in-place instead.
  */
-var deleteNode = function(node) {
+var deleteNode = function (node) {
   let current = node
   while (current.next) {
     current.val = current.next.val
@@ -2667,7 +2664,7 @@ var deleteNode = function(node) {
  * @param {number[]} nums
  * @return {number[]}
  */
-var productExceptSelf = function(nums) {
+var productExceptSelf = function (nums) {
   const res = Array(nums.length).fill(1)
   let temp = 1
   for (let i = 0; i < nums.length; i++) {
@@ -2707,7 +2704,7 @@ productExceptSelf([2, 2, 3, 4])
  * @param {number} n
  * @return {number}
  */
-var numSquares = function(n) {
+var numSquares = function (n) {
   let dp = new Array(n)
   dp[0] = 0
   dp[1] = 1
@@ -2730,7 +2727,7 @@ var numSquares = function(n) {
  * @param {number[]} nums
  * @return {number}
  */
-var findDuplicate = function(nums) {
+var findDuplicate = function (nums) {
   let l = 1
   let r = nums.length - 1
   while (l < r) {
@@ -2758,7 +2755,7 @@ var findDuplicate = function(nums) {
  * @param {number[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
-var gameOfLife = function(board) {
+var gameOfLife = function (board) {
   let changArr = []
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[0].length; j++) {
@@ -2776,7 +2773,7 @@ var gameOfLife = function(board) {
 }
 
 // 检测是否能保持当前状态 能则返回true
-var live = function(board, m, n, isAlive) {
+var live = function (board, m, n, isAlive) {
   // 检查每个格子的上下左右对角线 活细胞数量
   let count = 0
   if (m - 1 >= 0) {
@@ -2818,7 +2815,7 @@ var live = function(board, m, n, isAlive) {
  * @param {number[]} nums
  * @return {number}
  */
-var lengthOfLIS = function(nums) {
+var lengthOfLIS = function (nums) {
   let res = 1
   let dp = new Array(nums.length).fill(1)
   for (let i = 1; i < nums.length; i++) {
@@ -2840,7 +2837,7 @@ var lengthOfLIS = function(nums) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var oddEvenList = function(head) {
+var oddEvenList = function (head) {
   if (!head || !head.next || !head.next.next) return head //如果节点数为0 1或 2
   let evenHead = head.next // 偶数节点头
   let current = head
@@ -2870,7 +2867,7 @@ var oddEvenList = function(head) {
  * @param {number} amount
  * @return {number}
  */
-var coinChange = function(coins, amount) {
+var coinChange = function (coins, amount) {
   if (amount === 0) return 0
   let dp = new Array(amount + 1).fill(Infinity)
   for (let i = 1; i <= amount; i++) {
@@ -2893,7 +2890,7 @@ var coinChange = function(coins, amount) {
  * @param {number} k
  * @return {number[]}
  */
-var topKFrequent = function(nums, k) {
+var topKFrequent = function (nums, k) {
   nums.sort((a, b) => a - b)
   const map = new Map()
   const resArr = []
@@ -2917,7 +2914,7 @@ var topKFrequent = function(nums, k) {
   return resArr
 }
 
-var insetNum = function(resArr, map, num, frequent, deleteNum) {
+var insetNum = function (resArr, map, num, frequent, deleteNum) {
   let index = resArr.findIndex((n) => {
     return frequent > map.get(n)
   })
@@ -2938,7 +2935,7 @@ var insetNum = function(resArr, map, num, frequent, deleteNum) {
 两个整数 a, b; `a ^ b` 是无进位的相加； `a & b` 得到每一位的进位；让无进位相加的结果与进位不断的异或， 直到进位为 0；
 
 ```javascript
-var getSum = function(a, b) {
+var getSum = function (a, b) {
   while (b != 0) {
     const carry = (a & b) << 1
     a = a ^ b
@@ -2960,7 +2957,7 @@ var getSum = function(a, b) {
  * @param {number} k
  * @return {number}
  */
-var kthSmallest = function(matrix, k) {
+var kthSmallest = function (matrix, k) {
   return matrix.flat().sort((a, b) => a - b)[k - 1]
 }
 ```
@@ -2970,7 +2967,7 @@ var kthSmallest = function(matrix, k) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220911182927.png)
 
 ```javascript
-var RandomizedSet = function() {
+var RandomizedSet = function () {
   this.set = new Set()
 }
 
@@ -2978,7 +2975,7 @@ var RandomizedSet = function() {
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.insert = function(val) {
+RandomizedSet.prototype.insert = function (val) {
   if (this.set.has(val)) return false
   this.set.add(val)
   return true
@@ -2988,7 +2985,7 @@ RandomizedSet.prototype.insert = function(val) {
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.remove = function(val) {
+RandomizedSet.prototype.remove = function (val) {
   if (!this.set.has(val)) return false
   this.set.delete(val)
   return true
@@ -2997,7 +2994,7 @@ RandomizedSet.prototype.remove = function(val) {
 /**
  * @return {number}
  */
-RandomizedSet.prototype.getRandom = function() {
+RandomizedSet.prototype.getRandom = function () {
   let arr = [...this.set.values()]
   let index = Math.floor(Math.random() * arr.length)
   return arr[index]
@@ -3020,7 +3017,7 @@ RandomizedSet.prototype.getRandom = function() {
 /**
  * @param {number[]} nums
  */
-var Solution = function(nums) {
+var Solution = function (nums) {
   this.copy = [...nums]
   this.list = nums
 }
@@ -3028,7 +3025,7 @@ var Solution = function(nums) {
 /**
  * @return {number[]}
  */
-Solution.prototype.reset = function() {
+Solution.prototype.reset = function () {
   this.list = [...this.copy]
   return this.list
 }
@@ -3036,7 +3033,7 @@ Solution.prototype.reset = function() {
 /**
  * @return {number[]}
  */
-Solution.prototype.shuffle = function() {
+Solution.prototype.shuffle = function () {
   const shuffled = new Array(this.list.length).fill(0)
   const nums = []
   this.list.forEach((num) => nums.push(num))
@@ -3066,7 +3063,7 @@ Solution.prototype.shuffle = function() {
  * @param {number} k
  * @return {number}
  */
-var longestSubstring = function(s, k) {
+var longestSubstring = function (s, k) {
   let map = {}
   for (let i = 0; i < s.length; i++) {
     map[s[i]] = map[s[i]] ? map[s[i]] + 1 : 1
@@ -3094,7 +3091,7 @@ var longestSubstring = function(s, k) {
  * @param {number[]} nums4
  * @return {number}
  */
-var fourSumCount = function(nums1, nums2, nums3, nums4) {
+var fourSumCount = function (nums1, nums2, nums3, nums4) {
   let map12 = {} // 记录nums1和nums2的和的map
   let map34 = {} // 记录nums3和nums4的和的map
   let len = nums1.length
@@ -3132,7 +3129,7 @@ var fourSumCount = function(nums1, nums2, nums3, nums4) {
  * @param {number[]} nums
  * @return {boolean}
  */
-var increasingTriplet = function(nums) {
+var increasingTriplet = function (nums) {
   let a = Infinity
   let b = Infinity
   for (let i = 0; i < nums.length; i++) {
@@ -3153,7 +3150,7 @@ var increasingTriplet = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912184133.png)
 
 ```javascript
-var wiggleSort = function(nums) {
+var wiggleSort = function (nums) {
   nums.sort((a, b) => b - a)
   const mid = nums.length >> 1
   for (let i = 0; i < mid; i++) {
@@ -3179,7 +3176,7 @@ var wiggleSort = function(nums) {
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
  */
-var flatten = function(root) {
+var flatten = function (root) {
   let arr = []
   search(root, arr)
   for (let i = 0; i < arr.length; i++) {
@@ -3192,7 +3189,7 @@ var flatten = function(root) {
   }
 }
 
-var search = function(root, arr) {
+var search = function (root, arr) {
   if (!root) return
   arr.push(root)
   search(root.left, arr)
@@ -3209,7 +3206,7 @@ var search = function(root, arr) {
  * @param {character[][]} matrix
  * @return {number}
  */
-var maximalSquare = function(matrix) {
+var maximalSquare = function (matrix) {
   let m = matrix.length
   let n = matrix[0].length
   // left[i][j]表示在这个点的左边有多少个连续1
@@ -3277,13 +3274,13 @@ var maximalSquare = function(matrix) {
  * @param {TreeNode} root
  * @return {number}
  */
-var rob = function(root) {
+var rob = function (root) {
   changeTree(root)
   return root.val
 }
 
 // 遍历树
-var changeTree = function(root) {
+var changeTree = function (root) {
   let l = 0
   let lside = 0
   let r = 0
@@ -3312,7 +3309,7 @@ var changeTree = function(root) {
  * @param {string} s
  * @return {string}
  */
-var decodeString = function(s) {
+var decodeString = function (s) {
   let nums = []
   let i = 0
   while (i < s.length) {
@@ -3353,7 +3350,7 @@ var decodeString = function(s) {
  * @param {number[][]} people
  * @return {number[][]}
  */
-var reconstructQueue = function(people) {
+var reconstructQueue = function (people) {
   people.sort((a, b) => {
     return b[0] - a[0] || a[1] - b[1] // 按照高度降序排 如果高度一样 按前面的数量升序排
   })
@@ -3379,7 +3376,7 @@ var reconstructQueue = function(people) {
  * @param {string} s
  * @return {number}
  */
-var countSubstrings = function(s) {
+var countSubstrings = function (s) {
   let dp = new Array(s.length).fill(1)
 
   for (let i = 1; i < s.length; i++) {
@@ -3396,7 +3393,7 @@ var countSubstrings = function(s) {
   return dp[s.length - 1]
 }
 
-var isValid = function(s) {
+var isValid = function (s) {
   if (s.length === 0) return true
   let left = 0
   let right = s.length - 1
@@ -3419,7 +3416,7 @@ var isValid = function(s) {
  * @param {string} p
  * @return {number[]}
  */
-var findAnagrams = function(s, p) {
+var findAnagrams = function (s, p) {
   if (s.length < p.length) return []
   let dp = new Array(s.length).fill(false)
   let pLen = p.length
@@ -3452,7 +3449,7 @@ var findAnagrams = function(s, p) {
   return ans
 }
 
-var isMatch = function(s1, s2) {
+var isMatch = function (s1, s2) {
   let map1 = new Map()
   let map2 = new Map()
   for (let i = 0; i < s1.length; i++) {
@@ -3485,7 +3482,7 @@ var isMatch = function(s1, s2) {
  * @param {number} k
  * @return {number}
  */
-var subarraySum = function(nums, k) {
+var subarraySum = function (nums, k) {
   let left = 0
   let right = 0
   let ans = 0
@@ -3515,7 +3512,7 @@ var subarraySum = function(nums, k) {
  * @param {number[]} nums
  * @return {number}
  */
-var findUnsortedSubarray = function(nums) {
+var findUnsortedSubarray = function (nums) {
   let sorted = nums.slice().sort((a, b) => a - b)
   let left = 0
   let right = nums.length
@@ -3537,7 +3534,7 @@ var findUnsortedSubarray = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220917233031.png)
 
 ```javascript
-var generateMatrix = function(n) {
+var generateMatrix = function (n) {
   if (n === 1) return [[1]]
   let rowLen = n
   let colLen = n
@@ -3558,7 +3555,7 @@ var generateMatrix = function(n) {
   return matrix
 }
 
-var traversal = function(matrix, count, row, rowLen, col, colLen) {
+var traversal = function (matrix, count, row, rowLen, col, colLen) {
   let i = row
   while (i < rowLen) {
     if (i === row) {
@@ -3600,11 +3597,11 @@ var traversal = function(matrix, count, row, rowLen, col, colLen) {
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestor = function (root, p, q) {
   return handle(root, p, q)
 }
 
-var handle = function(root, p, q) {
+var handle = function (root, p, q) {
   let bigger = p.val > q.val ? p.val : q.val
   let smaller = p.val < q.val ? p.val : q.val
   if (root.val > bigger) {
@@ -3627,7 +3624,7 @@ var handle = function(root, p, q) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918183404.png)
 
 ```javascript
-var multiply = function(num1, num2) {
+var multiply = function (num1, num2) {
   if (num1 === '0' || num2 === '0') return '0'
   let len1 = num1.length,
     len2 = num2.length,
@@ -3660,7 +3657,7 @@ var multiply = function(num1, num2) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permuteUnique = function(nums) {
+var permuteUnique = function (nums) {
   let ans = [[nums[0]]]
   // 相邻位置插入法 找出所有排列方式
   for (let i = 1; i < nums.length; i++) {
@@ -3697,7 +3694,7 @@ var permuteUnique = function(nums) {
  * @param {number} target
  * @return {number[][]}
  */
-var combinationSum2 = function(candidates, target) {
+var combinationSum2 = function (candidates, target) {
   candidates.sort((a, b) => a - b)
   let ans = []
   let dfs = (idx, target, temp) => {
@@ -3748,7 +3745,7 @@ var combinationSum2 = function(candidates, target) {
  * @param {number[]} nums
  * @return {number}
  */
-var jump = function(nums) {
+var jump = function (nums) {
   let dp = new Array(nums.length).fill(Infinity)
   dp[0] = 0
   for (let i = 1; i < nums.length; i++) {
@@ -3772,7 +3769,7 @@ var jump = function(nums) {
  * @param {number} target
  * @return {number[][]}
  */
-var fourSum = function(nums, target) {
+var fourSum = function (nums, target) {
   nums.sort((a, b) => a - b)
   let len = nums.length
   // 如果目标比头4倍还小 或者比尾四倍还大 证明不会有解 直接返回
@@ -3818,7 +3815,7 @@ var fourSum = function(nums, target) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220921231708.png)
 
 ```javascript
-var insert = function(intervals, newInterval) {
+var insert = function (intervals, newInterval) {
   let n = intervals.length
   let res = []
   let i = 0
@@ -3856,7 +3853,7 @@ var insert = function(intervals, newInterval) {
  * @param {number[][]} obstacleGrid
  * @return {number}
  */
-var uniquePathsWithObstacles = function(obstacleGrid) {
+var uniquePathsWithObstacles = function (obstacleGrid) {
   let m = obstacleGrid.length
   let n = obstacleGrid[0].length
   if (obstacleGrid[0][0] === 1) return 0 // 如果第一格为障碍物 不可能到达终点
@@ -3892,7 +3889,7 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
  * @param {number} target
  * @return {boolean}
  */
-var searchMatrix = function(matrix, target) {
+var searchMatrix = function (matrix, target) {
   let m = matrix.length
   let n = matrix[0].length
 
@@ -3941,7 +3938,7 @@ var searchMatrix = function(matrix, target) {
  * @param {number} k
  * @return {number[][]}
  */
-var combine = function(n, k) {
+var combine = function (n, k) {
   let ans = []
   const dfs = (idx, temp) => {
     // 获取到K个元素后直接返回
@@ -3981,7 +3978,7 @@ var combine = function(n, k) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var deleteDuplicates = function(head) {
+var deleteDuplicates = function (head) {
   if (!head) return null
   let current = head
   let arr = [] // 遍历存储所有节点
@@ -4028,7 +4025,7 @@ var deleteDuplicates = function(head) {
  * @param {number} x
  * @return {ListNode}
  */
-var partition = function(head, x) {
+var partition = function (head, x) {
   if (!head) return null
   let current = head
   // 分三种节点
@@ -4065,7 +4062,7 @@ var partition = function(head, x) {
  * @param {number} right
  * @return {ListNode}
  */
-var reverseBetween = function(head, left, right) {
+var reverseBetween = function (head, left, right) {
   if (!head.next) return head
   let current = head
   let nodes = []
@@ -4104,7 +4101,7 @@ var reverseBetween = function(head, left, right) {
  * @param {string} s
  * @return {string[]}
  */
-var restoreIpAddresses = function(s) {
+var restoreIpAddresses = function (s) {
   let len = s.length
   let ans = []
   const dfs = (idx, temp) => {
@@ -4144,7 +4141,7 @@ var restoreIpAddresses = function(s) {
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
  */
-var recoverTree = function(root) {
+var recoverTree = function (root) {
   let nodes = []
   search(root, nodes)
   // 获取正确的数字排列方式
@@ -4157,7 +4154,7 @@ var recoverTree = function(root) {
   }
 }
 // 中序遍历 从小到大搜索出所有节点
-var search = function(root, arr) {
+var search = function (root, arr) {
   if (root.left) {
     search(root.left, arr)
   }
@@ -4178,7 +4175,7 @@ var search = function(root, arr) {
  * @param {number[]} postorder
  * @return {TreeNode}
  */
-var buildTree = function(inorder, postorder) {
+var buildTree = function (inorder, postorder) {
   if (inorder.length === 0) return null
   let rootVal = postorder[postorder.length - 1] // 后序遍历的最后一个数是树的根
   let root = new TreeNode(rootVal)
@@ -4206,7 +4203,7 @@ var buildTree = function(inorder, postorder) {
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrderBottom = function(root) {
+var levelOrderBottom = function (root) {
   if (!root) return []
   let res = []
   let levelNodes = [root]
@@ -4258,7 +4255,7 @@ var levelOrderBottom = function(root) {
  * @param {ListNode} head
  * @return {TreeNode}
  */
-var sortedListToBST = function(head) {
+var sortedListToBST = function (head) {
   if (!head) return null
   let current = head
   let nums = []
@@ -4270,7 +4267,7 @@ var sortedListToBST = function(head) {
   return buildTree(nums)
 }
 
-var buildTree = function(nums) {
+var buildTree = function (nums) {
   if (nums.length === 0) return null
   let rootIdx = nums.length >> 1 // 取数组中点作为root节点
   let root = new TreeNode(nums[rootIdx])
@@ -4290,13 +4287,13 @@ var buildTree = function(nums) {
  * @param {Node} root
  * @return {Node}
  */
-var connect = function(root) {
+var connect = function (root) {
   if (!root) return null
   handle([root])
   return root
 }
 
-var handle = function(roots) {
+var handle = function (roots) {
   if (roots.length === 0) return
   let next = []
   for (let i = 0; i < roots.length; i++) {
@@ -4321,7 +4318,7 @@ var handle = function(roots) {
  * @param {number[][]} triangle
  * @return {number}
  */
-var minimumTotal = function(triangle) {
+var minimumTotal = function (triangle) {
   const dp = new Array(triangle.length).fill().map(() => [])
   dp[0][0] = triangle[0][0]
   for (let i = 1; i < triangle.length; i++) {
@@ -4352,7 +4349,7 @@ var minimumTotal = function(triangle) {
  * @param {TreeNode} root
  * @return {number}
  */
-var sumNumbers = function(root) {
+var sumNumbers = function (root) {
   let ans = []
   handle(root, '', ans)
   // 将所有分支的数字加起来
@@ -4361,7 +4358,7 @@ var sumNumbers = function(root) {
   }, 0)
 }
 
-var handle = function(root, sum, arr) {
+var handle = function (root, sum, arr) {
   // 如果没有左右分支 记录结果 return
   if (!root.left && !root.right) {
     arr.push(sum + root.val)
@@ -4385,7 +4382,7 @@ var handle = function(root, sum, arr) {
  * @param {ListNode} head
  * @return {void} Do not return anything, modify head in-place instead.
  */
-var reorderList = function(head) {
+var reorderList = function (head) {
   let current = head
   let arr = []
   while (current) {
@@ -4425,7 +4422,7 @@ var reorderList = function(head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var insertionSortList = function(head) {
+var insertionSortList = function (head) {
   if (!head) return
   let current = head
   let nodes = []
@@ -4452,7 +4449,7 @@ var insertionSortList = function(head) {
  * @param {string} s
  * @return {string}
  */
-var reverseWords = function(s) {
+var reverseWords = function (s) {
   let arr = s.split(' ').filter((item) => item !== '')
   let left = 0
   let right = arr.length - 1
@@ -4477,7 +4474,7 @@ var reverseWords = function(s) {
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(numbers, target) {
+var twoSum = function (numbers, target) {
   let len = numbers.length
   let left = 0
   let right = len - 1
@@ -4504,7 +4501,7 @@ var twoSum = function(numbers, target) {
  * @param {number[]} nums
  * @return {number}
  */
-var rob = function(nums) {
+var rob = function (nums) {
   let len = nums.length
   let dp = new Array(len) // 偷第一家
   let dp1 = new Array(len) // 不偷第一家
@@ -4534,7 +4531,7 @@ var rob = function(nums) {
  * @param {TreeNode} root
  * @return {number[]}
  */
-var rightSideView = function(root) {
+var rightSideView = function (root) {
   if (!root) return []
   let ans = []
   handle([root], ans)
@@ -4542,7 +4539,7 @@ var rightSideView = function(root) {
 }
 
 // 层次遍历
-var handle = function(nodes, ans) {
+var handle = function (nodes, ans) {
   if (nodes.length === 0) return
   let nextLevel = []
   for (let i = 0; i < nodes.length; i++) {
@@ -4562,7 +4559,7 @@ var handle = function(nodes, ans) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220928152303.png)
 
 ```javascript
-var WordDictionary = function() {
+var WordDictionary = function () {
   this.words = []
 }
 
@@ -4570,7 +4567,7 @@ var WordDictionary = function() {
  * @param {string} word
  * @return {void}
  */
-WordDictionary.prototype.addWord = function(word) {
+WordDictionary.prototype.addWord = function (word) {
   this.words.push(word)
 }
 
@@ -4578,7 +4575,7 @@ WordDictionary.prototype.addWord = function(word) {
  * @param {string} word
  * @return {boolean}
  */
-WordDictionary.prototype.search = function(word) {
+WordDictionary.prototype.search = function (word) {
   if (word.includes('.')) {
     for (let i = 0; i < this.words.length; i++) {
       // 长度相等的才进行匹配
@@ -4617,7 +4614,7 @@ WordDictionary.prototype.search = function(word) {
  * @param {number} n
  * @return {number[][]}
  */
-var combinationSum3 = function(k, n) {
+var combinationSum3 = function (k, n) {
   let ans = []
   const dfs = (num, target, temp) => {
     // 找到目标
@@ -4647,7 +4644,7 @@ var combinationSum3 = function(k, n) {
  * @param {number[]} nums
  * @return {number[]}
  */
-var majorityElement = function(nums) {
+var majorityElement = function (nums) {
   let count = nums.length / 3
   let map = {}
   for (let i = 0; i < nums.length; i++) {
@@ -4670,7 +4667,7 @@ var majorityElement = function(nums) {
  * @param {string[]} words
  * @return {number}
  */
-var maxProduct = function(words) {
+var maxProduct = function (words) {
   // 暴力法 遍历每一种可能 取最大值
   let ans = 0
   for (let i = 0; i < words.length; i++) {
@@ -4702,7 +4699,7 @@ var maxProduct = function(words) {
 /**
  * @param {number[]} nums
  */
-var Solution = function(nums) {
+var Solution = function (nums) {
   this.map = {}
   for (let i = 0; i < nums.length; i++) {
     this.map[nums[i]] = this.map[nums[i]] ? [...this.map[nums[i]], i] : [i]
@@ -4713,7 +4710,7 @@ var Solution = function(nums) {
  * @param {number} target
  * @return {number}
  */
-Solution.prototype.pick = function(target) {
+Solution.prototype.pick = function (target) {
   let list = this.map[target]
   return list[Math.floor(list.length * Math.random())]
 }
@@ -4735,7 +4732,7 @@ Solution.prototype.pick = function(target) {
  * @param {number} k
  * @return {string}
  */
-var removeKdigits = function(num, k) {
+var removeKdigits = function (num, k) {
   // 数字越小的排前面总的就越小, 题意可以理解为去掉波峰
   // 例:  12534 中, 5比3大证明5为波峰 去掉后 1234 为最小
   // 如果没有波峰 例: 12345  直接裁掉最后的数字即可 1234
@@ -4774,7 +4771,7 @@ var removeKdigits = function(num, k) {
  * @param {number[]} nums
  * @return {number}
  */
-var numberOfArithmeticSlices = function(nums) {
+var numberOfArithmeticSlices = function (nums) {
   let len = nums.length
   if (len < 3) return 0
   // 表示前i个数字能组成多少个等差数组 默认都为0
@@ -4809,14 +4806,14 @@ var numberOfArithmeticSlices = function(nums) {
  * @param {Node|null} root
  * @return {number[][]}
  */
-var levelOrder = function(root) {
+var levelOrder = function (root) {
   if (!root) return []
   let ans = []
   search([root], ans)
   return ans
 }
 
-var search = function(nodes, list) {
+var search = function (nodes, list) {
   if (nodes.length === 0) return
   let level = []
   let nextLevel = []
@@ -4840,7 +4837,7 @@ var search = function(nodes, list) {
  * @param {string[]} bank
  * @return {number}
  */
-var minMutation = function(start, end, bank) {
+var minMutation = function (start, end, bank) {
   let ans = Infinity
   // 深度优先搜索 为了防止重复搜索 用visited记录搜索过的DNA
   const dfs = (current, count, visited = []) => {
@@ -4862,7 +4859,7 @@ var minMutation = function(start, end, bank) {
 }
 
 // 判断两个序列是否正好差1
-var handle = function(str1, str2) {
+var handle = function (str1, str2) {
   let i = 0
   let diff = 0
   while (i < str1.length) {
@@ -4879,7 +4876,7 @@ var handle = function(str1, str2) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221012162258.png)
 
 ```javascript
-var eraseOverlapIntervals = function(intervals) {
+var eraseOverlapIntervals = function (intervals) {
   if (!intervals.length) {
     return 0
   }
@@ -4908,7 +4905,7 @@ var eraseOverlapIntervals = function(intervals) {
  * @param {number[]} nums
  * @return {number[]}
  */
-var findDuplicates = function(nums) {
+var findDuplicates = function (nums) {
   let ans = []
   for (let i = 0; i < nums.length; i++) {
     let num = Math.abs(nums[i])
@@ -4934,7 +4931,7 @@ var findDuplicates = function(nums) {
  * @param {string} s
  * @return {string}
  */
-var frequencySort = function(s) {
+var frequencySort = function (s) {
   // 记录单词频率
   let map = {}
   for (let i = 0; i < s.length; i++) {
@@ -4968,7 +4965,7 @@ var frequencySort = function(s) {
  * @param {number[]} nums
  * @return {number}
  */
-var singleNonDuplicate = function(nums) {
+var singleNonDuplicate = function (nums) {
   let ans = 0
   for (let i = 0; i < nums.length; i++) {
     ans ^= nums[i]
@@ -4984,7 +4981,7 @@ var singleNonDuplicate = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221015171612.png)
 
 ```javascript
-var findDiagonalOrder = function(mat) {
+var findDiagonalOrder = function (mat) {
   const m = mat.length
   const n = mat[0].length
   const res = new Array(m * n).fill(0)
@@ -5023,12 +5020,12 @@ var findDiagonalOrder = function(mat) {
  * @param {TreeNode} root
  * @return {number}
  */
-var findBottomLeftValue = function(root) {
+var findBottomLeftValue = function (root) {
   return handle([root])
 }
 
 // 层次遍历
-var handle = function(nodes) {
+var handle = function (nodes) {
   let nextLevel = []
   for (let i = 0; i < nodes.length; i++) {
     // 记录左右节点 下一层遍历用
@@ -5053,7 +5050,7 @@ var handle = function(nodes) {
  * @param {number[]} nums
  * @return {number[][]}
  */
-var findSubsequences = function(nums) {
+var findSubsequences = function (nums) {
   const ans = []
   const set = new Set()
   const dfs = (idx, temp) => {
@@ -5091,7 +5088,7 @@ var findSubsequences = function(nums) {
  * @param {string[]} dictionary
  * @return {string}
  */
-var findLongestWord = function(s, dictionary) {
+var findLongestWord = function (s, dictionary) {
   let ans = '' // 初始状态 没匹配到直接返回 ''
   for (let i = 0; i < dictionary.length; i++) {
     let word = dictionary[i]
@@ -5107,7 +5104,7 @@ var findLongestWord = function(s, dictionary) {
 }
 
 // 该字符串是否可以通过删除 s 中的某些字符得到。
-var isMatch = function(s, target) {
+var isMatch = function (s, target) {
   let i = 0
   let j = 0
   while (i < s.length) {
@@ -5136,7 +5133,7 @@ var isMatch = function(s, target) {
  * @param {string[]} timePoints
  * @return {number}
  */
-var findMinDifference = function(timePoints) {
+var findMinDifference = function (timePoints) {
   timePoints.sort((a, b) => {
     let m1 = a.slice(0, 2)
     let m2 = b.slice(0, 2)
@@ -5173,7 +5170,7 @@ var findMinDifference = function(timePoints) {
  * @param {string} s2
  * @return {boolean}
  */
-var checkInclusion = function(s1, s2) {
+var checkInclusion = function (s1, s2) {
   let len1 = s1.length
   let len2 = s2.length
   if (len1 > len2) return false
@@ -5189,7 +5186,7 @@ var checkInclusion = function(s1, s2) {
 }
 
 // 检测s1和s2包含的字母个数有多少个不同
-var isMatch = function(s1, s2) {
+var isMatch = function (s1, s2) {
   let list = Array.from(s2)
   for (let i = 0; i < s1.length; i++) {
     let idx = list.indexOf(s1[i])
@@ -5209,7 +5206,7 @@ var isMatch = function(s1, s2) {
 /**
  * @param {number} k
  */
-var MyCircularQueue = function(k) {
+var MyCircularQueue = function (k) {
   this.list = []
   this.capacity = k
 }
@@ -5218,7 +5215,7 @@ var MyCircularQueue = function(k) {
  * @param {number} value
  * @return {boolean}
  */
-MyCircularQueue.prototype.enQueue = function(value) {
+MyCircularQueue.prototype.enQueue = function (value) {
   if (this.isFull()) return false
   this.list.push(value)
   return true
@@ -5227,7 +5224,7 @@ MyCircularQueue.prototype.enQueue = function(value) {
 /**
  * @return {boolean}
  */
-MyCircularQueue.prototype.deQueue = function() {
+MyCircularQueue.prototype.deQueue = function () {
   if (this.isEmpty()) return false
   this.list.shift()
   return true
@@ -5236,7 +5233,7 @@ MyCircularQueue.prototype.deQueue = function() {
 /**
  * @return {number}
  */
-MyCircularQueue.prototype.Front = function() {
+MyCircularQueue.prototype.Front = function () {
   if (this.isEmpty()) return -1
   return this.list[0]
 }
@@ -5244,7 +5241,7 @@ MyCircularQueue.prototype.Front = function() {
 /**
  * @return {number}
  */
-MyCircularQueue.prototype.Rear = function() {
+MyCircularQueue.prototype.Rear = function () {
   if (this.isEmpty()) return -1
   return this.list[this.list.length - 1]
 }
@@ -5252,14 +5249,14 @@ MyCircularQueue.prototype.Rear = function() {
 /**
  * @return {boolean}
  */
-MyCircularQueue.prototype.isEmpty = function() {
+MyCircularQueue.prototype.isEmpty = function () {
   return this.list.length === 0
 }
 
 /**
  * @return {boolean}
  */
-MyCircularQueue.prototype.isFull = function() {
+MyCircularQueue.prototype.isFull = function () {
   return this.list.length === this.capacity
 }
 
@@ -5294,7 +5291,7 @@ MyCircularQueue.prototype.isFull = function() {
  * @param {number} depth
  * @return {TreeNode}
  */
-var addOneRow = function(root, val, depth) {
+var addOneRow = function (root, val, depth) {
   // 如果是第一层 直接新建根节点
   if (depth === 1) {
     let ans = new TreeNode(val)
@@ -5306,7 +5303,7 @@ var addOneRow = function(root, val, depth) {
 }
 
 // 层次遍历
-var handle = function(nodes, level, val, depth) {
+var handle = function (nodes, level, val, depth) {
   let nextLevel = []
   for (let i = 0; i < nodes.length; i++) {
     // 如果是目标层次 插入左右节点
@@ -5335,7 +5332,7 @@ var handle = function(nodes, level, val, depth) {
 /**
  * @param {number} k
  */
-var MyCircularDeque = function(k) {
+var MyCircularDeque = function (k) {
   this.list = []
   this.capacity = k
 }
@@ -5344,7 +5341,7 @@ var MyCircularDeque = function(k) {
  * @param {number} value
  * @return {boolean}
  */
-MyCircularDeque.prototype.insertFront = function(value) {
+MyCircularDeque.prototype.insertFront = function (value) {
   if (this.isFull()) return false
   this.list.unshift(value)
   return true
@@ -5354,7 +5351,7 @@ MyCircularDeque.prototype.insertFront = function(value) {
  * @param {number} value
  * @return {boolean}
  */
-MyCircularDeque.prototype.insertLast = function(value) {
+MyCircularDeque.prototype.insertLast = function (value) {
   if (this.isFull()) return false
   this.list.push(value)
   return true
@@ -5363,7 +5360,7 @@ MyCircularDeque.prototype.insertLast = function(value) {
 /**
  * @return {boolean}
  */
-MyCircularDeque.prototype.deleteFront = function() {
+MyCircularDeque.prototype.deleteFront = function () {
   if (this.isEmpty()) return false
   this.list.shift()
   return true
@@ -5372,7 +5369,7 @@ MyCircularDeque.prototype.deleteFront = function() {
 /**
  * @return {boolean}
  */
-MyCircularDeque.prototype.deleteLast = function() {
+MyCircularDeque.prototype.deleteLast = function () {
   if (this.isEmpty()) return false
   this.list.pop()
   return true
@@ -5381,7 +5378,7 @@ MyCircularDeque.prototype.deleteLast = function() {
 /**
  * @return {number}
  */
-MyCircularDeque.prototype.getFront = function() {
+MyCircularDeque.prototype.getFront = function () {
   if (this.isEmpty()) return -1
   return this.list[0]
 }
@@ -5389,7 +5386,7 @@ MyCircularDeque.prototype.getFront = function() {
 /**
  * @return {number}
  */
-MyCircularDeque.prototype.getRear = function() {
+MyCircularDeque.prototype.getRear = function () {
   if (this.isEmpty()) return -1
   return this.list[this.list.length - 1]
 }
@@ -5397,14 +5394,14 @@ MyCircularDeque.prototype.getRear = function() {
 /**
  * @return {boolean}
  */
-MyCircularDeque.prototype.isEmpty = function() {
+MyCircularDeque.prototype.isEmpty = function () {
   return this.list.length === 0
 }
 
 /**
  * @return {boolean}
  */
-MyCircularDeque.prototype.isFull = function() {
+MyCircularDeque.prototype.isFull = function () {
   return this.list.length >= this.capacity
 }
 
@@ -5431,7 +5428,7 @@ MyCircularDeque.prototype.isFull = function() {
  * @param {number} n
  * @return {number}
  */
-var minSteps = function(n) {
+var minSteps = function (n) {
   const dp = new Array(n + 1).fill(0)
   for (let i = 2; i <= n; i++) {
     dp[i] = i
@@ -5466,7 +5463,7 @@ var minSteps = function(n) {
  * @param {number[]} nums
  * @return {TreeNode}
  */
-var constructMaximumBinaryTree = function(nums) {
+var constructMaximumBinaryTree = function (nums) {
   if (nums.length === 0) return null
   if (nums.length === 1) {
     return new TreeNode(nums[0])
@@ -5494,7 +5491,7 @@ var constructMaximumBinaryTree = function(nums) {
  * @param {number} k
  * @return {string[]}
  */
-var topKFrequent = function(words, k) {
+var topKFrequent = function (words, k) {
   let map = {}
   for (let i = 0; i < words.length; i++) {
     map[words[i]] = map[words[i]] ? map[words[i]] + 1 : 1
@@ -5548,7 +5545,7 @@ const findLength = (A, B) => {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221028155210.png)
 
 ```javascript
-var widthOfBinaryTree = function(root) {
+var widthOfBinaryTree = function (root) {
   /** JS 存在计数溢出的问题，使用 BigInt，BigInt 不能调用 Math 中的方法。 */
   let maxWidth = 1n
   const leftIds = []
@@ -5581,7 +5578,7 @@ var widthOfBinaryTree = function(root) {
  * @param {number[]} nums
  * @return {number}
  */
-var numComponents = function(head, nums) {
+var numComponents = function (head, nums) {
   // 可以理解为搜索 nums 在链表上有几段
   let current = head
   let ans = 0
@@ -5621,7 +5618,7 @@ var numComponents = function(head, nums) {
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-var subtreeWithAllDeepest = function(root) {
+var subtreeWithAllDeepest = function (root) {
   // 找出 最深 深度
   let deep = getDeepest(root)
   if (deep === 1) return root
@@ -5642,7 +5639,7 @@ var subtreeWithAllDeepest = function(root) {
   }
 }
 
-var searchPath = function(root, paths, temp, deep) {
+var searchPath = function (root, paths, temp, deep) {
   if (!root) return
   if (!root.left && !root.right) {
     if (temp.length + 1 >= deep) {
@@ -5653,7 +5650,7 @@ var searchPath = function(root, paths, temp, deep) {
   if (root.right) searchPath(root.right, paths, [...temp, root], deep)
 }
 
-var getDeepest = function(root) {
+var getDeepest = function (root) {
   if (!root) return 0
   return Math.max(getDeepest(root.left), getDeepest(root.right)) + 1
 }
@@ -5669,7 +5666,7 @@ var getDeepest = function(root) {
  * @param {number[]} popped
  * @return {boolean}
  */
-var validateStackSequences = function(pushed, popped) {
+var validateStackSequences = function (pushed, popped) {
   let stack = [pushed.shift()]
   while (stack.length > 0 || pushed.length > 0 || popped.length > 0) {
     // 如果栈顶元素和 popped 相同 表示两者位置匹配 都消除
@@ -5691,7 +5688,6 @@ var validateStackSequences = function(pushed, popped) {
 }
 ```
 
-
 ## 958. 二叉树的完全性检验
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221119221924.png)
@@ -5701,11 +5697,11 @@ var validateStackSequences = function(pushed, popped) {
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isCompleteTree = function(root) {
+var isCompleteTree = function (root) {
   return handle([root], 0)
 }
 
-var handle = function(nodes = [], level) {
+var handle = function (nodes = [], level) {
   // 检查是否还有下层子节点
   const hasChild = nodes.some((node) => {
     if (!node) return false
@@ -5713,7 +5709,7 @@ var handle = function(nodes = [], level) {
   })
   // 没有下层了直接返回true
   if (!hasChild) return true
-  // 有下层 那么这一层必须是 ‘满的’ 
+  // 有下层 那么这一层必须是 ‘满的’
   if (nodes.length !== Math.pow(2, level)) return false
   // 检测下层是否满足
   let nextLevel = []

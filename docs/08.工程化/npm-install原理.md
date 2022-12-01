@@ -1,3 +1,12 @@
+---
+title: npm-install原理
+date: 2022-11-26 22:41:24
+permalink: /pages/a2e042/
+categories:
+  - 工程化
+tags:
+  - 
+---
 ## npm install 过程
 
 检查 `.npmrc`(npm 配置) 文件：优先级由高到低为：
