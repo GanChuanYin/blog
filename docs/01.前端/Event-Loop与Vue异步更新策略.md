@@ -5,8 +5,9 @@ permalink: /pages/475ac6/
 categories:
   - 前端
 tags:
-  - 
+  -
 ---
+
 ## Event Loop 与异步更新策略
 
 ### Micro-Task 与 Macro-Task
@@ -65,7 +66,7 @@ Promise.resolve().then(task)
 
 因此，我们更新 DOM 的时间点，应该尽可能靠近渲染的时机。
 
-<font color=#dd0000 size=4>`当我们需要在异步任务中实现 DOM 修改时，把它包装成 micro 任务是相对明智的选择`</font>
+<font color=#dd0000 size=4>当我们需要在异步任务中实现 DOM 修改时，把它包装成 micro 任务是相对明智的选择</font>
 。
 
 ## 异步更新策略—以 Vue 为例
