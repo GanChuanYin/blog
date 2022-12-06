@@ -22,7 +22,7 @@ module.exports = {
     copyrightInfo: 'gcy | <a href="https://github.com/GanChuanYin/blog" target="_blank">MIT License</a>'
   },
   blogger: {
-    // avatar: 'https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20211125145000.png',
+    avatar: 'https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20211125145000.png',
     name: 'GCY',
     slogan: '勇敢波吉 不怕困难！',
   },

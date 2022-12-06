@@ -5,7 +5,7 @@ permalink: /pages/c37f65/
 categories:
   - 前端
 tags:
-  - 
+  - Javascript
 ---
 ## 核心原理
 
@@ -176,7 +176,7 @@ function compressBlob(canvas: any, quality: number) {
 }
 
 /**
- * 下载文件
+ * 下载File 或者 base64类型文件
  * @param data  File类型 或者 base64类型
  * @param fileType  fileType 文件类型
  */
