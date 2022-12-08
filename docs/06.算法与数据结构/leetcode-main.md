@@ -17,7 +17,7 @@ tags:
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913143734.png)
 
 ```javascript
-var combinationSum = function(candidates, target) {
+var combinationSum = function (candidates, target) {
   const ans = []
 
   const dfs = (target, combine, idx) => {
@@ -56,7 +56,7 @@ var combinationSum = function(candidates, target) {
  * @param {number} n
  * @return {number}
  */
-var numTrees = function(n) {
+var numTrees = function (n) {
   const dp = new Array(n + 1).fill(0)
   dp[0] = 1
   dp[1] = 1
@@ -78,7 +78,7 @@ var numTrees = function(n) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913172129.png)
 
 ```javascript
-var minDistance = function(word1, word2) {
+var minDistance = function (word1, word2) {
   let m = word1.length
   let n = word2.length
   let dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0))
@@ -118,7 +118,7 @@ var minDistance = function(word1, word2) {
  * @param {character[][]} matrix
  * @return {number}
  */
-var maximalRectangle = function(matrix) {
+var maximalRectangle = function (matrix) {
   const m = matrix.length
   if (m === 0) {
     return 0
@@ -160,7 +160,7 @@ var maximalRectangle = function(matrix) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914224006.png)
 
 ```javascript
-var countBits = function(n) {
+var countBits = function (n) {
   const bits = new Array(n + 1).fill(0)
   let highBit = 0
   for (let i = 1; i <= n; i++) {
@@ -182,7 +182,7 @@ var countBits = function(n) {
  * @param {number[]} nums
  * @return {number}
  */
-var maxCoins = function(nums) {
+var maxCoins = function (nums) {
   let n = nums.length
   // 添加两侧的虚拟气球
   let points = new Array(n + 2)
@@ -222,7 +222,7 @@ https://leetcode.cn/problems/partition-equal-subset-sum/solution/fen-ge-deng-he-
  * @param {number[]} nums
  * @return {boolean}
  */
-var canPartition = function(nums) {
+var canPartition = function (nums) {
   const n = nums.length
   if (n < 2) {
     return false
@@ -258,7 +258,7 @@ var canPartition = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220915184339.png)
 
 ```javascript
-var leastInterval = function(tasks, n) {
+var leastInterval = function (tasks, n) {
   if (n < 1) return tasks.length
   let map = new Map()
   for (let task of tasks) {
@@ -291,7 +291,7 @@ var leastInterval = function(tasks, n) {
  * @param {string} s
  * @return {number}
  */
-var longestValidParentheses = function(s) {
+var longestValidParentheses = function (s) {
   if (s.length < 2) return 0
   let arr = new Array(s.length).fill(true)
   let notMatch = isValid(s)
@@ -315,7 +315,7 @@ var longestValidParentheses = function(s) {
   return ans
 }
 
-var isValid = function(s) {
+var isValid = function (s) {
   let stack = []
   let res = []
   for (let i = 0; i < s.length; i++) {
@@ -343,7 +343,7 @@ var isValid = function(s) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220918164010.png)
 
 ```javascript
-var grayCode = function(n) {
+var grayCode = function (n) {
   const ret = [0]
   for (let i = 1; i <= n; i++) {
     const m = ret.length
@@ -365,7 +365,7 @@ var grayCode = function(n) {
  * @param {number} target
  * @return {number}
  */
-var threeSumClosest = function(nums, target) {
+var threeSumClosest = function (nums, target) {
   // 升序排序
   nums.sort((a, b) => a - b)
   // 初始化一个最小值
@@ -407,7 +407,7 @@ var threeSumClosest = function(nums, target) {
  * @param {number} num
  * @return {string}
  */
-var intToRoman = function(num) {
+var intToRoman = function (num) {
   const valueSymbols = [
     [1000, 'M'],
     [900, 'CM'],
@@ -444,7 +444,7 @@ var intToRoman = function(num) {
 重点是利用栈和 根据 / 切割
 
 ```javascript
-var simplifyPath = function(path) {
+var simplifyPath = function (path) {
   const names = path.split('/') // 所有路径都是以 / 分割
   const stack = []
   for (const name of names) {
@@ -469,7 +469,7 @@ var simplifyPath = function(path) {
  * @param {number} n
  * @return {TreeNode[]}
  */
-var generateTrees = function(n) {
+var generateTrees = function (n) {
   let nums = []
   for (let i = 1; i <= n; i++) {
     nums.push(i)
@@ -477,7 +477,7 @@ var generateTrees = function(n) {
   return handle(nums)
 }
 
-var handle = function(nums) {
+var handle = function (nums) {
   if (nums.length === 0) return [null] // 如果nums长度为0 直接返回null
   let allNodes = []
   for (let i = 0; i < nums.length; i++) {
@@ -502,7 +502,7 @@ var handle = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220924120436.png)
 
 ```javascript
-var isNumber = function(s) {
+var isNumber = function (s) {
   // blank 表示空格
   // sign 表示正负号
   // digit 表示数字
@@ -545,7 +545,7 @@ var isNumber = function(s) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925153609.png)
 
 ```javascript
-var isInterleave = function(s1, s2, s3) {
+var isInterleave = function (s1, s2, s3) {
   const m = s1.length + 1,
     n = s2.length + 1
   if (s3.length !== m + n - 2) return false
@@ -579,7 +579,7 @@ var isInterleave = function(s1, s2, s3) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220925153732.png)
 
 ```javascript
-var numDistinct = function(s, t) {
+var numDistinct = function (s, t) {
   const m = s.length
   const n = t.length
   if (m < n) return 0
@@ -615,7 +615,7 @@ var numDistinct = function(s, t) {
        收益值(secSell >= fstSell)
        **/
 
-var maxProfit = function(prices) {
+var maxProfit = function (prices) {
   const n = prices.length
   let fstBuy = -prices[0],
     secBuy = -prices[0]
@@ -638,7 +638,7 @@ var maxProfit = function(prices) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927182520.png)
 
 ```javascript
-var rangeBitwiseAnd = function(m, n) {
+var rangeBitwiseAnd = function (m, n) {
   let shift = 0
   // 找到公共前缀
   while (m < n) {
@@ -655,7 +655,7 @@ var rangeBitwiseAnd = function(m, n) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927212056.png)
 
 ```javascript
-var removeElements = function(head, val) {
+var removeElements = function (head, val) {
   if (head === null) {
     return head
   }
@@ -674,7 +674,7 @@ var removeElements = function(head, val) {
  * @param {number[]} nums
  * @return {number}
  */
-var minSubArrayLen = function(target, nums) {
+var minSubArrayLen = function (target, nums) {
   // 求出总和
   let allSums = nums.reduce((pre, cur) => {
     return pre + cur
@@ -709,7 +709,7 @@ var minSubArrayLen = function(target, nums) {
  * @param {TreeNode} root
  * @return {number}
  */
-var countNodes = function(root) {
+var countNodes = function (root) {
   if (!root) return 0
   let count = 1
   count += countNodes(root.left)
@@ -725,7 +725,7 @@ var countNodes = function(root) {
 不断分割直到是数字字符串，然后返回包含该数字的数组，然后对左右两侧的递归结果进行组合
 
 ```javascript
-var diffWaysToCompute = function(expression) {
+var diffWaysToCompute = function (expression) {
   let results = []
   // 如果为纯数字 直接返回
   if (!isNaN(expression - 0)) {
@@ -799,7 +799,7 @@ const singleNumber = (nums) => {
  * @param {number} n
  * @return {boolean}
  */
-var isUgly = function(n) {
+var isUgly = function (n) {
   while (n % 5 === 0) {
     n = n / 5
   }
@@ -824,7 +824,7 @@ var isUgly = function(n) {
  * @param {number} n
  * @return {number}
  */
-var nthUglyNumber = function(n) {
+var nthUglyNumber = function (n) {
   if (n <= 5) return n
   let ans = [1, 2, 3, 4, 5]
   let i = 6
@@ -857,7 +857,7 @@ var nthUglyNumber = function(n) {
  * @param {string} s
  * @return {string}
  */
-var removeDuplicateLetters = function(s) {
+var removeDuplicateLetters = function (s) {
   // 字典序，换成数字更好理解一点 a:1,b:2,c:3, d:4 那么：acdb => 1342 dcab => 4312
   //  4312 > 1342 所以 dcab > acdb 也可以想象在英语词典里，acdb会比dcab出现得更早，所以acdb的字典序更小
   let stack = []
@@ -891,7 +891,7 @@ var removeDuplicateLetters = function(s) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221001175352.png)
 
 ```javascript
-var isAdditiveNumber = function(num) {
+var isAdditiveNumber = function (num) {
   const add = (l, r) => {
     let temp = parseInt(l) + parseInt(r)
     return temp.toString()
@@ -934,7 +934,7 @@ var isAdditiveNumber = function(num) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221001193825.png)
 
 ```javascript
-var largestDivisibleSubset = function(nums) {
+var largestDivisibleSubset = function (nums) {
   const len = nums.length
   nums.sort((a, b) => a - b)
 
@@ -985,7 +985,7 @@ var largestDivisibleSubset = function(nums) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221002191450.png)
 
 ```javascript
-var wiggleMaxLength = function(nums) {
+var wiggleMaxLength = function (nums) {
   const n = nums.length
   if (n < 2) return n
   const up = new Array(n).fill(0)
@@ -1018,7 +1018,7 @@ var wiggleMaxLength = function(nums) {
  * @param {number} n
  * @return {number}
  */
-var bulbSwitch = function(n) {
+var bulbSwitch = function (n) {
   let i = 1
   let cnt = 0
   let ans = 0
@@ -1038,7 +1038,7 @@ var bulbSwitch = function(n) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221004222554.png)
 
 ```javascript
-var combinationSum4 = function(nums, target) {
+var combinationSum4 = function (nums, target) {
   const dp = new Array(target + 1).fill(0)
   dp[0] = 1
   for (let i = 1; i <= target; i++) {
@@ -1063,20 +1063,14 @@ var combinationSum4 = function(nums, target) {
  * @param {string[]} words
  * @return {number[][]}
  */
-var palindromePairs = function(words) {
+var palindromePairs = function (words) {
   // 用Map存每个字符串的翻转
   const map = new Map()
   // 用Set存回文对的索引，以避免重复
   const set = new Set()
   // map的key为字符串的翻转，value为字符串的索引
   words.forEach((word, i) => {
-    map.set(
-      word
-        .split('')
-        .reverse()
-        .join(''),
-      i
-    )
+    map.set(word.split('').reverse().join(''), i)
   })
   for (let i = 0; i < words.length; i++) {
     const word = words[i]
@@ -1130,7 +1124,7 @@ function isPalindrom(str) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221006190553.png)
 
 ```javascript
-var lexicalOrder = function(n) {
+var lexicalOrder = function (n) {
   const ret = []
   let number = 1
   for (let i = 0; i < n; i++) {
@@ -1157,7 +1151,7 @@ var lexicalOrder = function(n) {
  * @param {number} n
  * @return {number}
  */
-var lastRemaining = function(n) {
+var lastRemaining = function (n) {
   let a1 = 1
   let k = 0,
     cnt = n,
@@ -1183,7 +1177,7 @@ var lastRemaining = function(n) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221008182623.png)
 
 ```javascript
-var findNthDigit = function(n) {
+var findNthDigit = function (n) {
   let d = 1
   let count = 9
   while (n > d * count) {
@@ -1211,7 +1205,7 @@ var findNthDigit = function(n) {
  * @param {number} m
  * @return {number}
  */
-var splitArray = function(nums, m) {
+var splitArray = function (nums, m) {
   let len = nums.length,
     sumList = Array(len + 1).fill(0),
     dp = Array.from({ length: len + 1 }, () =>
@@ -1254,7 +1248,7 @@ var splitArray = function(nums, m) {
  * @param {number[][]} heightMap
  * @return {number}
  */
-var trapRainWater = function(heightMap) {
+var trapRainWater = function (heightMap) {
   let m = heightMap.length,
     n = heightMap[0].length
 
@@ -1382,7 +1376,7 @@ const dirs = [
   [0, -1],
   [0, 1]
 ]
-var pacificAtlantic = function(heights) {
+var pacificAtlantic = function (heights) {
   m = heights.length
   n = heights[0].length
   const pacific = new Array(m).fill(0).map(() => new Array(n).fill(0))
@@ -1440,7 +1434,7 @@ var pacificAtlantic = function(heights) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221011201002.png)
 
 ```javascript
-var characterReplacement = function(s, k) {
+var characterReplacement = function (s, k) {
   // 用来记录滑动窗口内字母出现的次数
   let map = new Array(26).fill(0)
   let left = 0,
@@ -1474,7 +1468,7 @@ var characterReplacement = function(s, k) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013144740.png)
 
 ```javascript
-var deleteNode = function(root, key) {
+var deleteNode = function (root, key) {
   if (!root) {
     return null
   }
@@ -1516,7 +1510,7 @@ var deleteNode = function(root, key) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221013154132.png)
 
 ```javascript
-var serialize = function(root) {
+var serialize = function (root) {
   const list = []
 
   const postOrder = (root, list) => {
@@ -1533,7 +1527,7 @@ var serialize = function(root) {
   return str
 }
 
-var deserialize = function(data) {
+var deserialize = function (data) {
   if (data.length === 0) {
     return null
   }
@@ -1570,7 +1564,7 @@ var deserialize = function(data) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221014141732.png)
 
 ```javascript
-var minMoves = function(nums) {
+var minMoves = function (nums) {
   const minNum = Math.min(...nums)
   let res = 0
   for (const num of nums) {
@@ -1591,7 +1585,7 @@ var minMoves = function(nums) {
  * @param {string} s
  * @return {number}
  */
-var longestPalindromeSubseq = function(s) {
+var longestPalindromeSubseq = function (s) {
   const n = s.length
   // 用 dp[i][j] 表示字符串 s 的下标范围 [i,j] 内的最长回文子序列的长度
   const dp = new Array(n).fill(0).map(() => new Array(n).fill(0))
@@ -1622,7 +1616,7 @@ var longestPalindromeSubseq = function(s) {
  * @param {number[][]} mat
  * @return {number[][]}
  */
-var updateMatrix = function(mat) {
+var updateMatrix = function (mat) {
   let m = mat.length,
     n = mat[0].length
   // 目标结果
@@ -1662,7 +1656,7 @@ var updateMatrix = function(mat) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221026170802.png)
 
 ```javascript
-var countBinarySubstrings = function(s) {
+var countBinarySubstrings = function (s) {
   const counts = []
   let ptr = 0,
     n = s.length
@@ -1688,7 +1682,7 @@ var countBinarySubstrings = function(s) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221028170814.png)
 
 ```javascript
-var canPartitionKSubsets = function(nums, k) {
+var canPartitionKSubsets = function (nums, k) {
   var sum = 0
   for (var i = nums.length - 1; i >= 0; i--) {
     sum += nums[i]
@@ -1722,7 +1716,7 @@ function backtrace(nums, sums, i, k, average) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221030200231.png)
 
 ```javascript
-var partitionLabels = function(s) {
+var partitionLabels = function (s) {
   const last = new Array(26)
   const length = s.length
   const codePointA = 'a'.codePointAt(0)
@@ -1752,7 +1746,7 @@ var partitionLabels = function(s) {
  * @param {number[][]} graph
  * @return {number[][]}
  */
-var allPathsSourceTarget = function(graph) {
+var allPathsSourceTarget = function (graph) {
   let len = graph.length
   let ans = []
   // 深度优先搜索
@@ -1784,7 +1778,7 @@ var allPathsSourceTarget = function(graph) {
  * @param {number[]} piles
  * @return {boolean}
  */
-var stoneGame = function(piles) {
+var stoneGame = function (piles) {
   const length = piles.length
   const dp = new Array(length).fill(0).map(() => new Array(length).fill(0))
   for (let i = 0; i < length; i++) {
@@ -1804,7 +1798,7 @@ var stoneGame = function(piles) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221106213144.png)
 
 ```javascript
-var findAndReplacePattern = function(words, pattern) {
+var findAndReplacePattern = function (words, pattern) {
   const ans = []
   for (const word of words) {
     if (match(word, pattern) && match(pattern, word)) {
@@ -1835,7 +1829,7 @@ const match = (word, pattern) => {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221106215712.png)
 
 ```javascript
-var totalFruit = function(fruits) {
+var totalFruit = function (fruits) {
   let left = 0
   // 记录出现的水果的频次
   let map = new Map()
@@ -1859,3 +1853,77 @@ var totalFruit = function(fruits) {
   return ans
 }
 ```
+
+## 863 二叉树中所有距离为 K 的结点
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221207173821.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} target
+ * @param {number} k
+ * @return {number[]}
+ */
+var distanceK = function (root, target, k) {
+  let paths = []
+  handle(root, paths)
+  const ans = new Set() // 利用set去重
+  let targetVal = target.val
+  console.log(paths)
+  // 寻找path列表的target
+  for (let i = 0; i < paths.length; i++) {
+    let idx = paths[i].findIndex((i) => targetVal === i)
+    if (idx > -1) {
+      // 判断距离target的k距离的模板 如果符合就加入ans
+      if (idx - k > -1) ans.add(paths[i][idx - k])
+      if (idx + k < paths[i].length) ans.add(paths[i][idx + k])
+    }
+  }
+  return [...ans]
+}
+
+var handle = function (node, paths) {
+  // 寻找每棵子树的路径
+  searchPaths(node, paths)
+  if (node.left) handle(node.left, paths)
+  if (node.right) handle(node.right, paths)
+}
+
+var searchPaths = function (root, paths) {
+  // 先搜索出左右路径 然后拼接起来
+  let left = []
+  let right = []
+  search(root.left, [], left)
+  search(root.right, [], right)
+  if (left.length === 0) left.push([])
+  if (right.length === 0) right.push([])
+  for (let i = 0; i < left.length; i++) {
+    let l = [...left[i]].reverse()
+    for (let j = 0; j < right.length; j++) {
+      paths.push([...l, root.val, ...right[j]])
+    }
+  }
+}
+
+// 找出单侧树的路径
+var search = function (node, temp, paths) {
+  if (!node) return
+  if (!node.left && !node.right) {
+    paths.push([...temp, node.val])
+    return
+  }
+  temp.push(node.val)
+  search(node.left, [...temp], paths)
+  search(node.right, [...temp], paths)
+}
+```
+
+

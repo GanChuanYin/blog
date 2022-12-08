@@ -1,3 +1,12 @@
+---
+title: async异步原理
+date: 2022-12-05 23:12:23
+permalink: /pages/6d0c24/
+categories:
+  - 前端
+tags:
+  - 
+---
 为了了解 Async / Await 的原理, 需要了解一些前置知识
 
 ## 一、Generator 与 yield
