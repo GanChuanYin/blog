@@ -156,4 +156,42 @@ var maxSumAfterPartitioning = function (arr, k) {
 }
 ```
 
+## 1038. 从二叉搜索树到更大和树
 
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221210213625.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var bstToGst = function (root) {
+  const nodeList = []
+  search(root, nodeList)
+  // 从小到大 计算节点的更大和
+  for (let i = 0; i < nodeList.length; i++) {
+    let sum = 0
+    for (let j = i; j < nodeList.length; j++) {
+      sum += parseInt(nodeList[j].val)
+    }
+    nodeList[i].val = sum
+  }
+  return root
+}
+
+// 从小到大搜索出所有节点
+var search = function (node, list) {
+  if (!node) return
+  search(node.left, list)
+  list.push(node)
+  search(node.right, list)
+}
+```

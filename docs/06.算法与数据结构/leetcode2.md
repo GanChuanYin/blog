@@ -64,3 +64,44 @@ var diStringMatch = function (s) {
   return ans
 }
 ```
+
+## 993. 二叉树的堂兄弟节点
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221210204704.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} x
+ * @param {number} y
+ * @return {boolean}
+ */
+var isCousins = function (root, x, y) {
+  const paths = []
+  // 找出目标节点的路径树
+  getPath(root, paths, [], x)
+  getPath(root, paths, [], y)
+  // 判断是不是同一层 不是同一层直接 return false
+  if (paths[0].length !== paths[1].length) return false
+  // 同一层的话判断父节点是否相同
+  return paths[0][paths[0].length - 2] !== paths[1][paths[1].length - 2]
+}
+
+var getPath = function (node, path, temp, target) {
+  if (!node) return
+  if (node.val === target) {
+    path.push([...temp, node.val])
+    return
+  }
+  getPath(node.left, path, [...temp, node.val], target)
+  getPath(node.right, path, [...temp, node.val], target)
+}
+```

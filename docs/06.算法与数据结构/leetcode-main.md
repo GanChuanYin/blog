@@ -1926,4 +1926,8 @@ var search = function (node, temp, paths) {
 }
 ```
 
+## 979. 在二叉树中分配硬币
 
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212151027.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212151003.png)

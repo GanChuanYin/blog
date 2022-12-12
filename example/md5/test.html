@@ -1,0 +1,50 @@
+<html>
+  <input type="file" id="file" />
+  <script src="./spark-md5.min.js"></script>
+  <script>
+    document.getElementById('file').addEventListener('change', function () {
+      var blobSlice =
+          File.prototype.slice ||
+          File.prototype.mozSlice ||
+          File.prototype.webkitSlice,
+        file = this.files[0],
+        chunkSize = 104857600, // Read in chunks of 100MB
+        chunks = Math.ceil(file.size / chunkSize),
+        currentChunk = 0,
+        spark = new SparkMD5.ArrayBuffer(),
+        fileReader = new FileReader()
+      console.time('md5计算耗时:')
+      console.log(file)
+
+      var temp = file.size / (1024 * 1024)
+      console.log(file.name)
+      console.log('文件大小:  ' + temp.toFixed(2) + 'MB')
+      fileReader.onload = function (e) {
+        console.log('read chunk nr', currentChunk + 1, 'of', chunks)
+        spark.append(e.target.result) // Append array buffer
+        currentChunk++
+
+        if (currentChunk < chunks) {
+          loadNext()
+        } else {
+          console.timeEnd("md5计算耗时:");
+          console.log('finished loading')
+          console.info('computed hash', spark.end()) // Compute hash
+        }
+      }
+
+      fileReader.onerror = function () {
+        console.warn('oops, something went wrong.')
+      }
+
+      function loadNext() {
+        var start = currentChunk * chunkSize,
+          end = start + chunkSize >= file.size ? file.size : start + chunkSize
+
+        fileReader.readAsArrayBuffer(blobSlice.call(file, start, end))
+      }
+
+      loadNext()
+    })
+  </script>
+</html>
