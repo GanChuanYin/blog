@@ -1931,3 +1931,44 @@ var search = function (node, temp, paths) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212151027.png)
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212151003.png)
+
+## 1025. 除数博弈
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212223744.png)
+
+如果 N 是奇数，因为奇数的所有因数都是奇数，因此 N 进行一次 N-x 的操作结果一定是偶数，所以如果 a 拿到了一个奇数，那么轮到 b 的时候，b 拿到的肯定是偶数，这个时候 b 只要进行 -1， 还给 a 一个奇数，那么这样子 b 就会一直拿到偶数，到最后 b 一定会拿到最小偶数 2，a 就输了。
+
+所以如果游戏开始时 Alice 拿到 N 为奇数，那么她必输，也就是 false。如果拿到 N 为偶数，她只用 -1，让 bob 拿到奇数，最后 bob 必输，结果就是 true。
+
+```javascript
+var divisorGame = function (N) {
+  return N % 2 === 0
+}
+```
+
+## 1026. 节点与其祖先之间的最大差值
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212225343.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212122253391.png)
+
+## 1071. 字符串的最大公因子
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221214162238.png)
+
+需要知道一个性质：如果 str1 和 str2 拼接后等于 str2 和 str1 拼接起来的字符串（注意拼接顺序不同），那么一定存在符合条件的字符串 X。
+
+[题解](https://leetcode.cn/problems/greatest-common-divisor-of-strings/solution/zi-fu-chuan-de-zui-da-gong-yin-zi-by-leetcode-solu/)
+
+```javascript
+var gcdOfStrings = function (str1, str2) {
+  const gcd = (a, b) => {
+    if (b === 0) return a
+    return gcd(b, a % b)
+  }
+
+  if (str1 + str2 !== str2 + str1) return ''
+
+  return str1.substring(0, gcd(str1.length, str2.length))
+}
+```

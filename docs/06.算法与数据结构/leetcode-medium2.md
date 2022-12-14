@@ -195,3 +195,49 @@ var search = function (node, list) {
   search(node.right, list)
 }
 ```
+
+## 973. 最接近原点的 K 个点
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212131428854.png)
+
+```javascript
+/**
+ * @param {number[][]} points
+ * @param {number} k
+ * @return {number[][]}
+ */
+var kClosest = function (points, k) {
+  // 按最接近原点排序
+  points.sort((a, b) => {
+    let distanceA = Math.log(a[0] * a[0] + a[1] * a[1])
+    let distanceB = Math.log(b[0] * b[0] + b[1] * b[1])
+    return distanceA - distanceB
+  })
+  // 返回排序好的前k个
+  return points.slice(0, k)
+}
+```
+
+## 1109. 航班预订统计
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212141701017.png)
+
+```javascript
+/**
+ * @param {number[][]} bookings
+ * @param {number} n
+ * @return {number[]}
+ */
+var corpFlightBookings = function (bookings, n) {
+  const ans = new Array(n).fill(0)
+
+  for (let i = 0; i < bookings.length; i++) {
+    const booking = bookings[i]
+    for (let j = booking[0]; j <= booking[1]; j++) {
+      ans[j - 1] = ans[j - 1] + booking[2]
+    }
+  }
+
+  return ans
+}
+```

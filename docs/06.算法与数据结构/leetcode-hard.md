@@ -1519,3 +1519,60 @@ var containsNearbyAlmostDuplicate = function (nums, indexDiff, valueDiff) {
   return false
 }
 ```
+
+## 1028. 从先序遍历还原二叉树
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221213161249.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {string} traversal
+ * @return {TreeNode}
+ */
+var recoverFromPreorder = function (traversal) {
+  let stack = []
+  const nodes = [] // 处理后的节点列表
+  for (let i = 0; i < traversal.length; i++) {
+    if (traversal[i] === '-') {
+      stack.push(traversal[i])
+    } else {
+      if (i + 1 >= traversal.length || traversal[i + 1] === '-') {
+        stack.push(traversal[i])
+        let level = stack.filter((item) => item === '-').length
+        let val = parseInt(stack.filter((item) => item !== '-').join(''))
+        nodes.push([level, val])
+        stack = []
+      } else {
+        stack.push(parseInt(traversal[i]))
+      }
+    }
+  }
+
+  // 此时nodes节点列表如下 第一个数字表示节点层次 第二个表示节点值
+  // 例子: [[ 0, 1 ], [ 1, 2 ],[ 2, 3 ], [ 3, 4 ]]
+
+  // 递归构造二叉树
+  function dfs(depth) {
+    if (!nodes.length) return null
+    // 先序遍历，等深度相等时，将数组推出
+    if (nodes[0][0] === depth) {
+      const top = nodes.shift()
+      const node = new TreeNode(top[1])
+      node.left = dfs(depth + 1)
+      node.right = dfs(depth + 1)
+      return node
+    } else {
+      return null
+    }
+  }
+  return dfs(0)
+}
+```

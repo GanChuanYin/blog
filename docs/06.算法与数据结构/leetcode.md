@@ -3030,3 +3030,32 @@ var projectionArea = function (grid) {
   return xyArea + yzArea + zxArea
 }
 ```
+
+## 1103. 分糖果 II
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221214165238.png)
+
+```javascript
+/**
+ * @param {number} candies
+ * @param {number} num_people
+ * @return {number[]}
+ */
+var distributeCandies = function (candies, num_people) {
+  let ans = new Array(num_people).fill(0)
+
+  let count = 1 // 当前应该发的糖果
+  let position = 0 // 当前该给哪个小朋友发
+  while (candies > 0) {
+    // 如果剩余充足就发count 不足就发剩余的全部
+    let temp = candies >= count ? count : candies
+    ans[position] = ans[position] + temp
+    candies -= count
+    count++
+    position++
+    // 如果发完一圈 重置位置为第一个小朋友
+    if (position === num_people) position = 0
+  }
+  return ans
+}
+```

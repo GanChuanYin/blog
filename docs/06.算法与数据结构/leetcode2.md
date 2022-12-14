@@ -105,3 +105,32 @@ var getPath = function (node, path, temp, target) {
   getPath(node.right, path, [...temp, node.val], target)
 }
 ```
+
+## 976. 三角形的最大周长
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221213151004.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var largestPerimeter = function (nums) {
+  nums.sort((a, b) => b - a)
+  let ans = 0
+  let len = nums.length
+  for (let i = 0; i < len; i++) {
+    // 如果当前结果比当前最大边3倍还大 退出循环
+    if (ans > nums[i] * 3) break
+    for (let j = i + 1; j < len; j++) {
+      for (let k = j + 1; k < len; k++) {
+        if (nums[j] + nums[k] > nums[i]) {
+          ans = Math.max(ans, nums[j] + nums[k] + nums[i])
+          break
+        }
+      }
+    }
+  }
+  return ans
+}
+```
