@@ -3059,3 +3059,151 @@ var distributeCandies = function (candies, num_people) {
   return ans
 }
 ```
+
+## 1122. 数组的相对排序
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212151529994.png)
+
+```javascript
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number[]}
+ */
+var relativeSortArray = function (arr1, arr2) {
+  let rest = []
+  const map = {}
+  // 分开包含的和不包含的
+  for (let i = 0; i < arr1.length; i++) {
+    let idx = arr2.indexOf(arr1[i])
+    if (idx === -1) {
+      rest.push(arr1[i])
+    } else {
+      if (map[arr1[i]]) {
+        map[arr1[i]].count += 1
+      } else {
+        map[arr1[i]] = { count: 1, idx }
+      }
+    }
+  }
+  rest.sort((a, b) => a - b)
+  let res = new Array(arr2.length)
+  // 按照数字个数生成二维数组
+  for (const key in map) {
+    res[map[key].idx] = new Array(map[key].count).fill(parseInt(key))
+  }
+  res = res.concat(rest) // 接上剩余的
+  return res.flat(2) // 拍平二维数组
+}
+```
+
+## 1160. 拼写单词
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221217231428.png)
+
+```javascript
+/**
+ * @param {string[]} words
+ * @param {string} chars
+ * @return {number}
+ */
+var countCharacters = function (words, chars) {
+  let ans = ''
+  for (let i = 0; i < words.length; i++) {
+    let temp = chars
+    let word = words[i]
+    for (let j = 0; j < word.length; j++) {
+      let idx = temp.indexOf(word[j])
+      if (idx === -1) break // 没匹配到 直接break
+      if (j === word.length - 1) ans += word // 最后一个字母匹配成功 计入结果
+      temp = temp.slice(0, idx) + temp.slice(idx + 1)
+    }
+  }
+  return ans.length
+}
+```
+
+## 1189. “气球” 的最大数量
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221219112055.png)
+
+```javascript
+/**
+ * @param {string} text
+ * @return {number}
+ */
+var maxNumberOfBalloons = function (text) {
+  const balloon = 'balloon'
+  let flag = true
+  let ans = 0
+  while (flag) {
+    for (let i = 0; i < balloon.length; i++) {
+      let idx = text.indexOf(balloon[i])
+      if (idx === -1) {
+        // 找不到 直接退出
+        flag = false
+        break
+      } else {
+        text = text.slice(0, idx) + text.slice(idx + 1)
+        // 如果是最后一个字母 结果++
+        if (i === balloon.length - 1) ans++
+      }
+    }
+  }
+  return ans
+}
+```
+
+## 1221. 分割平衡字符串
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212191819198.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var balancedStringSplit = function (s) {
+  let ans = 0
+  let l = 0
+  let r = 0
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === 'L') {
+      l++
+    } else {
+      r++
+    }
+    // 如果左右相等且都不为0 则为一组达到平衡
+    if (l !== 0 && l === r) {
+      ans++
+      l = 0
+      r = 0
+    }
+  }
+  return ans
+}
+```
+
+## 1200. 最小绝对差
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221220150357.png)
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {number[][]}
+ */
+var minimumAbsDifference = function (arr) {
+  arr.sort((a, b) => a - b)
+  let min = Infinity
+  // 先找出最小差值
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] - arr[i - 1] < min) min = arr[i] - arr[i - 1]
+  }
+  let ans = []
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] - arr[i - 1] === min) ans.push([arr[i - 1], arr[i]])
+  }
+  return ans
+}
+```

@@ -1,28 +1,20 @@
 /**
- * @param {number[][]} bookings
- * @param {number} n
- * @return {number[]}
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
  */
-var corpFlightBookings = function (bookings, n) {
-  const ans = new Array(n).fill(0)
-
-  for (let i = 0; i < bookings.length; i++) {
-    const booking = bookings[i]
-    for (let j = booking[0]; j <= booking[1]; j++) {
-      ans[j - 1] = ans[j - 1] + booking[2]
-    }
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+var getDecimalValue = function (head) {
+  let num = ''
+  let current = head
+  while (current) {
+    num += current.val
+    current = current.next
   }
-
-  return ans
+  return parseInt(num, 2)
 }
-
-console.log(
-  corpFlightBookings(
-    [
-      [1, 2, 10],
-      [2, 3, 20],
-      [2, 5, 25]
-    ],
-    5
-  )
-)

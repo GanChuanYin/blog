@@ -241,3 +241,95 @@ var corpFlightBookings = function (bookings, n) {
   return ans
 }
 ```
+
+## 1094. 拼车
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221215214554.png)
+
+```javascript
+/**
+ * @param {number[][]} trips
+ * @param {number} capacity
+ * @return {boolean}
+ */
+var carPooling = function (trips, capacity) {
+  let start = Infinity // 开始位置
+  let end = -Infinity // 结束位置
+  for (let i = 0; i < trips.length; i++) {
+    if (trips[i][1] < start) start = trips[i][1]
+    if (trips[i][2] > end) end = trips[i][2]
+  }
+
+  for (let i = start; i <= end; i++) {
+    let temp = 0
+    for (let j = 0; j < trips.length; j++) {
+      // 刚好在trips[j][2] 时, 乘客下车了 所以不算
+      if (i >= trips[j][1] && i < trips[j][2]) temp += trips[j][0]
+    }
+    if (temp > capacity) return false
+  }
+
+  return true
+}
+```
+
+## 1190. 反转每对括号间的子串
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221220135621.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseParentheses = function (s) {
+  let idx = 0
+  let stack = []
+  while (idx < s.length) {
+    if (s[idx] !== ')') {
+      stack.push(s[idx])
+    } else {
+      let temp = []
+      while (stack.length > 0) {
+        let char = stack.pop()
+        if (char === '(') {
+          // 当前括号反转完成 将反转后的结果推入栈
+          stack.push(...temp)
+          break
+        } else {
+          temp.push(char)
+        }
+      }
+    }
+    idx++
+  }
+  return stack.join('')
+}
+```
+
+## 1282. 用户分组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221220153832.png)
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+var getDecimalValue = function (head) {
+  let num = ''
+  let current = head
+  while (current) {
+    num += current.val
+    current = current.next
+  }
+  return parseInt(num, 2)
+}
+```

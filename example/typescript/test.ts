@@ -18,3 +18,13 @@ function getArea(shape: Shape) {
       return shape.sideLength ** 2
   }
 }
+
+type Mapish = { [k: string]: boolean }
+type M = keyof Mapish
+
+
+function f() {
+  return { x: 10, y: 3 }
+}
+
+type P = ReturnType<typeof f>
