@@ -333,3 +333,77 @@ var getDecimalValue = function (head) {
   return parseInt(num, 2)
 }
 ```
+
+## 1302. 层数最深叶子节点的和
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221112714.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var deepestLeavesSum = function (root) {
+  const deepest = getDepth(root) // 找出最深深度
+  const res = []
+  search(root, 1, deepest, res) // 搜索出最深深度的所有节点
+  return res.reduce((pre, cur) => pre + cur) // 求和
+}
+
+var search = function (node, level, deepest, list) {
+  if (!node) return
+  if (level === deepest) {
+    list.push(node.val)
+    return
+  }
+  search(node.left, level + 1, deepest, list)
+  search(node.right, level + 1, deepest, list)
+}
+
+var getDepth = function (node) {
+  if (!node) return 0
+  return Math.max(getDepth(node.left), getDepth(node.right)) + 1
+}
+```
+
+## 1305. 两棵二叉搜索树中的所有元素
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221151902.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {number[]}
+ */
+var getAllElements = function (root1, root2) {
+  let ans = []
+  search(root1, ans)
+  search(root2, ans)
+  ans.sort((a, b) => a - b)
+  return ans
+}
+
+var search = function (node, list) {
+  if (!node) return
+  search(node.left, list)
+  list.push(node.val)
+  search(node.right, list)
+}
+```

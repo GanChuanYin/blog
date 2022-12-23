@@ -1,20 +1,26 @@
 /**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
+ * @param {number[][]} grid
  * @return {number}
  */
-var getDecimalValue = function (head) {
-  let num = ''
-  let current = head
-  while (current) {
-    num += current.val
-    current = current.next
+var countNegatives = function (grid) {
+  let m = grid.length
+  let n = grid[0].length
+  let ans = 0
+  for (let i = m - 1; i >= 0; i--) {
+    for (let j = n - 1; j >= 0; j--) {
+      if (grid[i][j] < 0) {
+        ans++
+      } else {
+        break
+      }
+    }
   }
-  return parseInt(num, 2)
+  return ans
 }
+
+countNegatives([
+  [4, 3, 2, -1],
+  [3, 2, 1, -1],
+  [1, 1, -1, -2],
+  [-1, -1, -2, -3]
+])

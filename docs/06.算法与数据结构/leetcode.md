@@ -3207,3 +3207,168 @@ var minimumAbsDifference = function (arr) {
   return ans
 }
 ```
+
+## 1295. 统计位数为偶数的数字
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221114318.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findNumbers = function (nums) {
+  let ans = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i].toString().length % 2 === 0) asn++
+  }
+  return ans
+}
+```
+
+## 1309. 解码字母到整数映射
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221153947.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var freqAlphabets = function (s) {
+  let letters = 'abcdefghijklmnopqrstuvwxyz'
+  let stack = Array.from(s)
+  let ans = ''
+  while (stack.length > 0) {
+    if (stack[stack.length - 1] === '#') {
+      stack.pop()
+      let l1 = stack.pop()
+      let l2 = stack.pop()
+      ans = letters[l2 + l1 - 1] + ans
+    } else {
+      ans = letters[stack.pop() - 1] + ans
+    }
+  }
+  return ans
+}
+```
+
+## 1342. 将数字变成 0 的操作次数
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221160058.png)
+
+```javascript
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var numberOfSteps = function (num) {
+  let ans = 0
+  while (num !== 0) {
+    if (num % 2 === 0) {
+      num = num / 2
+    } else {
+      num -= 1
+    }
+    ans++
+  }
+  return ans
+}
+
+numberOfSteps(14)
+```
+
+## 1365. 有多少小于当前数字的数字
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221222144853.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var smallerNumbersThanCurrent = function (nums) {
+  const len = nums.length
+  let ans = new Array(len)
+  for (let i = 0; i < len; i++) {
+    let count = 0
+    for (let j = 0; j < len; j++) {
+      if (nums[j] < nums[i]) count++
+    }
+    ans[i] = count
+  }
+  return ans
+}
+```
+
+## 1304. 和为零的 N 个不同整数
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221222211931.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+var sumZero = function (n) {
+  const ans = []
+  let temp = 1
+  while (n > 1) {
+    ans.push(temp)
+    ans.push(-temp)
+    n -= 2
+    temp++
+  }
+  if (n === 1) ans.push(0)
+  return ans
+}
+```
+
+## 1331. 数组序号转换
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221222214101.png)
+
+```javascript
+var arrayRankTransform = function (arr) {
+  const sortedArr = new Array(arr.length).fill(0)
+  sortedArr.splice(0, arr.length, ...arr)
+  sortedArr.sort((a, b) => a - b)
+  const ranks = new Map()
+  const ans = new Array(arr.length).fill(0)
+  for (const a of sortedArr) {
+    if (!ranks.has(a)) {
+      ranks.set(a, ranks.size + 1)
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    ans[i] = ranks.get(arr[i])
+  }
+  return ans
+}
+```
+
+## 1351. 统计有序矩阵中的负数
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221222224643.png)
+
+```javascript
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var countNegatives = function (grid) {
+  let m = grid.length
+  let n = grid[0].length
+  let ans = 0
+  for (let i = m - 1; i >= 0; i--) {
+    for (let j = n - 1; j >= 0; j--) {
+      if (grid[i][j] < 0) {
+        ans++
+      } else {
+        break
+      }
+    }
+  }
+  return ans
+}
+```
