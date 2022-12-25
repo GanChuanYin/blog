@@ -1996,3 +1996,30 @@ var longestCommonSubsequence = function (text1, text2) {
   return dp[m][n]
 }
 ```
+
+## 1414. 和为 K 的最少斐波那契数字数目
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221223141820.png)
+
+```javascript
+var findMinFibonacciNumbers = function (k) {
+  const f = [1]
+  let a = 1,
+    b = 1
+  while (a + b <= k) {
+    let c = a + b
+    f.push(c)
+    a = b
+    b = c
+  }
+  let ans = 0
+  for (let i = f.length - 1; i >= 0 && k > 0; i--) {
+    const num = f[i]
+    if (k >= num) {
+      k -= num
+      ans++
+    }
+  }
+  return ans
+}
+```

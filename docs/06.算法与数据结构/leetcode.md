@@ -3372,3 +3372,68 @@ var countNegatives = function (grid) {
   return ans
 }
 ```
+
+## 1389. 按既定顺序创建目标数组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224170219.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number[]} index
+ * @return {number[]}
+ */
+var createTargetArray = function (nums, index) {
+  let target = []
+  for (let i = 0; i < nums.length; i++) {
+    target.splice(index[i], nums[i])
+  }
+  return target
+}
+```
+
+## 1408. 数组中的字符串匹配
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224210837.png)
+
+```javascript
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var stringMatching = function (words) {
+  const ans = []
+  for (let i = 0; i < words.length; i++) {
+    for (let j = 0; j < words.length; j++) {
+      // 如果是本身 或者长度不匹配 continue
+      if (i === j || words[i].length > words[j].length) continue
+      if (words[j].includes(words[i])) {
+        ans.push(words[i])
+        break
+      }
+    }
+  }
+  return ans
+}
+```
+
+## 1431. 拥有最多糖果的孩子
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224211701.png)
+
+```javascript
+/**
+ * @param {number[]} candies
+ * @param {number} extraCandies
+ * @return {boolean[]}
+ */
+var kidsWithCandies = function (candies, extraCandies) {
+  let max = Math.max(...candies)
+  const ans = []
+  for (let i = 0; i < candies.length; i++) {
+    // 如果当前糖果加备选大于等于max 则为true
+    ans.push(candies[i] + extraCandies >= max)
+  }
+  return ans
+}
+```

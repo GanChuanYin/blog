@@ -407,3 +407,100 @@ var search = function (node, list) {
   search(node.right, list)
 }
 ```
+
+## 1409. 查询带键的排列
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224174124.png)
+
+```javascript
+/**
+ * @param {number[]} queries
+ * @param {number} m
+ * @return {number[]}
+ */
+var processQueries = function (queries, m) {
+  const p = new Array(m)
+  for (let i = 0; i < m; i++) {
+    p[i] = i + 1
+  }
+
+  let ans = new Array(queries.length)
+  for (let i = 0; i < queries.length; i++) {
+    let num = queries[i]
+    let idx = p.indexOf(num)
+    ans[i] = idx // 记录结果
+    p.splice(idx, 1) // 删除当前
+    p.unshift(num) // 将当前数字提到头部
+  }
+
+  return ans
+}
+```
+
+## 1441. 用栈操作构建数组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225134026.png)
+
+```javascript
+/**
+ * @param {number[]} target
+ * @param {number} n
+ * @return {string[]}
+ */
+var buildArray = function (target, n) {
+  let list = []
+  for (let i = n; i >= 1; i--) {
+    list.push(i)
+  }
+
+  let ans = []
+  let idx = 0
+  while (idx < target.length) {
+    console.log(idx, ans)
+    let num = list.pop()
+    ans.push('Push')
+    if (target[idx] !== num) {
+      ans.push('Pop')
+    } else {
+      idx++
+    }
+  }
+  return ans
+}
+
+buildArray([1, 3], 3)
+```
+
+## 1448. 统计二叉树中好节点的数目
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225135801.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var goodNodes = function (root) {
+  return search(root, -Infinity)
+}
+
+var search = function (node, max) {
+  if (!node) return 0
+  max = Math.max(node.val, max)
+  return (
+    search(node.left, max) +
+    search(node.right, max) +
+    (node.val === max ? 1 : 0)
+  )
+}
+```
+
+

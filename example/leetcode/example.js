@@ -1,26 +1,15 @@
 /**
- * @param {number[][]} grid
- * @return {number}
+ * @param {number[]} target
+ * @param {number[]} arr
+ * @return {boolean}
  */
-var countNegatives = function (grid) {
-  let m = grid.length
-  let n = grid[0].length
-  let ans = 0
-  for (let i = m - 1; i >= 0; i--) {
-    for (let j = n - 1; j >= 0; j--) {
-      if (grid[i][j] < 0) {
-        ans++
-      } else {
-        break
-      }
-    }
+var canBeEqual = function (target, arr) {
+  // 只需要判断target和arr的元素是否全部相等
+  if (target.length !== arr.length) return false
+  for (let i = 0; i < target.length; i++) {
+    let idx = arr.indexOf(target[i])
+    if (idx === -1) return false
+    arr.splice(idx, 1)
   }
-  return ans
+  return true
 }
-
-countNegatives([
-  [4, 3, 2, -1],
-  [3, 2, 1, -1],
-  [1, 1, -1, -2],
-  [-1, -1, -2, -3]
-])

@@ -134,3 +134,100 @@ var largestPerimeter = function (nums) {
   return ans
 }
 ```
+
+## 1379. 找出克隆二叉树中的相同节点
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224112746.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} original
+ * @param {TreeNode} cloned
+ * @param {TreeNode} target
+ * @return {TreeNode}
+ */
+
+var getTargetCopy = function (original, cloned, target) {
+  if (cloned === null) return null
+  if (cloned.val === target.val) return cloned
+  return (
+    getTargetCopy(original, cloned.left, target) &&
+    getTargetCopy(original, cloned.left, target)
+  )
+}
+```
+
+## 1446. 连续字符
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225134058.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var maxPower = function (s) {
+  let idx = 1
+  let temp = 1
+  let ans = 1
+  while (idx < s.length) {
+    if (s[idx] === s[idx - 1]) {
+      temp++
+      ans = Math.max(ans, temp)
+    } else {
+      temp = 1
+    }
+    idx++
+  }
+  return ans
+}
+```
+
+## 1450. 在既定时间做作业的学生人数
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225135916.png)
+
+```javascript
+/**
+ * @param {number[]} startTime
+ * @param {number[]} endTime
+ * @param {number} queryTime
+ * @return {number}
+ */
+var busyStudent = function (startTime, endTime, queryTime) {
+  let ans = 0
+  for (let i = 0; i < startTime.length; i++) {
+    if (startTime[i] >= queryTime && endTime <= queryTime) ans++
+  }
+  return ans
+}
+```
+
+## 1460. 通过翻转子数组使两个数组相等
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225171004.png)
+
+```javascript
+/**
+ * @param {number[]} target
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var canBeEqual = function (target, arr) {
+  // 只需要判断target和arr的元素是否全部相等
+  if (target.length !== arr.length) return false
+  for (let i = 0; i < target.length; i++) {
+    let idx = arr.indexOf(target[i])
+    if (idx === -1) return false
+    arr.splice(idx, 1)
+  }
+  return true
+}
+```
