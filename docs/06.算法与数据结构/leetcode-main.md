@@ -2023,3 +2023,77 @@ var findMinFibonacciNumbers = function (k) {
   return ans
 }
 ```
+
+## 1641. 统计字典序元音字符串的数目
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101225831.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101225855.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var countVowelStrings = function (n) {
+  a = e = i = o = u = 1
+  for (let k = 1; k < n; k++) {
+    a = a + e + i + o + u
+    e = e + i + o + u
+    i = i + o + u
+    o = o + u
+  }
+  return a + e + i + o + u
+}
+```
+
+## 1641. 统计字典序元音字符串的数目
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101225831.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101225855.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var countVowelStrings = function (n) {
+  a = e = i = o = u = 1
+  for (let k = 1; k < n; k++) {
+    a = a + e + i + o + u
+    e = e + i + o + u
+    i = i + o + u
+    o = o + u
+  }
+  return a + e + i + o + u
+}
+```
+
+## 1605. 给定行和列的和求可行矩阵
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102101630.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102101637.png)
+
+```javascript
+/**
+ * @param {number[]} rowSum
+ * @param {number[]} colSum
+ * @return {number[][]}
+ */
+var restoreMatrix = function (rowSum, colSum) {
+  const [m, n] = [rowSum.length, colSum.length]
+  const matrix = Array(m)
+    .fill(0)
+    .map(() => Array(n).fill(0))
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      matrix[i][j] = Math.min(rowSum[i], colSum[j])
+      rowSum[i] -= matrix[i][j]
+      colSum[j] -= matrix[i][j]
+    }
+  }
+  return matrix
+}
+```

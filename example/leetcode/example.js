@@ -1,15 +1,23 @@
 /**
- * @param {number[]} target
- * @param {number[]} arr
- * @return {boolean}
+ * @param {string} allowed
+ * @param {string[]} words
+ * @return {number}
  */
-var canBeEqual = function (target, arr) {
-  // 只需要判断target和arr的元素是否全部相等
-  if (target.length !== arr.length) return false
-  for (let i = 0; i < target.length; i++) {
-    let idx = arr.indexOf(target[i])
-    if (idx === -1) return false
-    arr.splice(idx, 1)
+var countConsistentStrings = function (allowed, words) {
+  let set = new Set() // 存储allowed的所有字符类型
+  for (let i = 0; i < allowed.length; i++) {
+    set.add(allowed[i])
   }
-  return true
+  let ans = 0
+  for (let i = 0; i < words.length; i++) {
+    let flag = true
+    for (let j = 0; j < words[i].length; j++) {
+      if (!set.has(words[i][j])) {
+        flag = false
+        break
+      }
+    }
+    if (flag) ans++
+  }
+  return ans
 }

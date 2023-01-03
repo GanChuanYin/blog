@@ -503,4 +503,130 @@ var search = function (node, max) {
 }
 ```
 
+## 1525. 字符串的好分割数目
 
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230171053.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numSplits = function (s) {
+  let ans = 0
+  let left = new Map()
+  let right = new Map()
+  // 初始化 将所有元素添加进right
+  for (let i = 0; i < s.length; i++) {
+    if (right.has(s[i])) {
+      right.set(s[i], right.get(s[i]) + 1)
+    } else {
+      right.set(s[i], 1)
+    }
+  }
+  // 从第一个开始分割
+  for (let i = 0; i < s.length - 1; i++) {
+    // 去除右边的当前字母
+    right.set(s[i], right.get(s[i]) - 1)
+    if (right.get(s[i]) === 0) right.delete(s[i])
+    // 往左边添加当前字母
+    if (left.has(s[i])) {
+      left.set(s[i], left.get(s[i]) + 1)
+    } else {
+      left.set(s[i], 1)
+    }
+    // 比较两边类型个数是否相同
+    if (left.size === right.size) ans++
+  }
+  return ans
+}
+```
+
+## 1630. 等差子数组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102102739.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number[]} l
+ * @param {number[]} r
+ * @return {boolean[]}
+ */
+var checkArithmeticSubarrays = function (nums, l, r) {
+  let ans = []
+  for (let i = 0; i < l.length; i++) {
+    let arr = nums.slice(l[i], r[i] + 1)
+    arr.sort((a, b) => a - b)
+    ans.push(check(arr))
+  }
+  return ans
+}
+
+// 检测是否为等差数列
+var check = function (arr) {
+  if (arr.length <= 2) return true
+  const gap = arr[1] - arr[0]
+  for (let i = 2; i < arr.length; i++) {
+    if (arr[i] - arr[i - 1] !== gap) return false
+  }
+  return true
+}
+```
+
+## 1669. 合并两个链表
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102180821.png)
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {number} a
+ * @param {number} b
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeInBetween = function (list1, a, b, list2) {
+  let nodes1 = []
+  let current = list1
+  while (current) {
+    nodes1.push(current)
+    current = current.next
+  }
+
+  // 连接链表2
+  nodes1[a - 1].next = list2
+  current = list2
+  while (current.next) {
+    current = current.next
+  }
+  current.next = nodes1[b].next
+  return list1
+}
+```
+
+## 1689. 十-二进制数的最少数目
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103154505.png)
+
+```javascript
+/**
+ * @param {string} n
+ * @return {number}
+ */
+var minPartitions = function (n) {
+  // 可以看成求n中的最大数字
+  let ans = 0
+  for (let i = 0; i < n.length; i++) {
+    ans = Math.max(ans, parseInt(n[i]))
+  }
+  return ans
+}
+```

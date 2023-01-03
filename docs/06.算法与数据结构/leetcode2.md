@@ -231,3 +231,366 @@ var canBeEqual = function (target, arr) {
   return true
 }
 ```
+
+## 1464. 数组中两元素的最大乘积
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221226223413.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function (nums) {
+  nums.sort((a, b) => a - b)
+  return (nums[nums.length - 1] - 1) * (nums[nums.length - 2] - 1)
+}
+```
+
+## 1470. 重新排列数组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221226223439.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} n
+ * @return {number[]}
+ */
+var shuffle = function (nums, n) {
+  let ans = new Array(2 * n)
+  for (let i = 0; i < n; i++) {
+    ans.push(nums[i])
+    ans.push(nums[i + n])
+  }
+  return ans
+}
+```
+
+## 1455. 检查单词是否为句中其他单词的前缀
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221228141017.png)
+
+```javascript
+/**
+ * @param {string} sentence
+ * @param {string} searchWord
+ * @return {number}
+ */
+var isPrefixOfWord = function (sentence, searchWord) {
+  let words = sentence.split(' ')
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].slice(0, searchWord.length) === searchWord) {
+      return i + 1
+    }
+  }
+  return -1
+}
+```
+
+## 1475. 商品折扣后的最终价格
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221228170345.png)
+
+```javascript
+/**
+ * @param {number[]} prices
+ * @return {number[]}
+ */
+var finalPrices = function (prices) {
+  let ans = []
+  for (let i = 0; i < prices.length; i++) {
+    let current = prices[i]
+    for (let j = i + 1; j < prices.length; j++) {
+      // 寻找第一个满足条件的prices[j]
+      if (prices[j] <= current) {
+        current = current - prices[j]
+        break
+      }
+    }
+    ans.push(current)
+  }
+  return ans
+}
+```
+
+## 1502. 判断能否形成等差数列
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230162258.png)
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var canMakeArithmeticProgression = function (arr) {
+  arr.sort((a, b) => a - b)
+  let gap = arr[1] - arr[0]
+  for (let i = 2; i < arr.length; i++) {
+    if (arr[i] - arr[i - 1] !== gap) return false
+  }
+  return true
+}
+```
+
+## 1528. 重新排列字符串
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230171811.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @param {number[]} indices
+ * @return {string}
+ */
+var restoreString = function (s, indices) {
+  const ans = new Array(s.length)
+  for (let i = 0; i < s.length; i++) {
+    let idx = indices[i]
+    ans[idx] = s[i]
+  }
+  return ans.join('')
+}
+```
+
+## 1588. 所有奇数长度子数组的和
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230175418.png)
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var sumOddLengthSubarrays = function (arr) {
+  let ans = arr.reduce((pre, cur) => pre + cur)
+  // 依次遍历奇数个子数组长度
+  let current = 3
+  while (current <= arr.length) {
+    for (let i = 0; i <= arr.length - current; i++) {
+      for (let j = i; j < i + current; j++) {
+        ans += arr[j]
+      }
+    }
+    // 子数组长度+=2
+    current += 2
+  }
+
+  return ans
+}
+```
+
+## 1550. 存在连续三个奇数的数组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101143533.png)
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var threeConsecutiveOdds = function (arr) {
+  let count = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      count++
+    } else {
+      count = 0
+    }
+    if (count === 3) return true
+  }
+  return false
+}
+```
+
+## 1603. 设计停车系统
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101153257.png)
+
+```javascript
+/**
+ * @param {number} big
+ * @param {number} medium
+ * @param {number} small
+ */
+var ParkingSystem = function (big, medium, small) {
+  this.opacity = {
+    1: big,
+    2: medium,
+    3: small
+  }
+  this.parking = {
+    1: 0,
+    2: 0,
+    3: 0
+  }
+}
+
+/**
+ * @param {number} carType
+ * @return {boolean}
+ */
+ParkingSystem.prototype.addCar = function (carType) {
+  if (this.parking[carType] >= this.opacity[carType]) return false
+  this.parking[carType] = this.parking[carType] + 1
+  return true
+}
+
+/**
+ * Your ParkingSystem object will be instantiated and called as such:
+ * var obj = new ParkingSystem(big, medium, small)
+ * var param_1 = obj.addCar(carType)
+ */
+```
+
+## 1619. 删除某些元素后的数组均值
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101224140.png)
+
+```javascript
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var trimMean = function (arr) {
+  arr.sort((a, b) => a - b)
+  let count = Math.ceil(arr.length / 20)
+  arr = arr.slice(count, arr.length - count)
+  return arr.reduce((pre, cur) => pre + cur) / arr.length
+}
+```
+
+## 1624. 两个相同字符之间的最长子字符串
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101225017.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var maxLengthBetweenEqualCharacters = function (s) {
+  let ans = -1
+  const map = {}
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]] != undefined) {
+      ans = Math.max(ans, i - map[s[i]] - 1)
+    } else {
+      // 记录当前位置 只需要记一次 即第一次出现的位置
+      map[s[i]] = i
+    }
+  }
+  return ans
+}
+```
+
+## 1636. 按照频率将数组升序排序
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102104727.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var frequencySort = function (nums) {
+  let map = new Map()
+  for (let i = 0; i < nums.length; i++) {
+    map.set(nums[i], map.has(nums[i]) ? map.get(nums[i]) + 1 : 1)
+  }
+  let list = [...map]
+  // 按照每个值的频率 升序 排序。如果有多个值的频率相同，请你按照数值本身将它们 降序 排序
+  list.sort((a, b) => {
+    if (a[1] === b[1]) return b[0] - a[0]
+    return a[1] - b[1]
+  })
+  // 重新组装
+  const res = []
+  for (let i = 0; i < list.length; i++) {
+    for (let j = 0; j < list[i][1]; j++) {
+      res.push(list[i][0])
+    }
+  }
+  return res
+}
+```
+
+## 1662. 检查两个字符串数组是否相等
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102152610.png)
+
+```javascript
+/**
+ * @param {string[]} word1
+ * @param {string[]} word2
+ * @return {boolean}
+ */
+var arrayStringsAreEqual = function (word1, word2) {
+  return word1.toString() === word2.toString()
+}
+```
+
+## 1678. 设计 Goal 解析器
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103153551.png)
+
+```javascript
+/**
+ * @param {string} command
+ * @return {string}
+ */
+var interpret = function (command) {
+  let ans = ''
+  let stack = ''
+  for (let i = 0; i < command.length; i++) {
+    stack += command[i]
+    switch (stack) {
+      case 'G':
+        ans += 'G'
+        stack = ''
+        break
+      case '()':
+        ans += 'o'
+        stack = ''
+        break
+      case '(al)':
+        ans += 'al'
+        stack = ''
+        break
+      default:
+        break
+    }
+  }
+  return ans
+}
+```
+
+## 1684. 统计一致字符串的数目
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103155323.png)
+
+```javascript
+/**
+ * @param {string} allowed
+ * @param {string[]} words
+ * @return {number}
+ */
+var countConsistentStrings = function (allowed, words) {
+  let set = new Set() // 存储allowed的所有字符类型
+  for (let i = 0; i < allowed.length; i++) {
+    set.add(allowed[i])
+  }
+  let ans = 0
+  for (let i = 0; i < words.length; i++) {
+    let flag = true
+    for (let j = 0; j < words[i].length; j++) {
+      if (!set.has(words[i][j])) {
+        flag = false
+        break
+      }
+    }
+    if (flag) ans++
+  }
+  return ans
+}
+```
