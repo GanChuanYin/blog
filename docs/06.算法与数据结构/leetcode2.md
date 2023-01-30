@@ -594,3 +594,51 @@ var countConsistentStrings = function (allowed, words) {
   return ans
 }
 ```
+
+## 1688. 比赛中的配对次数
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230104213856.png)
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var numberOfMatches = function (n) {
+  let ans = 0
+  while (n > 1) {
+    ans += Math.floor(n / 2)
+    if (n % 2 === 0) {
+      // 偶数
+      n = n / 2
+    } else {
+      // 奇数
+      n = Math.floor(n / 2) + 1
+    }
+  }
+  return ans
+}
+```
+
+## 1704. 判断字符串的两半是否相似
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230104214518.png)
+
+```javascript
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var halvesAreAlike = function (s) {
+  let vowel = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+  let s1 = s.slice(0, s.length / 2)
+  let s2 = s.slice(s.length / 2)
+  let count1 = 0
+  let count2 = 0
+  for (let i = 0; i < s1.length; i++) {
+    if (vowel.has(s1[i])) count1++
+    if (vowel.has(s2[i])) count2++
+  }
+  return count1 === count2
+}
+```

@@ -2097,3 +2097,29 @@ var restoreMatrix = function (rowSum, colSum) {
   return matrix
 }
 ```
+
+## 1734. 解码异或后的排列
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230104213056.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230104213109.png)
+
+```javascript
+var decode = function (encoded) {
+  const n = encoded.length + 1
+  let total = 0
+  for (let i = 1; i <= n; i++) {
+    total ^= i
+  }
+  let odd = 0
+  for (let i = 1; i < n - 1; i += 2) {
+    odd ^= encoded[i]
+  }
+  const perm = new Array(n).fill(0)
+  perm[0] = total ^ odd
+  for (let i = 0; i < n - 1; i++) {
+    perm[i + 1] = perm[i] ^ encoded[i]
+  }
+  return perm
+}
+```
