@@ -1,3 +1,12 @@
+---
+title: typescript联合类型
+date: 2022-12-12 10:39:16
+permalink: /pages/9c149a/
+categories:
+  - 前端
+tags:
+  - 
+---
 介绍一种 ts 联合类型的用法
 
 ## typescript 计算圆和矩形的面积怎么定义

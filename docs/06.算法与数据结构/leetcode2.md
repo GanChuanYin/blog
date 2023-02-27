@@ -1,3 +1,12 @@
+---
+title: leetcode2
+date: 2022-12-08 15:19:20
+permalink: /pages/ab3b30/
+categories:
+  - 算法与数据结构
+tags:
+  - 
+---
 ### 938. 二叉搜索树的范围和
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221208151951.png)

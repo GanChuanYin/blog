@@ -1,3 +1,12 @@
+---
+title: TypeScript泛型generic
+date: 2022-12-13 10:36:33
+permalink: /pages/0d2c76/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 一、 Generic Functions
 
 假设一个很常见的场景: 返回数组中的第一个元素

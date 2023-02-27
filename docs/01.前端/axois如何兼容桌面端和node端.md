@@ -1,3 +1,12 @@
+---
+title: axois如何兼容桌面端和node端
+date: 2023-01-03 22:28:46
+permalink: /pages/d8b52c/
+categories:
+  - 前端
+tags:
+  - 
+---
 ## 一、web 端和 node 端的 axios
 
 以下是 axios web 端和 node 端的通用用法

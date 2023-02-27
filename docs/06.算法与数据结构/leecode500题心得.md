@@ -1,3 +1,12 @@
+---
+title: leecode500题心得
+date: 2023-01-06 15:20:44
+permalink: /pages/2a979a/
+categories:
+  - 算法与数据结构
+tags:
+  - 
+---
 历时四个多月, 终于完成了我的 leetcode 小目标
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230106152148.png)
 

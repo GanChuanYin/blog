@@ -1,3 +1,12 @@
+---
+title: TCP如何保证可靠传输
+date: 2023-01-05 17:33:44
+permalink: /pages/101d4b/
+categories:
+  - 计算机
+tags:
+  - 
+---
 > 前置知识
 
 TCP 和 UDP

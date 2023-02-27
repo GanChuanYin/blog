@@ -1,3 +1,12 @@
+---
+title: typescript-tik
+date: 2022-12-08 10:39:59
+permalink: /pages/633bce/
+categories:
+  - 前端
+tags:
+  - 
+---
 - The only way in pure JavaScript to tell what fn does with a particular value is to call it and see what happens,typescript use a static type system to make predictions about what code is expected before it runs.
 
 `uncalled functions`
