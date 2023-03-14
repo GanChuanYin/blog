@@ -1,3 +1,12 @@
+---
+title: AI-For-Beginners
+date: 2023-02-01 17:39:12
+permalink: /pages/3a02c1/
+categories:
+  - 算法与数据结构
+tags:
+  - 
+---
 > Microsoft AI-For-Beginners https://github.com/microsoft/AI-For-Beginners
 
 ## Different Approaches to AI

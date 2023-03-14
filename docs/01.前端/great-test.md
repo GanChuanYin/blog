@@ -1,3 +1,12 @@
+---
+title: great-test
+date: 2023-02-02 15:59:16
+permalink: /pages/75b3d0/
+categories:
+  - 前端
+tags:
+  - 
+---
 
 
 ## Great JS Test

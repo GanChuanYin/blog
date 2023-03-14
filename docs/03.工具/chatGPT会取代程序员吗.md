@@ -1,3 +1,12 @@
+---
+title: chatGPT会取代程序员吗
+date: 2023-03-10 12:58:00
+permalink: /pages/c45aa4/
+categories:
+  - 工具
+tags:
+  - 
+---
 ### ChatGPT 会取代程序员吗？
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230310232959.png)

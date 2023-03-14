@@ -1,3 +1,12 @@
+---
+title: 如何通俗的解释chatGPT的原理
+date: 2023-03-01 23:49:58
+permalink: /pages/acfe0c/
+categories:
+  - 算法与数据结构
+tags:
+  - 
+---
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230302100049.png)
 
 类似 GPT 这种大型的语言模型，它本质上就是在那计算
