@@ -9,19 +9,15 @@ features:
 - title: 前端
   details: JavaScript、ES6、html(5)/css(3)和前端页面相关技术
   link: /web/
-  imgUrl: /images/web-1.png
+  imgUrl: /images/web.png
 - title: Vue
   details: Vue框架应用与原理简析
   link: /vue/
-  imgUrl: /images/vue.svg
-# - title: 前端工程化
-#   details: 前端工程化相关
-#   link: /engineering/
-#   imgUrl: /images/vue.svg
+  imgUrl: /images/vue.png
 - title: 计算机
   details: 计算机基础、网络、计算机组成原理、操作系统
   link: /computer/
-  imgUrl: /images/note-1.png
+  imgUrl: /images/computer.png
 # - title: 工具
 #   details: 工具软件 插件 脚本等
 #   link: /tool/

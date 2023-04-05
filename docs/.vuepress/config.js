@@ -5,8 +5,8 @@ const head = require('./config/head')
 
 module.exports = {
   theme: 'vdoing',
-  title: "GCY blog",
-  description: '一个关于前端技术分享和学习的个人博客',
+  title: "XingYun blog",
+  description: '关于前端技术分享和学习的个人博客',
   dest: 'webView',
   cache: true,
   base: '/',
