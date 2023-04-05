@@ -5,8 +5,9 @@ permalink: /pages/ce5c2f/
 categories:
   - 前端
 tags:
-  - 
+  -
 ---
+
 ### script 标签中 defer 和 async 的区别？
 
 - `script` ：会阻碍 HTML 解析，只有下载好并执行完脚本才会继续解析 HTML。
@@ -153,8 +154,7 @@ BFC 的应用：
 
 ### flex 布局
 
-能独立完成骰子布局就 OK 了
+flex 是最常用的布局方式，必须精通并熟练运用
 
-[骰子在线联系](https://codepen.io/xingyun0820/pen/vYVBXRZ)
-
+可以通过这个题目练习 [骰子在线联系](https://codepen.io/xingyun0820/pen/vYVBXRZ)
 

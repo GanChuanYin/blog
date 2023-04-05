@@ -19,15 +19,15 @@ module.exports = {
   // bodyBgImgOpacity: 0.8,
   footer: {
     createYear: 2021,
-    copyrightInfo: 'gcy | <a href="https://github.com/GanChuanYin/blog" target="_blank">MIT License</a>'
+    copyrightInfo: 'XingYun | <a href="https://github.com/GanChuanYin/blog" target="_blank">MIT License</a>'
   },
   blogger: {
     avatar: 'https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20211125145000.png',
-    name: 'GCY',
-    slogan: '勇敢波吉 不怕困难！',
+    name: 'XingYun',
+    slogan: '冲！',
   },
   author: {
-    name: 'GCY',
+    name: 'XingYun',
     link: 'https://github.com/GanChuanYin/blog',
   },
   social: {
@@ -36,7 +36,7 @@ module.exports = {
       // {
       //   iconClass: 'iconshejiaotubiao-46',
       //   title: '知乎',
-      //   link: 'https://www.zhihu.com/people/163200',
+      //   link: '',
       // },
       {
         iconClass: 'iconGitHub',

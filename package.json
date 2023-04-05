@@ -7,7 +7,7 @@
     "serve": "cross-env NODE_ENV=development vuepress dev docs",
     "build": "cross-env NODE_ENV=production vuepress build docs",
     "build:sh": "git.sh",
-    "production":"cross-env NODE_ENV=production vuepress build docs && npm run upload:sh",
+    "production": "cross-env NODE_ENV=production vuepress build docs && npm run upload:sh",
     "upload:sh": "sh build/upload.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
@@ -15,20 +15,20 @@
   "author": "gcy <9721385651@qq.com>",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
     "@vuepress/plugin-last-updated": "^1.8.2",
     "@vuepress/plugin-nprogress": "^1.8.2",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.4",
-    "husky": "^7.0.0",
-    "markdown-it": "^12.0.4",
+    "husky": "^8.0.3",
+    "markdown-it": "^13.0.1",
     "vuepress": "^1.8.2",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-baidu-tongji": "^1.0.1",
     "vuepress-plugin-one-click-copy": "^1.0.2",
     "vuepress-plugin-zooming": "^1.1.8",
-    "vuepress-theme-vdoing": "^1.8.1"
+    "vuepress-theme-vdoing": "^1.12.8"
   },
   "dependencies": {
     "@nestjs/mapped-types": "*",
