@@ -8,6 +8,38 @@ tags:
   -
 ---
 
+---
+
+###### 1. What's the output?
+
+```javascript
+function sayHi() {
+  console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
+}
+
+sayHi();
+```
+
+- A: `Lydia` and `undefined`
+- B: `Lydia` and `ReferenceError`
+- C: `ReferenceError` and `21`
+- D: `undefined` and `ReferenceError`
+
+<details><summary><b>Answer</b></summary>
+<p>
+<iframe height="400" style="width: 100%;" scrolling="no" title="【CSS：行为】使用:hover和attr()定制悬浮提示" src="https://codepen.io/xugaoyi/embed/vYNKNaq?height=400&theme-id=light&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true" loading="lazy">
+  See the Pen <a href='https://codepen.io/xugaoyi/pen/vYNKNaq'>【CSS：行为】使用:hover和attr()定制悬浮提示</a> by xugaoyi
+  (<a href='https://codepen.io/xugaoyi'>@xugaoyi</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+</p>
+</details>
+
+---
+
 ### script 标签中 defer 和 async 的区别？
 
 - `script` ：会阻碍 HTML 解析，只有下载好并执行完脚本才会继续解析 HTML。
@@ -18,7 +50,7 @@ tags:
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230404170722.png)
 
-### 两种盒模型 content-box、border-box
+### 两种盒模型 content-box、border-box 的区别？
 
 CSS3 box-sizing 中的盒模型有以下两种：
 
@@ -31,7 +63,7 @@ Example:
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230404180503.png)
 
-### CSS 选择器权重计算
+### CSS 选择器权重怎么计算的？ 
 
 > https://www.w3.org/TR/selectors-3/#specificity
 
@@ -72,7 +104,11 @@ html body #nav .selected > a:hover  /* ( 1, 2, 3) */
 
 **比较规则是: 从左往右依次进行比较 ，较大者胜出，如果相等，则继续往右移动一位进行比较 。如果 3 位全部相等，则后面的会覆盖前面的**
 
-### BFC 的理解
+---
+
+### 怎么理解 BFC ？
+
+<details><summary><b>Answer</b></summary>
 
 > https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context
 
@@ -99,6 +135,10 @@ BFC 的应用：
 - 利用 3 ，BFC 内部的浮动元素也会参与高度计算，可以清除 BFC 内部的浮动， 避免高度塌陷 [在线预览](https://codepen.io/xingyun0820/pen/eYPOdmx)
 - 利用 2 ，创建新的 BFC ，让相邻的块级盒位于不同 BFC 下可以防止外边距折叠， 避免 margin 重叠问题 [在线预览](https://codepen.io/xingyun0820/pen/MWPgjgP)
 - 利用 4 和 5 ，我们可以实现三栏（或两栏）自适应布局 [在线预览](https://codepen.io/xingyun0820/pen/yLRBJdq)。
+
+</details>
+
+---
 
 ### 水平垂直居中最常用方式
 
