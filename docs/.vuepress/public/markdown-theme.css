@@ -252,6 +252,7 @@ body .theme-vdoing-content a {
   text-decoration: none;
   color: var(--cyanosis-link-color);
   border-bottom: 1px solid var(--cyanosis-border-color);
+  display: none;
 }
 
 body .theme-vdoing-content a:hover {
