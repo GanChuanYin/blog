@@ -4,7 +4,7 @@
     "**/webView": true,
     "**/bower_components": true,
     "**/public/js": true,
-    "**/swiper": true,
+    "**/swiper": true
   },
   "files.exclude": {
     "**/.git": true,
@@ -14,5 +14,6 @@
     "**/webView/**/*.css": true,
     "**/bower_components": true,
     "**/public/js": true
-  }
+  },
+  "markdown.styles": ["markdown-theme.css"]
 }
