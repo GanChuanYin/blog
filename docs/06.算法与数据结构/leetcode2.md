@@ -651,3 +651,16 @@ var halvesAreAlike = function (s) {
   return count1 === count2
 }
 ```
+
+
+## 面试题 01.09. 字符串轮转
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230604210452.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230604210436.png)
+
+```javascript
+var isFlipedString = function (s1, s2) {
+  return s1.length === s2.length && (s1 + s1).indexOf(s2) !== -1
+}
+```

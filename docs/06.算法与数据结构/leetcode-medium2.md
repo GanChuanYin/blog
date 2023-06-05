@@ -667,3 +667,125 @@ var maximumScore = function (a, b, c) {
   return ans
 }
 ```
+
+## 2087. 网格图中机器人回家的最小代价
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230526161155.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230526161210.png)
+
+```javascript
+/**
+ * @param {number[]} startPos
+ * @param {number[]} homePos
+ * @param {number[]} rowCosts
+ * @param {number[]} colCosts
+ * @return {number}
+ */
+var minCost = function (startPos, homePos, rowCosts, colCosts) {
+  let res = 0
+  if (startPos[0] === homePos[0] && startPos[1] === homePos[1]) {
+    return 0
+  }
+  let row = homePos[0] - startPos[0] // 行差
+  let col = homePos[1] - startPos[1] // 列差
+  if (row >= 0 && col >= 0) {
+    for (let i = 0; i < row; i++) {
+      res += rowCosts[startPos[0] + i + 1]
+    }
+    for (let j = 0; j < col; j++) {
+      res += colCosts[startPos[1] + j + 1]
+    }
+  } else if (row >= 0 && col < 0) {
+    for (let i = 0; i < row; i++) {
+      res += rowCosts[startPos[0] + i + 1]
+    }
+    for (let j = 0; j < Math.abs(col); j++) {
+      res += colCosts[startPos[1] - j - 1]
+    }
+  } else if (row < 0 && col >= 0) {
+    for (let i = 0; i < Math.abs(row); i++) {
+      res += rowCosts[startPos[0] - i - 1]
+    }
+    for (let j = 0; j < col; j++) {
+      res += colCosts[startPos[1] + j + 1]
+    }
+  } else {
+    for (let i = 0; i < Math.abs(row); i++) {
+      res += rowCosts[startPos[0] - i - 1]
+    }
+    for (let j = 0; j < Math.abs(col); j++) {
+      res += colCosts[startPos[1] - j - 1]
+    }
+  }
+  return res
+}
+```
+
+### 725. 分隔链表
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230528210926.png)
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode[]}
+ */
+var splitListToParts = function (head, k) {
+  let current = head
+  let count = 0
+  // 计算总共有多少个节点
+  while (current) {
+    count++
+    current = current.next
+  }
+  // 计算链表个数列表
+  let countlist = new Array(k).fill(0)
+  let idx = 0
+  while (count > 0) {
+    countlist[idx] += 1
+    idx++
+    if (idx === k) {
+      idx = 0
+    }
+    count--
+  }
+
+  // 按照个数链表裁切链表 并把每段的头放入结果列表中
+  let res = new Array(k).fill(null)
+  current = head
+  for (let i = 0; i < countlist.length; i++) {
+    res[i] = current
+    let count = countlist[i]
+    while (count > 1) {
+      current = current.next
+      count--
+    }
+    let temp = current
+    if (current) {
+      current = current.next
+      temp.next = null
+    } else {
+      break
+    }
+  }
+  return res
+}
+```
+
+
+### 969. 煎饼排序
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182841.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182909.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182848.png)
