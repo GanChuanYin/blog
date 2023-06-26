@@ -49,11 +49,11 @@ body h2 {
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-  font-size: 24px;
+  font-size: 26px;
   border-bottom: 1px solid var(--cyanosis-border-color-2);
 }
 
-body h2:before {
+/* body h2:before {
   content: '「';
   position: absolute;
   top: -6px;
@@ -65,7 +65,7 @@ body h2:after {
   position: relative;
   top: 6px;
   right: auto;
-}
+} */
 
 body h3 {
   position: relative;
@@ -79,11 +79,11 @@ body h3 {
   transition: color 0.35s;
 }
 
-body h3:before {
+/* body h3:before {
   content: '»';
   padding-right: 6px;
   color: var(--cyanosis-strong-color);
-}
+} */
 
 body h4 {
   margin-top: 24px;
@@ -144,24 +144,6 @@ body hr {
   overflow: visible;
 }
 
-body hr:after {
-  content: '';
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  display: inline-block;
-  width: 60px;
-  height: 20px;
-  background-color: var(--cyanosis-bg-color);
-  background-image: url(logo-avatar.png);
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-position-x: center;
-  transition: background-color 0.5s;
-}
 
 body code {
   padding: 0.065em 0.4em;
@@ -456,7 +438,7 @@ body .contains-task-list input[type='checkbox']:checked:after {
   z-index: 2;
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
   body h1 {
     font-size: 24px;
   }
@@ -466,7 +448,7 @@ body .contains-task-list input[type='checkbox']:checked:after {
   body h3 {
     font-size: 18px;
   }
-}
+} */
 
 body div[class*='language-'].line-numbers-mode .line-numbers-wrapper {
   font-size: 14px;

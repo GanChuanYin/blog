@@ -5,8 +5,9 @@ permalink: /pages/ab3b30/
 categories:
   - 算法与数据结构
 tags:
-  - 
+  -
 ---
+
 ### 938. 二叉搜索树的范围和
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221208151951.png)
@@ -652,7 +653,6 @@ var halvesAreAlike = function (s) {
 }
 ```
 
-
 ## 面试题 01.09. 字符串轮转
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230604210452.png)
@@ -662,5 +662,60 @@ var halvesAreAlike = function (s) {
 ```javascript
 var isFlipedString = function (s1, s2) {
   return s1.length === s2.length && (s1 + s1).indexOf(s2) !== -1
+}
+```
+
+## 1217. 玩筹码
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230608154741.png)
+
+那么我们可以把初始每一个偶数位置的「筹码」看作一个整体，每一个奇数位置的「筹码」看作一个整体。因为我们的目标是最后将全部的「筹码」移动到同一个位置，那么最后的位置只有两种情况：
+
+- 移动到某一个偶数位置，此时的开销最小值就是初始奇数位置「筹码」的数量。
+- 移动到某一个奇数位置，此时的开销最小值就是初始偶数位置「筹码」的数量。
+
+那么这两种情况中的最小值就是最后将所有筹码移动到同一位置上所需要的最小代价。
+
+```javascript
+var minCostToMoveChips = function (position) {
+  let even = 0,
+    odd = 0
+  for (const pos of position) {
+    if ((pos & 1) !== 0) {
+      odd++
+    } else {
+      even++
+    }
+  }
+  return Math.min(odd, even)
+}
+```
+
+## 2423. 删除字符使频率相同
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230613153734.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230613153756.png)
+
+## 1752. 检查数组是否经排序和轮转得到
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230618154809.png)
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var check = function (nums) {
+  // 比较相邻元素（将数组看成环形，最后一个元素的下一个元素是第一个元素）
+  // 最多只能出现一次前一个数大于后一个数的情况。
+  let sign = 0
+  for (let i = 0; i < nums.length; i++) {
+    // 最后一个数的下一个数是第一个数
+    let next = i === nums.length - 1 ? nums[0] : nums[i + 1]
+    if (nums[i] > next) sign++
+    if (sign > 1) break
+  }
+  return sign <= 1
 }
 ```

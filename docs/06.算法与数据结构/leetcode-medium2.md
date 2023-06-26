@@ -781,7 +781,6 @@ var splitListToParts = function (head, k) {
 }
 ```
 
-
 ### 969. 煎饼排序
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182841.png)
@@ -789,3 +788,178 @@ var splitListToParts = function (head, k) {
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182909.png)
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182848.png)
+
+### 443. 压缩字符串
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230609154026.png)
+
+```javascript
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function (chars) {
+  let idx = 0
+  while (idx < chars.length) {
+    let tail = idx
+    while (chars[idx] === chars[tail + 1]) {
+      tail++
+    }
+    if (tail !== idx) {
+      // 有重复字符 需要压缩
+      let countStr = tail - idx + 1 + '' // 如果个数超过10 需要 压缩成 [ 'a', 'b', '1', '2' ]
+      chars.splice(idx + 1, tail - idx, ...countStr.split(''))
+      idx += countStr.length + 1 // 指针挪到下一组char
+    } else {
+      // 只有一个字符 不需要压缩
+      idx++
+    }
+  }
+  return chars.length
+}
+```
+
+### 1530. 好叶子节点对的数量
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230611181448.png)
+
+```javascript
+var countPairs = function (root, distance) {
+  let ret = 0
+  const dfs = (root) => {
+    if (!root) return []
+    if (!root.left && !root.right) return [0] // 叶子节点
+    // 求出叶子节点到当前节点的距离
+    const left = dfs(root.left).map((i) => i + 1)
+    const right = dfs(root.right).map((i) => i + 1)
+    // 然后找出所有小于 dis 的节点对
+    for (let l of left) {
+      for (let r of right) {
+        if (l + r <= distance) ret++
+      }
+    }
+    // 将叶子节点合起来返回回去
+    return [...left, ...right]
+  }
+  dfs(root)
+  return ret
+}
+```
+
+## 2625. 扁平化嵌套数组
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230617172006.png)
+
+```javascript
+var flat = function (arr, n) {
+  if (n <= 0) return arr
+  let res = []
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      // 如果是数组 递归flat
+      if (n > 1) {
+        res = res.concat(flat(arr[i], n - 1))
+      } else {
+        res.push(...arr[i])
+      }
+    } else {
+      res.push(arr[i])
+    }
+  }
+  return res
+}
+```
+
+优化版本
+
+```javascript
+var flat = function (arr, n) {
+  while (arr.some((item) => Array.isArray(item)) && n > 0) {
+    arr = [].concat(...arr)
+    n--
+  }
+  return arr
+}
+```
+
+## 1110. 删点成林
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230617185944.png)
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number[]} to_delete
+ * @return {TreeNode[]}
+ */
+var delNodes = function (root, to_delete) {
+  let nodes = search(root)
+  let res = []
+  nodes.forEach((node, idx) => {
+    // 当前节点子节点如果应该删除 就去掉指针
+    if (node.left && to_delete.includes(node.left.val)) node.left = null
+    if (node.right && to_delete.includes(node.right.val)) node.right = null
+    // 如果当前节点应该被删除 处理左右节点且去掉其指针
+    if (to_delete.includes(node.val)) {
+      // 节点存在且不在to_delete 证明是新子树 计入结果
+      if (node.left && !to_delete.includes(node.left.val)) {
+        res.push(node.left)
+      }
+      if (node.right && !to_delete.includes(node.right.val)) {
+        res.push(node.right)
+      }
+      node.left = null
+      node.right = null
+    } else if (idx === 0) {
+      // 根节点 且不在to_delete中
+      res.push(node)
+    }
+  })
+  return res
+}
+
+var search = function (root, list) {
+  if (!root) return []
+  return [root, ...search(root.left), ...search(root.right)]
+}
+```
+
+## 971. 翻转二叉树以匹配先序遍历
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230618153820.png)
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230618153832.png)
+
+```javascript
+var flipMatchVoyage = function (root, voyage) {
+  let ans = []
+  let i = 0
+  function dfs(node) {
+    if (!node) return true
+    const val = voyage[i]
+    i++
+    // 判断当前节点的值是否和先序顺序一样
+    if (val !== node.val) return false
+    // 左子节点的值和先序的值不相同，说明需要进行反转
+    if (node.left && node.left.val !== voyage[i]) {
+      // 记录反转点
+      ans.push(val)
+      // 模拟反转
+      return dfs(node.right) && dfs(node.left)
+    } else {
+      // 无反转
+      return dfs(node.left) && dfs(node.right)
+    }
+  }
+  // 返回结果为false的话，说明不匹配，返回[-1]
+  return dfs(root) ? ans : [-1]
+}
+```
