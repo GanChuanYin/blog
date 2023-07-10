@@ -963,3 +963,88 @@ var flipMatchVoyage = function (root, voyage) {
   return dfs(root) ? ans : [-1]
 }
 ```
+
+### 剑指 Offer II 021. 删除链表的倒数第 n 个结点
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230708152714.png)
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function (head, n) {
+  let nodes = []
+  let current = head
+  while (current) {
+    nodes.push(current)
+    current = current.next
+  }
+  // 如果删除的是第一个节点
+  if (n === nodes.length) return nodes[0].next
+  // 删除其它节点
+  let len = nodes.length
+  let front = len - n - 1
+  let end = len - n + 1
+  nodes[front].next = nodes[end] || null
+  return head
+}
+```
+
+### 1701. 平均等待时间
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230708154757.png)
+
+%
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230708154652.png)
+
+## 剑指 Offer II 054. 所有大于等于节点的值之和
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709141543.png)
+
+%
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709141528.png)
+
+### 153. 寻找旋转排序数组中的最小值
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709141936.png)
+
+%
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findMin = function (nums) {
+  let low = 0
+  let high = nums.length - 1
+  while (low < high) {
+    const pivot = low + Math.floor((high - low) / 2)
+    if (nums[pivot] < nums[high]) {
+      high = pivot
+    } else {
+      low = pivot + 1
+    }
+  }
+  return nums[low]
+}
+```
+
+## 剑指 Offer II 059. 数据流的第 K 大数值
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709154128.png)
+
+%
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709154106.png)

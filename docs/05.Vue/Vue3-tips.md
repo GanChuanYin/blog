@@ -68,8 +68,40 @@ If using `<script setup>`, the presence of top-level await expressions automatic
   const posts = await res.json()
 </script>
 
-<template>
-  {{ posts }}
-</template>
+<template> {{ posts }} </template>
 ```
 
+### < script setup >模式子组件必须使用 defineExpose 暴露出你需要让外部访问的方法或参数
+
+```html
+<!-- 子组件 -->
+<template>
+  <el-drawer> </el-drawer>
+</template>
+<script setup>
+  const resetFields = () => {
+    // 业务代码
+  }
+  defineExpose({
+    resetFields
+  })
+</script>
+
+<!-- 父组件 -->
+
+<template>
+  <div class="goods-info flex-column">
+    <LhDrawer ref="lhDra" />
+  </div>
+</template>
+<script setup>
+  import { ref, onMounted } from 'vue'
+  const lhDra = ref(null)
+
+  onMounted(() => {
+    console.log(lhDrawer, 'ref-data')
+  })
+</script>
+```
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230627111933.png)
