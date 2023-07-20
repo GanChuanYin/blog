@@ -1048,3 +1048,13 @@ var findMin = function (nums) {
 %
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709154106.png)
+
+
+### 2583. 二叉树中的第 K 大层和
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230715175334.png)
+
+%
+
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230715175246.png)
+
