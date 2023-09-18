@@ -5,8 +5,9 @@ permalink: /pages/c6a1c0/
 categories:
   - Vue
 tags:
-  - 
+  -
 ---
+
 ## Vue.nextTick 的原理和用途
 
 首先得了解一下前置知识
@@ -30,7 +31,7 @@ tags:
 
 - 上一步我们出队的是一个 macro-task，这一步我们处理的是 micro-task。但需要注意的是：当 macro-task 出队时，任务是**一个一个**执行的；而 micro-task 出队时，任务是**一队一队**执行的（如下图所示）。因此，我们处理 micro 队列这一步，会逐个执行队列中的任务并把它出队，直到队列被清空。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221029140041.png)
+![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230911145148.png)
 
 - <font color=#3498db size=4>`执行渲染操作，更新界面`</font>（重点）。
 
@@ -70,7 +71,7 @@ Promise.resolve().then(task)
 <font color=#dd0000 size=4>`当我们需要在异步任务中实现 DOM 修改时，把它包装成 micro 任务是相对明智的选择`</font>
 。
 
-### Vue的异步更新策略
+### Vue 的异步更新策略
 
 什么是异步更新？
 
@@ -227,7 +228,7 @@ vm.message = 'changed'
 console.log(vm.$el.textContent) // 并不会得到'changed'
 
 //这样可以，nextTick里面的代码会在DOM更新后执行
-Vue.nextTick(function() {
+Vue.nextTick(function () {
   console.log(vm.$el.textContent) //可以得到'changed'
 })
 ```
@@ -236,7 +237,7 @@ Vue.nextTick(function() {
 
 ![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221029150452.png)
 
-可以看到 通过 Vue.nextTick(cb)  cb中可以获取到改变后的 DOM
+可以看到 通过 Vue.nextTick(cb) cb 中可以获取到改变后的 DOM
 
 ### 使用场景
 
@@ -283,5 +284,3 @@ getMyWidth() {
   })
 }
 ```
-
-

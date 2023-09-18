@@ -16,22 +16,23 @@ tags:
 
 ### 镜像
 
-删除镜像
-
 ```shell
+
+# 删除镜像
 docker rmi <image id>
 
-镜像重命名
+# 镜像重命名
 docker tag <镜像 id> <名称>
 
-build 镜像 （项目根目录执行 预先配置好 Dockerfile）
+# build 镜像 （项目根目录执行 预先配置好 Dockerfile）
 docker build -t <镜像名> .
 
-镜像打包
-docker save -o node-server-template.tar <'imageid'>
+# run 镜像
+docker run -d -p 4000:3000 <镜像名>
+# >注意: 这里4000为宿主机的端口, 3000为docker内端口
 
-run 镜像
-docker run -d -p 3000:3000 <镜像名>
+# 保存镜像为tar包
+docker save -o ./chatgpt-ui.tar chatgpt-ui:latest
 ```
 
 ### 容器
