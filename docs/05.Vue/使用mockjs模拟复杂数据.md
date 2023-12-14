@@ -24,7 +24,7 @@ tags:
 
 我将 mockjs 放在了 src 目录下
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220913103746.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220913103746.png)
 
 然后在 main.js 中引入
 

@@ -12,7 +12,7 @@ tags:
 
 ### 大纲
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Docker-Commands-Diagram.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Docker-Commands-Diagram.png)
 
 ### 镜像
 

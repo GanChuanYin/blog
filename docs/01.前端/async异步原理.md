@@ -81,7 +81,7 @@ async function httpRequest() {
 
 上述例子, await 关键字并不会导致程序阻塞，代码仍然是异步的，而 await 只是掩盖了这个事实，这就意味着任何使用 await 的代码本身都是异步的。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221205235940.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221205235940.png)
 
 可以看出，<font color=#dd0000 size=4>async 函数返回的是 Promise 对象</font> 。如果异步函数使用 return 关键字返回了值（如果没有 return 则会返回 undefined），这个值则会被 Promise.resolve() 包装成 Promise 对象。 <font color=#dd0000 size=4>异步函数始终返回 Promise 对象</font> 。
 
@@ -133,7 +133,7 @@ const caller = async function () {
 caller()
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221206104129.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221206104129.png)
 
 直接报错了, 因为代码执行到
 
@@ -168,7 +168,7 @@ const caller = async function () {
 caller()
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221206104526.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221206104526.png)
 
 可以看出
 

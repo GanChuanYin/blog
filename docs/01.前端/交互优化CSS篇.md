@@ -11,7 +11,7 @@ tags:
 
 一些需要需要文字选中的地方特殊处理, 如下图
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jun-02-2022-16-28-03.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Jun-02-2022-16-28-03.gif)
 
 ```html
 <ul class="g-container">

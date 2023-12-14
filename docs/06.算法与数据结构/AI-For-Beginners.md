@@ -15,7 +15,7 @@ If we want a computer to behave like a human, we need somehow to model inside a 
 
 > To be able to program intelligence into a machine, we need to understand how our own processes of making decisions work. If you do a little self-introspection, you will realize that there are some processes that happen subconsciously – eg. we can distinguish a cat from a dog without thinking about it - while some others involve reasoning.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230202165557.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230202165557.png)
 
 ## Symbolic
 
@@ -35,11 +35,11 @@ Most often, we do not strictly define knowledge, but we align it with other rela
 
 - Wisdom is yet one more level of our understanding of the world, and it represents meta-knowledge, eg. some notion on how and when the knowledge should be used.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230202165843.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230202165843.png)
 
 Thus, the problem of knowledge representation is to find some effective way to represent knowledge inside a computer in the form of data, to make it automatically usable. This can be seen as a spectrum:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230202165925.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230202165925.png)
 
 > On the left, there are very simple types of knowledge representations that can be effectively used by computers. The simplest one is algorithmic, when knowledge is represented by a computer program. This, however, is not the best way to represent knowledge, because it is not flexible. Knowledge inside our head is often non-algorithmic.
 
@@ -50,7 +50,7 @@ Nowadays, AI is often considered to be a synonym for Machine Learning or Neural 
 
 ## Neural Networks
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230202170129.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230202170129.png)
 
 As we discussed in the introduction, one of the ways to achieve intelligence is to train a computer model or an artificial brain. Since the middle of 20th century, researchers tried different mathematical models, until in recent years this direction proved to by hugely successful. Such mathematical models of the brain are called neural networks.
 

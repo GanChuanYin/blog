@@ -149,7 +149,7 @@ It is a self-contained unit with the following parts:
 
 This is a simple representation of the concept of "one-way data flow":
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220720101029.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220720101029.png)
 
 However, the simplicity starts to break down when we have <font color=#3498db size=4>`multiple components that share a common state:`</font>
 

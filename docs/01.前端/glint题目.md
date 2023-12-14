@@ -32,7 +32,7 @@ UDP: 语音通话 视频会议
 
 为了解决上述问题引入了 IP 地址
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20211114230246.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20211114230246.png)
 
 IP 地址的一个重要作用就是确定设备的子网位置，ip 地址表达的是在网络中的位置，类似于国家+城市名+道路号的概念 (提供 ip 地址就能定位请求来源于哪个城市) , mac 地址就好像个人的身份证号
 
@@ -64,7 +64,7 @@ Option 请求通常用于以下几个方面：
 
 ### 描述一下 Https 传输数据的过程 越详细越好
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20211123181028.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20211123181028.png)
 
 ## Css
 
@@ -154,7 +154,7 @@ Object.entries(obj) // [["name","ned"],["like","man"]]
 常见 macro-task： setTimeout、setInterval、 setImmediate、script（整体代码）、 I/O 操作、UI 渲染等。  
 常见 micro-task: process.nextTick、Promise、MutationObserver 等。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230911145148.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230911145148.png)
 
 ### 以下代码将输出什么? 背后原理是什么?
 

@@ -28,7 +28,7 @@ Vue3 中 setup 代替了 beforeCreated 和 created 钩子，同时加入了 setu
 
 要实现的功能如下
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Apr-27-2022-16-38-19.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Apr-27-2022-16-38-19.gif)
 
 分页数据请求 + 滚动到底部加载下一页
 

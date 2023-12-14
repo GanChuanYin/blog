@@ -1,6 +1,6 @@
 工作中遇到一个 CPU 监控大数据渲染卡顿的问题
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230511142520.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230511142520.png)
 
 ### 1. echarts sampling
 
@@ -8,7 +8,7 @@
 
 折线图在数据量远大于像素点时候的降采样策略，开启后可以有效的优化图表的绘制效率，默认关闭，也就是全部绘制不过滤数据点。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230510214511.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230510214511.png)
 
 这里重点研究一下 Largest-Triangle-Three-Bucket 算法
 
@@ -18,13 +18,13 @@
 
 > 5000 个数据点绘制图的折线图
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230510214925.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230510214925.png)
 
 为了能够看到图形的整体，我们就要隐藏一些点，仅展示那些能够代表其他的点，或者是创建能够代表这些点的新数据点，这就是降采样算法解决的问题。
 
 > 采用 LTTB 算法，5000 数据点降采样到 888 个数据点绘制的折线图，几乎完全一致
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230510215103.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230510215103.png)
 
 ### 3. Largest-Triangle-Three-Bucket 最大三角形三桶算法
 
@@ -42,7 +42,7 @@
 
 最大三角形面积，是使用的哪三个桶，怎么取数据，先看一张图。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230510215234.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230510215234.png)
 
 虚竖线把区分成三部分，分别代表三个桶的数据区域。
 
@@ -63,4 +63,4 @@
 
 超大数据量的图形可视化是非常有意思的话题，也是性能优化中经常遇到的核心点。结合性能、复杂度、准确度等指标，在绝大多数情况下，LTTB 算法的表现都是最优异的，也就是基于场景的不同，优先考虑 LTTB 算法，不满足需求时，再尝试其他算法。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230510215531.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230510215531.png)

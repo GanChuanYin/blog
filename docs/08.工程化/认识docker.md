@@ -18,7 +18,7 @@ docker 可以让应用程序在不同环境下运行更加容易和高效。它�
 
 举个例子：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230517165735.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230517165735.png)
 
 假设你是一个餐馆老板，你想要在不同的地方开分店，但每个地方的厨房设备、厨师和配料都不同。
 
@@ -32,7 +32,7 @@ docker 可以让应用程序在不同环境下运行更加容易和高效。它�
 
 ### 2. 认识 docker
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230517170138.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230517170138.png)
 
 Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 
@@ -158,7 +158,7 @@ CMD ["node", "/home/node-docker/index.js", "production"]
 
 docker 的 logo 就很形象，一头载满集装箱的蓝鲸
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230517170138.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230517170138.png)
 
 蓝鲸就是 docker，集中箱就是一个个镜像
 

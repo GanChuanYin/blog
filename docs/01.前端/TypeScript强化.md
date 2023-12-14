@@ -180,7 +180,7 @@ function printLength<T>(arg: T): T {
 
 因为不确定 T 是否有 length 属性，会报错：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220506164619.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220506164619.png)
 
 那么现在我想约束这个泛型，一定要有 length 属性，怎么办？
 
@@ -209,7 +209,7 @@ const obj = printLength({ length: 10 })
 
 只要你有 length 属性，都符合约束，那就不管你是 str，arr 还是 obj，都没问题。 如果没有 length，就会报错
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220506165044.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220506165044.png)
 
 ### 2.4 泛型的一些应用
 
@@ -239,7 +239,7 @@ const s1 = new Stack<number>()
 
 这样，入栈一个字符串就会报错：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220506165357.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220506165357.png)
 
 这是非常灵活的，如果需求变了，入栈和出栈都要是 string 类型，在定义实例的时候改一下就好了：
 
@@ -306,13 +306,13 @@ request('/book/comment', {
 ```
 
 如果路径写错了
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220506172358.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220506172358.png)
 
 如果参数少了
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220506170623.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220506170623.png)
 
 如果参数类型错了
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220506170656.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220506170656.png)
 
 ### 2.5 小结
 
@@ -326,7 +326,7 @@ request('/book/comment', {
 
 声明文件必需以  .d.ts  为后缀。一般来说，TypeScript 会解析项目中所有的  \*.ts  文件，因此也包含以  .d.ts  结尾的声明文件。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518101956.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518101956.png)
 
 只要 tsconfig.json  中的配置包含了  typing.d.ts  文件，那么其他所有  \*.ts  文件就都可以获得声明文件中的类型定义。
 
@@ -358,49 +358,49 @@ TypeScript 在尝试访问  user.info  前，会先尝试访问  user ，**�
 
 目前，可选链支持以下语法操作：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518103621.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518103621.png)
 
 ## 5. 内置工具范型
 
 TypesScript 中内置了很多工具泛型，前面介绍过 Readonly、Extract 这两种，内置的泛型在 TypeScript 内置的 lib.es5.d.ts 中都有定义，所以不需要任何依赖就可以直接使用。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518105020.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518105020.png)
 
 ### 5.1 Partial
 
 将一个接口的所有属性设置为可选状态
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518105114.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518105114.png)
 
 ### 5.2 Required
 
 作用刚好与 Partial 相反，就是将接口中所有可选的属性改为必须的：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518111123.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518111123.png)
 
 ### 5.3 Extract
 
 提取公共属性
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518111028.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518111028.png)
 
 ### 5.4 Exclude
 
 排除某些属性
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518110848.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518110848.png)
 
 ### 5.5 Pick
 
 主要用于提取接口的某几个属性：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518111233.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518111233.png)
 
 ### 5.6 Omit
 
 Omit 的作用刚好和 Pick 相反，主要用于剔除接口的某几个属性：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220518111601.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220518111601.png)
 
 ## 6. unknown
 

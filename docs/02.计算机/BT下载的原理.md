@@ -18,7 +18,7 @@ tags:
 ## 架构
 
 架构图:
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221201170502.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221201170502.png)
 
 在架构图中心的是 Tracker, <font color=#3498db size=4>`Tracker 并不提供下载文件, 只告诉用户有效的下载地址`</font>
 
@@ -46,6 +46,6 @@ tags:
 
 迅雷之所以叫吸血雷，是因为 <font color=#3498db size=4>`迅雷一边吸取其他 BT 软件用户上传速度，一边却屏蔽其他 BT 软件，只把上传速度提供给其他迅雷用户 `</font> ，所以对于其他客户端来说，迅雷只进不出，俗称吸血雷，长此以往形成恶性循环，用迅雷的人越来越多，其他 BT 软件下载速度越来越慢。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221201175003.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221201175003.png)
 
 刚才我取消屏蔽迅雷后做种时截的图，迅雷用户一直吸我提供的上传，而下载进度永远为 0.0%

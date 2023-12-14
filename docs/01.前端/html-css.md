@@ -48,7 +48,7 @@ sayHi();
 
 下图清晰地展示了三种 `script` 的过程：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230404170722.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230404170722.png)
 
 ### 两种盒模型 content-box、border-box 的区别？
 
@@ -57,11 +57,11 @@ CSS3 box-sizing 中的盒模型有以下两种：
 - `content-box` 标准盒模型 ： 只包含 content
 - `border-box` IE 盒模型 ： content + padding + border
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230404180428.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230404180428.png)
 
 Example:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230404180503.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230404180503.png)
 
 ### CSS 选择器权重怎么计算的？ 
 

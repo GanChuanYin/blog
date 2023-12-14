@@ -36,7 +36,7 @@ ARQ 协议使用两种方式来保证可靠性:
 
 1. stop & wait 停止等待 ARQ 协议
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230105174349.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230105174349.png)
 
 它的基本原理就是每发完一个分组就停止发送，等待对方确认（回复 ACK）。
 如果过了一段时间（超时时间后），还是没有收到 ACK 确认，说明没有发送成功，需要重新发送，直到收到确认后再发下一个分组；
@@ -46,13 +46,13 @@ ARQ 协议使用两种方式来保证可靠性:
 
 连续 ARQ 协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组可以连续发送出去，而不需要等待对方确认。接收方一般采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已经正确收到了。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230105175329.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230105175329.png)
 
 ### 1.2 流量控制
 
 和上节连续 ARQ 协议的滑动窗口概念对应:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230105180033.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230105180033.png)
 
 我们只需要控制窗口大小即可控制流量.
 

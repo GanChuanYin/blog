@@ -47,7 +47,7 @@ web 端的网络请求底层由 `XMLHttpRequests` 实现, 而 node 端是 `Http 
 
 > 如下所示是 Axios 的源码目录及各个文件的作用
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103224312.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230103224312.png)
 
 今天重点关注在 `adapter` 部分
 

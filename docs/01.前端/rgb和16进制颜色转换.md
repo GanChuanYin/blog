@@ -19,7 +19,7 @@ tags:
 
 实际计算中我们要用二进制的左移运算
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221009105338.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221009105338.png)
 
 转换一下
 
@@ -30,7 +30,7 @@ x * 16^2 = x * 2 ^ 8   // 左移18位
 
 为了求 FFFFFF, 我们可以利用位运算 `或` FF0000 | FF00 | FF
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221009105748.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221009105748.png)
 
 所以最后的表达式为
 

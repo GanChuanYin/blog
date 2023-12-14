@@ -11,7 +11,7 @@ tags:
 
 在 leetcode 上做了一个题
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220906163323.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220906163323.png)
 
 我的代码
 
@@ -46,7 +46,7 @@ var rotate = function(nums, k) {
 
 自我感觉没啥问题, 可是提交后
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220906163753.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220906163753.png)
 
 无情`超时`
 
@@ -81,7 +81,7 @@ var rotate = function(nums, k) {
 }
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220906164014.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220906164014.png)
 
 成功通过
 
@@ -119,7 +119,7 @@ console.timeEnd(LENGTH + ' has')
 
 运行结果如下
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220906165739.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220906165739.png)
 
 果然, 我的猜想成立
 

@@ -9,7 +9,7 @@ tags:
 ---
 ## 1. 效果
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jun-24-2022-16-31-12.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Jun-24-2022-16-31-12.gif)
 
 ## 2. 原理
 
@@ -64,11 +64,11 @@ tags:
 
 设置旋转的中心点在左侧的话是最简单的， 只需要将第一、三条杠分别旋转 45、-45 度即可
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220624163615.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220624163615.png)
 
 transform-origin 也支持方向 + 数值的组合设置
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220624163711.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220624163711.png)
 
 > [transform-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
 

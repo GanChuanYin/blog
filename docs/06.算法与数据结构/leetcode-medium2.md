@@ -10,7 +10,7 @@ tags:
 
 ## 1008. 前序遍历构造二叉搜索树
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221123113841.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221123113841.png)
 
 ```javascript
 /**
@@ -37,7 +37,7 @@ var bstFromPreorder = function (preorder) {
 
 ## 1049. 最后一块石头的重量 II
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221124110516.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221124110516.png)
 
 ```javascript
 var lastStoneWeightII = function (stones) {
@@ -68,7 +68,7 @@ var lastStoneWeightII = function (stones) {
 
 ## 877. 石子游戏
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221207152504.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221207152504.png)
 
 动态规划
 
@@ -103,9 +103,9 @@ stoneGame([5, 3, 4, 5])
 
 ## 861. 翻转矩阵后的得分
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221207154904.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221207154904.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221207154948.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221207154948.png)
 
 ```javascript
 var matrixScore = function (grid) {
@@ -130,7 +130,7 @@ var matrixScore = function (grid) {
 
 ## 1043. 分隔数组以得到最大和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221208174658.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221208174658.png)
 
 ```javascript
 /**
@@ -158,7 +158,7 @@ var maxSumAfterPartitioning = function (arr, k) {
 
 ## 1038. 从二叉搜索树到更大和树
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221210213625.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221210213625.png)
 
 ```javascript
 /**
@@ -198,7 +198,7 @@ var search = function (node, list) {
 
 ## 973. 最接近原点的 K 个点
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212131428854.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/202212131428854.png)
 
 ```javascript
 /**
@@ -220,7 +220,7 @@ var kClosest = function (points, k) {
 
 ## 1109. 航班预订统计
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/202212141701017.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/202212141701017.png)
 
 ```javascript
 /**
@@ -244,7 +244,7 @@ var corpFlightBookings = function (bookings, n) {
 
 ## 1094. 拼车
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221215214554.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221215214554.png)
 
 ```javascript
 /**
@@ -275,7 +275,7 @@ var carPooling = function (trips, capacity) {
 
 ## 1190. 反转每对括号间的子串
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221220135621.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221220135621.png)
 
 ```javascript
 /**
@@ -309,7 +309,7 @@ var reverseParentheses = function (s) {
 
 ## 1282. 用户分组
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221220153832.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221220153832.png)
 
 ```javascript
 /**
@@ -336,7 +336,7 @@ var getDecimalValue = function (head) {
 
 ## 1302. 层数最深叶子节点的和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221112714.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221221112714.png)
 
 ```javascript
 /**
@@ -376,7 +376,7 @@ var getDepth = function (node) {
 
 ## 1305. 两棵二叉搜索树中的所有元素
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221221151902.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221221151902.png)
 
 ```javascript
 /**
@@ -410,7 +410,7 @@ var search = function (node, list) {
 
 ## 1409. 查询带键的排列
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224174124.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221224174124.png)
 
 ```javascript
 /**
@@ -439,7 +439,7 @@ var processQueries = function (queries, m) {
 
 ## 1441. 用栈操作构建数组
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225134026.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221225134026.png)
 
 ```javascript
 /**
@@ -473,7 +473,7 @@ buildArray([1, 3], 3)
 
 ## 1448. 统计二叉树中好节点的数目
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225135801.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221225135801.png)
 
 ```javascript
 /**
@@ -505,7 +505,7 @@ var search = function (node, max) {
 
 ## 1525. 字符串的好分割数目
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230171053.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221230171053.png)
 
 ```javascript
 /**
@@ -544,7 +544,7 @@ var numSplits = function (s) {
 
 ## 1630. 等差子数组
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102102739.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230102102739.png)
 
 ```javascript
 /**
@@ -576,7 +576,7 @@ var check = function (arr) {
 
 ## 1669. 合并两个链表
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102180821.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230102180821.png)
 
 ```javascript
 /**
@@ -614,7 +614,7 @@ var mergeInBetween = function (list1, a, b, list2) {
 
 ## 1689. 十-二进制数的最少数目
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103154505.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230103154505.png)
 
 ```javascript
 /**
@@ -633,7 +633,7 @@ var minPartitions = function (n) {
 
 ## 1753. 移除石子的最大得分
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230105105538.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230105105538.png)
 
 ```javascript
 /**
@@ -670,9 +670,9 @@ var maximumScore = function (a, b, c) {
 
 ## 2087. 网格图中机器人回家的最小代价
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230526161155.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230526161155.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230526161210.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230526161210.png)
 
 ```javascript
 /**
@@ -724,7 +724,7 @@ var minCost = function (startPos, homePos, rowCosts, colCosts) {
 
 ### 725. 分隔链表
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230528210926.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230528210926.png)
 
 ```javascript
 /**
@@ -783,15 +783,15 @@ var splitListToParts = function (head, k) {
 
 ### 969. 煎饼排序
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182841.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230601182841.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182909.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230601182909.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230601182848.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230601182848.png)
 
 ### 443. 压缩字符串
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230609154026.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230609154026.png)
 
 ```javascript
 /**
@@ -821,7 +821,7 @@ var compress = function (chars) {
 
 ### 1530. 好叶子节点对的数量
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230611181448.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230611181448.png)
 
 ```javascript
 var countPairs = function (root, distance) {
@@ -848,7 +848,7 @@ var countPairs = function (root, distance) {
 
 ## 2625. 扁平化嵌套数组
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230617172006.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230617172006.png)
 
 ```javascript
 var flat = function (arr, n) {
@@ -884,7 +884,7 @@ var flat = function (arr, n) {
 
 ## 1110. 删点成林
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230617185944.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230617185944.png)
 
 ```javascript
 /**
@@ -934,9 +934,9 @@ var search = function (root, list) {
 
 ## 971. 翻转二叉树以匹配先序遍历
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230618153820.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230618153820.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230618153832.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230618153832.png)
 
 ```javascript
 var flipMatchVoyage = function (root, voyage) {
@@ -966,7 +966,7 @@ var flipMatchVoyage = function (root, voyage) {
 
 ### 剑指 Offer II 021. 删除链表的倒数第 n 个结点
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230708152714.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230708152714.png)
 
 ```javascript
 /**
@@ -1001,23 +1001,23 @@ var removeNthFromEnd = function (head, n) {
 
 ### 1701. 平均等待时间
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230708154757.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230708154757.png)
 
 %
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230708154652.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230708154652.png)
 
 ## 剑指 Offer II 054. 所有大于等于节点的值之和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709141543.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230709141543.png)
 
 %
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709141528.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230709141528.png)
 
 ### 153. 寻找旋转排序数组中的最小值
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709141936.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230709141936.png)
 
 %
 
@@ -1043,18 +1043,18 @@ var findMin = function (nums) {
 
 ## 剑指 Offer II 059. 数据流的第 K 大数值
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709154128.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230709154128.png)
 
 %
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230709154106.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230709154106.png)
 
 
 ### 2583. 二叉树中的第 K 大层和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230715175334.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230715175334.png)
 
 %
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230715175246.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230715175246.png)
 

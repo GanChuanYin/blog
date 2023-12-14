@@ -11,9 +11,9 @@ tags:
 
 Shadowsocks 使用 PAC 自动模式时，意思是代理自动配置，或智能分流代理，其通过一个包含代理规则列表的 pac 文件，来控制哪些 IP、域名的流量走代理，哪些直连，以达到智能分流代理上网的目的。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714105634.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714105634.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714111459.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714111459.png)
 
 ### 常用规则说明
 
@@ -82,7 +82,7 @@ example.com|
 
 举个栗子：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714111914.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714111914.png)
 
 <font color=#dd0000 size=4>注意:</font>
 

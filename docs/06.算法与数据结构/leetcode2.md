@@ -10,7 +10,7 @@ tags:
 
 ### 938. 二叉搜索树的范围和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221208151951.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221208151951.png)
 
 ```javascript
 /**
@@ -47,7 +47,7 @@ var search = function (node, nums, low, high) {
 
 ## 942. 增减字符串匹配
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221208154225.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221208154225.png)
 
 ```javascript
 /**
@@ -77,7 +77,7 @@ var diStringMatch = function (s) {
 
 ## 993. 二叉树的堂兄弟节点
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221210204704.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221210204704.png)
 
 ```javascript
 /**
@@ -118,7 +118,7 @@ var getPath = function (node, path, temp, target) {
 
 ## 976. 三角形的最大周长
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221213151004.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221213151004.png)
 
 ```javascript
 /**
@@ -147,7 +147,7 @@ var largestPerimeter = function (nums) {
 
 ## 1379. 找出克隆二叉树中的相同节点
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221224112746.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221224112746.png)
 
 ```javascript
 /**
@@ -176,7 +176,7 @@ var getTargetCopy = function (original, cloned, target) {
 
 ## 1446. 连续字符
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225134058.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221225134058.png)
 
 ```javascript
 /**
@@ -202,7 +202,7 @@ var maxPower = function (s) {
 
 ## 1450. 在既定时间做作业的学生人数
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225135916.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221225135916.png)
 
 ```javascript
 /**
@@ -222,7 +222,7 @@ var busyStudent = function (startTime, endTime, queryTime) {
 
 ## 1460. 通过翻转子数组使两个数组相等
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221225171004.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221225171004.png)
 
 ```javascript
 /**
@@ -244,7 +244,7 @@ var canBeEqual = function (target, arr) {
 
 ## 1464. 数组中两元素的最大乘积
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221226223413.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221226223413.png)
 
 ```javascript
 /**
@@ -259,7 +259,7 @@ var maxProduct = function (nums) {
 
 ## 1470. 重新排列数组
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221226223439.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221226223439.png)
 
 ```javascript
 /**
@@ -279,7 +279,7 @@ var shuffle = function (nums, n) {
 
 ## 1455. 检查单词是否为句中其他单词的前缀
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221228141017.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221228141017.png)
 
 ```javascript
 /**
@@ -300,7 +300,7 @@ var isPrefixOfWord = function (sentence, searchWord) {
 
 ## 1475. 商品折扣后的最终价格
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221228170345.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221228170345.png)
 
 ```javascript
 /**
@@ -326,7 +326,7 @@ var finalPrices = function (prices) {
 
 ## 1502. 判断能否形成等差数列
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230162258.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221230162258.png)
 
 ```javascript
 /**
@@ -345,7 +345,7 @@ var canMakeArithmeticProgression = function (arr) {
 
 ## 1528. 重新排列字符串
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230171811.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221230171811.png)
 
 ```javascript
 /**
@@ -365,7 +365,7 @@ var restoreString = function (s, indices) {
 
 ## 1588. 所有奇数长度子数组的和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221230175418.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221230175418.png)
 
 ```javascript
 /**
@@ -392,7 +392,7 @@ var sumOddLengthSubarrays = function (arr) {
 
 ## 1550. 存在连续三个奇数的数组
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101143533.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230101143533.png)
 
 ```javascript
 /**
@@ -415,7 +415,7 @@ var threeConsecutiveOdds = function (arr) {
 
 ## 1603. 设计停车系统
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101153257.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230101153257.png)
 
 ```javascript
 /**
@@ -455,7 +455,7 @@ ParkingSystem.prototype.addCar = function (carType) {
 
 ## 1619. 删除某些元素后的数组均值
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101224140.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230101224140.png)
 
 ```javascript
 /**
@@ -472,7 +472,7 @@ var trimMean = function (arr) {
 
 ## 1624. 两个相同字符之间的最长子字符串
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230101225017.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230101225017.png)
 
 ```javascript
 /**
@@ -496,7 +496,7 @@ var maxLengthBetweenEqualCharacters = function (s) {
 
 ## 1636. 按照频率将数组升序排序
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102104727.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230102104727.png)
 
 ```javascript
 /**
@@ -527,7 +527,7 @@ var frequencySort = function (nums) {
 
 ## 1662. 检查两个字符串数组是否相等
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230102152610.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230102152610.png)
 
 ```javascript
 /**
@@ -542,7 +542,7 @@ var arrayStringsAreEqual = function (word1, word2) {
 
 ## 1678. 设计 Goal 解析器
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103153551.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230103153551.png)
 
 ```javascript
 /**
@@ -577,7 +577,7 @@ var interpret = function (command) {
 
 ## 1684. 统计一致字符串的数目
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230103155323.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230103155323.png)
 
 ```javascript
 /**
@@ -607,7 +607,7 @@ var countConsistentStrings = function (allowed, words) {
 
 ## 1688. 比赛中的配对次数
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230104213856.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230104213856.png)
 
 ```javascript
 /**
@@ -632,7 +632,7 @@ var numberOfMatches = function (n) {
 
 ## 1704. 判断字符串的两半是否相似
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230104214518.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230104214518.png)
 
 ```javascript
 /**
@@ -655,9 +655,9 @@ var halvesAreAlike = function (s) {
 
 ## 面试题 01.09. 字符串轮转
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230604210452.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230604210452.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230604210436.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230604210436.png)
 
 ```javascript
 var isFlipedString = function (s1, s2) {
@@ -667,7 +667,7 @@ var isFlipedString = function (s1, s2) {
 
 ## 1217. 玩筹码
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230608154741.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230608154741.png)
 
 那么我们可以把初始每一个偶数位置的「筹码」看作一个整体，每一个奇数位置的「筹码」看作一个整体。因为我们的目标是最后将全部的「筹码」移动到同一个位置，那么最后的位置只有两种情况：
 
@@ -693,13 +693,13 @@ var minCostToMoveChips = function (position) {
 
 ## 2423. 删除字符使频率相同
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230613153734.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230613153734.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230613153756.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230613153756.png)
 
 ## 1752. 检查数组是否经排序和轮转得到
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230618154809.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230618154809.png)
 
 ```javascript
 /**
@@ -717,5 +717,43 @@ var check = function (nums) {
     if (sign > 1) break
   }
   return sign <= 1
+}
+```
+
+### 最长平衡字符串
+
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/202310121555846.png)
+
+%
+
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/202310121555121.png)
+
+### 2089. 找出数组排序后的目标下标
+
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/202312131529571.png)
+
+%
+
+O(n) 版本
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var targetIndices = function (nums, target) {
+  let targetIdx = 0 // 这是target 出现的次数
+  let resPlusNum = 0 // 这是一次遍历完成后 结果数组需要增加的值
+  const res = []
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < target) {
+      resPlusNum++
+    } else if (nums[i] === target) {
+      res.push(targetIdx)
+      targetIdx++
+    }
+  }
+  return res.map((item) => item + resPlusNum)
 }
 ```

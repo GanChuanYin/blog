@@ -31,7 +31,7 @@ src
 ├── app.service.ts
 └── main.ts
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220509234925.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220509234925.png)
 
 nestjs 中有三个基础概念
 
@@ -43,7 +43,7 @@ nestjs 中有三个基础概念
 
 中间件是在路由处理程序 <font color=#dd0000 size=4> 之前 </font> 调用的函数。 中间件函数可以访问请求和响应对象，以及应用程序请求响应周期中的 next() 中间件函数。 next() 中间件函数通常由名为 next 的变量表示。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510102336.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510102336.png)
 
 您可以在函数中或在具有 @Injectable() 装饰器的类中实现自定义 Nest 中间件。 这个类应该实现 **NestMiddleware** 接口, 而函数没有任何特殊的要求。 让我们首先使用类方法实现一个简单的中间件功能。
 
@@ -146,7 +146,7 @@ await app.listen(3000)
 
 内置的异常层负责处理整个应用程序中的所有抛出的异常。当捕获到未处理的异常时，最终用户将收到友好的响应。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510110408.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510110408.png)
 
 **内置异常过滤器**
 
@@ -297,7 +297,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
 管道是具有 @Injectable() 装饰器的类。管道应实现 PipeTransform 接口。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510110408.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510110408.png)
 
 管道有两个类型:
 
@@ -358,7 +358,7 @@ export interface ArgumentMetadata {
 
 这里有一些属性描述参数：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510141821.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510141821.png)
 
 ```typescript
 import { IsString, IsInt } from 'class-validator'
@@ -438,7 +438,7 @@ async findOne(@Param('id', new ParseUUIDPipe()) id) {
 
 守卫是一个使用 @Injectable() 装饰器的类。 守卫应该实现 CanActivate 接口。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510144109.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510144109.png)
 
 守卫有一个单独的责任。它们根据运行时出现的某些条件（例如权限，角色，访问控制列表等）来确定给定的请求是否由路由处理程序处理。 这通常称为授权。
 
@@ -522,7 +522,7 @@ app.useGlobalGuards(new RolesGuard())
 ### 拦截器 Interceptors
 
 拦截器是使用 @Injectable() 装饰器注解的类。拦截器应该实现 NestInterceptor 接口。
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510145733.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510145733.png)
 
 拦截器具有一系列有用的功能，这些功能受面向切面编程（AOP）技术的启发。它们可以：
 
@@ -593,4 +593,4 @@ app.useGlobalInterceptors(new LoggingInterceptor())
 
 Nest 提供了一组非常实用的参数装饰器，可以结合 HTTP 路由处理器（route handlers）一起使用。下面的列表展示了Nest 装饰器和原生 Express（或 Fastify）中相应对象的映射。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220510150459.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220510150459.png)

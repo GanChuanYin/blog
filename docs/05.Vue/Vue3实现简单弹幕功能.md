@@ -128,4 +128,4 @@ watch(fakeList, (newValue) => {
 
 效果预览
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/111.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/111.gif)

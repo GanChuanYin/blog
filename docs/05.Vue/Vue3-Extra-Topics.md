@@ -33,13 +33,13 @@ Take the folder explorer component from Vue CLI's GUI as an example: this compon
 
 The original version of the component was written in Options API. If we give each line of code a color based on the logical concern it is dealing with, this is how it looks:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220729155551.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220729155551.png)
 
 Notice how code dealing with the same logical concern is forced to be <font color=#3498db size=4>`split`</font> under different options, located in different parts of the file. In a component that is several hundred lines long, <font color=#3498db size=4>`understanding and navigating a single logical concern requires constantly scrolling up and down the file`</font>, making it much more difficult than it should be. In addition, if we ever intend to extract a logical concern into a reusable utility, it takes quite a bit of work to find and extract the right pieces of code from different parts of the file.
 
 Here's the same component, before and after the refactor into `Composition API`:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220729155754.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220729155754.png)
 
 Notice how the code related to the same logical concern can now be `grouped together`: we no longer need to jump between different options blocks while working on a specific logical concern. Moreover, we can now move a group of code into an external file with minimal effort, since we no longer need to shuffle the code around in order to extract them. This reduced friction for refactoring is key to the long-term maintainability in large codebases.
 
@@ -403,7 +403,7 @@ At the high level, this is what happens when a Vue component is mounted:
 
 3. Patch: When a dependency used during mount changes, the effect re-runs. This time, a new, updated Virtual DOM tree is created. The runtime renderer walks the new tree, compares it with the old one, and applies necessary updates to the actual DOM.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220730211340.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220730211340.png)
 
 ### 3.2 Templates vs. Render Functions
 
@@ -1225,7 +1225,7 @@ function warnDisabled() {
 }
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Aug-01-2022-10-41-18.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Aug-01-2022-10-41-18.gif)
 
 ### 6.2 State-driven Animations
 
@@ -1256,11 +1256,11 @@ function onMousemove(e) {
 }
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Aug-01-2022-10-38-53.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Aug-01-2022-10-38-53.gif)
 
 In addition to color, you can also use style bindings to animate transform, width, or height. You can even animate `SVG` paths using spring physics - after all, they are all attribute data bindings:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Aug-01-2022-10-40-29.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Aug-01-2022-10-40-29.gif)
 
 ### 6.3 Animating with Watchers
 
@@ -1286,7 +1286,7 @@ Type a number: <input v-model.number="number" />
 <p>{{ tweened.number.toFixed(0) }}</p>
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Aug-01-2022-10-43-32.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Aug-01-2022-10-43-32.gif)
 
 ## 7. Reactivity Transform
 

@@ -4,7 +4,7 @@ socket 原意是“插座”或“插孔”，在网络中每台服务器相当�
 
 也就是说，使用不同的插口连接到对应的插口，就可以获得对应的服务。其实，插口就是 socket 服务，插口的编号就是端口号，而插头也是一个 socket 服务。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230519142249.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230519142249.png)
 
 所以，socket 的含义就是 `两个应用程序通过一个双向通信连接实现数据的交换` ，连接的一段就是一个 socket，又称为`套接字`。实现一个 socket 连接通信至少需要两个套接字，一个运行在服务端（插孔），一个运行在客户端（插头）。
 
@@ -14,7 +14,7 @@ socket 原意是“插座”或“插孔”，在网络中每台服务器相当�
 
 Socket 是应用层与 TCP/IP 协议簇通信的中间抽象层，是一组接口。在设计模式中其实就是门面模式。Socket 将复杂的 TCP/IP 协议簇隐藏在接口后面，对于用户而言，一组接口即可让 Socket 去组织数据，以符合指定的协议。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230519142432.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230519142432.png)
 
 1. TCP/IP
    传输控制协议/网间协议（Transmission Control Protocol/Internet Protocol）是一个工业标准的协议集，是为广域网 WAN 而设计的。
@@ -32,7 +32,7 @@ Socket 是应用层与 TCP/IP 协议簇通信的中间抽象层，是一组接�
 
 服务端首先初始化 Socket `socket()`，然后与端口绑定 `bind()`，再对端口进行监听 `listen()`，接着调用 `accept()`堵塞等待客户端连接。此时，若有一个客户端初始化了一个 Socket，然后连接服务端 `connect()`。若连接成功，此时客户端与服务端的连接就建立了。客户端发送请求 `write()`，服务端接收请求并处理 `read()`，然后将回应发送给客户端 `write()`，客户端读取数据 `read()`，最后关闭连接`close()`，一次交互结束。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230519142838.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230519142838.png)
 
 关键字： `连接` `请求数据` `回复数据` `关闭连接`
 
@@ -42,7 +42,7 @@ WebSocket 是一种`基于 HTTP` 协议实现全双工通信的协议，可以�
 
 WebSocket 协议在建立连接时使用 HTTP 协议中的 Upgrade 头来将连接从 HTTP 协议转变为 WebSocket 协议，因此 WebSocket 协议可以兼容 HTTP 协议。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230519144444.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230519144444.png)
 
 WebSocket 协议在建立连接后，服务器可以主动向客户端发送消息，而不是仅由客户端发起请求。同时，通过 WebSocket 连接传输的数据是以帧（frame）为单位进行封装和传输的，可以保障数据的完整性和稳定性。
 

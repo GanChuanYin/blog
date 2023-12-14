@@ -21,7 +21,7 @@ MD5 是输入 `不定长度` 信息，输出 `固定长度 128-bits` 的算法, 
 
 #### 计算原理
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220308175055.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220308175055.png)
 
 1. 把消息分为 n 个分组
 2. 对最后一个消息分组进行填充
@@ -93,4 +93,4 @@ JS 实现例子: [插件 js-spark-md5](https://github.com/satazor/js-spark-md5)
 
 以上代码运行可以看到 2.2GB 的文件计算耗时 24 秒左右
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212162628.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221212162628.png)

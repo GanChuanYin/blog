@@ -8,7 +8,7 @@ tags:
   - 
 ---
 历时四个多月, 终于完成了我的 leetcode 小目标
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230106152148.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230106152148.png)
 
 下面讲一下我的刷题心得
 
@@ -32,7 +32,7 @@ leetcode 题目很多，但其中的基本知识点其实是变化不大的，�
 
 为了克服遗忘问题, 我用了 anki 工具将每个题做成记忆卡片, 根据遗忘曲线提醒我复习
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230106154639.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230106154639.png)
 
 [anki](https://apps.ankiweb.net/)
 

@@ -37,18 +37,18 @@ contain 和 none 的行为差异体现主要在移动端。
 ### white-space
 
 white-space: normal;
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714165006.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714165006.png)
 
 white-space: nowrap;
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714165145.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714165145.png)
 
 ### word-break
 
 word-break: normal;
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714165310.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714165310.png)
 
 word-break: break-all;
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714165335.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714165335.png)
 
 word-break: keep-all;
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220714165408.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220714165408.png)

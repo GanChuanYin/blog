@@ -11,7 +11,7 @@ tags:
 
 `uncalled functions`
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221208110947.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221208110947.png)
 
 - it’s best `not` to add annotations when the type system would end up inferring the same type anyway.
 

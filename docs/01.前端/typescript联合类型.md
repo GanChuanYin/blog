@@ -52,7 +52,7 @@ function getArea(shape: Shape) {
 
 以上代码看起来没什么问题, 但是编辑器报错
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212104837.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221212104837.png)
 
 这里出现了一个问题: <font color=#dd0000 size=4>编码的人输入 circle 类型的时候会输入 radius, 但是编译器不知道, 也就是说编译器不明白 circle 和 radius 是一组, square 和 sideLength 是一组</font>
 
@@ -85,4 +85,4 @@ function getArea(shape: Shape) {
 
 这样编译器就能正确识别类型
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221212111127.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221212111127.png)

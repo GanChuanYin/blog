@@ -13,17 +13,17 @@ tags:
 
 效果
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221117173512.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221117173512.png)
 
 ### 前置条件
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221117172458.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221117172458.png)
 
 申请企业微信的流程可以参考 https://www.iasuna.com/post-4.html
 
 注意 ⚠️: 账号申请完成后要在这里配置 IP 白名单
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221117172827.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221117172827.png)
 
 否则 nodejs 访问不了接口
 
@@ -117,6 +117,6 @@ sendText('Node程序发送的测试 https://github.com/ ')
 
 运行效果
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221117173629.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221117173629.png)
 
 服务器异常的时候, 可以用这个方式实时推送

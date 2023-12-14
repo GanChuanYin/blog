@@ -10,7 +10,7 @@ tags:
 ## 1. 打字机效果
 
 实现类似以下效果
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/typewriter.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/typewriter.gif)
 
 上面效果有多种实现方式，这里考虑只用 CSS 实现
 

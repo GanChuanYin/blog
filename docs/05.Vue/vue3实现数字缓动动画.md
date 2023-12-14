@@ -9,7 +9,7 @@ tags:
 ---
 ## 1. 效果
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jun-23-20220017-41-13.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Jun-23-20220017-41-13.gif)
 
 ## 2. 实现数字缓动动画
 

@@ -70,9 +70,9 @@ js 对象像一个字典，但是 v8 实现对象存储并没有完全按字典�
 
 这样每次会多访问一层 elements 或 properties，为了提高访问速度，v8 会将前 n 个属性直接作为对象内属性存储。如果没有多余属性，就不会生成 properties 属性,对象内属性数量取决于初始对象大小。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221017164814.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221017164814.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221017164848.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221017164848.png)
 
 遍历属性时先 elements 而后在 properties。 所以导致了前面的遍历顺序不稳定问题
 

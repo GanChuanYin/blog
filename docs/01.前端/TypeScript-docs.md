@@ -43,7 +43,7 @@ Try
 
 you can make a function return different values depending on whether it is passed a string or an array:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220526095056.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220526095056.png)
 
 #### 1.2.2 Generics
 
@@ -264,9 +264,9 @@ Just like when we used a type alias above, the example works just as if we had u
 
 Type aliases and interfaces are very similar, and in many cases you can choose between them freely. <font color=#00dddd size=4>Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.</font>
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220530105443.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220530105443.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220530105612.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220530105612.png)
 
 ### 2.5 Type Assertions
 
@@ -292,11 +292,11 @@ In addition to the general types string and number, we can refer to specific str
 
 One way to think about this is to consider how JavaScript comes with different ways to declare a variable. Both var and let allow for changing what is held inside the variable, and const does not. This is reflected in how TypeScript creates types for literals.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531094319.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220531094319.png)
 
 by combining literals into unions, you can express a much more useful concept - for example, functions that only accept a certain set of known values:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531094410.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220531094410.png)
 
 Numeric literal types work the same way:
 
@@ -444,7 +444,7 @@ This condition will always return 'false' since the types 'typeof firstName' and
 
 ## 3. Narrowing
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220531102705.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220531102705.png)
 
 Within our if check, TypeScript sees typeof padding === "number" and understands that as a special form of code called a type guard.
 
@@ -509,13 +509,13 @@ We wrapped the entire body of the function in a truthy check, but this has a sub
 
 TypeScript also uses switch statements and equality checks like ===, !==, ==, and != to narrow types. For example:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220601102756.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220601102756.png)
 
 When we checked that x and y are both equal in the above example, TypeScript knew their types also had to be equal. Since string is the only common type that both x and y could take on, TypeScript knows that x and y must be a string in the first branch.
 
 JavaScript’s looser equality checks with == and != also get narrowed correctly. If you’re unfamiliar, <font color=#00dddd size=4> checking whether something == null actually not only checks whether it is specifically the value null - it also checks whether it’s potentially undefined.</font> The same applies to == undefined: it checks whether a value is either null or undefined.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220601103336.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220601103336.png)
 
 ### 3.4 The <font color=#00dddd size=4> in </font> operator narrowing
 
@@ -538,25 +538,25 @@ function move(animal: Fish | Bird) {
 
 To reiterate optional properties will exist in both sides for narrowing, for example a human could both swim and fly (with the right equipment) and thus should show up in both sides of the in check:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220601104809.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220601104809.png)
 
 ### 3.5 instanceof narrowing
 
 JavaScript has an operator for checking whether or not a value is an “instance” of another value. More specifically, in JavaScript x instanceof Foo checks whether the prototype chain of x contains Foo.prototype. While we won’t dive deep here, and you’ll see more of this when we get into classes, they can still be useful for most values that can be constructed with new. As you might have guessed, instanceof is also a type guard, and TypeScript narrows in branches guarded by instanceof s.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602094507.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602094507.png)
 
 ### 3.6 Assignments
 
 As we mentioned earlier, when we assign to any variable, TypeScript looks at the right side of the assignment and narrows the left side appropriately
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602094631.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602094631.png)
 
 Notice that each of these assignments is valid. Even though the observed type of x changed to number after our first assignment, we were still able to assign a string to x. This is because the declared type of x - the type that x started with - is string | number, and <font color=#00dddd size=4>assignability is always checked against the declared type.</font>
 
 If we’d assigned a boolean to x, we’d have seen an error since that wasn’t part of the declared type.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602095050.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602095050.png)
 
 ### 3.7 Control flow analysis
 
@@ -575,7 +575,7 @@ padLeft returns from within its first if block. TypeScript was able to analyze t
 
 This analysis of code based on reachability is called control flow analysis, and <font color=#00dddd size=4>TypeScript uses this flow analysis to narrow types as it encounters type guards and assignments</font> . When a variable is analyzed, control flow can split off and re-merge over and over again, and that variable can be observed to have a different type at each point.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602095713.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602095713.png)
 
 ### 3.8 Using type predicates
 
@@ -635,37 +635,37 @@ interface Shape {
 
 Notice we’re using a union of string literal types: "circle" and "square" to tell us whether we should treat the shape as a circle or square respectively. By using "circle" | "square" instead of string, we can avoid misspelling issues.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602101728.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602101728.png)
 
 We can write a getArea function that applies the right logic based on if it’s dealing with a circle or square. We’ll first try dealing with circles.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602101826.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602101826.png)
 
 Under strictNullChecks that gives us an error - which is appropriate since radius might not be defined. But what if we perform the appropriate checks on the kind property?
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602101900.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602101900.png)
 
 Hmm, <font color=#00dddd size=4>TypeScript still doesn’t know what to do here. We’ve hit a point where we know more about our values than the type checker does</font>. We could try to use a non-null assertion (a ! after shape.radius) to say that radius is definitely present.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602101943.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602101943.png)
 
 But this doesn’t feel ideal. <font color=#dd0000 size=4>We had to shout a bit at the type-checker with those non-null assertions (!) to convince it that shape</font> .radius was defined, <font color=#dd0000 size=4> but those assertions are error-prone if we start to move code around. </font> Additionally, outside of strictNullChecks we’re able to accidentally access any of those fields anyway (since optional properties are just assumed to always be present when reading them). **We can definitely do better.**
 
 The problem with this encoding of Shape is that the <font color=#dd0000 size=4>type-checker doesn’t have any way to know whether or not radius or sideLength are present based on the kind property. We need to communicate what we know to the type checker.</font> With that in mind, let’s take another swing at defining Shape.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602102253.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602102253.png)
 
 Here, <font color=#00dddd size=4>we’ve properly separated Shape out into two types with different values for the kind property, but radius and sideLength are declared as required properties in their respective types.</font>
 
 Let’s see what happens here when we try to access the radius of a Shape.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602102856.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602102856.png)
 
 Like with our first definition of Shape, this is still an error. When radius was optional, we got an error (with strictNullChecks enabled) because TypeScript couldn’t tell whether the property was present. Now that Shape is a union, TypeScript is telling us that shape might be a Square, and Squares don’t have radius defined on them! Both interpretations are correct, but only the union encoding of Shape will cause an error regardless of how strictNullChecks is configured.
 
 But what if we tried checking the kind property again?
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602103053.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602103053.png)
 
 That got rid of the error! When every type in a union contains a common property with literal types, TypeScript considers that to be a discriminated union, and can narrow out the members of the union.
 
@@ -673,7 +673,7 @@ In this case, kind was that common property (which is what’s considered a disc
 
 The same checking works with switch statements as well. Now we can try to write our complete getArea without any pesky ! non-null assertions.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602104638.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602104638.png)
 
 The important thing here was the encoding of Shape. **Communicating the right information to TypeScript** - that Circle and Square were really two separate types with specific kind fields - was crucial. Doing that let us write type-safe TypeScript code that looks no different than the JavaScript we would’ve written otherwise. From there, the type system was able to do the “right” thing and figure out the types in each branch of our switch statement.
 
@@ -691,11 +691,11 @@ When narrowing, you can reduce the options of a union to a point where you have 
 
 For example, adding a default to our getArea function which tries to assign the shape to never will raise when every possible case has not been handled.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602143350.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602143350.png)
 
 Adding a new member to the Shape union, will cause a TypeScript error:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220602143423.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220602143423.png)
 
 ## 4. More on Functions
 
@@ -853,7 +853,7 @@ Finally, just as we’d like, the call to longest(10, 100) is rejected because t
 
 Here’s a common error when working with generic constraints:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220603172718.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220603172718.png)
 
 It might look like this function is OK - Type is constrained to { length: number }, and the function either returns Type or a value matching that constraint. The problem is that the function promises to return the same kind of object as was passed in, not just some object matching the constraint. If this code were legal, you could write code that definitely wouldn’t work:
 
@@ -1127,7 +1127,7 @@ len([0]) // OK
 len(Math.random() > 0.5 ? 'hello' : [0])
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220604163056.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220604163056.png)
 
 Because both overloads have the same argument count and same return type, we can instead write a non-overloaded version of the function:
 
@@ -1176,7 +1176,7 @@ const admins = db.filterUsers(function(this: User) {
 This pattern is common with callback-style APIs, where another object typically controls when your function is called. <font color=#dd0000 size=4> Note that you need to use function and not arrow functions to get this behavior:
 </font>
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220604164544.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220604164544.png)
 
 ### 4.14 Other Types to Know About
 
@@ -1292,7 +1292,7 @@ arr1.push(...arr2)
 
 Note that in general, TypeScript does not assume that arrays are immutable. This can lead to some surprising behavior:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220604174956.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220604174956.png)
 
 The best fix for this situation depends a bit on your code, but in general a const context is the most straightforward solution:
 
@@ -1449,13 +1449,13 @@ Sometimes you don’t know all the names of a type’s properties ahead of time,
 
 In those cases you can use an index signature to describe the types of possible values, for example:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605210052.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605210052.png)
 
 Above, we have a StringArray interface which has an index signature. This index signature states that when a StringArray is indexed with a number, it will return a string.
 
 While string index signatures are a powerful way to describe the “dictionary” pattern, they also enforce that all properties match their return type. This is because a string index declares that obj.property is also available as obj\["property"]. In the following example, name’s type does not match the string index’s type, and the type checker gives an error:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605210418.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605210418.png)
 
 However, properties of different types are acceptable if the index signature is a union of the property types:
 
@@ -1469,7 +1469,7 @@ interface NumberOrStringDictionary {
 
 Finally, you can make index signatures readonly in order to prevent assignment to their indices:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605210536.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605210536.png)
 
 ### 5.2 Extending Types
 
@@ -1591,7 +1591,7 @@ You might read this as “A Box of Type is something whose contents have type Ty
 let box: Box<string>
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605212135.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605212135.png)
 
 Box is reusable in that Type can be substituted with anything. That means that when we need a box for a new type, we don’t need to declare a new Box type at all (though we certainly could if we wanted to).
 
@@ -1634,7 +1634,7 @@ type Box<Type> = {
 
 Since type aliases, unlike interfaces, can describe more than just object types, we can also use them to write other kinds of generic helper types.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605212453.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605212453.png)
 
 ### 5.6. The Array Type
 
@@ -1674,7 +1674,7 @@ Much like the readonly modifier for properties, it’s mainly a tool we can use 
 
 Unlike Array, there isn’t a ReadonlyArray constructor that we can use.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605215840.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605215840.png)
 
 Instead, we can assign regular Arrays to ReadonlyArrays.
 
@@ -1684,11 +1684,11 @@ const roArray: ReadonlyArray<string> = ['red', 'green', 'blue']
 
 Just as TypeScript provides a shorthand syntax for Array\<Type> with Type[], it also provides a shorthand syntax for ReadonlyArray\<Type> with readonly Type[].
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605220206.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605220206.png)
 
 One last thing to note is that unlike the readonly property modifier, assignability isn’t bidirectional between regular Arrays and ReadonlyArrays.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605220348.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605220348.png)
 
 ### 5.7. Tuple Types
 
@@ -1700,7 +1700,7 @@ type StringNumberPair = [string, number]
 
 Here, StringNumberPair is a tuple type of string and number. Like ReadonlyArray, it has no representation at runtime, but is significant to TypeScript. To the type system, StringNumberPair describes arrays whose 0 index contains a string and whose 1 index contains a number.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605220939.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605220939.png)
 
 if we try to index past the number of elements, we’ll get an error.
 
@@ -1715,7 +1715,7 @@ function doSomething(pair: [string, number]) {
 
 We can also destructure tuples using JavaScript’s array destructuring.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605221332.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605221332.png)
 
 Other than those length checks, simple tuple types like these are equivalent to types which are versions of Arrays that declare properties for specific indexes, and that declare length with a numeric literal type.
 
@@ -1733,7 +1733,7 @@ interface StringNumberPair {
 
 Another thing you may be interested in is that tuples can have optional properties by writing out a question mark (? after an element’s type). Optional tuple elements can only come at the end, and also affect the type of length.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220605221635.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220605221635.png)
 
 ## 6. Type Manipulation
 
@@ -1749,15 +1749,15 @@ function identity<Type>(arg: Type): Type {
 
 Once we’ve written the generic identity function, we can call it in one of two ways. The first way is to pass all of the arguments, including the type argument, to the function:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606095834.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606095834.png)
 
 The second way is also perhaps the most common. Here we use <font color=#00dddd size=4>type argument inference</font> — that is, we want the compiler to set the value of Type for us automatically based on the type of the argument we pass in:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606100017.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606100017.png)
 
 What if we want to also log the length of the argument arg to the console with each call? We might be tempted to write this:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606100402.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606100402.png)
 
 Let’s say that we’ve actually intended this function to work on arrays of Type rather than Type directly. Since we’re working with arrays, the .length member should be available. We can describe this just like we would create arrays of other types:
 
@@ -1870,7 +1870,7 @@ console.log(stringNumeric.add(stringNumeric.zeroValue, 'test'))
 
 the compiler could not prove that every type had a .length property, so it warns us that we can’t make this assumption.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606102027.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606102027.png)
 
 Instead of working with any and all types, we’d like to constrain this function to work with any and all types that also have the .length property. As long as the type has this member, we’ll allow it, but it’s required to have at least this member. To do so, <font color=#00dddd size=4>we must list our requirement as a constraint on what Type can be.</font>
 
@@ -1887,7 +1887,7 @@ function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
 
 Because the generic function is now constrained, it will no longer work over any and all types:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606102236.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606102236.png)
 
 Instead, we need to pass in values whose type has all the required properties:
 
@@ -1912,11 +1912,11 @@ getProperty(x, 'm') // Argument of type '"m"' is not assignable to parameter of 
 
 The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type as “x” | “y”:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606103127.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606103127.png)
 
 If the type has a string or number index signature, keyof will return those types instead:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220606103200.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220606103200.png)
 
 Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj\[0] is always the same as obj\["0"].
 
@@ -1966,23 +1966,23 @@ type P = ReturnType<typeof f>
 
 We can use an indexed access type to look up a specific property on another type:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220609103225.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220609103225.png)
 
 The indexing type is itself a type, so we can use unions, keyof, or other types entirely:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220609103257.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220609103257.png)
 
 You’ll even see an error if you try to index a property that doesn’t exist:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220609103323.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220609103323.png)
 
 Another example of indexing with an arbitrary type is using number to get the type of an array’s elements. We can combine this with typeof to conveniently capture the element type of an array literal:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220609103624.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220609103624.png)
 
 You can only use types when indexing, meaning you can’t use a const to make a variable reference:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220609103713.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220609103713.png)
 
 However, you can use a type <font color=#00dddd size=4>alias</font> for a similar style of refactor:
 
@@ -1995,7 +1995,7 @@ type Age = Person[key]
 
 At the heart of most useful programs, we have to make decisions based on input. JavaScript programs are no different, but given the fact that values can be easily introspected, those decisions are also based on the types of the inputs. Conditional types help describe the relation between the types of inputs and outputs.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610100732.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610100732.png)
 
 Conditional types take a form that looks a little like conditional expressions (condition ? trueExpression : falseExpression) in JavaScript:
 
@@ -2015,15 +2015,15 @@ type NameOrId<T extends number | string> = T extends number
 
 For example, let’s take the following:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610103003.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610103003.png)
 
 In this example, TypeScript errors because T isn’t known to have a property called message. We could constrain T, and TypeScript would no longer complain:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610103117.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610103117.png)
 
 However, what if we wanted MessageOf to take any type, and default to something like never if a message property isn’t available? We can do this by moving the constraint out and introducing a conditional type:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610103201.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610103201.png)
 
 ### 6.5.1 Inferring Within Conditional Types
 
@@ -2035,7 +2035,7 @@ type Flatten<Type> = Type extends Array<infer Item> ? Item : Type
 
 Here, we used the infer keyword to declaratively introduce a new generic type variable named Item instead of specifying how to retrieve the element type of T within the true branch. This frees us from having to think about how to dig through and probing apart the structure of the types we’re interested in.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610104102.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610104102.png)
 
 ### 6.5.2 Distributive Conditional Types
 
@@ -2047,7 +2047,7 @@ type ToArray<Type> = Type extends any ? Type[] : never
 
 If we plug a union type into ToArray, then the conditional type will be applied to each member of that union.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610104601.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610104601.png)
 
 What happens here is that StrArrOrNumArr distributes on:
 
@@ -2069,7 +2069,7 @@ which leaves us with:
 
 Typically, distributivity is the desired behavior. To avoid that behavior, you can surround each side of the extends keyword with square brackets.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220610104946.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220610104946.png)
 
 ### 6.6 Mapped Types
 
@@ -2077,7 +2077,7 @@ When you don’t want to repeat yourself, sometimes a type needs to be based on 
 
 Mapped types build on the syntax for index signatures, which are used to declare the types of properties which have not been declared ahead of time:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193325.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193325.png)
 
 A mapped type is a generic type which uses a union of PropertyKeys (frequently created via a keyof) to iterate through keys to create a type:
 
@@ -2089,7 +2089,7 @@ type OptionsFlags<Type> = {
 
 In this example, OptionsFlags will take all the properties from the type Type and change their values to be a boolean.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193427.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193427.png)
 
 #### 6.6.1 Mapping Modifiers
 
@@ -2097,9 +2097,9 @@ There are two additional modifiers which can be applied during mapping: readonly
 
 You can remove or add these modifiers by prefixing with - or +. If you don’t add a prefix, then + is assumed.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193555.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193555.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193620.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193620.png)
 
 #### 6.6.2 Key Remapping via
 
@@ -2113,21 +2113,21 @@ type MappedTypeWithNewProperties<Type> = {
 
 You can leverage features like template literal types to create new property names from prior ones:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193812.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193812.png)
 
 You can filter out keys by producing never via a conditional type:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193846.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193846.png)
 
 You can map over arbitrary unions, not just unions of string | number | symbol, but unions of any type:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612193939.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612193939.png)
 
 **Further Exploration**
 
 Mapped types work well with other features in this type manipulation section, for example here is a mapped type using a conditional type which returns either a true or false depending on whether an object has the property pii set to the literal true:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612194109.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612194109.png)
 
 ### 6.7 Template Literal Types
 
@@ -2135,15 +2135,15 @@ Template literal types build on string literal types, and have the ability to ex
 
 They have the same syntax as template literal strings in JavaScript, but are used in type positions. When used with concrete literal types, a template literal produces a new string literal type by concatenating the contents.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612221943.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612221943.png)
 
 When a union is used in the interpolated position, the type is the set of every possible string literal that could be represented by each union member:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612222059.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612222059.png)
 
 For each interpolated position in the template literal, the unions are cross multiplied:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612222146.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612222146.png)
 
 #### 6.7.1 String Unions in Types
 
@@ -2171,9 +2171,9 @@ Converts each character in the string to the uppercase version.
 
 Example
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612222955.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612222955.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220612223137.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220612223137.png)
 
 ## 7. Classes
 
@@ -2184,13 +2184,13 @@ As with other JavaScript language features, TypeScript adds type annotations and
 **readonly**
 
 Fields may be prefixed with the readonly modifier. This prevents assignments to the field outside of the constructor.
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220613095557.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220613095557.png)
 
 **Super Calls**
 
 Just as in JavaScript, if you have a base class, you’ll need to call super(); in your constructor body before using any this. members:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220613100838.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220613100838.png)
 
 Forgetting to call super is an easy mistake to make in JavaScript, but <font color=#00dddd size=4> TypeScript will tell you when it’s necessary</font> .
 
@@ -2232,7 +2232,7 @@ class MyClass {
 
 You can use an implements clause to check that a class satisfies a particular interface. An error will be issued if a class fails to correctly implement it:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220613231331.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220613231331.png)
 
 Classes may also implement multiple interfaces, e.g. class C implements A, B {.
 
@@ -2240,13 +2240,13 @@ Classes may also implement multiple interfaces, e.g. class C implements A, B {.
 
 It’s important to understand that an implements clause is only a check that the class can be treated as the interface type. It doesn’t change the type of the class or its methods at all. A common source of error is to assume that an implements clause will change the class type - it doesn’t!
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220613231549.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220613231549.png)
 
 In this example, we perhaps expected that s’s type would be influenced by the name: string parameter of check. It is not - implements clauses don’t change how the class body is checked or its type inferred.
 
 Similarly, implementing an interface with an optional property doesn’t create that property:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220613231738.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220613231738.png)
 
 Classes may extend from a base class. A derived class has all the properties and methods of its base class, and also define additional members.
 
@@ -2296,7 +2296,7 @@ Because <font color=#00dddd size=4> public is already the default visibility mod
 
 protected members are only visible to subclasses of the class they’re declared in.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220613234208.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220613234208.png)
 
 Exposure of protected members
 
@@ -2320,17 +2320,17 @@ Note that Derived was already able to freely read and write m, so this doesn’t
 
 private is like protected, but doesn’t allow access to the member even from subclasses:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220614101545.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220614101545.png)
 
 Because private members aren’t visible to derived classes, a derived class can’t increase its visibility:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220614101621.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220614101621.png)
 
 **Cross-instance private access**
 
 TypeScript does allow cross-instance private access:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220614101756.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220614101756.png)
 
 <font color=#dd0000 size=4>Caveats</font>
 
@@ -2366,7 +2366,7 @@ MyClass.printX()
 
 Static members can also use the same public, protected, and private visibility modifiers:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220614102333.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220614102333.png)
 
 Static members are also inherited:
 
@@ -2386,16 +2386,16 @@ class Derived extends Base {
 
 Classes, much like interfaces, can be generic. When a generic class is instantiated with new, its type parameters are inferred the same way as in a function call:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220614103511.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220614103511.png)
 
 ### 7.8 Parameter Properties
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220615094948.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220615094948.png)
 
 ### 7.9 Relationships Between Classes
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220615095909.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220615095909.png)
 
 Similarly, subtype relationships between classes exist even if there’s no explicit inheritance:
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220615100004.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220615100004.png)

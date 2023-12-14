@@ -71,10 +71,10 @@ watch(
 
 ### <font color=#dd0000 size=4>vue3 下 echarts resize()报错</font>
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220513165412.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220513165412.png)
 
 有关 <font color=#dd0000 size=4>shallowRef</font>
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220513165639.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220513165639.png)
 
 ### async setup()
 
@@ -136,4 +136,4 @@ If using `<script setup>`, the presence of top-level await expressions automatic
 </script>
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230627111933.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230627111933.png)

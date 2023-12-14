@@ -174,4 +174,4 @@ Component({
 
 > https://github.com/DoctorWei/weapp-qrcode-canvas-2d
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230726213651.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230726213651.png)

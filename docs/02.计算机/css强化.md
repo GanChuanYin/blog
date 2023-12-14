@@ -13,7 +13,7 @@ tags:
 
 基本上，可以看出是 <font color=#00dddd size=4> position:relative 和 position:fixed 的结合体——当元素在屏幕内，表现为 relative，就要滚出显示器屏幕的时候，表现为 fixed。</font>
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jun-27-2022-17-13-56.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Jun-27-2022-17-13-56.gif)
 
 ```css
 nav {

@@ -49,4 +49,4 @@ onMounted(() => {
 
 ref
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220426141009.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220426141009.png)

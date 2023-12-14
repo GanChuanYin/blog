@@ -23,7 +23,7 @@ div {
 
 ## 2. attr 实现 tooltip
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/attr-tooltip.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/attr-tooltip.gif)
 
 ```html
 <h1>
@@ -91,7 +91,7 @@ div {
 
 ## 3. 纯 CSS 实现核算清单
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/12312.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/12312.gif)
 
 ```html
 <div class="checklist">
@@ -185,7 +185,7 @@ div {
 
 ### 给金牌 🏅️ 镀金
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/Jul-18-2022-17-35-57.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/Jul-18-2022-17-35-57.gif)
 
 ```html
 <div class="gold-metal">

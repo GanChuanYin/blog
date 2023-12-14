@@ -34,7 +34,7 @@ tags:
 ### 开发
 
 node 项目目录
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220325102443.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220325102443.png)
 
 node 项目 3000 端口，前端 vue 项目 5000 端口，先来一套组合拳让 express app 支持跨域
 
@@ -290,7 +290,7 @@ jsonwebtoken 将 内容和过期时间通过加密算法 生成 token
 
 将 token 包裹在 ResponseBody 里返回给前端
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220325120834.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220325120834.png)
 
 ### 三、前端接收并缓存 Token
 

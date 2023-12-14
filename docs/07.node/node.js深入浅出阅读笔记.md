@@ -40,7 +40,7 @@ I/O 密集型地优势在于 Node 利用事件循环地处理能力，而不是�
 
 换一个角度，在 CPU 密集地应用场景中，Node 是否能够胜任呢？实际上，V8 地执行效率是十分高地。单以执行效率来做评判，V8 地执行效率是毋庸置疑的。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220407104253.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220407104253.png)
 
 Node 在性能上不俗，从另一个角度来说，CPU 密集型应用其实并不可怕。CPU 密集型应用给 Node 带来的挑战主要是：由于 JavaScript 单线程的原因，如果有长时间运行的计算（如大循环），将会导致 CPU 时间片不能释放，使得后续 I/O 无法发起。但是适当调整和分解大型运算任务为多个小人物，使得运算能够适时释放，非阻塞 I/O 调用的发起，这样既可以同时享受到并行异步 I/O 的好处，又能充分利用 CPU。
 
@@ -72,7 +72,7 @@ Node 组织了自身的核心模块，也使得第三方文件模块可以有序
 
 CommonJS 包规范是理论，NPM 是其中的一种实践。NPM 之于 Node，相当于 gem 之于 Ruby，pear 之于 PHP。对于 Node 而言，NPM 帮助完成了第三方模块的发布、安装和依赖等。借助 NPM，Node 与第三方模块之间形成了很好的生态系统。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220412110342.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220412110342.png)
 
 ### 包结构
 
@@ -333,13 +333,13 @@ NPM 通过对包规范的支持，有效地组织了第三方模块，这使得�
 ### 异步 IO
 
 **主流程**
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220422094135.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220422094135.png)
 
 **setTimeout()**
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220422000350.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220422000350.png)
 
 **利用 Node 构建 web 服务**
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220424095304.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220424095304.png)
 
 事件循环时异步实现的核心，它与浏览器中的执行模型基本保持了一致。而像古老的 Rhino，尽管时较早能在服务器端运行的 JavaScript 运行时，但是执行模型并不像浏览器采用事件驱动，而是像其他语言一般采用同步 I/O 作为主要模型，这造成了它在性能上务所发挥。Node 正是依靠构建了一套完善的高性能异步 I/O 框架，打破了 JavaScript 在服务器端止步不前的局面。
 
@@ -726,15 +726,15 @@ var fs = fs.createReadStream('test.md', { highWaterMark: 11 })
 
 搭配该代码的测试数据为李白的《静夜思》。所以将得到乱码数据。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220424111524.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220424111524.png)
 
 这首诗的原始 Buffer 应存储为
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220424111931.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220424111931.png)
 
 上面诗歌中，产生这个输出结果的原因在于文件可读流在读取时会逐个读取 Buffer。由于我们限定了 Buffer 对象长度为 11，因此只读流读取 7 次才完成完整的读取，结果是以下几个 Buffer 对象依次输出：
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220424112420.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220424112420.png)
 
 上文提到的 buf.toString()方法默认以 UTF-8 为编码，中文字在 UTF-8 下占用 3 个字节。所以一个 Buffer 对象在输出时，只能显示 3 个字符，Buffer 中剩下的 2 个字节将会以乱码的形式显示。于是形成了一些文字无法正常显示的问题。在这个示例中，我们构造了 11 这个限制，但是对于任意长度的 Buffer 而言，宽字节字符串都有可能被截断的情况，只不过 Buffer 的长度越大出现的概率越低而已，但该问题依然不可忽视。
 
@@ -1302,7 +1302,7 @@ cp.fork('./worker.js')
 ```
 
 以上 4 个方法在创建子进程之后均会返回子进程对象。他们的差别在于：
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220425100535.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220425100535.png)
 
 #### 进程间通信
 

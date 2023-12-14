@@ -13,7 +13,7 @@ tags:
 
 直接用wps打开 然后保存, 选择否
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220711172209.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220711172209.png)
 
 重新倒入即可
 

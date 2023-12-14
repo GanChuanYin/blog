@@ -4,11 +4,11 @@
 
 更准确的说，它的用户体验比 20 年前更差了。密码的强度要求现在越来越高，一般不能少于 8 个字符，还要包括特殊符号。 记得最早的手机解锁密码是 4 位, 之后变成了 6 位.
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723141920.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723141920.png)
 
 另外，除了密码，通常还有其他验证（短信、图片识别、OTP 时间码等等）。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723141938.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723141938.png)
 
 即使变得越来越麻烦，依然不能杜绝密码被盗、被破解、被钓鱼的风险。
 
@@ -30,30 +30,30 @@ Passkey 要求用户必须配备一个"身份管理器"（通常由操作系统�
 
 2022 年 WWDC 大会，苹果宣布支持 Passkey。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723142208.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723142208.png)
 
 2023 年 5 月，谷歌和微软同时宣布，全面接入 Passkey。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723142309.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723142309.png)
 
 Github 已经接入
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723144131.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723144131.png)
 
 大厂们终于达成一致
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723142331.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723142331.png)
 
 目前，**iOS 和安卓已经支持 Passkey，自带"身份管理器"，有些笔记本（比如 Macbook）也支持**。如果是台式机，没有任何识别设备，浏览器就会给出二维码或者蓝牙，让手机代为验证。
 
 ### 以 iOS 16 Passkeys 为例
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723142801.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723142801.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723142815.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723142815.png)
 
 验证时序图
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230723142732.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230723142732.png)
 
 再过一两年，等到这个协议的各种语言封装库和框架出台，它肯定会改变人们的密码习惯, 最后 `忘记密码` .

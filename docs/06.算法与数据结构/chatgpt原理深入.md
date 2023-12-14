@@ -2,7 +2,7 @@
 
 人的大脑在识别事物时一般如下
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230529213433.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230529213433.png)
 
 分为 3 步骤
 
@@ -14,7 +14,7 @@
 
 进一步抽象就是 输入 => 模型处理 => 输出
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230529213351.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230529213351.png)
 
 研究模型就是研究 `盒子` 的实现
 
@@ -24,13 +24,13 @@
 
 最终模拟大脑运行的 `Neural Networks`( 神经网络 )成为主流。
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230529213822.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230529213822.png)
 
 ### chartGPT 运行过程
 
 chartGPT 是基于上下文预测的大型通用文字模型，它的原理很`简单`: 根据输入内容预测下一个`单词`，循环这个过程直到结束
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/testfig.gif)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/testfig.gif)
 
 看似越简单的工作原理，背后隐藏的技术越复杂
 
@@ -42,6 +42,6 @@ chartGPT 通过 `1750亿` 文本参数建模，这些参数来自互联网上的
 
 当大模型参数达到某个关键的规模阈值，就会出现 `涌现`。这种模型效果质的变化也被称为相变——整体行为的戏剧性变化，而这一变化是通过研究无法预见的。 **OpenAI 本身都不能解释这些 AI 涌现出的“思维”**，
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230529145001.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230529145001.png)
 
 

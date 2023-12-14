@@ -594,7 +594,7 @@ To pass a named slot, we need to use a `<template>` element with the v-slot dire
 
 <font color=#00dddd size=4>v-slot has a dedicated shorthand #</font>, so `<template v-slot:header>` can be shortened to just `<template #header>`. Think of it as "render this template fragment in the child component's 'header' slot".
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220712100426.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220712100426.png)
 
 ### 5.3 Dynamic Slot Names
 
@@ -634,7 +634,7 @@ Receiving the slot props is a bit different when using a single default slot vs.
 </MyComponent>
 ```
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220712101010.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220712101010.png)
 
 The props passed to the slot by the child are available as the value of the corresponding v-slot directive, which can be accessed by expressions inside the slot.
 

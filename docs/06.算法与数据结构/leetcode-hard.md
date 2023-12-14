@@ -10,7 +10,7 @@ tags:
 
 ## 合并 K 个升序链表
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220822161310.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220822161310.png)
 
 重点是转数组,排序, 再按照排好序的数组重组链表
 
@@ -48,7 +48,7 @@ var mergeKLists = function (lists) {
 
 ## 寻找两个正序数组的中位数
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220822173048.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220822173048.png)
 
 ```javascript
 /**
@@ -71,7 +71,7 @@ var findMedianSortedArrays = function (nums1, nums2) {
 
 ## 接雨水
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220824115736.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220824115736.png)
 
 ```javascript
 /**
@@ -117,7 +117,7 @@ var getVolume = function (arr, index) {
 
 ## 缺失的第一个正数
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220826145349.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220826145349.png)
 
 总共遍历三次
 
@@ -157,7 +157,7 @@ var firstMissingPositive = function (nums) {
 
 ## 正则表达式匹配
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220826183935.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220826183935.png)
 
 ```javascript
 /**
@@ -203,9 +203,9 @@ let handleMatch = (s, p) => {
 
 ## 84. 柱状图中最大的矩形
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220828225545.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220828225545.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220828225601.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220828225601.png)
 
 可以把这个想象成锯木板，如果木板都是递增的那我很开心，如果突然遇到一块木板 i 矮了一截，那我就先找之前最戳出来的一块（其实就是第 i-1 块），计算一下这个木板单独的面积，然后把它锯成次高的，这是因为我之后的计算都再也用不着这块木板本身的高度了。再然后如果发觉次高的仍然比现在这个 i 木板高，那我继续单独计算这个次高木板的面积（应该是第 i-1 和 i-2 块），再把它俩锯短。直到发觉不需要锯就比第 i 块矮了，那我继续开开心心往右找更高的。当然为了避免到了最后一直都是递增的，所以可以在最后加一块高度为 0 的木板。
 
@@ -243,11 +243,11 @@ var largestRectangleArea = function (heights) {
 
 ## 44. 通配符匹配
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220901105852.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220901105852.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220901105910.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220901105910.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220901105921.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220901105921.png)
 
 ```javascript
 /**
@@ -287,9 +287,9 @@ var isMatch = function (s, p) {
 
 ## 124. 二叉树中的最大路径和
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220902182523.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220902182523.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220902182529.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220902182529.png)
 
 ```javascript
 /**
@@ -343,7 +343,7 @@ var maxPathSum = function (root) {
 
 ## 140. 单词拆分 II
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220904211351.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220904211351.png)
 
 用 map 存储每个可以被拆分的子串
 注意去重
@@ -392,7 +392,7 @@ var getStr = function (resMap, s1, s2) {
 
 ## 127. 单词接龙
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220904221927.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220904221927.png)
 
 ```javascript
 /**
@@ -439,9 +439,9 @@ const strDiff = (str1, str2) => {
 
 ## 212. 单词搜索 II
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220907165054.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220907165054.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220907165103.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220907165103.png)
 
 ```javascript
 /**
@@ -496,7 +496,7 @@ var check = function (board, m, n, word, index, resArr) {
 
 ## 297. 二叉树的序列化与反序列化
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220909171404.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220909171404.png)
 
 ```javascript
 /**
@@ -585,9 +585,9 @@ var deserialize = function (data) {
 
 ## 329. 矩阵中的最长递增路径
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910210414.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220910210414.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910210423.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220910210423.png)
 
 ```javascript
 /**
@@ -644,7 +644,7 @@ var search = function (matrix, m, n, visited) {
 
 ## 295. 数据流的中位数
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910213859.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220910213859.png)
 
 ```javascript
 var MedianFinder = function () {
@@ -679,9 +679,9 @@ MedianFinder.prototype.findMedian = function () {
 
 ## 315. 计算右侧小于当前元素的个数
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910223612.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220910223612.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220910223618.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220910223618.png)
 
 ```javascript
 var countSmaller = function (nums) {
@@ -743,9 +743,9 @@ var countSmaller = function (nums) {
 
 ## 218. 天际线问题
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912171451.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220912171451.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912171457.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220912171457.png)
 
 ```javascript
 /**
@@ -796,9 +796,9 @@ function search(arr, tar) {
 
 ## 239. 滑动窗口最大值
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912214552.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220912214552.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220912214613.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220912214613.png)
 
 ```javascript
 /**
@@ -831,9 +831,9 @@ var maxSlidingWindow = function (nums, k) {
 
 ## 301. 删除无效的括号
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914175916.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220914175916.png)
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220914175922.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220914175922.png)
 
 ```javascript
 /**
@@ -917,7 +917,7 @@ var isValid = function (s) {
 
 ## 25. K 个一组翻转链表
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220919230002.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220919230002.png)
 
 ```javascript
 /**
@@ -967,7 +967,7 @@ var handle = function (nodes) {
 
 ## 30. 串联所有单词的子串
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220920222726.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220920222726.png)
 
 ```javascript
 /**
@@ -1002,7 +1002,7 @@ var findSubstring = function (s, words = []) {
 
 ## 37. 解数独
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220921172216.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220921172216.png)
 
 ```javascript
 /**
@@ -1127,11 +1127,11 @@ var solveSudoku = function (board) {
 ```
 
 这里重点注意回溯的终止条件
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220921172233.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220921172233.png)
 
 ## 51. N 皇后
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220921204128.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220921204128.png)
 
 ```javascript
 /**
@@ -1258,7 +1258,7 @@ function fullpermutate(strList) {
 
 ## 60. 排列序列
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220922104311.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220922104311.png)
 
 ```javascript
 /**
@@ -1309,7 +1309,7 @@ function fullpermutate(str, k) {
 
 ## 132. 分割回文串 II
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220926151410.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220926151410.png)
 
 ```javascript
 /**
@@ -1353,7 +1353,7 @@ var isValid = function (str) {
 
 ## 135. 分发糖果
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220926165728.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220926165728.png)
 
 ```javascript
 /**
@@ -1434,7 +1434,7 @@ var candy = function (ratings) {
 
 ## 164. 最大间距
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220927142846.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220927142846.png)
 
 ```javascript
 /**
@@ -1453,7 +1453,7 @@ var maximumGap = function (nums) {
 
 ## 214. 最短回文串
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220928160801.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220928160801.png)
 
 例子中:
 aacecaaa 从头往后可以找到的最长子串为 aacecaa
@@ -1498,7 +1498,7 @@ var isValid = function (s) {
 
 ## 220. 存在重复元素 III
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20220928162212.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20220928162212.png)
 
 ```javascript
 /**
@@ -1522,7 +1522,7 @@ var containsNearbyAlmostDuplicate = function (nums, indexDiff, valueDiff) {
 
 ## 1028. 从先序遍历还原二叉树
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20221213161249.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20221213161249.png)
 
 ```javascript
 /**

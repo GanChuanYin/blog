@@ -27,7 +27,7 @@ export default router
 
 效果
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230625172104.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230625172104.png)
 
 ## 2. 路由鉴权
 
@@ -94,7 +94,7 @@ router.afterEach(() => {
 
 实现效果类似 YouTube 网站顶部 `红条`
 
-![](https://gcy-1306312261.cos.ap-chengdu.myqcloud.com/blog/20230316173037.png)
+![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230316173037.png)
 
 ## 4. 路由重定向
 
