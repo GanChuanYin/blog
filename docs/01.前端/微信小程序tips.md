@@ -1,3 +1,12 @@
+---
+title: 微信小程序tips
+date: 2023-07-13 16:57:06
+permalink: /pages/849497/
+categories:
+  - 前端
+tags:
+  - 
+---
 ### 封装 wx.request
 
 #### wx.request 与 requestTask.abort()

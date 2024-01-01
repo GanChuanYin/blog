@@ -1,3 +1,12 @@
+---
+title: 组件复用-Hooks
+date: 2023-07-20 10:18:59
+permalink: /pages/1f5e58/
+categories:
+  - Vue
+tags:
+  - 
+---
 为了跨组件复用逻辑, 在 Hooks 之前，首先会想到的解决方案一定是 `mixin`
 
 ### 1. mixin 存在的问题

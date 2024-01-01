@@ -1,3 +1,12 @@
+---
+title: webpack构建是单线程还是多线程
+date: 2023-05-24 16:39:32
+permalink: /pages/4e72d9/
+categories:
+  - 工程化
+tags:
+  - 
+---
 ### 1. webpack 构建是单线程还是多线程?
 
 webpack 构建是多线程的。Webpack 4 引入了一种全新的并行方式来构建代码块。

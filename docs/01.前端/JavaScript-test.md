@@ -1,3 +1,12 @@
+---
+title: JavaScript-test
+date: 2023-02-02 15:59:16
+permalink: /pages/4696fc/
+categories:
+  - 前端
+tags:
+  - 
+---
 答案在问题下方的折叠部分，点击即可展开
 
 ### 1. 输出是什么？

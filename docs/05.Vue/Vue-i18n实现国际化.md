@@ -1,3 +1,12 @@
+---
+title: Vue-i18n实现国际化
+date: 2023-07-20 00:31:55
+permalink: /pages/1ea42a/
+categories:
+  - Vue
+tags:
+  - 
+---
 > i18n（其来源是英文单词 `internationalization` 的首末字符 i 和 n，18 为中间的字符数）是“国际化”的简称
 
 ### Vue-i18n 简单 demo

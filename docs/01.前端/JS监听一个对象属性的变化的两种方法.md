@@ -1,3 +1,12 @@
+---
+title: JS监听一个对象属性的变化的两种方法
+date: 2023-09-08 16:46:17
+permalink: /pages/9795c1/
+categories:
+  - 前端
+tags:
+  - 
+---
 ### 方法一: `defineProperty`
 
 使用 Object.defineProperty()

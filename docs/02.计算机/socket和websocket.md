@@ -1,3 +1,12 @@
+---
+title: socket和websocket
+date: 2023-05-19 10:32:20
+permalink: /pages/eaf46c/
+categories:
+  - 计算机
+tags:
+  - 
+---
 ### 1. 什么是 Socket
 
 socket 原意是“插座”或“插孔”，在网络中每台服务器相当于一间房子，房子中有着不同的插口，每个插口都有一个编号，且负责某个功能。例如充电插口、网线插口、电话插口等。

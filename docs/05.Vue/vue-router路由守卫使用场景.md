@@ -1,3 +1,12 @@
+---
+title: vue-router路由守卫使用场景
+date: 2023-06-25 17:20:52
+permalink: /pages/a6396e/
+categories:
+  - Vue
+tags:
+  - 
+---
 ## 1. 动态修改页面 title
 
 每个子路由页的标题即可，在每个子路由对象中添加 meta 属性：

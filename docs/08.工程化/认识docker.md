@@ -1,3 +1,12 @@
+---
+title: 认识docker
+date: 2023-05-17 16:48:35
+permalink: /pages/41f38a/
+categories:
+  - 工程化
+tags:
+  - 
+---
 ### 1. docker 的用处
 
 技术爆发时代，应用变得越来越强大，也越来越复杂。

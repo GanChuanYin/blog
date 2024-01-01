@@ -1,3 +1,12 @@
+---
+title: Echarts优化大数据渲染
+date: 2023-05-10 21:02:29
+permalink: /pages/fd368e/
+categories:
+  - Vue
+tags:
+  - 
+---
 工作中遇到一个 CPU 监控大数据渲染卡顿的问题
 
 ![](https://raw.gitmirror.com/GanChuanYin/picture/main/blog/20230511142520.png)

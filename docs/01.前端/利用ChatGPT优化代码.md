@@ -1,3 +1,12 @@
+---
+title: 利用ChatGPT优化代码
+date: 2023-07-11 10:30:51
+permalink: /pages/a41b31/
+categories:
+  - 前端
+tags:
+  - 
+---
 ### chatGPT 优化代码写法
 
 `Q:`

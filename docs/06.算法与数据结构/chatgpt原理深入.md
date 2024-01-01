@@ -1,3 +1,12 @@
+---
+title: chatgpt原理深入
+date: 2023-05-29 14:05:21
+permalink: /pages/d8be74/
+categories:
+  - 算法与数据结构
+tags:
+  - 
+---
 ### 什么是模型
 
 人的大脑在识别事物时一般如下
